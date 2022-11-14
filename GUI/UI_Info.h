@@ -22,7 +22,7 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_TRIANGLE,
 	ITM_HEXAGON,
 	ITM_CIRCLE,
-	//TODO: Add more items names here: DONE THE SHAPES
+	//TODO: Add more items names here: DONE all the required THE SHAPES
 
 	ITM_EXIT,		//Exit item
 	
