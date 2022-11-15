@@ -166,6 +166,121 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 	
 }
+void Output::DrawSquare(Point P1, GfxInfo squareGfxInfo, bool selected) const
+{
+	int squareside = 20;
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = squareGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (squareGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(squareGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+
+	pWind->DrawRectangle(P1.x - squareside, P1.y - squareside, P1.x + squareside, P1.y + squareside, style);
+
+}
+void Output::Drawcircle(Point P1, Point P2, GfxInfo circleGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = circleGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (circleGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(circleGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+
+	pWind->DrawCircle(P1.x, P1.y, int(sqrt(pow(P1.x - P2.x, 2) + pow(P1.y - P2.y, 2))), style);
+
+}
+void Output::DrawTraingle(Point P1, Point P2, Point P3, GfxInfo traingleGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = traingleGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (traingleGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(traingleGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
+
+}
+void Output::DrawHexagon(Point P1, GfxInfo hexagonGfxInfo, bool selected) const
+{
+	int hexagonside = 20;
+	int arrx[6] =
+	{
+		P1.x + hexagonside /2.
+		,P1.x+ hexagonside,
+		P1.x+ hexagonside /2.
+		,P1.x- hexagonside /2.
+		,P1.x- hexagonside
+		,P1.x - hexagonside / 2.
+	};
+	int arry[6] =
+	{
+		 P1.y + hexagonside / 2. * sqrt(3)
+		,  P1.y ,
+		 P1.y - hexagonside / 2. * sqrt(3)
+		 ,P1.y - hexagonside / 2. * sqrt(3)
+		, P1.y ,
+		 P1.y + hexagonside / 2. * sqrt(3)
+	};
+
+	
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = hexagonGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (hexagonGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(hexagonGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	pWind->DrawPolygon(arrx, arry,6, style);
+	/*pWind->DrawTriangle(P1.x, P1.y, P1.x + 20 / 2., P1.y + 20 / 2. * sqrt(3), P1.x + 20, P1.y, style);
+	pWind->DrawTriangle(P1.x, P1.y, P1.x + 20, P1.y, P1.x + 20 / 2., P1.y - 20 / 2. * sqrt(3), style);
+	pWind->DrawTriangle(P1.x, P1.y, P1.x + 20 / 2., P1.y - 20 / 2. * sqrt(3), P1.x - 20 / 2., P1.y - 20 / 2. * sqrt(3), style);
+	pWind->DrawTriangle(P1.x, P1.y, P1.x - 20 / 2., P1.y - 20 / 2. * sqrt(3), P1.x - 20, P1.y, style);
+	pWind->DrawTriangle(P1.x, P1.y, P1.x - 20, P1.y, P1.x - 20 / 2., P1.y + 20 / 2. * sqrt(3), style);
+	pWind->DrawTriangle(P1.x, P1.y, P1.x - 20 / 2., P1.y + 20 / 2. * sqrt(3), P1.x + 20 / 2., P1.y + 20 / 2. * sqrt(3), style);
+	*/
+}
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
