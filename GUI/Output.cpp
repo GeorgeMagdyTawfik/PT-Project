@@ -14,7 +14,7 @@ Output::Output()
 	
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
-	UI.MenuItemWidth = 80;
+	UI.MenuItemWidth = 50;
 	
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
@@ -80,12 +80,12 @@ void Output::CreateDrawToolBar() const
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
-	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Blue_rectangle.jpg";
-	MenuItemImages[ITM_SQUARE] = "images\\MenuItems\\Blue_square.jpg";
-	MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\Blue_triangle.jpg";
-	MenuItemImages[ITM_HEXAGON] = "images\\MenuItems\\Blue_hexagon.jpg";
-	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\Blue_circle.jpg";
-	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
+	MenuItemImages[ITM_RECT] = "images\\MenuItems\\U_rectangle.jpg";
+	MenuItemImages[ITM_SQUARE] = "images\\MenuItems\\U_square.jpg";
+	MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\U_triangle.jpg";
+	MenuItemImages[ITM_HEXAGON] = "images\\MenuItems\\U_hexagon.jpg";
+	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\U_circle.jpg";
+	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\U_exit.jpg";
 	
 
 	//TODO: Prepare images for each menu item and add it to the list
@@ -101,6 +101,7 @@ void Output::CreateDrawToolBar() const
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::CreatePlayToolBar() const
