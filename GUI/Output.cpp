@@ -99,6 +99,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_YELLOW] = "images\\MenuItems\\Yellow_clr.jpg";
 	MenuItemImages[ITM_GREEN] = "images\\MenuItems\\Green_clr.jpg";
 	MenuItemImages[ITM_BLUE] = "images\\MenuItems\\Blue_clr.jpg";
+	MenuItemImages[ITM_CLEARALL] = "images\\MenuItems\\Clear_all.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\U_exit.jpg";
 	
 
