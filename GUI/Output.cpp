@@ -6,8 +6,8 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 	
-	UI.width = 1250;
-	UI.height = 650;
+	UI.width = 1400;
+	UI.height = 700;
 	UI.wx = 5;
 	UI.wy =5;
 
@@ -80,11 +80,25 @@ void Output::CreateDrawToolBar() const
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Save_graph.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Load_graph.jpg";
+	MenuItemImages[ITM_SWITCH] = "images\\MenuItems\\Switch_to_play_mode.jpg";
+	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Select_1.jpg";
+	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\Move_icon.jpg";
+	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Delete_icon.jpg";
+	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\Undo_icon.jpg";
+	MenuItemImages[ITM_REDO] = "images\\MenuItems\\Redo_icon.jpg";
 	MenuItemImages[ITM_RECT] = "images\\MenuItems\\U_rectangle.jpg";
 	MenuItemImages[ITM_SQUARE] = "images\\MenuItems\\U_square.jpg";
 	MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\U_triangle.jpg";
 	MenuItemImages[ITM_HEXAGON] = "images\\MenuItems\\U_hexagon.jpg";
 	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\U_circle.jpg";
+	MenuItemImages[ITM_BLACK] = "images\\MenuItems\\Black_clr.jpg";
+	MenuItemImages[ITM_RED] = "images\\MenuItems\\Red_clr.jpg";
+	MenuItemImages[ITM_ORANGE] = "images\\MenuItems\\Orange_clr.jpg";
+	MenuItemImages[ITM_YELLOW] = "images\\MenuItems\\Yellow_clr.jpg";
+	MenuItemImages[ITM_GREEN] = "images\\MenuItems\\Green_clr.jpg";
+	MenuItemImages[ITM_BLUE] = "images\\MenuItems\\Blue_clr.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\U_exit.jpg";
 	
 
