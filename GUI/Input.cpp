@@ -59,7 +59,7 @@ ActionType Input::GetUserAction() const
 			case ITM_HEXAGON: return DRAW_HEXAGON;
 			case ITM_CIRCLE: return DRAW_CIRCLE;
 			case ITM_EXIT: return EXIT;	
-			
+			case ITM_SWITCH: return TO_PLAY;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -78,6 +78,15 @@ ActionType Input::GetUserAction() const
 		///TODO:
 		//perform checks similar to Draw mode checks above
 		//and return the correspoding action
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			int clickedItm = (x / UI.MenuItemWidth);
+
+			switch (clickedItm)
+			{
+			case ITM_SWITCH_BACK: return TO_DRAW;
+			}
+		}
 		return TO_PLAY;	//just for now. This should be updated
 	}	
 

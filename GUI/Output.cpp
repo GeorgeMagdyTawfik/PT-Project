@@ -6,15 +6,15 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 	
-	UI.width = 1250;
-	UI.height = 650;
+	UI.width = 1400;
+	UI.height = 700;
 	UI.wx = 5;
 	UI.wy =5;
 
 	
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
-	UI.MenuItemWidth = 80;
+	UI.MenuItemWidth = 50;
 	
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
@@ -80,12 +80,32 @@ void Output::CreateDrawToolBar() const
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
-	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Blue_rectangle.jpg";
-	MenuItemImages[ITM_SQUARE] = "images\\MenuItems\\Blue_square.jpg";
-	MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\Blue_triangle.jpg";
-	MenuItemImages[ITM_HEXAGON] = "images\\MenuItems\\Blue_hexagon.jpg";
-	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\Blue_circle.jpg";
-	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
+	MenuItemImages[ITM_SWITCH] = "images\\MenuItems\\Switch_to_play_mode.jpg";
+	MenuItemImages[ITM_SAVE_GRAPH] = "images\\MenuItems\\Save_graph.jpg";
+	MenuItemImages[ITM_LOAD_GRAPH] = "images\\MenuItems\\Load_graph.jpg";
+	MenuItemImages[ITM_START_REC] = "images\\MenuItems\\Start_recording.jpg";
+	MenuItemImages[ITM_STOP_REC] = "images\\MenuItems\\stop_recording.jpg";
+	MenuItemImages[ITM_PLAY_REC] = "images\\MenuItems\\play_recording.jpg";
+	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Select_1.jpg";
+	MenuItemImages[ITM_CHANGE_DRAWING_CLR] = "images\\MenuItems\\Change_drawing_clr.jpg";
+	MenuItemImages[ITM_CHANGE_FILL_CLR] = "images\\MenuItems\\Change_fill_clr.jpg";
+	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\Move_icon.jpg";
+	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Delete_icon.jpg";
+	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\Undo_icon.jpg";
+	MenuItemImages[ITM_REDO] = "images\\MenuItems\\Redo_icon.jpg";
+	MenuItemImages[ITM_RECT] = "images\\MenuItems\\U_rectangle.jpg";
+	MenuItemImages[ITM_SQUARE] = "images\\MenuItems\\U_square.jpg";
+	MenuItemImages[ITM_TRIANGLE] = "images\\MenuItems\\U_triangle.jpg";
+	MenuItemImages[ITM_HEXAGON] = "images\\MenuItems\\U_hexagon.jpg";
+	MenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\U_circle.jpg";
+	MenuItemImages[ITM_BLACK] = "images\\MenuItems\\Black_clr.jpg";
+	MenuItemImages[ITM_RED] = "images\\MenuItems\\Red_clr.jpg";
+	MenuItemImages[ITM_ORANGE] = "images\\MenuItems\\Orange_clr.jpg";
+	MenuItemImages[ITM_YELLOW] = "images\\MenuItems\\Yellow_clr.jpg";
+	MenuItemImages[ITM_GREEN] = "images\\MenuItems\\Green_clr.jpg";
+	MenuItemImages[ITM_BLUE] = "images\\MenuItems\\Blue_clr.jpg";
+	MenuItemImages[ITM_CLEARALL] = "images\\MenuItems\\Clear_all.jpg";
+	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\U_exit.jpg";
 	
 
 	//TODO: Prepare images for each menu item and add it to the list
@@ -101,12 +121,32 @@ void Output::CreateDrawToolBar() const
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
 	///TODO: write code to create Play mode menu
+	string PlayItemImages[PLAY_ITM_COUNT];
+	PlayItemImages[ITM_SWITCH_BACK] = "images\\MenuItems\\Switch_to_draw_mode.jpg";
+	PlayItemImages[ITM_PICK_AND_HIDE] = "images\\MenuItems\\pick_and_hide.jpg";
+	PlayItemImages[ITM_PICK_BY_TYPE] = "images\\MenuItems\\pick_by_type.jpg";
+	PlayItemImages[ITM_PICK_BY_CLR] = "images\\MenuItems\\pick_by_color.jpg";
+	PlayItemImages[ITM_PICK_BY_TYPE_AND_CLR] = "images\\MenuItems\\pick_by_type_and_color.jpg";
+	PlayItemImages[ITM_RESTART] = "images\\MenuItems\\restart.jpg";
+
+	// do i have to draw a white rectangle on top of this ?
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
+	// i think so
+
+	for (int i = 0; i < PLAY_ITM_COUNT; i++)
+		pWind->DrawImage(PlayItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth ,UI.ToolBarHeight);
+
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
