@@ -80,10 +80,15 @@ void Output::CreateDrawToolBar() const
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
-	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\Save_graph.jpg";
-	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\Load_graph.jpg";
 	MenuItemImages[ITM_SWITCH] = "images\\MenuItems\\Switch_to_play_mode.jpg";
+	MenuItemImages[ITM_SAVE_GRAPH] = "images\\MenuItems\\Save_graph.jpg";
+	MenuItemImages[ITM_LOAD_GRAPH] = "images\\MenuItems\\Load_graph.jpg";
+	MenuItemImages[ITM_START_REC] = "images\\MenuItems\\Start_recording.jpg";
+	MenuItemImages[ITM_STOP_REC] = "images\\MenuItems\\stop_recording.jpg";
+	MenuItemImages[ITM_PLAY_REC] = "images\\MenuItems\\play_recording.jpg";
 	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\Select_1.jpg";
+	MenuItemImages[ITM_CHANGE_DRAWING_CLR] = "images\\MenuItems\\Change_drawing_clr.jpg";
+	MenuItemImages[ITM_CHANGE_FILL_CLR] = "images\\MenuItems\\Change_fill_clr.jpg";
 	MenuItemImages[ITM_MOVE] = "images\\MenuItems\\Move_icon.jpg";
 	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\Delete_icon.jpg";
 	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\Undo_icon.jpg";
