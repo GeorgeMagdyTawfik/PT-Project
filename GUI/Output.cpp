@@ -128,6 +128,25 @@ void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
 	///TODO: write code to create Play mode menu
+	string PlayItemImages[PLAY_ITM_COUNT];
+	PlayItemImages[ITM_SWITCH_BACK] = "images\\MenuItems\\Switch_to_draw_mode.jpg";
+	PlayItemImages[ITM_PICK_AND_HIDE] = "images\\MenuItems\\pick_and_hide.jpg";
+	PlayItemImages[ITM_PICK_BY_TYPE] = "images\\MenuItems\\pick_by_type.jpg";
+	PlayItemImages[ITM_PICK_BY_CLR] = "images\\MenuItems\\pick_by_color.jpg";
+	PlayItemImages[ITM_PICK_BY_TYPE_AND_CLR] = "images\\MenuItems\\pick_by_type_and_color.jpg";
+	PlayItemImages[ITM_RESTART] = "images\\MenuItems\\restart.jpg";
+
+	// do i have to draw a white rectangle on top of this ?
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
+	// i think so
+
+	for (int i = 0; i < PLAY_ITM_COUNT; i++)
+		pWind->DrawImage(PlayItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth ,UI.ToolBarHeight);
+
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
