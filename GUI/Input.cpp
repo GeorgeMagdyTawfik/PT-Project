@@ -23,11 +23,13 @@ string Input::GetSrting(Output *pO) const
 			return "";	//returns nothing as user has cancelled label
 		if(Key == 13 )	//ENTER key is pressed
 			return Label;
-		if((Key == 8) && (Label.size() >= 1))	//BackSpace is pressed
-			Label.resize(Label.size() -1 );			
+		if( (Key == 8) && (Label.size() >= 1) )	//BackSpace is pressed
+			Label.resize(Label.size() -1 );		
+		//if( (Key == 8) && (Label.size() == 0))
+		//	continue;
 		else
 			Label += Key;
-		if (pO)
+		if (pO)     //I guess this is to show the user what is being typed in RT 
 			pO->PrintMessage(Label);
 	}
 }
@@ -51,11 +53,35 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
+			case ITM_SAVE_GRAPH: return SAVE_GRAPH;
+			case ITM_LOAD_GRAPH: return LOAD_GRAPH;
+
+			case ITM_START_REC: return START_REC;
+			case ITM_STOP_REC: return STOP_REC; 
+			case ITM_PLAY_REC: return PLAY_REC;
+
+			case ITM_SELECT: return SELECT;
+			case ITM_CHANGE_DRAWING_CLR: return CHANGE_DRAW_CLR;
+			case ITM_CHANGE_FILL_CLR: return CHANGE_FILL_CLR;
+			case ITM_MOVE: return MOVE;
+
+			case ITM_DELETE: return DELETE_SHAPE;
+			case ITM_UNDO: return UNDO;
+			case ITM_REDO: return REDO;
+
+			case ITM_BLACK: return BLACKCLR;
+			case ITM_RED: return REDCLR;
+			case ITM_ORANGE: return ORANGECLR;
+			case ITM_YELLOW: return YELLOWCLR;
+			case ITM_GREEN: return GREENCLR;
+			case ITM_BLUE: return BLUECLR;
+			case ITM_CLEARALL: return CLEAR_ALL;
+
 			case ITM_RECT: return DRAW_RECT;
 			
 			case ITM_SQUARE: return DRAW_SQUARE;
 			
-			case ITM_TRIANGLE: return DRAW_TRAINGLE;
+			case ITM_TRIANGLE: return DRAW_TRIANGLE;
 			case ITM_HEXAGON: return DRAW_HEXAGON;
 			case ITM_CIRCLE: return DRAW_CIRCLE;
 			case ITM_EXIT: return EXIT;	
@@ -85,9 +111,25 @@ ActionType Input::GetUserAction() const
 			switch (clickedItm)
 			{
 			case ITM_SWITCH_BACK: return TO_DRAW;
+			case ITM_PICK_AND_HIDE: return PICK_AND_HIDE;
+			case ITM_PICK_BY_TYPE: return PICK_BY_TYPE;
+			case ITM_PICK_BY_CLR: return PICK_BY_CLR;
+			case ITM_PICK_BY_TYPE_AND_CLR: return PICK_BY_TYPE_AND_CLR;
+			case ITM_RESTART: return RESTART;
+
+			default: return EMPTY;
 			}
 		}
-		return TO_PLAY;	//just for now. This should be updated
+		//return TO_PLAY;	just for now. This should be updated
+
+		// User clicks on the drawing area 
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		{
+			return DRAWING_AREA;
+		}
+
+		// User clicks on the status bar
+		return STATUS;
 	}	
 
 }
