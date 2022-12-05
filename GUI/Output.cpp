@@ -168,7 +168,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 }
 void Output::DrawSquare(Point P1, GfxInfo squareGfxInfo, bool selected) const
 {
-	int squareside = 20;
+	int squareside = 50;
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
@@ -235,7 +235,7 @@ void Output::DrawTraingle(Point P1, Point P2, Point P3, GfxInfo traingleGfxInfo,
 }
 void Output::DrawHexagon(Point P1, GfxInfo hexagonGfxInfo, bool selected) const
 {
-	int hexagonside = 20;
+	int hexagonside = 50;
 	int arrx[6] =
 	{
 		P1.x + hexagonside /2.
