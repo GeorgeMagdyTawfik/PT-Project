@@ -49,6 +49,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	PICK_BY_CLR,
 	PICK_BY_TYPE_AND_CLR,
 	RESTART
+	
 };
 
 struct Point	//To be used for figures points

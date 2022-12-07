@@ -85,6 +85,7 @@ ActionType Input::GetUserAction() const
 			case ITM_HEXAGON: return DRAW_HEXAGON;
 			case ITM_CIRCLE: return DRAW_CIRCLE;
 			case ITM_EXIT: return EXIT;	
+			
 			case ITM_SWITCH: return TO_PLAY;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
@@ -116,7 +117,7 @@ ActionType Input::GetUserAction() const
 			case ITM_PICK_BY_CLR: return PICK_BY_CLR;
 			case ITM_PICK_BY_TYPE_AND_CLR: return PICK_BY_TYPE_AND_CLR;
 			case ITM_RESTART: return RESTART;
-
+			case ITM_EXIT_PLAY:return EXIT;
 			default: return EMPTY;
 			}
 		}

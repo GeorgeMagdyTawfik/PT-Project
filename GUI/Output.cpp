@@ -135,7 +135,7 @@ void Output::CreatePlayToolBar() const
 	PlayItemImages[ITM_PICK_BY_CLR] = "images\\MenuItems\\pick_by_color.jpg";
 	PlayItemImages[ITM_PICK_BY_TYPE_AND_CLR] = "images\\MenuItems\\pick_by_type_and_color.jpg";
 	PlayItemImages[ITM_RESTART] = "images\\MenuItems\\restart.jpg";
-
+	PlayItemImages[ITM_EXIT_PLAY] = "images\\MenuItems\\U_exit.jpg";
 	// do i have to draw a white rectangle on top of this ?
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
