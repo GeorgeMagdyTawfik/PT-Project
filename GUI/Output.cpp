@@ -17,7 +17,7 @@ Output::Output()
 	UI.MenuItemWidth = 50;
 	
 	UI.DrawColor = color(0, 87, 231); ///google's blue
-	UI.FillColor = color(0, 135, 68);	///google's green
+	UI.FillColor = color(0, 135, 68);	///google's green : why is this not working ?
 	UI.MsgColor = color(255, 167, 0);		///google's yellow 
 	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
@@ -109,6 +109,10 @@ void Output::CreateDrawToolBar() const
 	
 
 	//TODO: Prepare images for each menu item and add it to the list
+	// make the background of the toolbar while
+	pWind->SetPen(WHITE, 1);
+	pWind->SetBrush(WHITE);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 
 	//Draw menu item one image at a time
 	for(int i=0; i<DRAW_ITM_COUNT; i++)
@@ -138,8 +142,8 @@ void Output::CreatePlayToolBar() const
 	PlayItemImages[ITM_RESTART] = "images\\MenuItems\\restart.jpg";
 	PlayItemImages[ITM_EXIT_PLAY] = "images\\MenuItems\\U_exit.jpg";
 	// do i have to draw a white rectangle on top of this ?
-	pWind->SetPen(UI.BkGrndColor, 1);
-	pWind->SetBrush(UI.BkGrndColor);
+	pWind->SetPen(WHITE, 1);
+	pWind->SetBrush(WHITE);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 	// i think so
 
