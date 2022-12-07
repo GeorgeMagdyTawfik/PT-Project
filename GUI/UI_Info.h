@@ -62,6 +62,7 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 	ITM_PICK_BY_CLR,
 	ITM_PICK_BY_TYPE_AND_CLR,
 	ITM_RESTART,
+	ITM_EXIT_PLAY,
 
 	PLAY_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 	

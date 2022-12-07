@@ -256,11 +256,12 @@ int main()
 	
 	string Label = "You Entered: ";
 	Label += pIn->GetSrting(pOut); //calling function and sending output pointer
-	
+	Label += "    Click anywhere to continue ";
+
+
 	pOut->ClearStatusBar();
 
 	pOut->PrintMessage(Label);
-
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pOut->PrintMessage("Read a String Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x, y);
@@ -423,11 +424,12 @@ int main()
 		case RESTART:
 				pOut->PrintMessage("Action: Restart, click anywhere");
 				break;
+		
 
 		case EXIT:				
 				break;
 		}
-	}while(ActType != EXIT);
+	}while((ActType != EXIT));
 
 
 	/// Exiting

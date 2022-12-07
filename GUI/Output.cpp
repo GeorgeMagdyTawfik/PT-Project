@@ -136,7 +136,7 @@ void Output::CreatePlayToolBar() const
 	PlayItemImages[ITM_PICK_BY_CLR] = "images\\MenuItems\\pick_by_color.jpg";
 	PlayItemImages[ITM_PICK_BY_TYPE_AND_CLR] = "images\\MenuItems\\pick_by_type_and_color.jpg";
 	PlayItemImages[ITM_RESTART] = "images\\MenuItems\\restart.jpg";
-
+	PlayItemImages[ITM_EXIT_PLAY] = "images\\MenuItems\\U_exit.jpg";
 	// do i have to draw a white rectangle on top of this ?
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
@@ -209,7 +209,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 }
 void Output::DrawSquare(Point P1, GfxInfo squareGfxInfo, bool selected) const
 {
-	int squareside = 20;
+	int squareside = 50;
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
@@ -276,7 +276,7 @@ void Output::DrawTraingle(Point P1, Point P2, Point P3, GfxInfo traingleGfxInfo,
 }
 void Output::DrawHexagon(Point P1, GfxInfo hexagonGfxInfo, bool selected) const
 {
-	int hexagonside = 20;
+	int hexagonside =50;
 	int arrx[6] =
 	{
 		P1.x + hexagonside /2.
@@ -313,13 +313,7 @@ void Output::DrawHexagon(Point P1, GfxInfo hexagonGfxInfo, bool selected) const
 	else
 		style = FRAME;
 	pWind->DrawPolygon(arrx, arry,6, style);
-	/*pWind->DrawTriangle(P1.x, P1.y, P1.x + 20 / 2., P1.y + 20 / 2. * sqrt(3), P1.x + 20, P1.y, style);
-	pWind->DrawTriangle(P1.x, P1.y, P1.x + 20, P1.y, P1.x + 20 / 2., P1.y - 20 / 2. * sqrt(3), style);
-	pWind->DrawTriangle(P1.x, P1.y, P1.x + 20 / 2., P1.y - 20 / 2. * sqrt(3), P1.x - 20 / 2., P1.y - 20 / 2. * sqrt(3), style);
-	pWind->DrawTriangle(P1.x, P1.y, P1.x - 20 / 2., P1.y - 20 / 2. * sqrt(3), P1.x - 20, P1.y, style);
-	pWind->DrawTriangle(P1.x, P1.y, P1.x - 20, P1.y, P1.x - 20 / 2., P1.y + 20 / 2. * sqrt(3), style);
-	pWind->DrawTriangle(P1.x, P1.y, P1.x - 20 / 2., P1.y + 20 / 2. * sqrt(3), P1.x + 20 / 2., P1.y + 20 / 2. * sqrt(3), style);
-	*/
+	
 }
 
 
