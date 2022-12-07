@@ -16,12 +16,12 @@ Output::Output()
 	UI.ToolBarHeight = 50;
 	UI.MenuItemWidth = 50;
 	
-	UI.DrawColor = BLUE;	//Drawing color
-	UI.FillColor = GREEN;	//Filling color
-	UI.MsgColor = RED;		//Messages color
+	UI.DrawColor = color(0, 87, 231); ///google's blue
+	UI.FillColor = color(0, 135, 68);	///google's green
+	UI.MsgColor = color(255, 167, 0);		///google's yellow 
 	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
-	UI.StatusBarColor = TURQUOISE;
+	UI.StatusBarColor = color(0, 135, 68); /// google's green
 	UI.PenWidth = 3;	//width of the figures frames
 
 	
@@ -114,10 +114,11 @@ void Output::CreateDrawToolBar() const
 	for(int i=0; i<DRAW_ITM_COUNT; i++)
 		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
+	 
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(color(2, 179, 228), 3); // making the colors more homogenous
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
 }
@@ -145,7 +146,7 @@ void Output::CreatePlayToolBar() const
 	for (int i = 0; i < PLAY_ITM_COUNT; i++)
 		pWind->DrawImage(PlayItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth ,UI.ToolBarHeight);
 
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(color(2, 179, 228), 3);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
