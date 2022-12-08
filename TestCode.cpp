@@ -296,17 +296,17 @@ int main()
 				pOut->PrintMessage("Action: a click on the Drawing Area, click anywhere");
 				break;
 
-		case EMPTY:
+		case EMPTY_DRAW:
 				pOut->PrintMessage("Action: a click on empty area in the Design Tool Bar, click anywhere");
 				break;
 
 		case TO_DRAW:
-				pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
+				pOut->PrintMessage("Action: Switch to Draw Mode, creating design tool bar");
 				pOut->CreateDrawToolBar();
 				break;
 
 		case TO_PLAY:
-				pOut->PrintMessage("Action: Switch to Play Mode, creating Design tool bar");
+				pOut->PrintMessage("Action: Switch to Play Mode, creating simulation tool bar");
 				pOut->CreatePlayToolBar();
 				break;
 
@@ -417,6 +417,9 @@ int main()
 				pOut->PrintMessage("Action: Pick by Type and Color, click anywhere");
 				break;
 		
+		case EMPTY_PLAY:
+				pOut->PrintMessage("Action: a click on empty area in the Simulation Tool Bar, click anywhere");
+				break;
 
 		case EXIT:				
 				break;
