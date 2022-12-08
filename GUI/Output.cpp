@@ -135,11 +135,9 @@ void Output::CreatePlayToolBar() const
 	///TODO: write code to create Play mode menu
 	string PlayItemImages[PLAY_ITM_COUNT];
 	PlayItemImages[ITM_SWITCH_BACK] = "images\\MenuItems\\Switch_to_draw_mode.jpg";
-	PlayItemImages[ITM_PICK_AND_HIDE] = "images\\MenuItems\\pick_and_hide.jpg";
-	PlayItemImages[ITM_PICK_BY_TYPE] = "images\\MenuItems\\pick_by_type.jpg";
-	PlayItemImages[ITM_PICK_BY_CLR] = "images\\MenuItems\\pick_by_color.jpg";
-	PlayItemImages[ITM_PICK_BY_TYPE_AND_CLR] = "images\\MenuItems\\pick_by_type_and_color.jpg";
-	PlayItemImages[ITM_RESTART] = "images\\MenuItems\\restart.jpg";
+	PlayItemImages[ITM_PICK_BY_TYPE] = "images\\MenuItems\\Pick_Figure.jpg";
+	PlayItemImages[ITM_PICK_BY_CLR] = "images\\MenuItems\\Pick_Color.jpg";
+	PlayItemImages[ITM_PICK_BY_TYPE_AND_CLR] = "images\\MenuItems\\Pick_Fig_and_Color.jpg";
 	PlayItemImages[ITM_EXIT_PLAY] = "images\\MenuItems\\U_exit.jpg";
 	// do i have to draw a white rectangle on top of this ?
 	pWind->SetPen(WHITE, 1);

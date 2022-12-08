@@ -112,11 +112,9 @@ ActionType Input::GetUserAction() const
 			switch (clickedItm)
 			{
 			case ITM_SWITCH_BACK: return TO_DRAW;
-			case ITM_PICK_AND_HIDE: return PICK_AND_HIDE;
 			case ITM_PICK_BY_TYPE: return PICK_BY_TYPE;
 			case ITM_PICK_BY_CLR: return PICK_BY_CLR;
 			case ITM_PICK_BY_TYPE_AND_CLR: return PICK_BY_TYPE_AND_CLR;
-			case ITM_RESTART: return RESTART;
 			case ITM_EXIT_PLAY:return EXIT;
 			default: return EMPTY;
 			}

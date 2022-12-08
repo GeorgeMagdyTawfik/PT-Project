@@ -44,11 +44,9 @@ enum ActionType //The actions supported (you can add more if needed)
 
 	//Play mode actions
 	SWITCH_BACK,
-	PICK_AND_HIDE,
 	PICK_BY_TYPE,
 	PICK_BY_CLR,
 	PICK_BY_TYPE_AND_CLR,
-	RESTART
 	
 };
 

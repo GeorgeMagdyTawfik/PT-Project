@@ -404,10 +404,6 @@ int main()
 		case CLEAR_ALL:
 				pOut->PrintMessage("Action: Clear All, click anywhere");
 				break;
-
-		case PICK_AND_HIDE:
-				pOut->PrintMessage("Action: Pick and Hide, click anywhere");
-				break;
 		
 		case PICK_BY_TYPE:
 				pOut->PrintMessage("Action: Pick by Type, click anywhere");
@@ -419,10 +415,6 @@ int main()
 
 		case PICK_BY_TYPE_AND_CLR:
 				pOut->PrintMessage("Action: Pick by Type and Color, click anywhere");
-				break;
-
-		case RESTART:
-				pOut->PrintMessage("Action: Restart, click anywhere");
 				break;
 		
 
