@@ -85,6 +85,13 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
 
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->CheckInside(x, y) == true)
+		{
+			return FigList[i];
+		}
+	}
 
 	//Add your code here to search for a figure given a point x,y	
 	//Remember that ApplicationManager only calls functions do NOT implement it.
