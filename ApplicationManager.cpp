@@ -4,7 +4,7 @@
 #include"AddCircleAction.h"
 #include"AddTriangleAction.h"
 #include"AddHexagonAction.h"
-
+#include "Actions/SelectFigAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -51,7 +51,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case DRAW_HEXAGON:
 		pAct = new AddHexagonAction(this);
 		break;
-
+	case SELECT:
+		pAct = new SelectFigAction(this);
+		break;
 	case EXIT:
 		///create ExitAction here
 
