@@ -39,6 +39,9 @@ public:
 
 	//This function is EXTRA but needed
 	void SetSelectedFigure(CFigure*);
+
+	// this function is EXTRA but needed
+	void UnselectPrevious();
 		
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input

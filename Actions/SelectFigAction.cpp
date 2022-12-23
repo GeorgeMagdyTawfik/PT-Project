@@ -39,9 +39,10 @@ void SelectFigAction::Execute()
 		if (ClickedFig->IsSelected() == false) // if it was not selected
 		{
 			///TODO: let's unselect the previously selcted figure
+			pManager->UnselectPrevious();
 
 			ClickedFig->SetSelected(true); // select this fig
-			
+			pManager->SetSelectedFigure(ClickedFig);
 			// Print a message
 			pOut->PrintMessage("Selected the figure:");
 
@@ -51,10 +52,10 @@ void SelectFigAction::Execute()
 		else // if the figure was selected before
 		{
 			ClickedFig->SetSelected(false); // unselect it
-
+			pManager->SetSelectedFigure(NULL);
 			// print a message
 			pOut->PrintMessage("Unselected the figure:");
-
+			
 			// Change its color to normal
 			ClickedFig->ChngDrawClr(UI.DrawColor);
 		}

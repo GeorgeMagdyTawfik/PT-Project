@@ -17,6 +17,8 @@ ApplicationManager::ApplicationManager()
 	//Create an array of figure pointers and set them to NULL		
 	for (int i = 0; i < MaxFigCount; i++)
 		FigList[i] = NULL;
+	//this is EXTRA
+	SetSelectedFigure(NULL);
 }
 
 //==================================================================================//
@@ -110,6 +112,17 @@ int ApplicationManager::GetFigCount() const
 {
 	return FigCount;
 }
+
+void ApplicationManager::UnselectPrevious()
+{
+	if (SelectedFig != NULL)
+	{
+		SelectedFig->SetSelected(false);
+		SelectedFig->ChngDrawClr(UI.DrawColor);
+		SetSelectedFigure(NULL);
+	}
+}
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
