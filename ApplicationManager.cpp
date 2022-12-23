@@ -100,6 +100,16 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 
 	return NULL;
 }
+
+void ApplicationManager::SetSelectedFigure(CFigure* pFig)
+{
+	SelectedFig = pFig;
+}
+
+int ApplicationManager::GetFigCount() const
+{
+	return FigCount;
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
