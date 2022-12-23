@@ -89,7 +89,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
 
-	for (int i = 0; i < FigCount; i++)
+	for (int i = FigCount - 1; i >= 0; i--)
 	{
 		if (FigList[i]->CheckInside(x, y) == true)
 		{
