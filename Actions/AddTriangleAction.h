@@ -14,6 +14,7 @@ public:
 	
 	virtual void Execute();
 	virtual void UndoExcute();
+	virtual void RedoExcute();
 };
 
 

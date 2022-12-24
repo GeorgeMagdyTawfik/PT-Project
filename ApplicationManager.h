@@ -15,7 +15,7 @@ class ApplicationManager
 private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
-
+	CFigure* Been_undo_list[MaxFigCount];
 	CFigure* SelectedFig; //Pointer to the selected figure
 
 	//Pointers to Input and Output classes
@@ -23,7 +23,10 @@ private:
 	Output* pOut;
 	Action* undolist[5];
 	int undocount;
-	int undoexcuted;    //number of undo action that achueved
+	int undoexcuted; //number of undo action that achueved
+	Action* redolist[5];
+	int redocount;
+	int redoexcuted;
 public:
 	ApplicationManager();
 	~ApplicationManager();
@@ -45,6 +48,10 @@ public:
 	int GetFigCount();
 	int GetUndoExcuted();
 	void deletefigure();
+	void redo();
+	void redofigure();   //function that draw figure that deleted because of undo
+	
+	int getredoexcuted();
 };
 
 #endif

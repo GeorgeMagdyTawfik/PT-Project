@@ -5,6 +5,7 @@
 #include"Actions\AddTriangleAction.h"
 #include"Actions\AddHexagonAction.h"
 #include"Actions/UndoAction.h"
+#include"Actions/RedoAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -22,6 +23,8 @@ ApplicationManager::ApplicationManager()
 		undolist[i] = NULL;
 	undocount = 0;
 	undoexcuted = 0;
+	redocount = 0;
+	redoexcuted = 0;
 }
 
 //==================================================================================//
@@ -59,6 +62,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case UNDO:
 		pAct = new UndoAction(this);
 		break;
+	case REDO:
+		pAct = new RedoAction(this);
+		break;
 
 	case EXIT:
 		///create ExitAction here
@@ -74,7 +80,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 		pAct->Execute();//Execute
 		UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
-		if (ua == NULL)
+		RedoAction* ra = dynamic_cast<RedoAction*>(pAct);
+		if (ua == NULL&&ra==NULL)
 		{
 			if (undocount > 4)
 			{
@@ -158,57 +165,15 @@ ApplicationManager::~ApplicationManager()
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::Undo()
 {
-	/*AddRectAction* adr = dynamic_cast<AddRectAction*>(undolist[undocount - 1]);
-	if (adr != NULL)
-	{
-		FigList[FigCount - 1] = NULL;
-		FigCount--;
-		if(undocount>1)
-		undocount--;
-		undoexcuted++;
-	}
-	AddSquareAction* ads = dynamic_cast<AddSquareAction*>(undolist[undocount - 1]);
-	if (ads != NULL)
-	{
-		FigList[FigCount - 1] = NULL;
-		if (undocount > 1)
-		undocount--;
-		FigCount--;
-		undoexcuted++;
-	}
-	AddTriangleAction* adt = dynamic_cast<AddTriangleAction*>(undolist[undocount - 1]);
-	if (adt != NULL)
-	{
-		FigList[FigCount - 1] = NULL;
-		if (undocount >1)
-		undocount--;
-		FigCount--;
-		undoexcuted++;
-	}
-	AddCircleAction* adc = dynamic_cast<AddCircleAction*>(undolist[undocount - 1]);
-	if (adc != NULL)
-	{
-		FigList[FigCount - 1] = NULL;
-		if (undocount > 1)
-		undocount--;
-		FigCount--;
-		undoexcuted++;
-	}
-	AddHexagonAction* adh = dynamic_cast<AddHexagonAction*>(undolist[undocount - 1]);
-	if (adh != NULL)
-	{
-		FigList[FigCount - 1] = NULL;
-		if (undocount > 1)
-		undocount--;
-		FigCount--;
-		undoexcuted++;
-	}
-	*/
+	
 	undolist[undocount - 1]->UndoExcute();
+	redolist[redocount] = undolist[undocount - 1];
+	redocount++;
 	if (undocount > 1)
 		undocount--;
 	undoexcuted++;
-	FigCount--;
+	redoexcuted++;
+	//FigCount--;
 }
 
 int ApplicationManager::GetFigCount()
@@ -223,5 +188,25 @@ int  ApplicationManager::GetUndoExcuted()
 //////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::deletefigure()
 {
-	FigList[FigCount - 1] = NULL;
+	Been_undo_list[FigCount - 1] = FigList[FigCount - 1];
+	//FigList[FigCount - 1] = NULL;
+	FigCount--;
+}
+//////////////////////////////////////////////////////
+void ApplicationManager::redo()
+{
+	redolist[redocount - 1]->RedoExcute();
+	redoexcuted--;
+
+}
+void ApplicationManager::redofigure()
+{
+	
+	//undoexcuted = 0;
+	Been_undo_list[FigCount ]->Draw(pOut);
+	FigCount++;
+}
+int ApplicationManager::getredoexcuted()
+{
+	return  redoexcuted;
 }
