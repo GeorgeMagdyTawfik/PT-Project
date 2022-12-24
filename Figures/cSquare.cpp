@@ -1,4 +1,4 @@
-#include "Csquare.h"
+#include "CSquare.h"
 
 CSquare::CSquare( Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {

@@ -1,8 +1,8 @@
 #include "AddHexagonAction.h"
-#include "CHexagon.h"
-#include "ApplicationManager.h"
-#include "GUI\input.h"
-#include "GUI\Output.h"
+#include "../Figures/CHexagon.h"
+#include "../ApplicationManager.h"
+#include "../GUI/input.h"
+#include "../GUI/Output.h"
 
 AddHexagonAction::AddHexagonAction(ApplicationManager* pApp) :Action(pApp)
 {}

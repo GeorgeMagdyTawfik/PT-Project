@@ -1,13 +1,14 @@
 #pragma once
-
-#include "Figures/CFigure.h"
-
-class CSquare : public CFigure
+#include "CFigure.h"
+class CCircle:public CFigure
 {
 private:
 	Point center;
+	Point distance;
 public:
-	CSquare(Point, GfxInfo FigureGfxInfo);
+	CCircle(Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
 	virtual bool CheckInside(int X, int Y) const;
 };
+
+

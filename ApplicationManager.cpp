@@ -1,9 +1,9 @@
 #include "ApplicationManager.h"
-#include "Actions\AddRectAction.h"
-#include"AddSquareAction.h"
-#include"AddCircleAction.h"
-#include"AddTriangleAction.h"
-#include"AddHexagonAction.h"
+#include "Actions/AddRectAction.h"
+#include"Actions/AddSquareAction.h"
+#include"Actions/AddCircleAction.h"
+#include"Actions/AddTriangleAction.h"
+#include"Actions/AddHexagonAction.h"
 #include "Actions/SelectFigAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
