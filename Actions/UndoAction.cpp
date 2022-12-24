@@ -10,7 +10,7 @@ void UndoAction::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("undo action");
-	pOut->ClearDrawArea();
+	pOut->ClearDrawArea(); 
 
 }
 void UndoAction::Execute()
@@ -35,3 +35,5 @@ void UndoAction::Execute()
 	pManager->Undo();
 
 }
+void UndoAction::UndoExcute()
+{}

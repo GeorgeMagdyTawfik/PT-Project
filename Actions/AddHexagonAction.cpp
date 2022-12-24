@@ -38,3 +38,8 @@ void AddHexagonAction::Execute()
 
 	pManager->AddFigure(R);
 }
+void AddHexagonAction::UndoExcute()
+{
+	pManager->deletefigure();
+
+}

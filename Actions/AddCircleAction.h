@@ -9,7 +9,7 @@ class AddCircleAction : public Action
 		AddCircleAction(ApplicationManager* pApp);
 		virtual void ReadActionParameters();
 		virtual void Execute();
-
+		virtual void UndoExcute();
 	
 };
 

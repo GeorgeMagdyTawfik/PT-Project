@@ -44,6 +44,7 @@ public:
 	void Undo();
 	int GetFigCount();
 	int GetUndoExcuted();
+	void deletefigure();
 };
 
 #endif
