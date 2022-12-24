@@ -32,6 +32,9 @@ public:
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
 
+	void setCrntDrawColor(const color& c);
+	void setCrntFillColor(color c);
+
 	
 	~Output();
 };

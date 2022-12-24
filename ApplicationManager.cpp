@@ -4,6 +4,8 @@
 #include"AddCircleAction.h"
 #include"AddTriangleAction.h"
 #include"AddHexagonAction.h"
+#include "Actions\SaveAction.h"
+#include "Actions\LoadAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -36,6 +38,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
+	case SAVE_GRAPH:
+		pAct = new SaveAction(this);
+		break;
+	case LOAD_GRAPH:
+		pAct = new LoadAction(this);
+		break;
 	case DRAW_RECT:
 		pAct = new AddRectAction(this);
 		break;
@@ -113,6 +121,29 @@ Output* ApplicationManager::GetOutput() const
 	return pOut;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+
+//==================================================================================//
+//							Functions which Loop on FigList 						//
+//==================================================================================//
+
+void ApplicationManager::SaveGraph(ofstream& OutFile)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->Save(OutFile);
+	}
+}
+
+void ApplicationManager::DeleteAll()
+{
+	for (int i = 0; i < FigCount; i++)
+		FigList[i] = NULL;				//delete FigList[i];
+}
+
+int ApplicationManager::GetFigCount()
+{
+	return FigCount;
+}
 //Destructor
 ApplicationManager::~ApplicationManager()
 {

@@ -38,6 +38,13 @@ public:
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
+
+	// -- Functions which Loop on FigList
+	void SaveGraph(ofstream& OutFile);
+	void DeleteAll();
+
+	// -- Setters and Getters
+	int GetFigCount();
 };
 
 #endif
