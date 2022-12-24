@@ -1,10 +1,10 @@
 #include "AddCircleAction.h"
 
-#include "CCircle.h"
+#include "..\Figures\CCircle.h"
 
-#include "ApplicationManager.h"
-#include "GUI\input.h"
-#include "GUI\Output.h"
+#include "..\ApplicationManager.h"
+#include "..\GUI\input.h"
+#include "..\GUI\Output.h"
 
 AddCircleAction::AddCircleAction(ApplicationManager* pApp) :Action(pApp)
 {}

@@ -1,9 +1,10 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-#include"AddSquareAction.h"
-#include"AddCircleAction.h"
-#include"AddTriangleAction.h"
-#include"AddHexagonAction.h"
+#include"Actions\AddSquareAction.h"
+#include"Actions\AddCircleAction.h"
+#include"Actions\AddTriangleAction.h"
+#include"Actions\AddHexagonAction.h"
+#include"Actions/UndoAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -17,6 +18,10 @@ ApplicationManager::ApplicationManager()
 	//Create an array of figure pointers and set them to NULL		
 	for (int i = 0; i < MaxFigCount; i++)
 		FigList[i] = NULL;
+	for (int i = 0; i < 5; i++)
+		undolist[i] = NULL;
+	undocount = 0;
+	undoexcuted = 0;
 }
 
 //==================================================================================//
@@ -51,6 +56,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case DRAW_HEXAGON:
 		pAct = new AddHexagonAction(this);
 		break;
+	case UNDO:
+		pAct = new UndoAction(this);
+		break;
 
 	case EXIT:
 		///create ExitAction here
@@ -65,8 +73,29 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct != NULL)
 	{
 		pAct->Execute();//Execute
-		delete pAct;	//You may need to change this line depending to your implementation
-		pAct = NULL;
+		UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
+		if (ua == NULL)
+		{
+			if (undocount > 4)
+			{
+				undolist[0] = NULL;
+				for (int i = 0; i < 3; i++)
+				{
+					undolist[i] = undolist[i + 1];
+
+				}
+				undolist[4] = pAct;
+				undocount = 4;
+			}
+			else
+			{
+				undolist[undocount] = pAct;
+				undocount++;
+			}
+
+		}
+		//delete pAct;	//You may need to change this line depending to your implementation
+		//pAct = NULL;
 	}
 }
 //==================================================================================//
@@ -78,6 +107,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
+	undoexcuted = 0;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -99,7 +129,10 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 void ApplicationManager::UpdateInterface() const
 {
 	for (int i = 0; i < FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+		FigList[i]->Draw(pOut);	//Call Draw function (virtual member fn)
+
+	
+
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
@@ -120,5 +153,65 @@ ApplicationManager::~ApplicationManager()
 		delete FigList[i];
 	delete pIn;
 	delete pOut;
+
+}
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::Undo()
+{
+	AddRectAction* adr = dynamic_cast<AddRectAction*>(undolist[undocount - 1]);
+	if (adr != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		FigCount--;
+		if(undocount>1)
+		undocount--;
+		undoexcuted++;
+	}
+	AddSquareAction* ads = dynamic_cast<AddSquareAction*>(undolist[undocount - 1]);
+	if (ads != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount > 1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+	AddTriangleAction* adt = dynamic_cast<AddTriangleAction*>(undolist[undocount - 1]);
+	if (adt != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount >1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+	AddCircleAction* adc = dynamic_cast<AddCircleAction*>(undolist[undocount - 1]);
+	if (adc != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount > 1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+	AddHexagonAction* adh = dynamic_cast<AddHexagonAction*>(undolist[undocount - 1]);
+	if (adh != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount > 1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+
+
+}
+int ApplicationManager::GetFigCount()
+{
+	return FigCount;
+}
+int  ApplicationManager::GetUndoExcuted()
+{
+	return undoexcuted;
 
 }

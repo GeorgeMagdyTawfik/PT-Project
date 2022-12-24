@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Figures/CFigure.h"
+#include "CFigure.h"
 
 class CSquare : public CFigure
 {

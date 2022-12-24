@@ -1,10 +1,10 @@
 #include "AddSquareAction.h"
-#include "cSquare.h"
+#include "..\Figures\cSquare.h"
 
-#include "ApplicationManager.h"
+#include "..\ApplicationManager.h"
 
-#include "GUI/Input.h"
-#include "GUI\Output.h"
+#include "..\GUI/Input.h"
+#include "..\GUI\Output.h"
 
 AddSquareAction::AddSquareAction(ApplicationManager* pApp) :Action(pApp)
 {}
