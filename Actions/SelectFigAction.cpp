@@ -23,13 +23,11 @@ void SelectFigAction::Execute()
 	ReadActionParameters();
 	
 	CFigure* ClickedFig = pManager->GetFigure(Clicked.x, Clicked.y);
-
 	// Now I know where the kid clicked
-	// let's think
 	// Get two pointers to access input and output 
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
-	if (ClickedFig == NULL)
+	if (ClickedFig == NULL) // a click not on a figure
 	{
 		pOut->ClearStatusBar();
 		return;
@@ -59,7 +57,7 @@ void SelectFigAction::Execute()
 			// Change its color to normal
 			ClickedFig->ChngDrawClr(UI.DrawColor);
 		}
-		pOut->ClearStatusBar();
+		//pOut->ClearStatusBar(); //if I clear the status bar here the message will be quickly removed (won't be seen)
 	}
 	// If the kid clicks on an empty space it will be ignored
 }

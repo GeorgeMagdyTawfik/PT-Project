@@ -15,11 +15,20 @@ void CRectangle::Draw(Output* pOut) const
 
 bool CRectangle::CheckInside(int x, int y) const
 {
+	// UPPERLEFT, BOTTOMRIGHT
+	Point UL, BR;
+
+	UL.x = (Corner1.x < Corner2.x) ? Corner1.x : Corner2.x;
+	UL.y = (Corner1.y < Corner2.y) ? Corner1.y : Corner2.y;
+
+	BR.x = (Corner2.x > Corner1.x) ? Corner2.x : Corner1.x;
+	BR.y = (Corner2.y > Corner1.y) ? Corner2.y : Corner1.y;
+
 	return
 		(
-			x >= Corner1.x
-		&&	x <= Corner2.x
-		&&	y >= Corner1.y
-		&&	y <= Corner2.y
+			x >= UL.x
+		&&	x <= BR.x
+		&&	y >= UL.y
+		&&	y <= BR.y
 		);
 }
