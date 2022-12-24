@@ -12,7 +12,7 @@ void SelectFigAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
 
-	pOut->PrintMessage("Please click on a figure");
+	pOut->PrintMessage("Please click on a figure: ");
 	
 	// Store the selected point in the Private data member Point
 	pIn->GetPointClicked(Clicked.x, Clicked.y);
