@@ -128,12 +128,12 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AddCircleAction.cpp" />
-    <ClCompile Include="AddHexagonAction.cpp" />
-    <ClCompile Include="AddSquareAction.cpp" />
-    <ClCompile Include="AddTriangleAction.cpp" />
-    <ClCompile Include="CCircle.cpp" />
-    <ClCompile Include="CHexagon.cpp" />
+    <ClCompile Include="Actions\AddCircleAction.cpp" />
+    <ClCompile Include="Actions\AddHexagonAction.cpp" />
+    <ClCompile Include="Actions\AddSquareAction.cpp" />
+    <ClCompile Include="Actions\AddTriangleAction.cpp" />
+    <ClCompile Include="Figures\CCircle.cpp" />
+    <ClCompile Include="Figures\CHexagon.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -170,8 +170,8 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
-    <ClCompile Include="cSquare.cpp" />
-    <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="Figures\CSquare.cpp" />
+    <ClCompile Include="Figures\CTriangle.cpp" />
     <ClCompile Include="Figures\CFigure.cpp" />
     <ClCompile Include="Figures\CRectangle.cpp" />
     <ClCompile Include="Actions\AddRectAction.cpp" />
@@ -179,14 +179,15 @@
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Actions\SelectFigAction.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AddCircleAction.h" />
-    <ClInclude Include="AddHexagonAction.h" />
-    <ClInclude Include="AddSquareAction.h" />
-    <ClInclude Include="AddTriangleAction.h" />
-    <ClInclude Include="CCircle.h" />
-    <ClInclude Include="CHexagon.h" />
+    <ClInclude Include="Actions\AddCircleAction.h" />
+    <ClInclude Include="Actions\AddHexagonAction.h" />
+    <ClInclude Include="Actions\AddSquareAction.h" />
+    <ClInclude Include="Actions\AddTriangleAction.h" />
+    <ClInclude Include="Figures\CCircle.h" />
+    <ClInclude Include="Figures\CHexagon.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -207,8 +208,8 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
-    <ClInclude Include="cSquare.h" />
-    <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="Figures\CSquare.h" />
+    <ClInclude Include="Figures\CTriangle.h" />
     <ClInclude Include="Figures\CFigure.h" />
     <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Actions\Action.h" />
@@ -218,6 +219,7 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="Actions\SelectFigAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

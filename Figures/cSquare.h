@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Figures/CFigure.h"
+#include "CFigure.h"
 
 class CSquare : public CFigure
 {
@@ -9,4 +9,5 @@ private:
 public:
 	CSquare(Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
+	virtual bool CheckInside(int X, int Y) const;
 };

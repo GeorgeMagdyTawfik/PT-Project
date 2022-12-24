@@ -33,6 +33,15 @@ public:
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
+
+	//This function is EXTRA
+	int GetFigCount() const;
+
+	//This function is EXTRA but needed
+	void SetSelectedFigure(CFigure*);
+
+	// this function is EXTRA but needed
+	void UnselectPrevious();
 		
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
