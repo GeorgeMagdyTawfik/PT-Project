@@ -36,11 +36,8 @@ public:
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 	
-	// To check whether a point belongs to the shape's area or not - this needs to be pure vrtual - but till i completete its implementation in ALL figures, let's give it a dummy implementaion here
-	virtual bool CheckInside(int x, int y) const
-	{
-		return false;
-	}
+	// To check whether a point belongs to the shape's area or not 
+	virtual bool CheckInside(int x, int y) const = 0; /// pure virtual function (overridden in each class)
 };
 
 #endif
