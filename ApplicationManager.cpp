@@ -146,7 +146,7 @@ bool ApplicationManager::DeleteFigure()
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i] == SelectedFig) 
+		if (FigList[i]->IsSelected()) 
 		{
 			delete FigList[i];
 			if (i != FigCount -1)
