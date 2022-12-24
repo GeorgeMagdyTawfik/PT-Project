@@ -4,20 +4,20 @@
 CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	center = P1;
-	destance = P2;
+	distance = P2;
 }
 
 
 void CCircle::Draw(Output* pOut) const
 {
 		
-	pOut->Drawcircle(center, destance, FigGfxInfo, Selected);
+	pOut->Drawcircle(center, distance, FigGfxInfo, Selected);
 }
 
 bool CCircle::CheckInside(int X, int Y) const
 {
 	Point C = center;
-	Point A = destance; // DISTANCE : a point on the circle's circumference
+	Point A = distance; // DISTANCE : a point on the circle's circumference
 	int radius = sqrt(
 		pow(C.x - A.x, 2)
 		+
