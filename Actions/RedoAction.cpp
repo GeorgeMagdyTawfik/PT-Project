@@ -15,7 +15,7 @@ void RedoAction::Execute()
 {
 	ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
-	if (pManager->GetUndoExcuted() == 0)
+	if (pManager->getredoexcuted() == 0)
 	{
 
 		pOut->PrintMessage("no action to redo");

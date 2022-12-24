@@ -202,7 +202,7 @@ void ApplicationManager::redo()
 void ApplicationManager::redofigure()
 {
 	
-	//undoexcuted = 0;
+	undoexcuted = 0;
 	Been_undo_list[FigCount ]->Draw(pOut);
 	FigCount++;
 }
