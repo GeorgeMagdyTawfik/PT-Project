@@ -257,6 +257,7 @@ Action* ApplicationManager::getundoedaction()
 void ApplicationManager::drawlast()
 {
 	FigList[FigCount++]->Draw(pOut);
+	redocount--;
 }
 int ApplicationManager::getredocount()
 {

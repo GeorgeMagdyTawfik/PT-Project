@@ -55,6 +55,7 @@ void setExcutedeundoAction(Action*);
 	Action* getundoedaction();
 	void drawlast();
 	int getredocount();
+	//int getredoExcuted();
 };
 
 #endif
