@@ -1,5 +1,0 @@
-BLUE      GREEN     
-1
-
-SQUARE    1    486  242  BLUE    NO_FILL 
-
