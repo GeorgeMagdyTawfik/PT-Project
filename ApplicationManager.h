@@ -40,11 +40,8 @@ public:
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 
-	//This function is EXTRA
-	int GetFigCount() const;
-
 	//This function is EXTRA but needed
-	void SetSelectedFigure(CFigure*);
+	void SetSelectedFigure(CFigure* pFig);
 
 	// this function is EXTRA but needed
 	void UnselectPrevious();
@@ -62,7 +59,7 @@ public:
 	void DeleteAll();
 
 	// -- Setters and Getters
-	int GetFigCount();
+	int GetFigCount() const;
 	void SetFigcount(int x); //this is needed for loading
 
 	// -- Functions which Loop on FigList

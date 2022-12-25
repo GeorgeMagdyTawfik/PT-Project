@@ -230,7 +230,7 @@ void ApplicationManager::DeleteAll()
 	}
 }
 
-int ApplicationManager::GetFigCount()
+int ApplicationManager::GetFigCount() const
 {
 	return FigCount;
 }
