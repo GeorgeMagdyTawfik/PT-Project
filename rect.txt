@@ -1,0 +1,7 @@
+BLUE      GREEN     
+2
+
+SQUARE    1    567  331  BLUE    NO_FILL 
+
+RECT      2    696  228  742  279  BLUE    NO_FILL 
+
