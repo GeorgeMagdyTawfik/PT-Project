@@ -50,5 +50,5 @@ void AddTriangleAction::UndoExcute()
 }
 void AddTriangleAction::RedoExcute()
 {
-	pManager->redofigure();
+	//pManager->redofigure();
 }

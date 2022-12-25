@@ -164,18 +164,60 @@ ApplicationManager::~ApplicationManager()
 
 }
 ////////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::Undo()
+/*void ApplicationManager::Undo()
 {
-	
-	undolist[undocount - 1]->UndoExcute();
-	redolist[redocount] = undolist[undocount - 1];
-	redocount++;
-	if (undocount > 1)
+	AddRectAction* adr = dynamic_cast<AddRectAction*>(undolist[undocount - 1]);
+	if (adr != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		FigCount--;
+		if(undocount>1)
 		undocount--;
-	undoexcuted++;
-	redoexcuted++;
-	//FigCount--;
-}
+		undoexcuted++;
+	}
+	AddSquareAction* ads = dynamic_cast<AddSquareAction*>(undolist[undocount - 1]);
+	if (ads != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount > 1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+	AddTriangleAction* adt = dynamic_cast<AddTriangleAction*>(undolist[undocount - 1]);
+	if (adt != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount >1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+	AddCircleAction* adc = dynamic_cast<AddCircleAction*>(undolist[undocount - 1]);
+	if (adc != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount > 1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+	AddHexagonAction* adh = dynamic_cast<AddHexagonAction*>(undolist[undocount - 1]);
+	if (adh != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount > 1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+	
+	//undolist[undocount - 1]->UndoExcute();
+	//if (undocount > 1)
+		//undocount--;
+	//undoexcuted++;
+	
+}*/
 
 int ApplicationManager::GetFigCount()
 {
@@ -186,28 +228,19 @@ int  ApplicationManager::GetUndoExcuted()
 	return undoexcuted;
 
 }
+
+void  ApplicationManager::SetUndoExcuted()
+{
+	undoexcuted++;
+
+}
 //////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::deletefigure()
 {
-	Been_undo_list[FigCount - 1] = FigList[FigCount - 1];
-	delete FigList[FigCount - 1] ;
 	FigCount--;
+	//FigList[FigCount - 1] = NULL;
 }
-//////////////////////////////////////////////////////
-void ApplicationManager::redo()
+Action* ApplicationManager::GetExcutedAction()
 {
-	redolist[redocount - 1]->RedoExcute();
-	redoexcuted--;
-
-}
-void ApplicationManager::redofigure()
-{
-	
-	undoexcuted = 0;
-	Been_undo_list[FigCount ]->Draw(pOut);
-	FigCount++;
-}
-int ApplicationManager::getredoexcuted()
-{
-	return  redoexcuted;
+	return undolist[undocount - 1];
 }

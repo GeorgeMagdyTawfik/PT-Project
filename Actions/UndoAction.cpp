@@ -32,10 +32,15 @@ void UndoAction::Execute()
 
 	}
 	else
-	pManager->Undo();
-
+	{
+		UndoExcute();
+		pManager->SetUndoExcuted();
+	}
 }
 void UndoAction::UndoExcute()
-{}
-void UndoAction::RedoExcute()
-{}
+{
+	Action* ac = pManager->GetExcutedAction();
+	ac->UndoExcute();
+
+
+}
