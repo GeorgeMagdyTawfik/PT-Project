@@ -38,6 +38,10 @@ void SaveAction::Execute()
 	}
 }
 
+void SaveAction::UndoExcute()
+{
+}
+
 SaveAction::~SaveAction()
 {
 }

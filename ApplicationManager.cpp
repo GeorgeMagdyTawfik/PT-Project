@@ -305,10 +305,6 @@ ApplicationManager::~ApplicationManager()
 
 }*/
 
-int ApplicationManager::GetFigCount()
-{
-	return FigCount;
-}
 int  ApplicationManager::GetUndoExcuted()
 {
 	return undoexcuted;

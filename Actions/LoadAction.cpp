@@ -1,9 +1,9 @@
 #include "LoadAction.h"
 #include "..\Figures\CRectangle.h"
-#include "..\CCircle.h"
-#include "..\cSquare.h"
-#include "..\CHexagon.h"
-#include "..\CTriangle.h"
+#include "..\Figures\CCircle.h"
+#include "..\Figures\cSquare.h"
+#include "..\Figures\CHexagon.h"
+#include "..\Figures\CTriangle.h"
 
 LoadAction::LoadAction(ApplicationManager* pApp) : Action(pApp)
 {
@@ -80,6 +80,10 @@ void LoadAction::Execute()
 	{
 		pOut->PrintMessage("Error loading file!");
 	}
+}
+
+void LoadAction::UndoExcute()
+{
 }
 
 LoadAction::~LoadAction()

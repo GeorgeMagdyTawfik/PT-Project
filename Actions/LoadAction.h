@@ -15,6 +15,7 @@ public:
 	LoadAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters() override;
 	virtual void Execute() override;
+	virtual void UndoExcute();
 	~LoadAction();
 };
 

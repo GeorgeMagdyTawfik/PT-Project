@@ -1,4 +1,5 @@
-#pragma once
+#ifndef APPMANAGER_H
+#define APPMANAGER_H
 
 #include "DEFS.h"
 #include "Figures\CFigure.h"
@@ -72,3 +73,5 @@ public:
 	void deletefigure();
 	Action* GetExcutedAction();
 };
+
+#endif
