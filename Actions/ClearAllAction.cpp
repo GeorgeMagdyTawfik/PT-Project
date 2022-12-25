@@ -14,7 +14,7 @@ void ClearAllAction::ReadActionParameters()
 void ClearAllAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
-	
+	pOut->ClearDrawArea();
 	pManager->DeleteAll();
 }
 void ClearAllAction::RedoExcute()
