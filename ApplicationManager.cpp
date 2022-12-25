@@ -114,6 +114,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
+	
 	undoexcuted =0;
 }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -258,6 +259,7 @@ void ApplicationManager::drawlast()
 {
 	FigList[FigCount++]->Draw(pOut);
 	redocount--;
+	undoexcuted-- ;
 }
 int ApplicationManager::getredocount()
 {
