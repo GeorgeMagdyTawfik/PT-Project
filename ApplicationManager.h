@@ -54,6 +54,15 @@ public:
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
+	void UpdateInterface() const;	//Redraws all the drawing window	
+
+	// -- Functions which Loop on FigList
+	void SaveGraph(ofstream& OutFile);
+	void DeleteAll();
+
+	// -- Setters and Getters
+	int GetFigCount();
+	void SetFigcount(int x); //this is needed for loading
 	void UpdateInterface() const;	//Redraws all the drawing window
 
 	// -- Functions which Loop on FigList

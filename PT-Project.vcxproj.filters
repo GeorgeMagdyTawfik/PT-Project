@@ -172,6 +172,10 @@
     <ClCompile Include="Actions\AddHexagonAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\SaveAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\LoadAction.cpp" />
     <ClCompile Include="Actions\SelectFigAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -297,6 +301,10 @@
     <ClInclude Include="Actions\DeleteAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\SaveAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\LoadAction.h" />
     <ClInclude Include="Actions\RedoAction.h" />
     <ClInclude Include="Actions\UndoAction.h" />
   </ItemGroup>
