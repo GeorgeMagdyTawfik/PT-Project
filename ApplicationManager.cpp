@@ -5,6 +5,7 @@
 #include"Actions/AddTriangleAction.h"
 #include"Actions/AddHexagonAction.h"
 #include "Actions/SelectFigAction.h"
+#include "Actions/DeleteAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -38,6 +39,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
+	case DELETE_SHAPE:
+		pAct = new DeleteAction(this);
+		break;
 	case DRAW_RECT:
 		pAct = new AddRectAction(this);
 		break;
@@ -123,6 +127,11 @@ void ApplicationManager::UnselectPrevious()
 	}
 }
 
+CFigure* ApplicationManager::GetSelectedFig() const
+{
+	return SelectedFig;
+}
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -132,6 +141,23 @@ void ApplicationManager::UpdateInterface() const
 {
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+}
+bool ApplicationManager::DeleteFigure()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected()) 
+		{
+			delete FigList[i];
+			if (i != FigCount -1)
+				FigList[i] = FigList[FigCount - 1];
+			FigList[FigCount - 1] = NULL;
+			SelectedFig = NULL;
+			FigCount--;
+			return true;
+		}
+	}
+	return false;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

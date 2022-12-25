@@ -42,11 +42,17 @@ public:
 
 	// this function is EXTRA but needed
 	void UnselectPrevious();
-		
+	
+	// 
+	CFigure* GetSelectedFig() const;
+
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
-	void UpdateInterface() const;	//Redraws all the drawing window	
+	void UpdateInterface() const;	//Redraws all the drawing window
+
+	// -- Functions which Loop on FigList
+	bool DeleteFigure();
 };
 
 #endif
