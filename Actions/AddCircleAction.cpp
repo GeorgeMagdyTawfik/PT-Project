@@ -52,5 +52,5 @@ void AddCircleAction::UndoExcute()
 }
 void AddCircleAction::RedoExcute()
 {
-	pManager->redofigure();
+	//pManager->redofigure();
 }

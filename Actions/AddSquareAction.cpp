@@ -51,6 +51,6 @@ void AddSquareAction::UndoExcute()
 }
 void AddSquareAction::RedoExcute()
 {
-	pManager->redofigure();
+	//pManager->redofigure();
 
 }
