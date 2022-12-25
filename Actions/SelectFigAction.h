@@ -1,6 +1,6 @@
 #pragma once
 #include "Action.h"
-
+#include "../Figures/CFigure.h"
 // Select one figure action class
 class SelectFigAction : public Action
 {
@@ -11,5 +11,6 @@ public:
 	SelectFigAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute();
+	void UnselectPrevious(CFigure* previous);
 };
 

@@ -108,20 +108,16 @@ void ApplicationManager::SetSelectedFigure(CFigure* pFig)
 	SelectedFig = pFig;
 }
 
+CFigure* ApplicationManager::GetSelectedFigure() const
+{
+	return SelectedFig;
+}
+
 int ApplicationManager::GetFigCount() const
 {
 	return FigCount;
 }
 
-void ApplicationManager::UnselectPrevious()
-{
-	if (SelectedFig != NULL)
-	{
-		SelectedFig->SetSelected(false);
-		SelectedFig->ChngDrawClr(UI.DrawColor);
-		SetSelectedFigure(NULL);
-	}
-}
 
 //==================================================================================//
 //							Interface Management Functions							//

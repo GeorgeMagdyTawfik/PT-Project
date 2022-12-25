@@ -37,7 +37,7 @@ void SelectFigAction::Execute()
 		if (ClickedFig->IsSelected() == false) // if it was not selected
 		{
 			///TODO: let's unselect the previously selcted figure
-			pManager->UnselectPrevious();
+			UnselectPrevious(pManager->GetSelectedFigure());
 
 			ClickedFig->SetSelected(true); // select this fig
 			pManager->SetSelectedFigure(ClickedFig);
@@ -60,4 +60,14 @@ void SelectFigAction::Execute()
 		//pOut->ClearStatusBar(); //if I clear the status bar here the message will be quickly removed (won't be seen)
 	}
 	// If the kid clicks on an empty space it will be ignored
+}
+
+void SelectFigAction::UnselectPrevious(CFigure* previous)
+{
+	if (previous != NULL)
+	{
+		previous->SetSelected(false);
+		previous->ChngDrawClr(UI.DrawColor);
+		pManager->SetSelectedFigure(NULL);
+	}
 }

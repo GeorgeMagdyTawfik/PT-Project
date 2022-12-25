@@ -37,11 +37,9 @@ public:
 	//This function is EXTRA
 	int GetFigCount() const;
 
-	//This function is EXTRA but needed
+	//These 2 functions are EXTRA but needed
 	void SetSelectedFigure(CFigure*);
-
-	// this function is EXTRA but needed
-	void UnselectPrevious();
+	CFigure* GetSelectedFigure() const;
 		
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
