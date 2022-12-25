@@ -4,7 +4,7 @@
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
 #include "GUI\output.h"
-#include"Actions/Action.h"
+#include "Actions\Action.h"
 
 //Main class that manages everything in the application.
 class ApplicationManager
@@ -63,12 +63,10 @@ public:
 	// -- Setters and Getters
 	int GetFigCount();
 	void SetFigcount(int x); //this is needed for loading
-	void UpdateInterface() const;	//Redraws all the drawing window
 
 	// -- Functions which Loop on FigList
 	bool DeleteFigure();
 	//
-	int GetFigCount();
 	int GetUndoExcuted();
 	void SetUndoExcuted();
 	void deletefigure();

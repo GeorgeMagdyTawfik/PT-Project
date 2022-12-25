@@ -1,17 +1,12 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-#include"AddSquareAction.h"
-#include"AddCircleAction.h"
-#include"AddTriangleAction.h"
-#include"AddHexagonAction.h"
+#include"Actions\AddSquareAction.h"
+#include"Actions\AddCircleAction.h"
+#include"Actions\AddTriangleAction.h"
+#include"Actions\AddHexagonAction.h"
 #include "Actions\SaveAction.h"
 #include "Actions\LoadAction.h"
 
-#include "Actions/AddRectAction.h"
-#include"Actions/AddSquareAction.h"
-#include"Actions/AddCircleAction.h"
-#include"Actions/AddTriangleAction.h"
-#include"Actions/AddHexagonAction.h"
 #include "Actions/SelectFigAction.h"
 #include "Actions/DeleteAction.h"
 #include"Actions/Action.h"
@@ -154,11 +149,6 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 void ApplicationManager::SetSelectedFigure(CFigure* pFig)
 {
 	SelectedFig = pFig;
-}
-
-int ApplicationManager::GetFigCount() const
-{
-	return FigCount;
 }
 
 void ApplicationManager::UnselectPrevious()

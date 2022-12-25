@@ -1,6 +1,6 @@
 #ifndef ACTION_H
 #define ACTION_H
-#include "../ApplicationManager.h"
+#include "..\ApplicationManager.h"
 #include "..\DefS.h"
 #include <fstream>
 #include <string>

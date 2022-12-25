@@ -47,7 +47,6 @@ void CRectangle::Load(ifstream& InFile)
 		FigGfxInfo.FillClr = DecodeColor(color2);
 	}
 }
-}
 
 bool CRectangle::CheckInside(int x, int y) const
 {
