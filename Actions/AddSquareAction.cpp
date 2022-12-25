@@ -43,3 +43,14 @@ void AddSquareAction::Execute()
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
 }
+
+void AddSquareAction::UndoExcute()
+{
+	pManager->deletefigure();
+
+}
+void AddSquareAction::RedoExcute()
+{
+	//pManager->redofigure();
+
+}

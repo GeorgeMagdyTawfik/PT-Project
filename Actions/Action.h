@@ -21,7 +21,8 @@ public:
 	
 	//Execute action (code depends on action type)
 	virtual void Execute() =0;
-
+	virtual void UndoExcute() = 0;
+	//virtual void RedoExcute() = 0;
 };
 
 #endif

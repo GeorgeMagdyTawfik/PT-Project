@@ -30,6 +30,6 @@ bool CCircle::CheckInside(int X, int Y) const
 		+
 		pow(C.y - Y, 2)
 	);
-
+		
 	return (d <= radius);
 }
