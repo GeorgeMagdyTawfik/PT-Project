@@ -1,7 +1,7 @@
 #include "UndoAction.h"
 #include "..\ApplicationManager.h"
 
-#include "..\GUI\input.h"
+
 #include "..\GUI\Output.h"
 UndoAction::UndoAction(ApplicationManager* pApp):Action(pApp)
 {}
@@ -25,15 +25,22 @@ void UndoAction::Execute()
 
 
 	}
-	else if (undoExcuted == 5)
+	else if (undoExcuted >4)
 	{
 		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("you have exceeded the maximum number of undo action");
 
 	}
 	else
-	pManager->Undo();
-
+	{
+		UndoExcute();
+		pManager->SetUndoExcuted();
+	}
 }
 void UndoAction::UndoExcute()
-{}
+{
+	Action* ac = pManager->GetExcutedAction();
+	ac->UndoExcute();
+
+
+}

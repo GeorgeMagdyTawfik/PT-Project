@@ -5,6 +5,7 @@
 #include"Actions\AddTriangleAction.h"
 #include"Actions\AddHexagonAction.h"
 #include"Actions/UndoAction.h"
+#include"Actions/RedoAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -22,6 +23,8 @@ ApplicationManager::ApplicationManager()
 		undolist[i] = NULL;
 	undocount = 0;
 	undoexcuted = 0;
+	redocount = 0;
+	redoexcuted = 0;
 }
 
 //==================================================================================//
@@ -59,6 +62,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case UNDO:
 		pAct = new UndoAction(this);
 		break;
+	case REDO:
+		pAct = new RedoAction(this);
+		break;
 
 	case EXIT:
 		///create ExitAction here
@@ -74,7 +80,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 		pAct->Execute();//Execute
 		UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
-		if (ua == NULL)
+		RedoAction* ra = dynamic_cast<RedoAction*>(pAct);
+		if (ua == NULL&&ra==NULL)
 		{
 			if (undocount > 4)
 			{
@@ -156,9 +163,9 @@ ApplicationManager::~ApplicationManager()
 
 }
 ////////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::Undo()
+/*void ApplicationManager::Undo()
 {
-	/*AddRectAction* adr = dynamic_cast<AddRectAction*>(undolist[undocount - 1]);
+	AddRectAction* adr = dynamic_cast<AddRectAction*>(undolist[undocount - 1]);
 	if (adr != NULL)
 	{
 		FigList[FigCount - 1] = NULL;
@@ -203,13 +210,13 @@ void ApplicationManager::Undo()
 		FigCount--;
 		undoexcuted++;
 	}
-	*/
-	undolist[undocount - 1]->UndoExcute();
-	if (undocount > 1)
-		undocount--;
-	undoexcuted++;
-	FigCount--;
-}
+	
+	//undolist[undocount - 1]->UndoExcute();
+	//if (undocount > 1)
+		//undocount--;
+	//undoexcuted++;
+	
+}*/
 
 int ApplicationManager::GetFigCount()
 {
@@ -220,8 +227,19 @@ int  ApplicationManager::GetUndoExcuted()
 	return undoexcuted;
 
 }
+
+void  ApplicationManager::SetUndoExcuted()
+{
+	undoexcuted++;
+
+}
 //////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::deletefigure()
 {
-	FigList[FigCount - 1] = NULL;
+	FigCount--;
+	//FigList[FigCount - 1] = NULL;
+}
+Action* ApplicationManager::GetExcutedAction()
+{
+	return undolist[undocount - 1];
 }

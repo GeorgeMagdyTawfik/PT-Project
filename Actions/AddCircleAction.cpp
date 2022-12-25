@@ -50,3 +50,7 @@ void AddCircleAction::UndoExcute()
 {
 	pManager->deletefigure();
 }
+void AddCircleAction::RedoExcute()
+{
+	//pManager->redofigure();
+}

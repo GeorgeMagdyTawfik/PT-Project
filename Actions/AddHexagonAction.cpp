@@ -43,3 +43,7 @@ void AddHexagonAction::UndoExcute()
 	pManager->deletefigure();
 
 }
+void AddHexagonAction::RedoExcute()
+{
+	//pManager->redofigure();
+}
