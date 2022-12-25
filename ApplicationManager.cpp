@@ -114,7 +114,8 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
-	undoexcuted = 0;
+	if(undoexcuted!=0)
+	undoexcuted --;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const

@@ -25,7 +25,7 @@ void UndoAction::Execute()
 
 
 	}
-	else if (undoExcuted >4)
+	else if (undoExcuted > 4)
 	{
 		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("you have exceeded the maximum number of undo action");
