@@ -1,4 +1,12 @@
 #include "ApplicationManager.h"
+#include "Actions\AddRectAction.h"
+#include"AddSquareAction.h"
+#include"AddCircleAction.h"
+#include"AddTriangleAction.h"
+#include"AddHexagonAction.h"
+#include "Actions\SaveAction.h"
+#include "Actions\LoadAction.h"
+
 #include "Actions/AddRectAction.h"
 #include"Actions/AddSquareAction.h"
 #include"Actions/AddCircleAction.h"
@@ -42,6 +50,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
+	case SAVE_GRAPH:
+		pAct = new SaveAction(this);
+		break;
+	case LOAD_GRAPH:
+		pAct = new LoadAction(this);
+		break;
 	case DELETE_SHAPE:
 		pAct = new DeleteAction(this);
 		break;
@@ -203,6 +217,38 @@ Output* ApplicationManager::GetOutput() const
 	return pOut;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+
+//==================================================================================//
+//							Functions which Loop on FigList 						//
+//==================================================================================//
+
+void ApplicationManager::SaveGraph(ofstream& OutFile)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->Save(OutFile);
+	}
+}
+
+void ApplicationManager::DeleteAll()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i]; 
+		FigList[i] = NULL; 
+	}
+}
+
+int ApplicationManager::GetFigCount()
+{
+	return FigCount;
+}
+
+void ApplicationManager::SetFigcount(int x)
+{
+	FigCount = x;
+}
+
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
