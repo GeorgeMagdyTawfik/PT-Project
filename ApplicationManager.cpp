@@ -114,7 +114,8 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
-	undoexcuted = 0;
+	if(undoexcuted!=0)
+	undoexcuted --;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -189,7 +190,7 @@ int  ApplicationManager::GetUndoExcuted()
 void ApplicationManager::deletefigure()
 {
 	Been_undo_list[FigCount - 1] = FigList[FigCount - 1];
-	//FigList[FigCount - 1] = NULL;
+	delete FigList[FigCount - 1] ;
 	FigCount--;
 }
 //////////////////////////////////////////////////////
