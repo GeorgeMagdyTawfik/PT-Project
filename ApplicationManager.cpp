@@ -293,4 +293,5 @@ void ApplicationManager::DeleteAll()
 		delete FigList[i];
 		FigList[i] = NULL;
 	}
+	FigCount = 0;
 }

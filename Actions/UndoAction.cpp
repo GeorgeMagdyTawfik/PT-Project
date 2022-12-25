@@ -22,7 +22,7 @@ void UndoAction::Execute()
 	if (figcount == 0)
 	{
 		
-		pOut->PrintMessage("no more action to undo");
+		pOut->PrintMessage("no action to undo");
 
 
 	}
