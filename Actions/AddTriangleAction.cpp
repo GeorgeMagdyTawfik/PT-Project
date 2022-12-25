@@ -48,3 +48,7 @@ void AddTriangleAction::UndoExcute()
 {
 	pManager->deletefigure();
 }
+void AddTriangleAction::RedoExcute()
+{
+	pManager->redofigure();
+}

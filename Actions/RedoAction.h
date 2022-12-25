@@ -1,9 +1,9 @@
 #pragma once
 #include "Action.h"
-class UndoAction:public Action
+class RedoAction:public Action
 {
 public:
-	UndoAction(ApplicationManager* pApp);
+	RedoAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute();
 	virtual void UndoExcute();

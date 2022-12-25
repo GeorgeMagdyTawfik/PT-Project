@@ -10,6 +10,6 @@ class AddCircleAction : public Action
 		virtual void ReadActionParameters();
 		virtual void Execute();
 		virtual void UndoExcute();
-	
+		virtual void RedoExcute();
 };
 
