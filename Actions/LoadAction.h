@@ -8,9 +8,9 @@ class LoadAction : public Action
 	Input* pIn;
 	ifstream InFile;
 	string filename;
-
 	int FigCount;
 	string FigName;
+
 public:
 	LoadAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters() override;

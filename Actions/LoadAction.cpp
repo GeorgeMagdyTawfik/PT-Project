@@ -14,7 +14,9 @@ LoadAction::LoadAction(ApplicationManager* pApp) : Action(pApp)
 void LoadAction::ReadActionParameters()
 {
 	pOut->ClearDrawArea();
-	pManager->DeleteAll();		//Any more needed cleanups??
+	pManager->DeleteAll();	
+	pManager->SetFigcount(0);									//Any more needed cleanups??
+	
 	pOut->PrintMessage("Load Graph: please enter file name: ");
 	filename = pIn->GetSrting(pOut);
 	filename += ".txt";
@@ -70,7 +72,7 @@ void LoadAction::Execute()
 				pManager->AddFigure(R);
 			}
 		}
-
+		//pManager->SetFigcount(FigCount);
 		pOut->PrintMessage("File loaded successfully!");
 		InFile.close();
 	}

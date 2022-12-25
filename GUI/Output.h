@@ -38,7 +38,6 @@ public:
 	string EncodeColor(color c) const; //takes color and returns corresponding name
 	color DecodeColor(string s) const; //takes color name and returns corresponding color
 
-	
 	~Output();
 };
 

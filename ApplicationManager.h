@@ -45,6 +45,7 @@ public:
 
 	// -- Setters and Getters
 	int GetFigCount();
+	void SetFigcount(int x); //this is needed for loading
 };
 
 #endif

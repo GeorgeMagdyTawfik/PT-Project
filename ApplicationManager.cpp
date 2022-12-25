@@ -138,7 +138,8 @@ void ApplicationManager::DeleteAll()
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		delete FigList[i]; FigList[i] = NULL;
+		delete FigList[i]; 
+		FigList[i] = NULL; 
 	}
 }
 
@@ -146,6 +147,12 @@ int ApplicationManager::GetFigCount()
 {
 	return FigCount;
 }
+
+void ApplicationManager::SetFigcount(int x)
+{
+	FigCount = x;
+}
+
 //Destructor
 ApplicationManager::~ApplicationManager()
 {

@@ -33,8 +33,7 @@ void CHexagon::Load(ifstream& InFile)
 {
 	string color1, color2;
 
-	InFile >> ID >> center.x >> center.y >> center.x >> center.y
-		>> color1 >> color2;
+	InFile >> ID >> center.x >> center.y >> color1 >> color2;
 
 	FigGfxInfo.DrawClr = DecodeColor(color1);
 
