@@ -45,6 +45,8 @@ public:
 	int GetFigCount();
 	int GetUndoExcuted();
 	void deletefigure();
+	Action* GetExcutedAction();
+	void SetUndoExcuted();
 };
 
 #endif

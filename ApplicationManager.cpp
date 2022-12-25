@@ -156,9 +156,9 @@ ApplicationManager::~ApplicationManager()
 
 }
 ////////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::Undo()
+/*void ApplicationManager::Undo()
 {
-	/*AddRectAction* adr = dynamic_cast<AddRectAction*>(undolist[undocount - 1]);
+	AddRectAction* adr = dynamic_cast<AddRectAction*>(undolist[undocount - 1]);
 	if (adr != NULL)
 	{
 		FigList[FigCount - 1] = NULL;
@@ -203,13 +203,13 @@ void ApplicationManager::Undo()
 		FigCount--;
 		undoexcuted++;
 	}
-	*/
-	undolist[undocount - 1]->UndoExcute();
-	if (undocount > 1)
-		undocount--;
-	undoexcuted++;
-	FigCount--;
-}
+	
+	//undolist[undocount - 1]->UndoExcute();
+	//if (undocount > 1)
+		//undocount--;
+	//undoexcuted++;
+	
+}*/
 
 int ApplicationManager::GetFigCount()
 {
@@ -220,8 +220,19 @@ int  ApplicationManager::GetUndoExcuted()
 	return undoexcuted;
 
 }
+
+void  ApplicationManager::SetUndoExcuted()
+{
+	undoexcuted++;
+
+}
 //////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::deletefigure()
 {
-	FigList[FigCount - 1] = NULL;
+	FigCount--;
+	//FigList[FigCount - 1] = NULL;
+}
+Action* ApplicationManager::GetExcutedAction()
+{
+	return undolist[undocount - 1];
 }
