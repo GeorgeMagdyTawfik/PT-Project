@@ -26,7 +26,7 @@ private:
 	int undoexcuted; //number of undo action that achueved
 	Action* redolist[5];
 	int redocount;
-	int redoexcuted;
+	//int redoexcuted;
 public:
 	ApplicationManager();
 	~ApplicationManager();
@@ -56,6 +56,8 @@ void setExcutedeundoAction(Action*);
 	void drawlast();
 	int getredocount();
 	//int getredoExcuted();
+	///////////////////////////////////
+	void DeleteAll();
 };
 
 #endif

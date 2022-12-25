@@ -18,16 +18,17 @@ void UndoAction::Execute()
 	ReadActionParameters();
 	int figcount = pManager->GetFigCount();
 	int undoExcuted = pManager->GetUndoExcuted();
+	Output* pOut = pManager->GetOutput();
 	if (figcount == 0)
 	{
-		Output* pOut = pManager->GetOutput();
+		
 		pOut->PrintMessage("no more action to undo");
 
 
 	}
 	else if (undoExcuted > 4)
 	{
-		Output* pOut = pManager->GetOutput();
+		
 		pOut->PrintMessage("you have exceeded the maximum number of undo action");
 
 	}
@@ -35,7 +36,7 @@ void UndoAction::Execute()
 	{
 		UndoExcute();
 		pManager->SetUndoExcuted();
-
+		
 	}
 }
 void UndoAction::UndoExcute()

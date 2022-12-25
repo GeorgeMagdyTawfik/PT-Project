@@ -6,6 +6,7 @@
 #include"Actions\AddHexagonAction.h"
 #include"Actions/UndoAction.h"
 #include"Actions/RedoAction.h"
+#include"Actions/ClearAllAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -24,7 +25,7 @@ ApplicationManager::ApplicationManager()
 	undocount = 0;
 	undoexcuted = 0;
 	redocount = 0;
-	redoexcuted = 0;
+	
 }
 
 //==================================================================================//
@@ -64,6 +65,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case REDO:
 		pAct = new RedoAction(this);
+		break;
+	case CLEAR_ALL:
+		pAct = new ClearAllAction(this);
 		break;
 
 	case EXIT:
@@ -280,4 +284,13 @@ void ApplicationManager::drawlast()
 int ApplicationManager::getredocount()
 {
 	return redocount;
+}
+void ApplicationManager::DeleteAll()
+{
+	undoexcuted = 0;
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i];
+		FigList[i] = NULL;
+	}
 }
