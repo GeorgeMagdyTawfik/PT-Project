@@ -156,8 +156,8 @@ bool ApplicationManager::DeleteFigure()
 			FigCount--;
 			return true;
 		}
-		return false;
 	}
+	return false;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
