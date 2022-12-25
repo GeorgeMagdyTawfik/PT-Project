@@ -9,7 +9,6 @@ class LoadAction : public Action
 	ifstream InFile;
 	string filename;
 
-	string ccode1, ccode2;
 	int FigCount;
 	string FigName;
 public:

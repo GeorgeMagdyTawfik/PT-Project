@@ -4,15 +4,6 @@ SaveAction::SaveAction(ApplicationManager* pApp) : Action(pApp)
 {
 	pOut = pManager->GetOutput();
 	pIn = pManager->GetInput();
-
-	Draw = pOut->getCrntDrawColor();
-	Fill = pOut->getCrntFillColor();
-
-	if (Draw == color(0, 87, 231))
-		ccode1 = "BLUE";
-
-	if (Fill == color(0, 135, 68))
-		ccode2 = "GREEN";
 }
 
 void SaveAction::ReadActionParameters()
@@ -32,7 +23,8 @@ void SaveAction::Execute()
 	if (OutFile)
 	{
 
-		OutFile << setw(10) << left << ccode1 << setw(10) << ccode2 << endl
+		OutFile << setw(10) << left << pOut->EncodeColor(pOut->getCrntDrawColor())
+			<< setw(10) << pOut->EncodeColor(pOut->getCrntFillColor()) << endl
 			<< pManager->GetFigCount() << endl << endl;
 
 		pManager->SaveGraph(OutFile);

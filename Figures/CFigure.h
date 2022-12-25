@@ -19,7 +19,6 @@ protected:
 	GfxInfo FigGfxInfo;	//Figure graphis info
 
 	/// Add more parameters if needed.
-	string ccode1, ccode2; //color code 1 & color code 2
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
@@ -32,6 +31,9 @@ public:
 
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
+
+	string EncodeColor(color c) const; //takes color and returns corresponding name
+	color DecodeColor(string s) const; //takes color name and returns corresponding color
 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure

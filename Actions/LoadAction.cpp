@@ -28,16 +28,12 @@ void LoadAction::Execute()
 
 	if (InFile)
 	{
-		InFile >> ccode1 >> ccode2 >> FigCount;
+		string color1, color2;
 
-		color c1, c2;
-		if (ccode1 == "BLUE")
-			c1 = color(0, 87, 231);
-		if (ccode2 == "GREEN")
-			c2 = color(0, 135, 68);
+		InFile >> color1 >> color2 >> FigCount;
 
-		pOut->setCrntDrawColor(c1); //should this be here?
-		pOut->setCrntFillColor(c2);
+		pOut->setCrntDrawColor(pOut->DecodeColor(color1)); //should this be here?
+		pOut->setCrntFillColor(pOut->DecodeColor(color2));
 
 		for (int i = 0; i < FigCount; i++) //loop on each line, read figure type, allocate object, load, add
 		{

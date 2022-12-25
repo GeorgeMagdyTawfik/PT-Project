@@ -10,7 +10,6 @@ class SaveAction :
     ofstream OutFile;
 
     color Draw, Fill;
-    string ccode1, ccode2;
 
 public:
     SaveAction(ApplicationManager* pApp);

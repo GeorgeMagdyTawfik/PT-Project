@@ -1,0 +1,5 @@
+BLUE      GREEN     
+1
+
+HEXAGON   1    734  301  BLUE    NO_FILL 
+

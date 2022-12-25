@@ -137,7 +137,9 @@ void ApplicationManager::SaveGraph(ofstream& OutFile)
 void ApplicationManager::DeleteAll()
 {
 	for (int i = 0; i < FigCount; i++)
-		FigList[i] = NULL;				//delete FigList[i];
+	{
+		delete FigList[i]; FigList[i] = NULL;
+	}
 }
 
 int ApplicationManager::GetFigCount()

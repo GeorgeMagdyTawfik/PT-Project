@@ -19,37 +19,30 @@ void CTriangle::Draw(Output* pOut) const
 
 void CTriangle::Save(ofstream& OutFile)
 {
-	if (FigGfxInfo.DrawClr == color(0, 87, 231))
-		ccode1 = "BLUE";
+	OutFile << setw(10) << left << "TRIANG" << setw(5) << ID << setw(5) << p1.x << setw(5)
+		<< p1.y << setw(5) << p2.x << setw(5) << p2.y << setw(5) << p3.x << setw(5) << p3.y 
+		<< setw(8) << EncodeColor(FigGfxInfo.DrawClr);
 
 	if (!FigGfxInfo.isFilled)
-		ccode2 = "NO_FILL";
+		OutFile << setw(8) << "NO_FILL" << endl << endl;
 	else
-		if (FigGfxInfo.FillClr == color(0, 135, 68))
-			ccode2 = "GREEN";
-
-	OutFile << setw(10) << left << "TRIANG" << setw(5) << ID << setw(5)
-		<< p1.x << setw(5) << p1.y << setw(5) << p2.x << setw(5)
-		<< p2.y << setw(5) << p3.x << setw(5) << p3.y << setw(8)
-		<< ccode1 << setw(8) << ccode2 << endl << endl;
+		OutFile << setw(8) << EncodeColor(FigGfxInfo.FillClr) << endl << endl;
 }
 
 void CTriangle::Load(ifstream& InFile)
 {
-	string ccode1, ccode2;
+	string color1, color2;
 
-	InFile >> ID >> p1.x >> p2.y >> p2.x >> p2.y 
-		>> p3.x >> p3.y >> ccode1 >> ccode2;
+	InFile >> ID >> p1.x >> p1.y >> p2.x >> p2.y >> p3.x >> p3.y
+		>> color1 >> color2;
 
-	if (ccode1 == "BLUE")
-		FigGfxInfo.DrawClr = color(0, 87, 231);
+	FigGfxInfo.DrawClr = DecodeColor(color1);
 
-	if (ccode2 == "NO_FILL")
+	if (color2 == "NO_FILL")
 		FigGfxInfo.isFilled = false;
 	else
 	{
 		FigGfxInfo.isFilled = true;
-		if (ccode2 == "GREEN")
-			FigGfxInfo.FillClr = color(0, 135, 68);
+		FigGfxInfo.FillClr = DecodeColor(color2);
 	}
 }

@@ -184,7 +184,7 @@ int Output::getCrntPenWidth() const		//get current pen width
 {	return UI.PenWidth;	}
 //////////////////////////////////////////////////////////////////////////////////////////
 
-void Output::setCrntDrawColor(const color & c)  //set current draw color
+void Output::setCrntDrawColor(color c)  //set current draw color
 {
 	UI.DrawColor = c;
 }
@@ -194,6 +194,21 @@ void Output::setCrntFillColor(color c)          //set current filling color
 {
 	UI.FillColor = c;
 }
+color Output::DecodeColor(string s) const
+{
+	if (s == "BLUE")
+		return color(0, 87, 231);
+	if (s == "GREEN")
+		return color(0, 135, 68);
+}
+string Output::EncodeColor(color c) const      //takes color and returns corresponding string
+{
+	if (c == color(0, 87, 231))
+		return "BLUE";
+	if (c == color(0, 135, 68))
+		return "GREEN";
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
