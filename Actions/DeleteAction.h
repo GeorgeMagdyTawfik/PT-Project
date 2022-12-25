@@ -7,5 +7,7 @@ public:
 	virtual void ReadActionParameters() override;
 	virtual void Execute() override;
 	~DeleteAction();
+	virtual void UndoExcute();
+
 };
 

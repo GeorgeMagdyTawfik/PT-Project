@@ -11,5 +11,6 @@ public:
 	SelectFigAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute();
+	virtual void UndoExcute();
 };
 

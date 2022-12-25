@@ -6,6 +6,9 @@
 #include"Actions/AddHexagonAction.h"
 #include "Actions/SelectFigAction.h"
 #include "Actions/DeleteAction.h"
+#include"Actions/Action.h"
+#include"Actions/UndoAction.h"
+#include"Actions/RedoAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -60,6 +63,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SELECT:
 		pAct = new SelectFigAction(this);
 		break;
+	case UNDO:
+		pAct = new UndoAction(this);
+		break;
 	case EXIT:
 		///create ExitAction here
 
@@ -75,7 +81,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct->Execute();//Execute
 		UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
 		RedoAction* ra = dynamic_cast<RedoAction*>(pAct);
-		if (ua == NULL&&ra==NULL)
+		if (ua == NULL && ra == NULL)
 		{
 			if (undocount > 4)
 			{
@@ -165,17 +171,17 @@ void ApplicationManager::UpdateInterface() const
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Draw(pOut);	//Call Draw function (virtual member fn)
 
-	
+
 
 }
 bool ApplicationManager::DeleteFigure()
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i]->IsSelected()) 
+		if (FigList[i]->IsSelected())
 		{
 			delete FigList[i];
-			if (i != FigCount -1)
+			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
 			FigList[FigCount - 1] = NULL;
 			SelectedFig = NULL;
@@ -254,12 +260,12 @@ ApplicationManager::~ApplicationManager()
 		FigCount--;
 		undoexcuted++;
 	}
-	
+
 	//undolist[undocount - 1]->UndoExcute();
 	//if (undocount > 1)
 		//undocount--;
 	//undoexcuted++;
-	
+
 }*/
 
 int ApplicationManager::GetFigCount()

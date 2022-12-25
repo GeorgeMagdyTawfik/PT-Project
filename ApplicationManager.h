@@ -1,5 +1,4 @@
-#ifndef APPLICATION_MANAGER_H
-#define APPLICATION_MANAGER_H
+#pragma once
 
 #include "DEFS.h"
 #include "Figures\CFigure.h"
@@ -59,6 +58,10 @@ public:
 
 	// -- Functions which Loop on FigList
 	bool DeleteFigure();
+	//
+	int GetFigCount();
+	int GetUndoExcuted();
+	void SetUndoExcuted();
+	void deletefigure();
+	Action* GetExcutedAction();
 };
-
-#endif
