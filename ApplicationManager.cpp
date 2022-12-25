@@ -96,8 +96,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			}
 			else
 			{
-				undolist[undocount] = pAct;
-				undocount++;
+				undolist[undocount++] = pAct;
+				
 			}
 
 		}
@@ -248,7 +248,23 @@ Action* ApplicationManager::GetExcutedAction()
 void ApplicationManager::setExcutedeundoAction(Action* undoed)
 {
 
-	redolist[redocount++ ] = undoed;
+	if (redocount > 4)
+	{
+		redolist[0] = NULL;
+		for (int i = 0; i < 3; i++)
+		{
+			redolist[i] = redolist[i + 1];
+
+		}
+		redolist[4] = undoed;
+		redocount = 4;
+	}
+	else
+	{
+		redolist[redocount++] = undoed;
+
+	}
+	
 }
 Action* ApplicationManager::getundoedaction()
 {

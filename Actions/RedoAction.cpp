@@ -20,8 +20,8 @@ void RedoAction::Execute()
 
 		pOut->PrintMessage("no action to redo");
 	}
-	//else if (pManager->getredoExcuted() == 5)
-	//	pOut->PrintMessage("no action to redo");
+	else if (pManager->GetUndoExcuted() == 0)
+		pOut->PrintMessage("no action to redo");
 	else
 	//pManager->redo();
 	RedoExcute();
