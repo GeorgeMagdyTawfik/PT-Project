@@ -50,6 +50,11 @@ public:
 	void deletefigure();
 	Action* GetExcutedAction();
 	void SetUndoExcuted();
+	//////////////////////////
+void setExcutedeundoAction(Action*);
+	Action* getundoedaction();
+	void drawlast();
+	int getredocount();
 };
 
 #endif

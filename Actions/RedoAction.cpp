@@ -24,10 +24,15 @@ void RedoAction::Execute()
 		//pOut->PrintMessage("no action to redo");
 	//else
 	//pManager->redo();
-
+	RedoExcute();
 
 }
 void RedoAction::UndoExcute()
 {}
 void RedoAction::RedoExcute()
-{}
+{
+	Action* re = pManager->getundoedaction();
+	re->RedoExcute();
+
+
+}

@@ -114,8 +114,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
-	if(undoexcuted!=0)
-	undoexcuted --;
+	undoexcuted =0;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -243,4 +242,23 @@ void ApplicationManager::deletefigure()
 Action* ApplicationManager::GetExcutedAction()
 {
 	return undolist[undocount - 1];
+
+}
+void ApplicationManager::setExcutedeundoAction(Action* undoed)
+{
+
+	redolist[redocount++ ] = undoed;
+}
+Action* ApplicationManager::getundoedaction()
+{
+
+	return redolist[redocount - 1];
+}
+void ApplicationManager::drawlast()
+{
+	FigList[FigCount++]->Draw(pOut);
+}
+int ApplicationManager::getredocount()
+{
+	return redocount;
 }
