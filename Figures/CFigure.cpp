@@ -4,6 +4,8 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 {
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
+	if (FilledAsDefault)
+		FigGfxInfo.isFilled = true;
 }
 
 CFigure::CFigure()
@@ -12,6 +14,7 @@ CFigure::CFigure()
 }
 
 int CFigure::FigCount = 0;
+bool CFigure::FilledAsDefault = false;
 
 void CFigure::SetSelected(bool s)
 {
@@ -33,8 +36,24 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr;
 }
+color CFigure::GetDrawClr()
+{
+	return FigGfxInfo.DrawClr;
+}
+void CFigure::SetFilledAsDefault()
+{
+	FilledAsDefault = true;
+}
 color CFigure::DecodeColor(string s) const
 {
+	if (s == "BLACK")
+		return BLACK;
+	if (s == "RED")
+		return RED;
+	if (s == "ORANGE")
+		return ORANGE;
+	if (s == "YELLOW")
+		return color(255, 215, 0);
 	if (s == "BLUE")
 		return color(0, 87, 231);
 	if (s == "GREEN")
@@ -42,6 +61,14 @@ color CFigure::DecodeColor(string s) const
 }
 string CFigure::EncodeColor(color c) const      //takes color and returns corresponding string
 {
+	if (c == BLACK)
+		return "BLACK";
+	if (c == RED)
+		return "RED";
+	if (c == ORANGE)
+		return "ORANGE";
+	if (c == color(255, 215, 0))
+		return "YELLOW";
 	if (c == color(0, 87, 231))
 		return "BLUE";
 	if (c == color(0, 135, 68))

@@ -18,7 +18,7 @@ void ChangeDrawClrAction::ReadActionParameters()
 
 	else
 	{
-		pOut->PrintMessage("Change draw color: please choose color: ");
+		pOut->PrintMessage("Change draw color: please choose a color: ");
 
 		ActType = pManager->GetUserAction();
 
@@ -40,7 +40,7 @@ void ChangeDrawClrAction::ReadActionParameters()
 			break;
 		case YELLOWCLR:
 			NewDraw = color(255, 215, 0); chosen = true;
-			pOut->PrintMessage("Changed draw color to orange!");
+			pOut->PrintMessage("Changed draw color to yellow!");
 			break;
 		case GREENCLR:
 			NewDraw = color(0, 135, 68); chosen = true;
@@ -51,7 +51,7 @@ void ChangeDrawClrAction::ReadActionParameters()
 			pOut->PrintMessage("Changed draw color to blue!");
 			break;
 		default:
-			pOut->PrintMessage("You haven't picked a color.");
+			pOut->PrintMessage("You didn't pick a color.");
 		}
 		if (chosen) pOut->ClearDrawArea();
 	}

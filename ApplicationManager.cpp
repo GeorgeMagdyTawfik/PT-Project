@@ -13,6 +13,7 @@
 #include"Actions/UndoAction.h"
 #include"Actions/RedoAction.h"
 #include "Actions/ChangeDrawClrAction.h"
+#include "Actions/ChangeFillClrAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -57,6 +58,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case CHANGE_DRAW_CLR:
 		pAct = new ChangeDrawClrAction(this);
+		break;
+	case CHANGE_FILL_CLR:
+		pAct = new ChangeFillClrAction(this);
 		break;
 	case DRAW_RECT:
 		pAct = new AddRectAction(this);

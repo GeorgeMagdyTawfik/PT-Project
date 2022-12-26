@@ -37,7 +37,7 @@ void LoadAction::Execute()
 		pOut->setCrntDrawColor(pOut->DecodeColor(color1)); //should this be here?
 		pOut->setCrntFillColor(pOut->DecodeColor(color2));
 
-		for (int i = 0; i < FigCount; i++) //loop on each line, read figure type, allocate object, load, add
+		for (int i = 0; i < FigCount; i++) //loop on each line, read figure type, allocate object, load, then add
 		{
 			InFile >> FigName;
 
