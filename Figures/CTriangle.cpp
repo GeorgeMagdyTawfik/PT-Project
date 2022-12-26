@@ -34,3 +34,13 @@ bool CTriangle::CheckInside(int X, int Y) const
 
 	return (GetMyArea() == A1 + A2 + A3);
 }
+
+void CTriangle::PrintInfo(Output* pOut)
+{
+	string msg = "Triangle -> ";
+	msg += "P1 (" + to_string(p1.x) + ", " + to_string(p1.y) + ")";
+	msg += " | P2 (" + to_string(p2.x) + ", " + to_string(p2.y) + ")";
+	msg += " | P3 (" + to_string(p3.x) + ", " + to_string(p3.y) + ")";
+	msg += " | Area = " + to_string((int)GetMyArea());
+	pOut->PrintMessage(msg);
+}

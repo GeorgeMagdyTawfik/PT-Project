@@ -30,3 +30,9 @@ bool CSquare::CheckInside(int X, int Y) const
 		&& Y <= corner2.y
 	);
 }
+
+void CSquare::PrintInfo(Output* pOut)
+{
+	string msg = "Square -> Center (" + to_string(center.x) + ", " + to_string(center.y) + ")";
+	pOut->PrintMessage(msg);
+}

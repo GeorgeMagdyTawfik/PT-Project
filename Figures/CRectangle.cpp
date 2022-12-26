@@ -4,6 +4,11 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 {
 	Corner1 = P1;
 	Corner2 = P2;
+	UL.x = (Corner1.x < Corner2.x) ? Corner1.x : Corner2.x;
+	UL.y = (Corner1.y < Corner2.y) ? Corner1.y : Corner2.y;
+
+	BR.x = (Corner2.x > Corner1.x) ? Corner2.x : Corner1.x;
+	BR.y = (Corner2.y > Corner1.y) ? Corner2.y : Corner1.y;
 }
 	
 
@@ -15,15 +20,7 @@ void CRectangle::Draw(Output* pOut) const
 
 bool CRectangle::CheckInside(int x, int y) const
 {
-	// UPPERLEFT, BOTTOMRIGHT
-	Point UL, BR;
-
-	UL.x = (Corner1.x < Corner2.x) ? Corner1.x : Corner2.x;
-	UL.y = (Corner1.y < Corner2.y) ? Corner1.y : Corner2.y;
-
-	BR.x = (Corner2.x > Corner1.x) ? Corner2.x : Corner1.x;
-	BR.y = (Corner2.y > Corner1.y) ? Corner2.y : Corner1.y;
-
+	// check using upperleft and bottomright corners
 	return
 		(
 			x >= UL.x
@@ -31,4 +28,11 @@ bool CRectangle::CheckInside(int x, int y) const
 		&&	y >= UL.y
 		&&	y <= BR.y
 		);
+}
+
+void CRectangle::PrintInfo(Output* pOut)
+{
+	string msg = "Rectangle -> Start (" + to_string(UL.x) + ", " + to_string(UL.y) + ") " +
+		" End (" + to_string(BR.x) + ", " + to_string(BR.y) + ")";
+	pOut->PrintMessage(msg);
 }
