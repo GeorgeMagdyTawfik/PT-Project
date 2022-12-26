@@ -1,0 +1,5 @@
+BLUE      GREEN     
+1
+
+RECT      1    318  326  318  326  BLUE    NO_FILL 
+

@@ -68,12 +68,12 @@ void ChangeFillClrAction::Execute()
 			return;
 		else
 		{
-			//color prev = pFig->GetDrawClr();
+			color prev = pFig->GetDrawClr();
 			UI.FillColor = NewFill;
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
 			pFig->SetSelected(false);
-			pFig->ChngDrawClr(pFig->GetDrawClr());
+			pFig->ChngDrawClr(prev);
 		}
 	}
 }
