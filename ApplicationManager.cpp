@@ -198,10 +198,6 @@ CFigure* ApplicationManager::GetSelectedFigure() const
 	return SelectedFig;
 }
 
-int ApplicationManager::GetFigCount() const
-{
-	return FigCount;
-}
 
 // this function is repeated,I left it to resolve a conflict
 CFigure* ApplicationManager::GetSelectedFig() const

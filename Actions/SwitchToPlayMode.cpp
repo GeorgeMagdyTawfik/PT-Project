@@ -14,3 +14,8 @@ void SwitchToPlayMode::Execute()
 	pOut->CreatePlayToolBar();
 	pOut->ClearStatusBar();
 }
+
+void SwitchToPlayMode::UndoExcute()
+{}
+void SwitchToPlayMode::RedoExcute()
+{}

@@ -18,7 +18,7 @@ CFigure::CFigure()
 	Selected = false;
 }
 
-int CFigure::FigCount = 0;
+//int CFigure::FigCount = 0;
 bool CFigure::FilledAsDefault = false;
 
 void CFigure::SetSelected(bool s)
@@ -80,11 +80,11 @@ string CFigure::EncodeColor(color c) const      //takes color and returns corres
 		return "GREEN";
 }
 
-int CFigure::GetFigCount()
+/*int CFigure::GetFigCount()
 {
 	FigCount++;
 	return FigCount;
-}
+}*/
 
 void CFigure::PrintInfo(Output* pOut)
 {

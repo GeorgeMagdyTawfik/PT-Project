@@ -9,5 +9,8 @@ public:
 	virtual void ReadActionParameters();
 
 	virtual void Execute();
+
+	void UndoExcute();
+	void RedoExcute();
 };
 
