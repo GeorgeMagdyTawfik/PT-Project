@@ -1,9 +1,14 @@
 #include "CFigure.h"
 
+int CFigure::NumberOfFigures = 0;
+
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 {
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
+
+	NumberOfFigures++;
+  
 	if (FilledAsDefault)
 		FigGfxInfo.isFilled = true;
 }
@@ -81,3 +86,12 @@ int CFigure::GetFigCount()
 	return FigCount;
 }
 
+void CFigure::PrintInfo(Output* pOut)
+{
+	pOut->PrintMessage("Figure of ID : " + to_string(ID));
+}
+
+int CFigure::GetNumberOfFigures()
+{
+	return NumberOfFigures;
+}

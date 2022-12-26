@@ -172,6 +172,8 @@
     <ClCompile Include="Actions\AddHexagonAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\SelectFigAction.cpp" />
+    <ClCompile Include="Actions\SwitchToPlayMode.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -309,6 +311,8 @@
     <ClInclude Include="Actions\AddHexagonAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\SelectFigAction.h" />
+    <ClInclude Include="Actions\SwitchToPlayMode.h" />
     <ClInclude Include="Actions\SelectFigAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>

@@ -6,8 +6,8 @@
 #include"Actions\AddHexagonAction.h"
 #include "Actions\SaveAction.h"
 #include "Actions\LoadAction.h"
-
 #include "Actions/SelectFigAction.h"
+#include "Actions/SwitchToPlayMode.h"
 #include "Actions/DeleteAction.h"
 #include"Actions/Action.h"
 #include"Actions/UndoAction.h"
@@ -15,6 +15,7 @@
 #include"Actions/ClearAllAction.h"
 #include "Actions/ChangeDrawClrAction.h"
 #include "Actions/ChangeFillClrAction.h"
+
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -87,6 +88,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SELECT:
 		pAct = new SelectFigAction(this);
 		break;
+	case TO_PLAY:
+		pAct = new SwitchToPlayMode(this);
+		break;
 	case UNDO:
 		pAct = new UndoAction(this);
 		break;
@@ -115,7 +119,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new ClearAllAction(this);
 	case EXIT:
 		///create ExitAction here
-
+		
 		break;
 
 	case STATUS:	//a click on the status bar ==> no action
@@ -189,16 +193,17 @@ void ApplicationManager::SetSelectedFigure(CFigure* pFig)
 	SelectedFig = pFig;
 }
 
-void ApplicationManager::UnselectPrevious()
+CFigure* ApplicationManager::GetSelectedFigure() const
 {
-	if (SelectedFig != NULL)
-	{
-		SelectedFig->SetSelected(false);
-		SelectedFig->ChngDrawClr(UI.DrawColor);
-		SetSelectedFigure(NULL);
-	}
+	return SelectedFig;
 }
 
+int ApplicationManager::GetFigCount() const
+{
+	return FigCount;
+}
+
+// this function is repeated,I left it to resolve a conflict
 CFigure* ApplicationManager::GetSelectedFig() const
 {
 	return SelectedFig;

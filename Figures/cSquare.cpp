@@ -3,8 +3,7 @@
 CSquare::CSquare( Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	center = P;
-
-	ID = GetFigCount();
+	ID = GetNumberOfFigures();
 }
 
 CSquare::CSquare()
@@ -33,6 +32,14 @@ bool CSquare::CheckInside(int X, int Y) const
 		&& Y >= corner1.y
 		&& Y <= corner2.y
 	);
+}
+
+void CSquare::PrintInfo(Output* pOut)
+{
+	string msg = "Square : ID = " + to_string(ID);
+	msg += ", Center(" + to_string(center.x) + ", " + to_string(center.y) + ")";
+	msg += ", side length = 100";
+	pOut->PrintMessage(msg);
 }
 
 void CSquare::Save(ofstream& OutFile)

@@ -19,5 +19,6 @@ public:
 	virtual bool CheckInside(int X, int Y) const;
 	float CalcArea(Point A, Point B, Point C) const;
 	float GetMyArea() const;
+	virtual void PrintInfo(Output* pOut);
 };
 

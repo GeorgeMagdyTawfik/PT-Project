@@ -1,0 +1,13 @@
+BLUE      GREEN     
+5
+
+RECT      1    26   142  211  258  BLUE    NO_FILL 
+
+SQUARE    2    465  183  BLUE    NO_FILL 
+
+TRIANG    3    941  332  773  254  705  413  BLUE    NO_FILL 
+
+CIRCLE    4    428  343  457  352  BLUE    NO_FILL 
+
+HEXAGON   5    1155 314  BLUE    NO_FILL 
+

@@ -4,11 +4,10 @@ CTriangle::CTriangle(Point point1, Point point2,Point point3, GfxInfo FigureGfxI
 	p1 = point1;
 	p2 = point2;
 	p3 = point3;
-	ID = GetFigCount();
+	ID = GetNumberOfFigures();
 }
 CTriangle::CTriangle()
-{
-}
+{}
 void CTriangle::Draw(Output* pOut) const
 {
 	pOut->DrawTraingle(p1, p2, p3, FigGfxInfo, Selected);
@@ -38,6 +37,15 @@ bool CTriangle::CheckInside(int X, int Y) const
 	return (GetMyArea() == A1 + A2 + A3);
 }
 
+void CTriangle::PrintInfo(Output* pOut)
+{
+	string msg = "Triangle : ID =  " + to_string(ID);
+	msg += ", P1 (" + to_string(p1.x) + ", " + to_string(p1.y) + ")";
+	msg += " , P2 (" + to_string(p2.x) + ", " + to_string(p2.y) + ")";
+	msg += " , P3 (" + to_string(p3.x) + ", " + to_string(p3.y) + ")";
+	msg += " , Area = " + to_string((int)GetMyArea());
+	pOut->PrintMessage(msg);
+}
 
 void CTriangle::Save(ofstream& OutFile)
 {
