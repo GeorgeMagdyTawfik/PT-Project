@@ -80,6 +80,10 @@ void ChangeDrawClrAction::UndoExcute()
 {
 }
 
+void ChangeDrawClrAction::RedoExcute()
+{
+}
+
 ChangeDrawClrAction::~ChangeDrawClrAction()
 {
 }

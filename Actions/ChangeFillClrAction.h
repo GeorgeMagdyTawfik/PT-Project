@@ -10,6 +10,7 @@ public:
 	virtual void ReadActionParameters() override;
 	virtual void Execute() override;
 	virtual void UndoExcute() override;
+	virtual void RedoExcute() override;
 	~ChangeFillClrAction();
 };
 

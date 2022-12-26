@@ -82,6 +82,10 @@ void ChangeFillClrAction::UndoExcute()
 {
 }
 
+void ChangeFillClrAction::RedoExcute()
+{
+}
+
 ChangeFillClrAction::~ChangeFillClrAction()
 {
 }
