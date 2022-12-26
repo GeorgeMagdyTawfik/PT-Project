@@ -2,7 +2,7 @@
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	center = P1;
-	
+	ID = GetFigCount();
 }
 
 
@@ -70,8 +70,8 @@ bool CHexagon::CheckInside(int X, int Y) const
 
 void CHexagon::PrintInfo(Output* pOut)
 {
-	string msg = "Hexagon -> ";
-	msg += "Center (" + to_string(center.x) + " ," + to_string(center.y) + ") | side length = 50 | area = "
+	string msg = "Hexagon : ID = " + to_string(ID);
+	msg += ", Center (" + to_string(center.x) + ", " + to_string(center.y) + ") , side length = 50 , area = "
 		+ to_string((int)GetHexagonArea());
 	pOut->PrintMessage(msg);
 }

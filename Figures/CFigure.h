@@ -7,6 +7,9 @@
 //Base class for all figures
 class CFigure
 {
+
+	static int FigCount;
+
 protected:
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
@@ -39,6 +42,9 @@ public:
 	
 	// To check whether a point belongs to the shape's area or not 
 	virtual bool CheckInside(int x, int y) const = 0; /// pure virtual function (overridden in each class)
+
+	//static memberfunction
+	static int GetFigCount();
 };
 
 #endif

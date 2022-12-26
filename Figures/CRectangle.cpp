@@ -9,6 +9,7 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 
 	BR.x = (Corner2.x > Corner1.x) ? Corner2.x : Corner1.x;
 	BR.y = (Corner2.y > Corner1.y) ? Corner2.y : Corner1.y;
+	ID = GetFigCount();
 }
 	
 
@@ -32,7 +33,10 @@ bool CRectangle::CheckInside(int x, int y) const
 
 void CRectangle::PrintInfo(Output* pOut)
 {
-	string msg = "Rectangle -> Start (" + to_string(UL.x) + ", " + to_string(UL.y) + ") " +
+	string msg = "Rectangle : ID = " + to_string(ID);
+	msg += ", Start(" + to_string(UL.x) + ", " + to_string(UL.y) + ") " +
 		" End (" + to_string(BR.x) + ", " + to_string(BR.y) + ")";
+	msg += ", length = " + to_string(BR.x - UL.x)
+		+ ", width = " + to_string(BR.y - UL.y);
 	pOut->PrintMessage(msg);
 }

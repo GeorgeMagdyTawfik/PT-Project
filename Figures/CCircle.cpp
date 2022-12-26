@@ -10,6 +10,7 @@ CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxIn
 		+
 		pow(P1.y - P2.y, 2)
 	);
+	ID = GetFigCount();
 }
 
 
@@ -33,7 +34,8 @@ bool CCircle::CheckInside(int X, int Y) const
 
 void CCircle::PrintInfo(Output* pOut)
 {
-	string msg = "Circle -> Center (" + to_string(center.x) + " ," + to_string(center.y) + ") | Radius = " +
+	string msg = "Circle : ID = " + to_string(ID);
+	msg += ", Center(" + to_string(center.x) + ", " + to_string(center.y) + ") , Radius = " +
 		to_string(Radius);
 	pOut->PrintMessage(msg);
 }
