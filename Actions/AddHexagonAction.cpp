@@ -45,5 +45,5 @@ void AddHexagonAction::UndoExcute()
 }
 void AddHexagonAction::RedoExcute()
 {
-	//pManager->redofigure();
+	pManager->drawlast();
 }

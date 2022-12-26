@@ -135,6 +135,7 @@
     <ClCompile Include="Actions\DeleteAction.cpp" />
     <ClCompile Include="Actions\RedoAction.cpp" />
     <ClCompile Include="Actions\UndoAction.cpp" />
+    <ClCompile Include="Actions\ClearAllAction.cpp" />
     <ClCompile Include="Figures\CCircle.cpp" />
     <ClCompile Include="Figures\CHexagon.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="Actions\RedoAction.h" />
     <ClInclude Include="Actions\UndoAction.h" />
+    <ClInclude Include="Actions\ClearAllAction.h" />
     <ClInclude Include="Figures\CCircle.h" />
     <ClInclude Include="Figures\CHexagon.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />

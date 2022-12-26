@@ -53,5 +53,5 @@ void AddRectAction::UndoExcute()
 }
 void AddRectAction::RedoExcute()
 {
-	//pManager->redo();
+	pManager->drawlast();
 }

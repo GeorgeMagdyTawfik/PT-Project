@@ -15,19 +15,24 @@ void RedoAction::Execute()
 {
 	ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
-	//if (pManager->getredoexcuted() == 0)
-	//{
+	if (pManager->getredocount() == 0)
+	{
 
-	//	pOut->PrintMessage("no action to redo");
-	//}
-	//else if (pManager->getredoexcuted() == 0)
-		//pOut->PrintMessage("no action to redo");
-	//else
+		pOut->PrintMessage("no action to redo");
+	}
+	else if (pManager->GetUndoExcuted() == 0)
+		pOut->PrintMessage("no action to redo");
+	else
 	//pManager->redo();
-
+	RedoExcute();
 
 }
 void RedoAction::UndoExcute()
 {}
 void RedoAction::RedoExcute()
-{}
+{
+	Action* re = pManager->getundoedaction();
+	re->RedoExcute();
+
+
+}
