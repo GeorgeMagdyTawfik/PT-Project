@@ -5,6 +5,7 @@
 #include"Actions/AddTriangleAction.h"
 #include"Actions/AddHexagonAction.h"
 #include "Actions/SelectFigAction.h"
+#include "Actions/SwitchToPlayMode.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -55,6 +56,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case SELECT:
 		pAct = new SelectFigAction(this);
+		break;
+	case TO_PLAY:
+		pAct = new SwitchToPlayMode(this);
 		break;
 	case EXIT:
 		///create ExitAction here
