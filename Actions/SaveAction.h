@@ -16,5 +16,6 @@ public:
     virtual void ReadActionParameters() override;
     virtual void Execute() override;
     virtual void UndoExcute();
+    virtual void RedoExcute();
     ~SaveAction();
 };

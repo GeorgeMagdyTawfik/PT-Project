@@ -17,6 +17,7 @@ void ClearAllAction::Execute()
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
 	pManager->DeleteAll();
+	pManager->SetFigcount(0);
 }
 void ClearAllAction::RedoExcute()
 {}

@@ -29,3 +29,5 @@ DeleteAction::~DeleteAction()
 }
 void DeleteAction::UndoExcute()
 {}
+void DeleteAction::RedoExcute()
+{}

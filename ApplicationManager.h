@@ -70,7 +70,7 @@ public:
 	void SetUndoExcuted();
 	void deletefigure();
 	Action* GetExcutedAction();
-	void SetUndoExcuted();
+	
 	//////////////////////////
 void setExcutedeundoAction(Action*);
 	Action* getundoedaction();
@@ -78,7 +78,7 @@ void setExcutedeundoAction(Action*);
 	int getredocount();
 	//int getredoExcuted();
 	///////////////////////////////////
-	void DeleteAll();
+	
 };
 
 #endif

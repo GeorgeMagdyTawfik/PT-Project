@@ -46,3 +46,5 @@ SaveAction::~SaveAction()
 {
 }
 
+void SaveAction::RedoExcute()
+{}

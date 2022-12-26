@@ -8,6 +8,7 @@ public:
 	virtual void Execute() override;
 	~DeleteAction();
 	virtual void UndoExcute();
+	virtual void RedoExcute();
 
 };
 

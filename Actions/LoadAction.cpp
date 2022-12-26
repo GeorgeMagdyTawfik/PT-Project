@@ -89,3 +89,5 @@ void LoadAction::UndoExcute()
 LoadAction::~LoadAction()
 {
 }
+void LoadAction::RedoExcute()
+{}

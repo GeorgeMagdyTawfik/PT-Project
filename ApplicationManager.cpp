@@ -364,13 +364,3 @@ int ApplicationManager::getredocount()
 {
 	return redocount;
 }
-void ApplicationManager::DeleteAll()
-{
-	undoexcuted = 0;
-	for (int i = 0; i < FigCount; i++)
-	{
-		delete FigList[i];
-		FigList[i] = NULL;
-	}
-	FigCount = 0;
-}

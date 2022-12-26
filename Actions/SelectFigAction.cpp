@@ -63,3 +63,5 @@ void SelectFigAction::Execute()
 }
 void SelectFigAction::UndoExcute()
 {}
+void SelectFigAction::RedoExcute()
+{}
