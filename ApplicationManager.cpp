@@ -105,7 +105,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			}
 			else
 			{
-				undolist[undocount] = pAct;
+				//undolist[undocount] = pAct;
 				undocount++;
 			}
 
