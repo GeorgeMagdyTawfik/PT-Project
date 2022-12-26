@@ -5,7 +5,8 @@
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
 #include "GUI\output.h"
-#include "Actions\Action.h"
+//#include "Actions/Action.h"
+class Action;
 
 //Main class that manages everything in the application.
 class ApplicationManager
@@ -27,6 +28,7 @@ private:
 	Action* redolist[5];
 	int redocount;
 	int redoexcuted;
+	Action* p;
 public:
 	ApplicationManager();
 	~ApplicationManager();

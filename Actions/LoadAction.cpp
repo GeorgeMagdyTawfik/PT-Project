@@ -78,7 +78,7 @@ void LoadAction::Execute()
 	}
 	else
 	{
-		pOut->PrintMessage("Error loading file!");
+		pOut->PrintMessage("Error loading file! Are you sure there's a file with that name?");
 	}
 }
 
