@@ -9,6 +9,10 @@ private:
 	Point Corner1;
 	Point Corner2;
 
+	// upper-left and bottom-right corners
+	Point UL;
+	Point BR;
+
 public:
 	CRectangle(Point, Point, GfxInfo FigureGfxInfo);
 	CRectangle();
@@ -16,6 +20,7 @@ public:
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& InFile);
 	virtual bool CheckInside(int x, int y) const;
+	virtual void PrintInfo(Output* pOut);
 };
 
 #endif

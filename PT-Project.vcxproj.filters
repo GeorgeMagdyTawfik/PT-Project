@@ -172,10 +172,11 @@
     <ClCompile Include="Actions\AddHexagonAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\SelectFigAction.cpp" />
+    <ClCompile Include="Actions\SwitchToPlayMode.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\LoadAction.cpp" />
     <ClCompile Include="Actions\SelectFigAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -184,6 +185,15 @@
     </ClCompile>
     <ClCompile Include="Actions\RedoAction.cpp" />
     <ClCompile Include="Actions\UndoAction.cpp" />
+    <ClCompile Include="Actions\ChangeDrawClrAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\LoadAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ChangeFillClrAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
     <ClCompile Include="Actions\RedoAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -301,6 +311,8 @@
     <ClInclude Include="Actions\AddHexagonAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\SelectFigAction.h" />
+    <ClInclude Include="Actions\SwitchToPlayMode.h" />
     <ClInclude Include="Actions\SelectFigAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
@@ -310,9 +322,17 @@
     <ClInclude Include="Actions\SaveAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\LoadAction.h" />
     <ClInclude Include="Actions\RedoAction.h" />
     <ClInclude Include="Actions\UndoAction.h" />
+    <ClInclude Include="Actions\ChangeDrawClrAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\LoadAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ChangeFillClrAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
     <ClInclude Include="Actions\RedoAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>

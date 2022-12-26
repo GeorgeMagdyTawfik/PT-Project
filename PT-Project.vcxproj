@@ -135,6 +135,8 @@
     <ClCompile Include="Actions\DeleteAction.cpp" />
     <ClCompile Include="Actions\RedoAction.cpp" />
     <ClCompile Include="Actions\UndoAction.cpp" />
+    <ClCompile Include="Actions\ChangeDrawClrAction.cpp" />
+    <ClCompile Include="Actions\ChangeFillClrAction.cpp" />
     <ClCompile Include="Actions\ClearAllAction.cpp" />
     <ClCompile Include="Figures\CCircle.cpp" />
     <ClCompile Include="Figures\CHexagon.cpp" />
@@ -186,6 +188,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\SelectFigAction.cpp" />
+    <ClCompile Include="Actions\SwitchToPlayMode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircleAction.h" />
@@ -195,6 +198,8 @@
     <ClInclude Include="Actions\DeleteAction.h" />
     <ClInclude Include="Actions\RedoAction.h" />
     <ClInclude Include="Actions\UndoAction.h" />
+    <ClInclude Include="Actions\ChangeDrawClrAction.h" />
+    <ClInclude Include="Actions\ChangeFillClrAction.h" />
     <ClInclude Include="Actions\ClearAllAction.h" />
     <ClInclude Include="Figures\CCircle.h" />
     <ClInclude Include="Figures\CHexagon.h" />
@@ -232,6 +237,7 @@
     <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\LoadAction.h" />
     <ClInclude Include="Actions\SelectFigAction.h" />
+    <ClInclude Include="Actions\SwitchToPlayMode.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

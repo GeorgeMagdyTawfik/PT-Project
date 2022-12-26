@@ -14,4 +14,5 @@ public:
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& InFile);
 	virtual bool CheckInside(int X, int Y) const;
+	virtual void PrintInfo(Output* pOut);
 };

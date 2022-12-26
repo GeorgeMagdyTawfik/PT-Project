@@ -37,13 +37,13 @@ void SelectFigAction::Execute()
 		if (ClickedFig->IsSelected() == false) // if it was not selected
 		{
 			///TODO: let's unselect the previously selcted figure
-			pManager->UnselectPrevious();
+			UnselectPrevious(pManager->GetSelectedFigure());
 
 			ClickedFig->SetSelected(true); // select this fig
 			pManager->SetSelectedFigure(ClickedFig);
 			// Print a message
-			pOut->PrintMessage("Selected the figure:");
-
+			//pOut->PrintMessage("Selected the figure:");
+			ClickedFig->PrintInfo(pOut);
 			// Change its color to magenta
 			ClickedFig->ChngDrawClr(UI.HighlightColor);
 		}
@@ -52,7 +52,7 @@ void SelectFigAction::Execute()
 			ClickedFig->SetSelected(false); // unselect it
 			pManager->SetSelectedFigure(NULL);
 			// print a message
-			pOut->PrintMessage("Unselected the figure:");
+			pOut->PrintMessage("Unselected the figure");
 			
 			// Change its color to normal
 			ClickedFig->ChngDrawClr(UI.DrawColor);
@@ -61,6 +61,17 @@ void SelectFigAction::Execute()
 	}
 	// If the kid clicks on an empty space it will be ignored
 }
+
+void SelectFigAction::UnselectPrevious(CFigure* previous)
+{
+	if (previous != NULL)
+	{
+		previous->SetSelected(false);
+		previous->ChngDrawClr(UI.DrawColor);
+		pManager->SetSelectedFigure(NULL);
+	}
+}
+
 void SelectFigAction::UndoExcute()
 {}
 void SelectFigAction::RedoExcute()
