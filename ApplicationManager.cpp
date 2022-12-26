@@ -12,6 +12,7 @@
 #include"Actions/Action.h"
 #include"Actions/UndoAction.h"
 #include"Actions/RedoAction.h"
+#include"Actions/ClearAllAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -76,6 +77,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case UNDO:
 		pAct = new UndoAction(this);
 		break;
+	case CLEAR_ALL:
+		pAct = new ClearAllAction(this);
 	case EXIT:
 		///create ExitAction here
 
