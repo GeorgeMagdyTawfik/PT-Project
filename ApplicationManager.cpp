@@ -12,6 +12,7 @@
 #include"Actions/Action.h"
 #include"Actions/UndoAction.h"
 #include"Actions/RedoAction.h"
+#include "Actions/ChangeDrawClrAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -54,6 +55,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case DELETE_SHAPE:
 		pAct = new DeleteAction(this);
 		break;
+	case CHANGE_DRAW_CLR:
+		pAct = new ChangeDrawClrAction(this);
+		break;
 	case DRAW_RECT:
 		pAct = new AddRectAction(this);
 		break;
@@ -74,6 +78,24 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case UNDO:
 		pAct = new UndoAction(this);
+		break;
+	case BLACKCLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case REDCLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case ORANGECLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case YELLOWCLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case GREENCLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case BLUECLR:
+		pOut->PrintMessage("Please select an operation first!");
 		break;
 	case EXIT:
 		///create ExitAction here
