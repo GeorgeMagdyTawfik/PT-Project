@@ -26,6 +26,7 @@ ApplicationManager::ApplicationManager()
 		FigList[i] = NULL;
 	//this is EXTRA
 	SetSelectedFigure(NULL);
+	undocount = 0;
 }
 
 //==================================================================================//
@@ -105,7 +106,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			}
 			else
 			{
-				//undolist[undocount] = pAct;
+				undolist[undocount] = pAct;
 				undocount++;
 			}
 
