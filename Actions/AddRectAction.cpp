@@ -46,3 +46,12 @@ void AddRectAction::Execute()
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
 }
+void AddRectAction::UndoExcute()
+{
+	pManager->deletefigure();
+
+}
+void AddRectAction::RedoExcute()
+{
+	pManager->drawlast();
+}

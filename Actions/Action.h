@@ -1,7 +1,11 @@
 #ifndef ACTION_H
 #define ACTION_H
-
+#include "..\ApplicationManager.h"
 #include "..\DefS.h"
+#include <fstream>
+#include <string>
+#include <iomanip>
+using namespace std;
 
 class ApplicationManager; //forward class declaration
 
@@ -21,7 +25,8 @@ public:
 	
 	//Execute action (code depends on action type)
 	virtual void Execute() =0;
-
+	virtual void UndoExcute() = 0;
+	virtual void RedoExcute() = 0;
 };
 
 #endif

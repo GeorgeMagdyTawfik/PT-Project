@@ -1,11 +1,21 @@
 #include "ApplicationManager.h"
-#include "Actions/AddRectAction.h"
-#include"Actions/AddSquareAction.h"
-#include"Actions/AddCircleAction.h"
-#include"Actions/AddTriangleAction.h"
-#include"Actions/AddHexagonAction.h"
+#include "Actions\AddRectAction.h"
+#include"Actions\AddSquareAction.h"
+#include"Actions\AddCircleAction.h"
+#include"Actions\AddTriangleAction.h"
+#include"Actions\AddHexagonAction.h"
+#include "Actions\SaveAction.h"
+#include "Actions\LoadAction.h"
 #include "Actions/SelectFigAction.h"
 #include "Actions/SwitchToPlayMode.h"
+#include "Actions/DeleteAction.h"
+#include"Actions/Action.h"
+#include"Actions/UndoAction.h"
+#include"Actions/RedoAction.h"
+#include"Actions/ClearAllAction.h"
+#include "Actions/ChangeDrawClrAction.h"
+#include "Actions/ChangeFillClrAction.h"
+
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -20,6 +30,12 @@ ApplicationManager::ApplicationManager()
 		FigList[i] = NULL;
 	//this is EXTRA
 	SetSelectedFigure(NULL);
+	for (int i = 0; i < 5; i++)
+		undolist[i] = NULL;
+	undocount = 0;
+	undoexcuted = 0;
+	redocount = 0;
+	
 }
 
 //==================================================================================//
@@ -39,6 +55,21 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
+	case SAVE_GRAPH:
+		pAct = new SaveAction(this);
+		break;
+	case LOAD_GRAPH:
+		pAct = new LoadAction(this);
+		break;
+	case DELETE_SHAPE:
+		pAct = new DeleteAction(this);
+		break;
+	case CHANGE_DRAW_CLR:
+		pAct = new ChangeDrawClrAction(this);
+		break;
+	case CHANGE_FILL_CLR:
+		pAct = new ChangeFillClrAction(this);
+		break;
 	case DRAW_RECT:
 		pAct = new AddRectAction(this);
 		break;
@@ -60,6 +91,32 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case TO_PLAY:
 		pAct = new SwitchToPlayMode(this);
 		break;
+	case UNDO:
+		pAct = new UndoAction(this);
+		break;
+	case BLACKCLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case REDCLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case ORANGECLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case YELLOWCLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case GREENCLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case BLUECLR:
+		pOut->PrintMessage("Please select an operation first!");
+		break;
+	case REDO:
+	pAct=new RedoAction(this);
+		break;
+	case CLEAR_ALL:
+		pAct = new ClearAllAction(this);
 	case EXIT:
 		///create ExitAction here
 		
@@ -73,8 +130,30 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct != NULL)
 	{
 		pAct->Execute();//Execute
-		delete pAct;	//You may need to change this line depending to your implementation
-		pAct = NULL;
+		UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
+		RedoAction* ra = dynamic_cast<RedoAction*>(pAct);
+		if (ua == NULL && ra == NULL)
+		{
+			if (undocount > 4)
+			{
+				undolist[0] = NULL;
+				for (int i = 0; i < 3; i++)
+				{
+					undolist[i] = undolist[i + 1];
+
+				}
+				undolist[4] = pAct;
+				undocount = 4;
+			}
+			else
+			{
+				undolist[undocount++] = pAct;
+				
+			}
+
+		}
+		//delete pAct;	//You may need to change this line depending to your implementation
+		//pAct = NULL;
 	}
 }
 //==================================================================================//
@@ -86,6 +165,8 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
+	
+	undoexcuted =0;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -122,6 +203,11 @@ int ApplicationManager::GetFigCount() const
 	return FigCount;
 }
 
+// this function is repeated,I left it to resolve a conflict
+CFigure* ApplicationManager::GetSelectedFig() const
+{
+	return SelectedFig;
+}
 
 //==================================================================================//
 //							Interface Management Functions							//
@@ -131,7 +217,27 @@ int ApplicationManager::GetFigCount() const
 void ApplicationManager::UpdateInterface() const
 {
 	for (int i = 0; i < FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+		FigList[i]->Draw(pOut);	//Call Draw function (virtual member fn)
+
+
+
+}
+bool ApplicationManager::DeleteFigure()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+		{
+			delete FigList[i];
+			if (i != FigCount - 1)
+				FigList[i] = FigList[FigCount - 1];
+			FigList[FigCount - 1] = NULL;
+			SelectedFig = NULL;
+			FigCount--;
+			return true;
+		}
+	}
+	return false;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
@@ -145,6 +251,38 @@ Output* ApplicationManager::GetOutput() const
 	return pOut;
 }
 ////////////////////////////////////////////////////////////////////////////////////
+
+//==================================================================================//
+//							Functions which Loop on FigList 						//
+//==================================================================================//
+
+void ApplicationManager::SaveGraph(ofstream& OutFile)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->Save(OutFile);
+	}
+}
+
+void ApplicationManager::DeleteAll()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i]; 
+		FigList[i] = NULL; 
+	}
+}
+
+int ApplicationManager::GetFigCount() const
+{
+	return FigCount;
+}
+
+void ApplicationManager::SetFigcount(int x)
+{
+	FigCount = x;
+}
+
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
@@ -153,4 +291,118 @@ ApplicationManager::~ApplicationManager()
 	delete pIn;
 	delete pOut;
 
+}
+////////////////////////////////////////////////////////////////////////////////////
+/*void ApplicationManager::Undo()
+{
+	AddRectAction* adr = dynamic_cast<AddRectAction*>(undolist[undocount - 1]);
+	if (adr != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		FigCount--;
+		if(undocount>1)
+		undocount--;
+		undoexcuted++;
+	}
+	AddSquareAction* ads = dynamic_cast<AddSquareAction*>(undolist[undocount - 1]);
+	if (ads != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount > 1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+	AddTriangleAction* adt = dynamic_cast<AddTriangleAction*>(undolist[undocount - 1]);
+	if (adt != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount >1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+	AddCircleAction* adc = dynamic_cast<AddCircleAction*>(undolist[undocount - 1]);
+	if (adc != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount > 1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+	AddHexagonAction* adh = dynamic_cast<AddHexagonAction*>(undolist[undocount - 1]);
+	if (adh != NULL)
+	{
+		FigList[FigCount - 1] = NULL;
+		if (undocount > 1)
+		undocount--;
+		FigCount--;
+		undoexcuted++;
+	}
+
+	//undolist[undocount - 1]->UndoExcute();
+	//if (undocount > 1)
+		//undocount--;
+	//undoexcuted++;
+
+}*/
+
+int  ApplicationManager::GetUndoExcuted()
+{
+	return undoexcuted;
+
+}
+
+void  ApplicationManager::SetUndoExcuted()
+{
+	undoexcuted++;
+
+}
+//////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::deletefigure()
+{
+	FigCount--;
+	//FigList[FigCount - 1] = NULL;
+}
+Action* ApplicationManager::GetExcutedAction()
+{
+	return undolist[undocount - 1];
+
+}
+void ApplicationManager::setExcutedeundoAction(Action* undoed)
+{
+
+	if (redocount > 4)
+	{
+		redolist[0] = NULL;
+		for (int i = 0; i < 3; i++)
+		{
+			redolist[i] = redolist[i + 1];
+
+		}
+		redolist[4] = undoed;
+		redocount = 4;
+	}
+	else
+	{
+		redolist[redocount++] = undoed;
+
+	}
+	
+}
+Action* ApplicationManager::getundoedaction()
+{
+
+	return redolist[redocount - 1];
+}
+void ApplicationManager::drawlast()
+{
+	FigList[FigCount++]->Draw(pOut);
+	redocount--;
+	undoexcuted-- ;
+}
+int ApplicationManager::getredocount()
+{
+	return redocount;
 }
