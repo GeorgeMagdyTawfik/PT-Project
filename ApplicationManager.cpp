@@ -27,7 +27,12 @@ ApplicationManager::ApplicationManager()
 		FigList[i] = NULL;
 	//this is EXTRA
 	SetSelectedFigure(NULL);
+	for (int i = 0; i < 5; i++)
+		undolist[i] = NULL;
 	undocount = 0;
+	undoexcuted = 0;
+	redocount = 0;
+	
 }
 
 //==================================================================================//
@@ -76,6 +81,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case UNDO:
 		pAct = new UndoAction(this);
+		break;
+	case REDO:
+	pAct=new RedoAction(this);
 		break;
 	case CLEAR_ALL:
 		pAct = new ClearAllAction(this);
