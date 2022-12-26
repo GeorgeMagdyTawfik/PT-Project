@@ -12,6 +12,7 @@ using namespace std;
 class CFigure
 {
 	static int FigCount;
+	static bool FilledAsDefault;
 
 protected:
 	int ID;		//Each figure has an ID
@@ -31,6 +32,10 @@ public:
 
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
+
+	color GetDrawClr(); //returns the figure's drawing color
+
+	void SetFilledAsDefault(); //sets filled as the default for figures
 
 	string EncodeColor(color c) const; //takes color and returns corresponding name
 	color DecodeColor(string s) const; //takes color name and returns corresponding color

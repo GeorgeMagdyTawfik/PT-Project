@@ -3,7 +3,6 @@
 
 int main()
 {
-	Action* p;
 	ActionType ActType;
 	//Create an object of ApplicationManager
 	ApplicationManager AppManager;
