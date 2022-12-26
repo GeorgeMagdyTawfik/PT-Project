@@ -10,7 +10,7 @@ CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxIn
 		+
 		pow(P1.y - P2.y, 2)
 	);
-	ID = GetFigCount();
+	ID = GetNumberOfFigures();
 }
 
 

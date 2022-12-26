@@ -8,7 +8,7 @@
 class CFigure
 {
 
-	static int FigCount;
+	static int NumberOfFigures;
 
 protected:
 	int ID;		//Each figure has an ID
@@ -38,13 +38,13 @@ public:
 	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
 
 	//print all figure info on the status bar
-	virtual void PrintInfo(Output* pOut) = 0;
+	virtual void PrintInfo(Output* pOut);
 	
 	// To check whether a point belongs to the shape's area or not 
 	virtual bool CheckInside(int x, int y) const = 0; /// pure virtual function (overridden in each class)
 
 	//static memberfunction
-	static int GetFigCount();
+	static int GetNumberOfFigures();
 };
 
 #endif

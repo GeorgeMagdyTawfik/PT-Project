@@ -1,12 +1,12 @@
 #include "CFigure.h"
 
-int CFigure::FigCount = 0;
+int CFigure::NumberOfFigures = 0;
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
-	FigCount++;
+	NumberOfFigures++;
 }
 
 void CFigure::SetSelected(bool s)
@@ -24,7 +24,12 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
-int CFigure::GetFigCount()
+void CFigure::PrintInfo(Output* pOut)
 {
-	return FigCount;
+	pOut->PrintMessage("Figure of ID : " + to_string(ID));
+}
+
+int CFigure::GetNumberOfFigures()
+{
+	return NumberOfFigures;
 }

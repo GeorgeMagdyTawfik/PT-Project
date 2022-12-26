@@ -9,7 +9,7 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(Figure
 
 	BR.x = (Corner2.x > Corner1.x) ? Corner2.x : Corner1.x;
 	BR.y = (Corner2.y > Corner1.y) ? Corner2.y : Corner1.y;
-	ID = GetFigCount();
+	ID = GetNumberOfFigures();
 }
 	
 

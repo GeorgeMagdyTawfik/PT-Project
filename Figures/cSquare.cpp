@@ -3,7 +3,7 @@
 CSquare::CSquare( Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	center = P;
-	ID = GetFigCount();
+	ID = GetNumberOfFigures();
 }
 
 

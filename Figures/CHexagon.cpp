@@ -2,7 +2,7 @@
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	center = P1;
-	ID = GetFigCount();
+	ID = GetNumberOfFigures();
 }
 
 
