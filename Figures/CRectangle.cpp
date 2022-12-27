@@ -67,3 +67,17 @@ bool CRectangle::CheckInside(int x, int y) const
 		&&	y <= BR.y
 		);
 }
+
+void CRectangle::Move(Point destination)
+{
+	int height, width;
+
+	height = abs(Corner1.y - Corner2.y);
+	width = abs(Corner1.x - Corner2.x);
+
+	Corner1.x = destination.x - width/2;
+	Corner2.x = destination.x + width/2;
+
+	Corner1.y = destination.y - height/2;
+	Corner2.y = destination.y + height/2;
+}

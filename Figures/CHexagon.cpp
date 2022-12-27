@@ -73,6 +73,11 @@ bool CHexagon::CheckInside(int X, int Y) const
 	return abs(GetHexagonArea() - sumAreas) < 30;
 }
 
+void CHexagon::Move(Point destination)
+{
+	center = destination;
+}
+
 void CHexagon::Save(ofstream& OutFile)
 {
 	OutFile << setw(10) << left << "HEXAGON" << setw(5) << ID << setw(5) << center.x

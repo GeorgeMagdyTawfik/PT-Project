@@ -18,7 +18,7 @@ void DeleteAction::Execute()
 	Output* pOut = pManager->GetOutput();
 	bool done = pManager->DeleteFigure();
 	if (!done)
-		pOut->PrintMessage("No selected figure. Please select figure first!");
+		pOut->PrintMessage("No selected figure. Please select a figure first!");
 	else
 		pOut->PrintMessage("Deleted selected figure.");
 	

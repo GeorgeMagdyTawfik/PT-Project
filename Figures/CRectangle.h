@@ -16,6 +16,7 @@ public:
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& InFile);
 	virtual bool CheckInside(int x, int y) const;
+	virtual void Move(Point) override;
 };
 
 #endif

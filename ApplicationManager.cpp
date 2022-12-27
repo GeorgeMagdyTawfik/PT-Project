@@ -15,6 +15,7 @@
 #include"Actions/ClearAllAction.h"
 #include "Actions/ChangeDrawClrAction.h"
 #include "Actions/ChangeFillClrAction.h"
+#include "Actions/MoveAction.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -68,6 +69,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case CHANGE_FILL_CLR:
 		pAct = new ChangeFillClrAction(this);
+		break;
+	case MOVE:
+		pAct = new MoveAction(this);
 		break;
 	case DRAW_RECT:
 		pAct = new AddRectAction(this);
@@ -364,6 +368,19 @@ Action* ApplicationManager::GetExcutedAction()
 {
 	return undolist[undocount - 1];
 
+}
+bool ApplicationManager::MoveFigure(Point destination)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+		{
+			FigList[i]->Move(destination);
+			FigList[i]->SetSelected(false);
+			return true;
+		}
+	}
+	return false;
 }
 void ApplicationManager::setExcutedeundoAction(Action* undoed)
 {

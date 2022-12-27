@@ -62,3 +62,8 @@ void CSquare::Load(ifstream& InFile)
 		FigGfxInfo.FillClr = DecodeColor(color2);
 	}
 }
+
+void CSquare::Move(Point destination)
+{
+	center = destination;
+}

@@ -24,6 +24,10 @@ float CTriangle::GetMyArea() const
 	return CalcArea(p1, p2, p3);
 }
 
+void CTriangle::Move(Point dest)
+{
+}
+
 bool CTriangle::CheckInside(int X, int Y) const
 {
 	// the point clicked
