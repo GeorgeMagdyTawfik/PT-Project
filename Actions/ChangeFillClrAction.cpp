@@ -68,12 +68,12 @@ void ChangeFillClrAction::Execute()
 			return;
 		else
 		{
-			color prev = pFig->GetDrawClr();
+			color prevUIFill = UI.FillColor; //ziad use this
+			color prevFigFill = pFig->GetFillClr();
 			UI.FillColor = NewFill;
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
 			pFig->SetSelected(false);
-			pFig->ChngDrawClr(prev);
 		}
 	}
 }

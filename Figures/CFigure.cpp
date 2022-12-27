@@ -40,6 +40,10 @@ color CFigure::GetDrawClr()
 {
 	return FigGfxInfo.DrawClr;
 }
+color CFigure::GetFillClr()
+{
+	return FigGfxInfo.FillClr;
+}
 void CFigure::SetFilledAsDefault()
 {
 	FilledAsDefault = true;

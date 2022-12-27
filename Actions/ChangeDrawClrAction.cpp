@@ -69,6 +69,8 @@ void ChangeDrawClrAction::Execute()
 			return;
 		else
 		{
+			color prevUIDraw = UI.DrawColor; //ziad use this
+			color prevFigDraw = pFig->GetDrawClr();
 			UI.DrawColor = NewDraw;
 			pFig->ChngDrawClr(NewDraw);
 			pFig->SetSelected(false);
