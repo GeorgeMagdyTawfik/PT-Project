@@ -46,7 +46,7 @@ void AddTriangleAction::Execute()
 }
 void AddTriangleAction::UndoExcute()
 {
-	pManager->deletefigure();
+	pManager->deletelastfigure();
 }
 void AddTriangleAction::RedoExcute()
 {

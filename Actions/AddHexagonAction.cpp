@@ -40,7 +40,7 @@ void AddHexagonAction::Execute()
 }
 void AddHexagonAction::UndoExcute()
 {
-	pManager->deletefigure();
+	pManager->deletelastfigure();
 
 }
 void AddHexagonAction::RedoExcute()

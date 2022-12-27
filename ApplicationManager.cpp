@@ -32,7 +32,7 @@ ApplicationManager::ApplicationManager()
 	undocount = 0;
 	undoexcuted = 0;
 	redocount = 0;
-	
+
 }
 
 //==================================================================================//
@@ -83,7 +83,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new UndoAction(this);
 		break;
 	case REDO:
-	pAct=new RedoAction(this);
+		pAct = new RedoAction(this);
 		break;
 	case CLEAR_ALL:
 		pAct = new ClearAllAction(this);
@@ -118,7 +118,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			else
 			{
 				undolist[undocount++] = pAct;
-				
+
 			}
 
 		}
@@ -135,8 +135,8 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
-	
-	undoexcuted =0;
+	if (undoexcuted > 0 && undoexcuted <= 5)
+		undoexcuted--;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -237,8 +237,8 @@ void ApplicationManager::DeleteAll()
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		delete FigList[i]; 
-		FigList[i] = NULL; 
+		delete FigList[i];
+		FigList[i] = NULL;
 	}
 }
 
@@ -329,7 +329,7 @@ void  ApplicationManager::SetUndoExcuted()
 
 }
 //////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::deletefigure()
+void ApplicationManager::deletelastfigure()
 {
 	FigCount--;
 	//FigList[FigCount - 1] = NULL;
@@ -358,7 +358,7 @@ void ApplicationManager::setExcutedeundoAction(Action* undoed)
 		redolist[redocount++] = undoed;
 
 	}
-	
+
 }
 Action* ApplicationManager::getundoedaction()
 {
@@ -369,9 +369,21 @@ void ApplicationManager::drawlast()
 {
 	FigList[FigCount++]->Draw(pOut);
 	redocount--;
-	undoexcuted-- ;
+	undoexcuted--;
 }
 int ApplicationManager::getredocount()
 {
 	return redocount;
+}
+int ApplicationManager::getredoExcuted()
+{
+	return redoexcuted;
+}
+int ApplicationManager::getundocount()
+{
+	return undocount;
+}
+void ApplicationManager::setredoExcute()
+{
+	redoexcuted++;
 }

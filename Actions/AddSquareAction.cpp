@@ -46,7 +46,7 @@ void AddSquareAction::Execute()
 
 void AddSquareAction::UndoExcute()
 {
-	pManager->deletefigure();
+	pManager->deletelastfigure();
 
 }
 void AddSquareAction::RedoExcute()

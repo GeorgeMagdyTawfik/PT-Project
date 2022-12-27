@@ -16,10 +16,11 @@ void UndoAction::ReadActionParameters()
 void UndoAction::Execute()
 {
 	ReadActionParameters();
-	int figcount = pManager->GetFigCount();
+	//int figcount = pManager->GetFigCount();
 	int undoExcuted = pManager->GetUndoExcuted();
+	int undocount = pManager->getundocount();
 	Output* pOut = pManager->GetOutput();
-	if (figcount == 0)
+	if (undocount == 0)
 	{
 		
 		pOut->PrintMessage("no action to undo");
@@ -36,7 +37,7 @@ void UndoAction::Execute()
 	{
 		UndoExcute();
 		pManager->SetUndoExcuted();
-		
+		pManager->setredoExcute();
 	}
 }
 void UndoAction::UndoExcute()

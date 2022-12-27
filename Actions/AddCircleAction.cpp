@@ -48,7 +48,7 @@ void AddCircleAction::Execute()
 }
 void AddCircleAction::UndoExcute()
 {
-	pManager->deletefigure();
+	pManager->deletelastfigure();
 }
 void AddCircleAction::RedoExcute()
 {

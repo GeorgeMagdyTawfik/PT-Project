@@ -48,7 +48,7 @@ void AddRectAction::Execute()
 }
 void AddRectAction::UndoExcute()
 {
-	pManager->deletefigure();
+	pManager->deletelastfigure();
 
 }
 void AddRectAction::RedoExcute()

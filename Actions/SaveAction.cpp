@@ -43,8 +43,7 @@ void SaveAction::UndoExcute()
 }
 
 SaveAction::~SaveAction()
-{
-}
+{}
 
 void SaveAction::RedoExcute()
 {}
