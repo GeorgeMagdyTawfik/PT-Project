@@ -12,16 +12,25 @@ void SelectFigAction::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
 
-	pOut->PrintMessage("Please click on a figure: ");
-	
-	// Store the selected point in the Private data member Point
-	pIn->GetPointClicked(Clicked.x, Clicked.y);
+	if (pManager->GetFigCount() != 0)
+	{
+		pOut->PrintMessage("Please click on a figure: ");
+		// Store the selected point in the Private data member Point
+		pIn->GetPointClicked(Clicked.x, Clicked.y);
+	}
+	else
+	{
+		pOut->PrintMessage("There are no figures to select!");
+	}
 }
 
 void SelectFigAction::Execute()
 {
 	ReadActionParameters();
-	
+	if (pManager->GetFigCount() == 0)
+	{
+		return;
+	}
 	CFigure* ClickedFig = pManager->GetFigure(Clicked.x, Clicked.y);
 	// Now I know where the kid clicked
 	// Get two pointers to access input and output 

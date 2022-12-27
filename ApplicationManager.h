@@ -20,6 +20,7 @@ private:
 	Action* RecordingList[MaxRecord]; // all the currently recorded actions
 	//CFigure* Been_undo_list[MaxFigCount];
 	CFigure* SelectedFig; //Pointer to the selected figure
+	bool RecordingState;
 
 	//Pointers to Input and Output classes
 	Input* pIn;
@@ -62,6 +63,9 @@ public:
 	// -- Setters and Getters
 	int GetFigCount() const;
 	void SetFigcount(int x); //this is needed for loading
+	void SetRecordingState(bool b);
+	bool GetRecordingState() const;
+	Action* GetRecordingList() const;
 
 	// -- Functions which Loop on FigList
 	bool DeleteFigure();

@@ -7,14 +7,19 @@ StartRecordingAction::StartRecordingAction(ApplicationManager* pApp) : Action(pA
 {}
 
 void StartRecordingAction::ReadActionParameters()
-{
-	Input* pIn = pManager->GetInput();
-	Output* pOut = pManager->GetOutput();
-}
+{}
 
 void StartRecordingAction::Execute()
 {
-	ReadActionParameters();
+	Input* pIn = pManager->GetInput();
+	Output* pOut = pManager->GetOutput();
+	int drawnfigs = pManager->GetFigCount();
+	if (drawnfigs != 0)
+	{
+		pOut->PrintMessage("Can't start recording here");
+		return;
+	}
+	pOut->PrintMessage("Can start a new recording here");
 }
 
 bool StartRecordingAction::CheckRecordability() const
