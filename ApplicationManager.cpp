@@ -33,6 +33,7 @@ ApplicationManager::ApplicationManager()
 	undoexcuted = 0;
 	redocount = 0;
 
+
 }
 
 //==================================================================================//
@@ -100,9 +101,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct != NULL)
 	{
 		pAct->Execute();//Execute
+		
 		UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
 		RedoAction* ra = dynamic_cast<RedoAction*>(pAct);
-		if (ua == NULL && ra == NULL)
+		SelectFigAction* SFA = dynamic_cast<SelectFigAction*>(pAct);
+		if (ua == NULL && ra == NULL&&SFA==NULL)
 		{
 			if (undocount > 4)
 			{
@@ -331,7 +334,9 @@ void  ApplicationManager::SetUndoExcuted()
 //////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::deletelastfigure()
 {
+	UnselectPrevious();
 	FigCount--;
+	
 	//FigList[FigCount - 1] = NULL;
 }
 Action* ApplicationManager::GetExcutedAction()

@@ -28,6 +28,7 @@ private:
 	Action* redolist[5];
 	int redocount;
 	int redoexcuted;
+	
 public:
 	ApplicationManager();
 	~ApplicationManager();
@@ -80,6 +81,7 @@ void setExcutedeundoAction(Action*);
 	///////////////////////////////////
 	int getundocount();
 	void setredoExcute();
+	
 };
 
 #endif

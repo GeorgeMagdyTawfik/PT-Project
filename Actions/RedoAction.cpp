@@ -33,6 +33,6 @@ void RedoAction::RedoExcute()
 {
 	Action* re = pManager->getundoedaction();
 	re->RedoExcute();
-
+	
 
 }
