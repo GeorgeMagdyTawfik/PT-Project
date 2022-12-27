@@ -9,9 +9,15 @@ void MoveAction::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	pOut->PrintMessage("Move: please click on where you want to move the figure.");
-	pIn->GetPointClicked(destination.x, destination.y);
-	pOut->ClearDrawArea();
+	CFigure* pFig = pManager->GetSelectedFig();
+	if (pFig)
+	{
+		pOut->PrintMessage("Move: please click on where you want to move the figure.");
+		pIn->GetPointClicked(destination.x, destination.y);
+		pOut->ClearDrawArea();
+	}
+	else
+		pOut->PrintMessage("No selected figure. Please select a figure first!");
 }
 
 void MoveAction::Execute()
@@ -24,10 +30,7 @@ void MoveAction::Execute()
 	{
 		pOut->PrintMessage("Moved figure to chosen point.");
 	}
-	else
-	{
-		pOut->PrintMessage("No selected figure. Please select a figure first!");
-	}
+
 }
 
 void MoveAction::UndoExcute()

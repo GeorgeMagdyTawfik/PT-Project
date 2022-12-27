@@ -8,12 +8,12 @@ private:
 public:
 	CHexagon(Point, GfxInfo FigureGfxInfo);
 	CHexagon();
-	virtual void Draw(Output* pOut) const;
-	virtual void Save(ofstream& OutFile);
-	virtual void Load(ifstream& InFile);
+	virtual void Draw(Output* pOut) const override;
+	virtual void Save(ofstream& OutFile) override;
+	virtual void Load(ifstream& InFile) override;
 	float GetHexagonArea() const;
 	float CalcAreaOfTriangle(Point A, Point B, Point C) const;
-	virtual bool CheckInside(int X, int Y) const;
+	virtual bool CheckInside(int X, int Y) const override;
 	virtual void Move(Point destination) override;
 };
 

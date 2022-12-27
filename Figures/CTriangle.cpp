@@ -24,8 +24,31 @@ float CTriangle::GetMyArea() const
 	return CalcArea(p1, p2, p3);
 }
 
-void CTriangle::Move(Point dest)
+void CTriangle::Move(Point destination)
 {
+	Point Centroid1;
+
+	Centroid1.x = (p1.x + p2.x + p3.x) / 3;
+	Centroid1.y = (p1.y + p2.y + p3.y) / 3;
+
+	Point Centroid2 = destination;
+
+	int dx1 = p1.x - Centroid1.x;
+	int dx2 = p2.x - Centroid1.x;
+	int dx3 = p3.x - Centroid1.x;
+
+	int dy1 = p1.y - Centroid1.y;
+	int dy2 = p2.y - Centroid1.y;
+	int dy3 = p3.y - Centroid1.y;
+
+	p1.x = Centroid2.x + dx1;
+	p2.x = Centroid2.x + dx2;
+	p3.x = Centroid2.x + dx3;
+
+	p1.y = Centroid2.y + dy1;
+	p2.y = Centroid2.y + dy2;
+	p3.y = Centroid2.y + dy3;
+
 }
 
 bool CTriangle::CheckInside(int X, int Y) const

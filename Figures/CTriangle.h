@@ -10,12 +10,12 @@ private:
 public:
 	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo);
 	CTriangle();
-	virtual void Draw(Output* pOut) const;
-	virtual void Save(ofstream& OutFile);
-	virtual void Load(ifstream& InFile);
-	virtual bool CheckInside(int X, int Y) const;
+	virtual void Draw(Output* pOut) const override;
+	virtual void Save(ofstream& OutFile) override;
+	virtual void Load(ifstream& InFile) override;
+	virtual bool CheckInside(int X, int Y) const override;
 	float CalcArea(Point A, Point B, Point C) const;
 	float GetMyArea() const;
-	virtual void Move(Point dest) override;
+	virtual void Move(Point destination) override;
 };
 
