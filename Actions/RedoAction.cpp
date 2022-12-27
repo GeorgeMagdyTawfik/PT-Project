@@ -36,3 +36,8 @@ void RedoAction::RedoExcute()
 
 
 }
+
+bool RedoAction::CheckRecordability() const
+{
+	return true;
+}

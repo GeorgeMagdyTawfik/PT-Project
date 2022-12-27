@@ -87,3 +87,8 @@ void ChangeDrawClrAction::RedoExcute()
 ChangeDrawClrAction::~ChangeDrawClrAction()
 {
 }
+
+bool ChangeDrawClrAction::CheckRecordability() const
+{
+	return true;
+}

@@ -12,10 +12,12 @@ class Action;
 class ApplicationManager
 {
 	enum { MaxFigCount = 200 };	//Max no of figures
-
+	enum { MaxRecord = 20 }; // Maximum number of recorded actions
 private:
 	int FigCount;		//Actual number of figures
+	int RecordedActionsCount;
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
+	Action* RecordingList[MaxRecord]; // all the currently recorded actions
 	//CFigure* Been_undo_list[MaxFigCount];
 	CFigure* SelectedFig; //Pointer to the selected figure
 

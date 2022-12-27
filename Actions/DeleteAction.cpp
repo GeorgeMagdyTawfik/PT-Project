@@ -31,3 +31,8 @@ void DeleteAction::UndoExcute()
 {}
 void DeleteAction::RedoExcute()
 {}
+
+bool DeleteAction::CheckRecordability() const
+{
+	return true;
+}

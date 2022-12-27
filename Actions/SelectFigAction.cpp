@@ -76,3 +76,8 @@ void SelectFigAction::UndoExcute()
 {}
 void SelectFigAction::RedoExcute()
 {}
+
+bool SelectFigAction::CheckRecordability() const
+{
+	return true;
+}

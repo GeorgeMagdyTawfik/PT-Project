@@ -15,6 +15,7 @@
 #include"Actions/ClearAllAction.h"
 #include "Actions/ChangeDrawClrAction.h"
 #include "Actions/ChangeFillClrAction.h"
+#include "Actions/StartRecordingAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -24,6 +25,10 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 
 	FigCount = 0;
+	RecordedActionsCount = 0;
+	//create an array of action pointers and set them to NULL
+	for (int i = 0; i < MaxRecord; i++)
+		RecordingList[i] = NULL;
 
 	//Create an array of figure pointers and set them to NULL		
 	for (int i = 0; i < MaxFigCount; i++)
@@ -117,6 +122,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case CLEAR_ALL:
 		pAct = new ClearAllAction(this);
+		break; // don't forget this
+	case START_REC:
+		pAct = new StartRecordingAction(this);
+		break;
 	case EXIT:
 		///create ExitAction here
 		

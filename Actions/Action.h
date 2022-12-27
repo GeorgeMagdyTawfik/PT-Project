@@ -27,6 +27,8 @@ public:
 	virtual void Execute() =0;
 	virtual void UndoExcute() = 0;
 	virtual void RedoExcute() = 0;
+
+	virtual bool CheckRecordability() const = 0;
 };
 
 #endif

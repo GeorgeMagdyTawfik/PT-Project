@@ -11,5 +11,7 @@ public:
 	virtual void UndoExcute() override;
 	virtual void RedoExcute() override;
 	~ChangeDrawClrAction();
+
+	virtual bool CheckRecordability() const;
 };
 

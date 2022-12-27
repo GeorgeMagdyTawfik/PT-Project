@@ -48,3 +48,8 @@ SaveAction::~SaveAction()
 
 void SaveAction::RedoExcute()
 {}
+
+bool SaveAction::CheckRecordability() const
+{
+	return false;
+}

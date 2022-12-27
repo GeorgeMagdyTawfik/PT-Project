@@ -10,5 +10,6 @@ public:
 	virtual void RedoExcute();
 
 
+	virtual bool CheckRecordability() const;
 };
 

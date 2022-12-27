@@ -54,3 +54,8 @@ void AddCircleAction::RedoExcute()
 {
 	pManager->drawlast();
 }
+
+bool AddCircleAction::CheckRecordability() const
+{
+	return true;
+}

@@ -18,4 +18,6 @@ public:
     virtual void UndoExcute();
     virtual void RedoExcute();
     ~SaveAction();
+
+    virtual bool CheckRecordability() const;
 };

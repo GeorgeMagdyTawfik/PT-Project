@@ -47,3 +47,8 @@ void AddHexagonAction::RedoExcute()
 {
 	pManager->drawlast();
 }
+
+bool AddHexagonAction::CheckRecordability() const
+{
+	return true;
+}
