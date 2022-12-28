@@ -38,8 +38,8 @@ public:
 
 	void SetFilledAsDefault(); //sets filled as the default for figures
 
-	string EncodeColor(color c) const; //takes color and returns corresponding name
-	color DecodeColor(string s) const; //takes color name and returns corresponding color
+	string EncodeColor(color c) const; //takes color and returns corresponding string
+	color DecodeColor(string s) const; //takes string and returns corresponding color
 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure

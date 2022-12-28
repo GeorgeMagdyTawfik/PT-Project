@@ -48,7 +48,7 @@ void CFigure::SetFilledAsDefault()
 {
 	FilledAsDefault = true;
 }
-color CFigure::DecodeColor(string s) const
+color CFigure::DecodeColor(string s) const		//takes string and returns corresponding color
 {
 	if (s == "BLACK")
 		return BLACK;
