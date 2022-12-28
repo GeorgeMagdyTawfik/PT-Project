@@ -8,6 +8,9 @@ class ChangeFillClrAction : public Action
 	CFigure* savedredo;
 	color prevFigFill;
 	color prevUIFill;
+	bool figwasfilled;
+	bool defaultwasfilled;
+
 
 public:
 	ChangeFillClrAction(ApplicationManager* pApp);
