@@ -269,6 +269,8 @@ void ApplicationManager::DeleteAll()
 		delete FigList[i];
 		FigList[i] = NULL;
 	}
+	undocount = 0;
+	redocount = 0;
 }
 
 int ApplicationManager::GetFigCount() const
