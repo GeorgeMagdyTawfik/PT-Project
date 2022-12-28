@@ -12,11 +12,18 @@ void StartRecordingAction::Execute(bool ReadParamsFirst)
 {
 	Output* pOut = pManager->GetOutput();
 	int drawnfigs = pManager->GetFigCount();
+
+	if (pManager->GetRecordingState() == true)
+	{
+		pOut->PrintMessage("Not possible : You are already recording!");
+		return;
+	}
 	if (drawnfigs != 0)
 	{
 		pOut->PrintMessage("Can't start recording here");
 		return;
 	}
+	
 	pManager->SetRecordingState(true);
 	pOut->PrintMessage("Recording Started! you have a maximum of 20 actions to record");
 }

@@ -31,6 +31,8 @@ private:
 	Action* redolist[5];
 	int redocount;
 	//int redoexcuted;
+	Action* LastAction;
+	void ToRecord_orNot(Action* last);
 public:
 	ApplicationManager();
 	~ApplicationManager();
@@ -64,6 +66,7 @@ public:
 	int GetFigCount() const;
 	void SetFigcount(int x); //this is needed for loading
 	void SetRecordingState(bool b);
+	bool GetRecordingState() const;
 	int GetRecordedActionsCount() const;
 	// Action** GetRecordingList() const; NOT ALLOWED
 

@@ -41,7 +41,8 @@ ApplicationManager::ApplicationManager()
 	undocount = 0;
 	undoexcuted = 0;
 	redocount = 0;
-	
+
+	LastAction = NULL;
 }
 
 //==================================================================================//
@@ -132,7 +133,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case EXIT:
 		///create ExitAction here
-		
+		for (int i = 0; i < RecordedActionsCount; i++)
+		{
+			delete RecordingList[i];
+		}
+		delete[]RecordingList;
 		break;
 
 	case STATUS:	//a click on the status bar ==> no action
@@ -167,10 +172,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		}
 		//delete pAct;	//You may need to change this line depending to your implementation
 		//pAct = NULL; 
-		if (pAct->CheckRecordability() && RecordingState && RecordedActionsCount < 20)
-		{
-			RecordingList[RecordedActionsCount++] = pAct;
-		}
+		LastAction = pAct;
+
+		ToRecord_orNot(LastAction); // Auto check
+
 		pAct = NULL;
 	}
 }
@@ -431,4 +436,23 @@ void ApplicationManager::SetRecordingState(bool b)
 int ApplicationManager::GetRecordedActionsCount() const
 {
 	return RecordedActionsCount;
+}
+
+bool ApplicationManager::GetRecordingState() const
+{
+	return RecordingState;
+}
+
+void ApplicationManager::ToRecord_orNot(Action* last)
+{
+	if (last->CheckRecordability() && RecordingState && RecordedActionsCount < 20)
+	{
+		RecordingList[RecordedActionsCount++] = last; // Store the last action in the list
+
+		if (RecordedActionsCount == 20) // when reaching maxRecord Warn the user then stop
+		{
+			pOut->PrintMessage("Recording Stopped automatically (20 actions were recorded)");
+			SetRecordingState(false);
+		}
+	}
 }
