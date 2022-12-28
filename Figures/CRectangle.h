@@ -17,10 +17,6 @@ public:
 	virtual void Load(ifstream& InFile);
 	virtual bool CheckInside(int x, int y) const;
 	virtual CFigure* getfigure();
-	virtual void Draw(Output* pOut) const override;
-	virtual void Save(ofstream& OutFile) override;
-	virtual void Load(ifstream& InFile) override;
-	virtual bool CheckInside(int x, int y) const override;
 	virtual void Move(Point destination) override;
 };
 

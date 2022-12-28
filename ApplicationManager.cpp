@@ -230,11 +230,11 @@ bool ApplicationManager::DeleteFigure()
 	{
 		if (FigList[i]->IsSelected())
 		{
-			//delete FigList[i];
+			delete FigList[i];
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
-			//FigList[FigCount - 1] = NULL;
-			//SelectedFig = NULL;
+			FigList[FigCount - 1] = NULL;
+			SelectedFig = NULL;
 			FigCount--;
 			return true;
 		}

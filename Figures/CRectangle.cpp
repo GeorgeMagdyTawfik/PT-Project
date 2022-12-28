@@ -71,7 +71,7 @@ CFigure* CRectangle::getfigure()
 {
 	return this;
 }
-}
+
 
 void CRectangle::Move(Point destination)
 {

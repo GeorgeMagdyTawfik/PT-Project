@@ -64,7 +64,7 @@ bool CFigure::IsFilled()
 {
 	return FigGfxInfo.isFilled;
 }
-color CFigure::DecodeColor(string s) const
+
 color CFigure::DecodeColor(string s) const		//takes string and returns corresponding color
 {
 	if (s == "BLACK")

@@ -15,7 +15,6 @@ public:
 	float CalcAreaOfTriangle(Point A, Point B, Point C) const;
 	virtual bool CheckInside(int X, int Y) const;
 	virtual CFigure* getfigure();
-	virtual bool CheckInside(int X, int Y) const override;
 	virtual void Move(Point destination) override;
 };
 
