@@ -162,7 +162,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		}
 		//delete pAct;	//You may need to change this line depending to your implementation
-		//pAct = NULL;
+		//pAct = NULL; 
+		if (pAct->CheckRecordability() && RecordingState && RecordedActionsCount < 20)
+		{
+			RecordingList[RecordedActionsCount++] = pAct;
+		}
+		pAct = NULL;
 	}
 }
 //==================================================================================//
@@ -410,4 +415,21 @@ void ApplicationManager::drawlast()
 int ApplicationManager::getredocount()
 {
 	return redocount;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::SetRecordingState(bool b)
+{
+	RecordingState = b;
+}
+
+int ApplicationManager::GetRecordedActionsCount() const
+{
+	return RecordedActionsCount;
+}
+
+Action** ApplicationManager::GetRecordingList() const
+{
+	return RecordingList;
 }

@@ -19,7 +19,8 @@ void StartRecordingAction::Execute()
 		pOut->PrintMessage("Can't start recording here");
 		return;
 	}
-	pOut->PrintMessage("Can start a new recording here");
+	pManager->SetRecordingState(true);
+	pOut->PrintMessage("Recording Started! you have a maximum of 20 actions to record");
 }
 
 bool StartRecordingAction::CheckRecordability() const

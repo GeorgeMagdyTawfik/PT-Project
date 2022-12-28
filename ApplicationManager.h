@@ -17,7 +17,7 @@ private:
 	int FigCount;		//Actual number of figures
 	int RecordedActionsCount;
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
-	Action* RecordingList[MaxRecord]; // all the currently recorded actions
+	Action** RecordingList = new Action*[MaxRecord]; /// all the currently recorded actions
 	//CFigure* Been_undo_list[MaxFigCount];
 	CFigure* SelectedFig; //Pointer to the selected figure
 	bool RecordingState;
@@ -64,8 +64,8 @@ public:
 	int GetFigCount() const;
 	void SetFigcount(int x); //this is needed for loading
 	void SetRecordingState(bool b);
-	bool GetRecordingState() const;
-	Action* GetRecordingList() const;
+	int GetRecordedActionsCount() const;
+	Action** GetRecordingList() const;
 
 	// -- Functions which Loop on FigList
 	bool DeleteFigure();

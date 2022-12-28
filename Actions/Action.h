@@ -29,6 +29,8 @@ public:
 	virtual void RedoExcute() = 0;
 
 	virtual bool CheckRecordability() const = 0;
+
+	virtual void Preview() {} /// I think I should make this Pure virtual after implementing it in all action classes
 };
 
 #endif
