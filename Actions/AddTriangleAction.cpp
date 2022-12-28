@@ -30,7 +30,7 @@ void AddTriangleAction::ReadActionParameters()
 	triangleGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-
+	pManager->addtoundolist(this);
 }
 
 

@@ -30,8 +30,9 @@ ApplicationManager::ApplicationManager()
 	for (int i = 0; i < 5; i++)
 		undolist[i] = NULL;
 	undocount = 0;
-	undoexcuted = 0;
+	
 	redocount = 0;
+	deletecount = 0;
 
 
 }
@@ -102,7 +103,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	{
 		pAct->Execute();//Execute
 		
-		UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
+		/*UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
 		RedoAction* ra = dynamic_cast<RedoAction*>(pAct);
 		SelectFigAction* SFA = dynamic_cast<SelectFigAction*>(pAct);
 		if (ua == NULL && ra == NULL&&SFA==NULL)
@@ -124,7 +125,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 			}
 
-		}
+		}*/
 		//delete pAct;	//You may need to change this line depending to your implementation
 		//pAct = NULL;
 	}
@@ -138,8 +139,8 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
-	if (undoexcuted > 0 && undoexcuted <= 5)
-		undoexcuted--;
+	//if (undoexcuted > 0 && undoexcuted <= 5)
+		//undoexcuted--;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -200,10 +201,28 @@ bool ApplicationManager::DeleteFigure()
 	{
 		if (FigList[i]->IsSelected())
 		{
-			delete FigList[i];
+			//delete FigList[i];
+			UnselectPrevious();
+			if (deletecount > 4)
+			{
+				undolist[0] = NULL;
+				for (int i = 0; i < 3; i++)
+				{
+					deletedlist[i] = deletedlist[i + 1];
+
+				}
+				deletedlist[4] = FigList[i];;
+				deletecount = 4;
+				deletecount++;
+			}
+			else
+			{
+				deletedlist[deletecount++] = FigList[i];
+
+			}
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
-			FigList[FigCount - 1] = NULL;
+			//FigList[FigCount - 1] = NULL;
 			SelectedFig = NULL;
 			FigCount--;
 			return true;
@@ -320,31 +339,33 @@ ApplicationManager::~ApplicationManager()
 
 }*/
 
-int  ApplicationManager::GetUndoExcuted()
+/*int  ApplicationManager::GetUndoExcuted()
 {
 	return undoexcuted;
 
 }
+*/
 
-void  ApplicationManager::SetUndoExcuted()
+/*void  ApplicationManager::SetUndoExcuted()
 {
 	undoexcuted++;
 
 }
+*/
 //////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::deletelastfigure()
 {
-	UnselectPrevious();
 	FigCount--;
 	
 	//FigList[FigCount - 1] = NULL;
 }
-Action* ApplicationManager::GetExcutedAction()
+/*Action* ApplicationManager::GetExcutedAction()
 {
 	return undolist[undocount - 1];
 
 }
-void ApplicationManager::setExcutedeundoAction(Action* undoed)
+*/
+/*void ApplicationManager::setExcutedeundoAction(Action* undoed)
 {
 
 	if (redocount > 4)
@@ -365,30 +386,73 @@ void ApplicationManager::setExcutedeundoAction(Action* undoed)
 	}
 
 }
-Action* ApplicationManager::getundoedaction()
+*/
+/*Action* ApplicationManager::getundoedaction()
 {
 
 	return redolist[redocount - 1];
 }
+*/
 void ApplicationManager::drawlast()
 {
 	FigList[FigCount++]->Draw(pOut);
-	redocount--;
-	undoexcuted--;
+	//redocount--;
+	//undoexcuted--;
 }
 int ApplicationManager::getredocount()
 {
 	return redocount;
 }
-int ApplicationManager::getredoExcuted()
+/*int ApplicationManager::getredoExcuted()
 {
 	return redoexcuted;
 }
+*/
 int ApplicationManager::getundocount()
 {
 	return undocount;
 }
-void ApplicationManager::setredoExcute()
+/*void ApplicationManager::setredoExcute()
 {
 	redoexcuted++;
+}
+*/
+void ApplicationManager::addtoundolist(Action*ac)
+{
+	redocount = 0;
+		if (undocount > 4)
+		{
+			undolist[0] = NULL;
+			for (int i = 0; i < 3; i++)
+			{
+				undolist[i] = undolist[i + 1];
+
+			}
+			undolist[4] = ac;
+			undocount = 4;
+			undocount++;
+		}
+		else
+		{
+			undolist[undocount++] = ac;
+
+		}
+
+	
+}
+void ApplicationManager::Undo()
+{
+	undolist[undocount-- - 1]->UndoExcute();
+	redocount++;
+}
+void ApplicationManager::Redo()
+{
+	undolist[undocount++]->RedoExcute();
+	redocount--;
+}
+void ApplicationManager::drawdeletedfigure()
+{
+	deletedlist[deletecount-- -1]->Draw(pOut);
+	//FigList[FigCount++]= deletedlist[deletecount--];
+	FigCount++;
 }

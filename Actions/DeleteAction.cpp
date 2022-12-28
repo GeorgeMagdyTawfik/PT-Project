@@ -21,7 +21,7 @@ void DeleteAction::Execute()
 		pOut->PrintMessage("No selected figure. Please select figure first!");
 	else
 		pOut->PrintMessage("Deleted selected figure.");
-	
+	pManager->addtoundolist(this);
 }
 
 DeleteAction::~DeleteAction()
@@ -29,8 +29,10 @@ DeleteAction::~DeleteAction()
 }
 void DeleteAction::UndoExcute()
 {
+	
+	pManager->drawdeletedfigure();
 }
 void DeleteAction::RedoExcute()
 {
-	
+	//pManager->deleteundoedaction();
 }

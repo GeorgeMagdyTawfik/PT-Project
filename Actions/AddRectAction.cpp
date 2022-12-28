@@ -31,7 +31,7 @@ void AddRectAction::ReadActionParameters()
 	RectGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-
+	pManager->addtoundolist(this);
 }
 
 //Execute the action

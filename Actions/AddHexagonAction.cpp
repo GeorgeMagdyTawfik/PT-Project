@@ -24,7 +24,7 @@ void AddHexagonAction::ReadActionParameters()
 	hexaGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-
+	pManager->addtoundolist(this);
 }
 
 

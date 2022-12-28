@@ -11,7 +11,7 @@ class Action;
 //Main class that manages everything in the application.
 class ApplicationManager
 {
-	enum { MaxFigCount = 200 };	//Max no of figures
+	enum { MaxFigCount = 200,MaxUndoCount=5 };	//Max no of figures
 
 private:
 	int FigCount;		//Actual number of figures
@@ -22,12 +22,14 @@ private:
 	//Pointers to Input and Output classes
 	Input* pIn;
 	Output* pOut;
-	Action* undolist[5];
+	Action* undolist[MaxUndoCount];
 	int undocount;
-	int undoexcuted; //number of undo action that achueved
-	Action* redolist[5];
+	//int undoexcuted; //number of undo action that achueved
+	//Action* redolist[5];
 	int redocount;
-	int redoexcuted;
+	//int redoexcuted;
+	CFigure* deletedlist[5];
+	int deletecount;
 	
 public:
 	ApplicationManager();
@@ -67,20 +69,26 @@ public:
 	// -- Functions which Loop on FigList
 	bool DeleteFigure();
 	//
-	int GetUndoExcuted();
-	void SetUndoExcuted();
+	//int GetUndoExcuted();
+	//void SetUndoExcuted();
 	void deletelastfigure();
-	Action* GetExcutedAction();
+	//Action* GetExcutedAction();
 	
 	//////////////////////////
-void setExcutedeundoAction(Action*);
-	Action* getundoedaction();
+//void setExcutedeundoAction(Action*);
+	//Action* getundoedaction();
 	void drawlast();
+	void drawdeletedfigure();
 	int getredocount();
-	int getredoExcuted();
+	//int getredoExcuted();
 	///////////////////////////////////
 	int getundocount();
-	void setredoExcute();
+	//void setredoExcute();
+	////////////////////////////////
+	void addtoundolist(Action*);
+	void Undo();
+	void Redo();
+	
 	
 };
 

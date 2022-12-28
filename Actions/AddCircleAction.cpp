@@ -31,6 +31,7 @@ void AddCircleAction::ReadActionParameters()
 	CircleGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
+	pManager->addtoundolist(this);
 
 }
 

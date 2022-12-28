@@ -11,5 +11,6 @@ class AddCircleAction : public Action
 		virtual void Execute();
 		virtual void UndoExcute();
 		virtual void RedoExcute();
+		
 };
 
