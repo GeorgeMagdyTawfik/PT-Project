@@ -63,6 +63,7 @@ void ChangeDrawClrAction::Execute()
 
 	if (chosen)
 	{
+		
 		CFigure* pFig = pManager->GetSelectedFig();
 
 		if (!pFig)

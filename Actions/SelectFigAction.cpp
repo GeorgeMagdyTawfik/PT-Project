@@ -62,8 +62,6 @@ void SelectFigAction::Execute()
 	// If the kid clicks on an empty space it will be ignored
 }
 void SelectFigAction::UndoExcute()
-{
-	pManager->UnselectPrevious();
-}
+{}
 void SelectFigAction::RedoExcute()
 {}

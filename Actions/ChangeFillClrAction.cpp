@@ -87,6 +87,7 @@ void ChangeFillClrAction::UndoExcute()
 	{
 		saved->SetNotFilledAsDefault();
 		saved->MakeNotFilled();
+
 	}
 	else
 	{
