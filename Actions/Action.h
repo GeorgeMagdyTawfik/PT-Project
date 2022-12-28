@@ -30,7 +30,7 @@ public:
 
 	virtual bool CheckRecordability() const = 0;
 
-	virtual void Preview() {} /// I think I should make this Pure virtual after implementing it in all action classes
+	//virtual void Preview() {} now we don't need this 
 };
 
 #endif

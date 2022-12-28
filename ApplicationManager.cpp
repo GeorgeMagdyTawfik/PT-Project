@@ -17,6 +17,7 @@
 #include "Actions/ChangeFillClrAction.h"
 #include "Actions/StartRecordingAction.h"
 #include "Actions/StopRecordingAction.h"
+#include "Actions/PlayRecordingAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -131,6 +132,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case STOP_REC:
 		pAct = new StopRecordingAction(this);
 		break;
+	case PLAY_REC:
+		pAct = new PlayRecordingAction(this);
+		break;
 	case EXIT:
 		///create ExitAction here
 		for (int i = 0; i < RecordedActionsCount; i++)
@@ -235,6 +239,7 @@ CFigure* ApplicationManager::GetSelectedFig() const
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {
+	pOut->ClearDrawArea(); /// this is important
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Draw(pOut);	//Call Draw function (virtual member fn)
 
@@ -290,6 +295,7 @@ void ApplicationManager::DeleteAll()
 		delete FigList[i]; 
 		FigList[i] = NULL; 
 	}
+	SetFigcount(0); /// This was desparately needed
 }
 
 int ApplicationManager::GetFigCount() const
@@ -455,4 +461,33 @@ void ApplicationManager::ToRecord_orNot(Action* last)
 			SetRecordingState(false);
 		}
 	}
+}
+
+void ApplicationManager::PreviewRecordedActs()
+{
+	DeleteAll();
+	pOut->ClearDrawArea();
+	pOut->PrintMessage("Started Playing");
+	for (int i = 0; i < RecordedActionsCount; i++)
+	{
+		_sleep(1000);
+		RecordingList[i]->Execute(0);
+		UpdateInterface();
+	}
+	pOut->PrintMessage("Finished the recorded actions");
+}
+
+void ApplicationManager::RemovePastRecording()
+{
+	for (int i = 0; i < RecordedActionsCount; i++)
+	{
+		delete RecordingList[i];
+		RecordingList[i] = NULL;
+	}
+	SetRecordedActionsCount(0);
+}
+
+void ApplicationManager::SetRecordedActionsCount(int a)
+{
+	RecordedActionsCount = a;
 }

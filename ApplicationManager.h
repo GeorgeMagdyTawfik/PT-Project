@@ -69,6 +69,9 @@ public:
 	bool GetRecordingState() const;
 	int GetRecordedActionsCount() const;
 	// Action** GetRecordingList() const; NOT ALLOWED
+	void PreviewRecordedActs();
+	void RemovePastRecording(); /// Important ; will call this when starting a new recording
+	void SetRecordedActionsCount(int); /// Important
 
 	// -- Functions which Loop on FigList
 	bool DeleteFigure();

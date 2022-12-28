@@ -23,7 +23,10 @@ void StartRecordingAction::Execute(bool ReadParamsFirst)
 		pOut->PrintMessage("Can't start recording here");
 		return;
 	}
-	
+	if (pManager->GetRecordedActionsCount() != 0)
+	{
+		pManager->RemovePastRecording();
+	}
 	pManager->SetRecordingState(true);
 	pOut->PrintMessage("Recording Started! you have a maximum of 20 actions to record");
 }
