@@ -18,6 +18,7 @@
 #include "Actions/StartRecordingAction.h"
 #include "Actions/StopRecordingAction.h"
 #include "Actions/PlayRecordingAction.h"
+#include "Actions\SwitchToDrawMode.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -98,6 +99,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case TO_PLAY:
 		pAct = new SwitchToPlayMode(this);
+		break;
+	case TO_DRAW:
+		pAct = new SwitchToDrawMode(this);
 		break;
 	case UNDO:
 		pAct = new UndoAction(this);
