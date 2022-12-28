@@ -188,7 +188,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\SelectFigAction.cpp" />
-    <ClCompile Include="MoveAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircleAction.h" />
@@ -237,7 +236,6 @@
     <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\LoadAction.h" />
     <ClInclude Include="Actions\SelectFigAction.h" />
-    <ClInclude Include="MoveAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
