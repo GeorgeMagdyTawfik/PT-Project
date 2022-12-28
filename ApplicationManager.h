@@ -78,7 +78,7 @@ public:
 //void setExcutedeundoAction(Action*);
 	//Action* getundoedaction();
 	void drawlast();
-	void drawdeletedfigure();
+	
 	int getredocount();
 	//int getredoExcuted();
 	///////////////////////////////////

@@ -450,9 +450,3 @@ void ApplicationManager::Redo()
 	undolist[undocount++]->RedoExcute();
 	redocount--;
 }
-void ApplicationManager::drawdeletedfigure()
-{
-	deletedlist[deletecount-- -1]->Draw(pOut);
-	//FigList[FigCount++]= deletedlist[deletecount--];
-	FigCount++;
-}

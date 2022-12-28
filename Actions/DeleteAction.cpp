@@ -30,7 +30,7 @@ DeleteAction::~DeleteAction()
 void DeleteAction::UndoExcute()
 {
 	
-	pManager->drawdeletedfigure();
+	
 }
 void DeleteAction::RedoExcute()
 {
