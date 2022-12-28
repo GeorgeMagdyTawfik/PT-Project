@@ -17,8 +17,7 @@ Output::Output()
 	UI.MenuItemWidth = 50;
 	
 	UI.DrawColor = color(0, 87, 231); ///google's blue
-	//UI.FillColor = color(0, 135, 68);	//google's green : why is this not working ?
-	UI.FillColor = SEASHELL;			//
+	UI.FillColor = color(0, 135, 68);	//google's green : why is this not working ?
 	UI.MsgColor = color(255, 167, 0);		///google's yellow 
 	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only

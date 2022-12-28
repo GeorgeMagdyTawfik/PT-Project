@@ -69,8 +69,10 @@ void ChangeFillClrAction::Execute()
 			return;
 		else
 		{
-			 prevUIFill = UI.FillColor; //ziad use this
-			 prevFigFill = pFig->GetFillClr();
+			figwasfilled = pFig->IsFilled();		//now we know whether the figure was filled or not
+			defaultwasfilled = pFig->IsFilledAsDefault();
+			prevUIFill = UI.FillColor; //ziad use this
+			prevFigFill = pFig->GetFillClr();
 			UI.FillColor = NewFill;
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
@@ -83,16 +85,22 @@ void ChangeFillClrAction::Execute()
 
 void ChangeFillClrAction::UndoExcute()
 {
-	if (prevFigFill == SEASHELL)
+	if (figwasfilled)
 	{
-		saved->SetNotFilledAsDefault();
-		saved->MakeNotFilled();
-
+		saved->ChngFillClr(prevFigFill);
 	}
 	else
 	{
+		saved->MakeNotFilled();
+
+	}
+	if (defaultwasfilled)
+	{
 		UI.FillColor = prevUIFill;
-		saved->ChngFillClr(prevFigFill);
+	}
+	else
+	{
+		saved->SetNotFilledAsDefault();
 	}
 }
 

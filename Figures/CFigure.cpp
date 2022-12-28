@@ -56,6 +56,14 @@ void CFigure::SetNotFilledAsDefault()
 {
 	FilledAsDefault = false;
 }
+bool CFigure::IsFilledAsDefault()
+{
+	return FilledAsDefault;
+}
+bool CFigure::IsFilled()
+{
+	return FigGfxInfo.isFilled;
+}
 color CFigure::DecodeColor(string s) const
 {
 	if (s == "BLACK")

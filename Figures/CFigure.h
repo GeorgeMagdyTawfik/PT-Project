@@ -40,6 +40,8 @@ public:
 
 	void SetFilledAsDefault();		//sets filled as the default for figures
 	void SetNotFilledAsDefault();	//sets not filled as the default for figures
+	bool IsFilledAsDefault();		//returns whether the default for figures is filled or not
+	bool IsFilled();				//returns whether the figure is filled or not
 
 	string EncodeColor(color c) const; //takes color and returns corresponding name
 	color DecodeColor(string s) const; //takes color name and returns corresponding color
