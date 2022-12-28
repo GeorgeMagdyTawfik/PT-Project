@@ -85,3 +85,4 @@ int CFigure::GetFigCount()
 	return FigCount;
 }
 
+

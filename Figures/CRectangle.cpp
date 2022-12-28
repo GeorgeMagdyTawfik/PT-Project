@@ -67,3 +67,7 @@ bool CRectangle::CheckInside(int x, int y) const
 		&&	y <= BR.y
 		);
 }
+CFigure* CRectangle::getfigure()
+{
+	return this;
+}

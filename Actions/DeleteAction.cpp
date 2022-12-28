@@ -16,6 +16,8 @@ void DeleteAction::Execute()
 	ReadActionParameters();
 	//CFigure* pFig = pManager->GetSelectedFig();
 	Output* pOut = pManager->GetOutput();
+	saved = pManager->GetSelectedFig()->getfigure();
+	savedredo = pManager->GetSelectedFig()->getfigure();
 	bool done = pManager->DeleteFigure();
 	if (!done)
 		pOut->PrintMessage("No selected figure. Please select figure first!");
@@ -29,10 +31,11 @@ DeleteAction::~DeleteAction()
 }
 void DeleteAction::UndoExcute()
 {
-	
+
 	
 }
 void DeleteAction::RedoExcute()
 {
-	//pManager->deleteundoedaction();
+	
+	
 }

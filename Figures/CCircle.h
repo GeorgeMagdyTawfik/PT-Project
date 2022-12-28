@@ -12,5 +12,6 @@ class CCircle:public CFigure
 	CCircle();
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& InFile);
+	virtual CFigure* getfigure();
 };
 

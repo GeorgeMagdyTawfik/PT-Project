@@ -62,3 +62,7 @@ void CSquare::Load(ifstream& InFile)
 		FigGfxInfo.FillClr = DecodeColor(color2);
 	}
 }
+CFigure* CSquare::getfigure()
+{
+	return this;
+}

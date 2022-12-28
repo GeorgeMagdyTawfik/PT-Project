@@ -17,6 +17,7 @@ void ChangeFillClrAction::ReadActionParameters()
 
 	else
 	{
+		
 		pOut->PrintMessage("Change fill color: please choose a color: ");
 
 		ActType = pManager->GetUserAction();
@@ -63,23 +64,30 @@ void ChangeFillClrAction::Execute()
 	if (chosen)
 	{
 		CFigure* pFig = pManager->GetSelectedFig();
-
+		saved = pManager->GetSelectedFig()->getfigure();
 		if (!pFig)
 			return;
 		else
 		{
-			color prevUIFill = UI.FillColor; //ziad use this
-			color prevFigFill = pFig->GetFillClr();
+			 prevUIFill = UI.FillColor; //ziad use this
+			 prevFigFill = pFig->GetFillClr();
 			UI.FillColor = NewFill;
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
+			savedredo = pManager->GetSelectedFig()->getfigure();
 			pFig->SetSelected(false);
 		}
 	}
+	pManager->addtoundolist(this);
 }
 
 void ChangeFillClrAction::UndoExcute()
 {
+	UI.FillColor = prevUIFill;
+	saved->ChngFillClr(prevFigFill);
+
+
+
 }
 
 void ChangeFillClrAction::RedoExcute()

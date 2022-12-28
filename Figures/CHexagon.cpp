@@ -100,3 +100,7 @@ void CHexagon::Load(ifstream& InFile)
 		FigGfxInfo.FillClr = DecodeColor(color2);
 	}
 }
+CFigure* CHexagon::getfigure()
+{
+	return this;
+}

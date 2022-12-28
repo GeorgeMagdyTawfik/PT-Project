@@ -2,6 +2,9 @@
 #include "Action.h"
 class DeleteAction : public Action
 {
+private:
+	CFigure* saved;
+	CFigure* savedredo;
 public:
 	DeleteAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters() override;

@@ -68,3 +68,7 @@ void CTriangle::Load(ifstream& InFile)
 		FigGfxInfo.FillClr = DecodeColor(color2);
 	}
 }
+CFigure* CTriangle::getfigure()
+{
+	return this;
+}

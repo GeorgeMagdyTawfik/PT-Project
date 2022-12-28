@@ -68,3 +68,7 @@ void CCircle::Load(ifstream& InFile)
 		FigGfxInfo.FillClr = DecodeColor(color2);
 	}
 }
+CFigure* CCircle::getfigure()
+{
+	return this;
+}

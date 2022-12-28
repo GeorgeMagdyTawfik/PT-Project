@@ -165,8 +165,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
-	//if (undoexcuted > 0 && undoexcuted <= 5)
-		//undoexcuted--;
+	
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -228,28 +227,10 @@ bool ApplicationManager::DeleteFigure()
 		if (FigList[i]->IsSelected())
 		{
 			//delete FigList[i];
-			UnselectPrevious();
-			if (deletecount > 4)
-			{
-				undolist[0] = NULL;
-				for (int i = 0; i < 3; i++)
-				{
-					deletedlist[i] = deletedlist[i + 1];
-
-				}
-				deletedlist[4] = FigList[i];;
-				deletecount = 4;
-				deletecount++;
-			}
-			else
-			{
-				deletedlist[deletecount++] = FigList[i];
-
-			}
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
 			//FigList[FigCount - 1] = NULL;
-			SelectedFig = NULL;
+			//SelectedFig = NULL;
 			FigCount--;
 			return true;
 		}
