@@ -36,6 +36,10 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr;
 }
+void CFigure::MakeNotFilled()
+{
+	FigGfxInfo.isFilled = false;
+}
 color CFigure::GetDrawClr()
 {
 	return FigGfxInfo.DrawClr;
@@ -47,6 +51,10 @@ color CFigure::GetFillClr()
 void CFigure::SetFilledAsDefault()
 {
 	FilledAsDefault = true;
+}
+void CFigure::SetNotFilledAsDefault()
+{
+	FilledAsDefault = false;
 }
 color CFigure::DecodeColor(string s) const
 {

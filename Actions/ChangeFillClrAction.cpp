@@ -83,11 +83,16 @@ void ChangeFillClrAction::Execute()
 
 void ChangeFillClrAction::UndoExcute()
 {
-	UI.FillColor = prevUIFill;
-	saved->ChngFillClr(prevFigFill);
-
-
-
+	if (prevFigFill == SEASHELL)
+	{
+		saved->SetNotFilledAsDefault();
+		saved->MakeNotFilled();
+	}
+	else
+	{
+		UI.FillColor = prevUIFill;
+		saved->ChngFillClr(prevFigFill);
+	}
 }
 
 void ChangeFillClrAction::RedoExcute()
