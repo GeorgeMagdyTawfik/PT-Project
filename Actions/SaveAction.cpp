@@ -14,9 +14,12 @@ void SaveAction::ReadActionParameters()
 	filename += ".txt";
 }
 
-void SaveAction::Execute()
+void SaveAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	// this action will not be recorded but when switching from draw to play mode we need to 
+	// save the current sketch in a file without asking the kid to do it explicitly
+	if (ReadParamsFirst)
+		ReadActionParameters();
 
 	OutFile.open(filename);
 

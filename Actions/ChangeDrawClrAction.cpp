@@ -57,9 +57,10 @@ void ChangeDrawClrAction::ReadActionParameters()
 	}
 }
 
-void ChangeDrawClrAction::Execute()
+void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 
 	if (chosen)
 	{

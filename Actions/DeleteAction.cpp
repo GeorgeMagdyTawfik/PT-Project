@@ -11,9 +11,10 @@ void DeleteAction::ReadActionParameters()
 	pOut->ClearDrawArea();
 }
 
-void DeleteAction::Execute()
+void DeleteAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 	//CFigure* pFig = pManager->GetSelectedFig();
 	Output* pOut = pManager->GetOutput();
 	bool done = pManager->DeleteFigure();

@@ -56,9 +56,10 @@ void ChangeFillClrAction::ReadActionParameters()
 	}
 }
 
-void ChangeFillClrAction::Execute()
+void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 
 	if (chosen)
 	{

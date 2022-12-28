@@ -8,7 +8,7 @@ SwitchToPlayMode::SwitchToPlayMode(ApplicationManager* pApp) : Action(pApp)
 void SwitchToPlayMode::ReadActionParameters()
 {}
 
-void SwitchToPlayMode::Execute()
+void SwitchToPlayMode::Execute(bool ReadParamsFirst)
 {
 	Output* pOut = pManager->GetOutput();
 	pOut->CreatePlayToolBar();

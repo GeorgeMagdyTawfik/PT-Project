@@ -11,9 +11,10 @@ void ClearAllAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("clearall action");
 }
-void ClearAllAction::Execute()
+void ClearAllAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
 	pManager->DeleteAll();

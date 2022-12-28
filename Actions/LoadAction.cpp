@@ -22,9 +22,12 @@ void LoadAction::ReadActionParameters()
 	filename += ".txt";
 }
 
-void LoadAction::Execute()
+void LoadAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	// This action will not be recorded but, when switching from play mode back to draw mode we will need to 
+	// reload the saved drawing without asking the kid for the name of the file
+	if (ReadParamsFirst)
+		ReadActionParameters(); 
 
 	InFile.open(filename);
 

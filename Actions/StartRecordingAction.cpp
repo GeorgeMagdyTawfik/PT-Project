@@ -9,7 +9,7 @@ StartRecordingAction::StartRecordingAction(ApplicationManager* pApp) : Action(pA
 void StartRecordingAction::ReadActionParameters()
 {}
 
-void StartRecordingAction::Execute()
+void StartRecordingAction::Execute(bool ReadParamsFirst)
 {
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();

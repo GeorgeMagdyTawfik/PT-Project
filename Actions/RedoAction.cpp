@@ -11,9 +11,10 @@ void RedoAction::ReadActionParameters()
 	pOut->PrintMessage("redo action");
 	
 }
-void RedoAction::Execute()
+void RedoAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
 	if (pManager->getredocount() == 0)
 	{

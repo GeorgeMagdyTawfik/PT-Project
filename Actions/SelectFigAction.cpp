@@ -24,9 +24,11 @@ void SelectFigAction::ReadActionParameters()
 	}
 }
 
-void SelectFigAction::Execute()
+/// The functions here need Redesign
+
+void SelectFigAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	ReadActionParameters(); /// If condition reDesign
 	if (pManager->GetFigCount() == 0)
 	{
 		return;
@@ -45,7 +47,7 @@ void SelectFigAction::Execute()
 	{
 		if (ClickedFig->IsSelected() == false) // if it was not selected
 		{
-			///TODO: let's unselect the previously selcted figure
+			//unselect the previously selcted figure
 			UnselectPrevious(pManager->GetSelectedFigure());
 
 			ClickedFig->SetSelected(true); // select this fig
