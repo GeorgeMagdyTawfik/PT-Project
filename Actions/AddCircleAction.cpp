@@ -35,10 +35,10 @@ void AddCircleAction::ReadActionParameters()
 }
 
 //Execute the action
-void AddCircleAction::Execute()
+void AddCircleAction::Execute(bool ReadParamsFirst)
 {
-	
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 
 	
 	CCircle* R = new CCircle(P1, P2, CircleGfxInfo);

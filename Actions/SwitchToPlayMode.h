@@ -8,7 +8,7 @@ public:
 	// I do not need a real implementation (just to make this class not abstract)
 	virtual void ReadActionParameters();
 
-	virtual void Execute();
+	virtual void Execute(bool ReadParamsFirst = true);
 
 	void UndoExcute();
 	void RedoExcute();

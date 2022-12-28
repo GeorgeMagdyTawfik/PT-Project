@@ -10,7 +10,7 @@ private:
 public:
 	SelectFigAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
-	virtual void Execute();
+	virtual void Execute(bool ReadParamsFirst = true);
 
 	void UnselectPrevious(CFigure* previous);
   
