@@ -64,11 +64,12 @@ void ChangeFillClrAction::Execute()
 	if (chosen)
 	{
 		CFigure* pFig = pManager->GetSelectedFig();
-		saved = pManager->GetSelectedFig()->getfigure();
+		
 		if (!pFig)
 			return;
 		else
 		{
+			saved = pManager->GetSelectedFig()->getfigure();
 			figwasfilled = pFig->IsFilled();		//now we know whether the figure was filled or not
 			defaultwasfilled = pFig->IsFilledAsDefault();
 			prevUIFill = UI.FillColor; //ziad use this
