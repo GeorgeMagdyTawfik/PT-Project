@@ -5,7 +5,6 @@ class ChangeFillClrAction : public Action
 	color NewFill;
 	bool chosen;
 	CFigure* saved;
-	CFigure* savedredo;
 	color prevFigFill;
 	color prevUIFill;
 	bool figwasfilled;

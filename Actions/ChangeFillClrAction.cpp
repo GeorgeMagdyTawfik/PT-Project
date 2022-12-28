@@ -76,7 +76,6 @@ void ChangeFillClrAction::Execute()
 			UI.FillColor = NewFill;
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
-			savedredo = pManager->GetSelectedFig()->getfigure();
 			pFig->SetSelected(false);
 		}
 	}
@@ -106,6 +105,10 @@ void ChangeFillClrAction::UndoExcute()
 
 void ChangeFillClrAction::RedoExcute()
 {
+	saved->ChngFillClr(NewFill);
+	UI.FillColor = NewFill;
+
+
 }
 
 ChangeFillClrAction::~ChangeFillClrAction()
