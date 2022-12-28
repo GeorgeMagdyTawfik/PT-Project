@@ -1,6 +1,5 @@
 #include "StartRecordingAction.h"
 #include "../ApplicationManager.h"
-#include "../GUI/Input.h"
 #include "../GUI/Output.h"
 
 StartRecordingAction::StartRecordingAction(ApplicationManager* pApp) : Action(pApp)
@@ -11,7 +10,6 @@ void StartRecordingAction::ReadActionParameters()
 
 void StartRecordingAction::Execute(bool ReadParamsFirst)
 {
-	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
 	int drawnfigs = pManager->GetFigCount();
 	if (drawnfigs != 0)

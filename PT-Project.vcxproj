@@ -190,6 +190,7 @@
     <ClCompile Include="Actions\SelectFigAction.cpp" />
     <ClCompile Include="Actions\SwitchToPlayMode.cpp" />
     <ClCompile Include="Actions\StartRecordingAction.cpp" />
+    <ClCompile Include="Actions\StopRecordingAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircleAction.h" />
@@ -240,6 +241,7 @@
     <ClInclude Include="Actions\SelectFigAction.h" />
     <ClInclude Include="Actions\SwitchToPlayMode.h" />
     <ClInclude Include="Actions\StartRecordingAction.h" />
+    <ClInclude Include="Actions\StopRecordingAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

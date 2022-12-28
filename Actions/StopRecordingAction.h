@@ -1,12 +1,13 @@
 #pragma once
 #include "Action.h"
+#include "../ApplicationManager.h"
 
 class Action;
 
-class StartRecordingAction : public Action
+class StopRecordingAction : public Action
 {
 public:
-	StartRecordingAction(ApplicationManager* pApp);
+	StopRecordingAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute(bool ReadParamsFirst = true);
 	virtual bool CheckRecordability() const;

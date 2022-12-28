@@ -65,7 +65,7 @@ public:
 	void SetFigcount(int x); //this is needed for loading
 	void SetRecordingState(bool b);
 	int GetRecordedActionsCount() const;
-	Action** GetRecordingList() const;
+	// Action** GetRecordingList() const; NOT ALLOWED
 
 	// -- Functions which Loop on FigList
 	bool DeleteFigure();

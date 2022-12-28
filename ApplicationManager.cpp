@@ -16,6 +16,7 @@
 #include "Actions/ChangeDrawClrAction.h"
 #include "Actions/ChangeFillClrAction.h"
 #include "Actions/StartRecordingAction.h"
+#include "Actions/StopRecordingAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -125,6 +126,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break; // don't forget this
 	case START_REC:
 		pAct = new StartRecordingAction(this);
+		break;
+	case STOP_REC:
+		pAct = new StopRecordingAction(this);
 		break;
 	case EXIT:
 		///create ExitAction here
@@ -427,9 +431,4 @@ void ApplicationManager::SetRecordingState(bool b)
 int ApplicationManager::GetRecordedActionsCount() const
 {
 	return RecordedActionsCount;
-}
-
-Action** ApplicationManager::GetRecordingList() const
-{
-	return RecordingList;
 }
