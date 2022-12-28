@@ -430,7 +430,7 @@ void ApplicationManager::addtoundolist(Action*ac)
 		if (undocount > 4)
 		{
 			undolist[0] = NULL;
-			for (int i = 0; i < 3; i++)
+			for (int i = 0; i <= 3; i++)
 			{
 				undolist[i] = undolist[i + 1];
 
