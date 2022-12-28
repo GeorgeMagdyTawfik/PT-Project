@@ -66,3 +66,8 @@ CFigure* CSquare::getfigure()
 {
 	return this;
 }
+
+void CSquare::Move(Point destination)
+{
+	center = destination;
+}

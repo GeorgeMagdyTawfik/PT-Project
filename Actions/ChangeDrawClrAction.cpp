@@ -14,7 +14,7 @@ void ChangeDrawClrAction::ReadActionParameters()
 	CFigure* pFig = pManager->GetSelectedFig();
 
 	if (!pFig) 
-		pOut->PrintMessage("Please select a figure first!");
+		pOut->PrintMessage("No selected figure. Please select a figure first!");
 
 	else
 	{

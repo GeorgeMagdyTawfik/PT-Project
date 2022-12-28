@@ -74,9 +74,12 @@ public:
 	void deletelastfigure();
 	//Action* GetExcutedAction();
 	
+	bool MoveFigure(Point);
 	//////////////////////////
 //void setExcutedeundoAction(Action*);
 	//Action* getundoedaction();
+	void setExcutedeundoAction(Action*);
+	Action* getundoedaction();
 	void drawlast();
 	
 	int getredocount();

@@ -72,3 +72,14 @@ CFigure* CCircle::getfigure()
 {
 	return this;
 }
+
+void CCircle::Move(Point destination)
+{
+	Point RadialPoint;
+	
+	RadialPoint.x = destination.x + abs(center.x - distance.x);
+	RadialPoint.y = destination.y + abs(center.y - distance.y);
+
+	center = destination;
+	distance = RadialPoint;
+}

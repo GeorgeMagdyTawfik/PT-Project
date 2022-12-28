@@ -43,8 +43,8 @@ public:
 	bool IsFilledAsDefault();		//returns whether the default for figures is filled or not
 	bool IsFilled();				//returns whether the figure is filled or not
 
-	string EncodeColor(color c) const; //takes color and returns corresponding name
-	color DecodeColor(string s) const; //takes color name and returns corresponding color
+	string EncodeColor(color c) const; //takes color and returns corresponding string
+	color DecodeColor(string s) const; //takes string and returns corresponding color
 
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
@@ -55,6 +55,8 @@ public:
 
 	virtual void Save(ofstream& OutFile) = 0;	//Save the figure parameters to the file
 	virtual void Load(ifstream& InFile) = 0;	//Load the figure parameters to the file
+
+	virtual void Move(Point dest) = 0;
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 	

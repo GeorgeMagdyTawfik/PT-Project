@@ -20,7 +20,7 @@ void DeleteAction::Execute()
 	savedredo = pManager->GetSelectedFig()->getfigure();
 	bool done = pManager->DeleteFigure();
 	if (!done)
-		pOut->PrintMessage("No selected figure. Please select figure first!");
+		pOut->PrintMessage("No selected figure. Please select a figure first!");
 	else
 		pOut->PrintMessage("Deleted selected figure.");
 	pManager->addtoundolist(this);
