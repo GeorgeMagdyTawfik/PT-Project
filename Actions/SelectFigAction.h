@@ -7,6 +7,8 @@ class SelectFigAction : public Action
 private:
 	// I only need to know where the kid clicked
 	Point Clicked;
+	CFigure* ClickedFig;
+	CFigure* was_selected;
 public:
 	SelectFigAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();

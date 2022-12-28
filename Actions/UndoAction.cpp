@@ -10,7 +10,7 @@ void UndoAction::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("undo action");
-	pOut->ClearDrawArea(); 
+	
 
 }
 void UndoAction::Execute(bool ReadParamsFirst)
@@ -20,6 +20,7 @@ void UndoAction::Execute(bool ReadParamsFirst)
 	int figcount = pManager->GetFigCount();
 	int undoExcuted = pManager->GetUndoExcuted();
 	Output* pOut = pManager->GetOutput();
+	pOut->ClearDrawArea();
 	if (figcount == 0)
 	{
 		
