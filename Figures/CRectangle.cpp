@@ -88,3 +88,12 @@ Point CRectangle::GetCenter()
 	c.y = (Corner1.y + Corner2.y) / 2;
 	return c;
 }
+void CRectangle::PrintInfo(Output* pOut)
+{
+	string msg = "Rectangle : ID = " + to_string(ID);
+	msg += ", Start(" + to_string(UL.x) + ", " + to_string(UL.y) + ") " +
+		" End (" + to_string(BR.x) + ", " + to_string(BR.y) + ")";
+	msg += ", length = " + to_string(BR.x - UL.x)
+		+ ", width = " + to_string(BR.y - UL.y);
+	pOut->PrintMessage(msg);
+}

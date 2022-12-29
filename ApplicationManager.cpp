@@ -575,3 +575,22 @@ void ApplicationManager::SetRecordedActionsCount(int a)
 {
 	RecordedActionsCount = a;
 }
+void ApplicationManager::DeleteByID(CFigure* c)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[FigCount]->GetID() == c->GetID())
+			delete FigList[FigCount];
+
+	}
+}
+void ApplicationManager::DrawByID(CFigure* c)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[FigCount]->GetID() == c->GetID())
+			FigCount++;
+			c->Draw(pOut);
+
+	}
+}

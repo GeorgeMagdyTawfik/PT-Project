@@ -135,3 +135,7 @@ void CFigure::UpdateFigGfxFillClr(color c)
 	PrevFigGfxInfo.isFilled = true;
 	PrevFigGfxInfo.FillClr = c;
 }
+int CFigure::GetID()
+{
+	return ID;
+}

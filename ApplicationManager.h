@@ -103,8 +103,8 @@ public:
 	void addtoundolist(Action*);
 	void Undo();
 	void Redo();
-	
-	
+	void DeleteByID(CFigure*);
+	void DrawByID(CFigure*);
 };
 
 #endif

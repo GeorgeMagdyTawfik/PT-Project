@@ -26,20 +26,20 @@ void DeleteAction::Execute(bool ReadParamsFirst)
 }
 
 DeleteAction::~DeleteAction()
-{
-
-
-
-
-}
+{}
 void DeleteAction::UndoExcute()
 {
-
 	
+	//saved = pManager->GetSelectedFig()->getfigure();
+	//savedredo = pManager->GetSelectedFig()->getfigure();
+
+	pManager->AddFigure(saved);
 }
 void DeleteAction::RedoExcute()
 {
-	
+	//saved = pManager->GetSelectedFig()->getfigure();
+	//savedredo = pManager->GetSelectedFig()->getfigure();
+	pManager->DeleteByID(savedredo);
 	
 }
 

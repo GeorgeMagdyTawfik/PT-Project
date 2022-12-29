@@ -70,6 +70,7 @@ public:
 	void UseFigGfxInfo();
 	void UpdateFigGfxDrawClr(color c);
 	void UpdateFigGfxFillClr(color c);
+	int GetID();
 
 };
 
