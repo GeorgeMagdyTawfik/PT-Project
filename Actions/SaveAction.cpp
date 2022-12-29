@@ -20,6 +20,8 @@ void SaveAction::Execute(bool ReadParamsFirst)
 	// save the current sketch in a file without asking the kid to do it explicitly
 	if (ReadParamsFirst)
 		ReadActionParameters();
+	else
+		filename = "temp.txt";
 
 	OutFile.open(filename);
 
@@ -32,7 +34,8 @@ void SaveAction::Execute(bool ReadParamsFirst)
 
 		pManager->SaveGraph(OutFile);
 
-		pOut->PrintMessage("File saved successfully");
+		if (ReadParamsFirst)
+			pOut->PrintMessage("File saved successfully");
 		OutFile.close();
 	}
 	else
