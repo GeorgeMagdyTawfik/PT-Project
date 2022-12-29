@@ -104,7 +104,7 @@ public:
 	void Undo();
 	void Redo();
 	void DeleteByID(CFigure*);
-	void DrawByID(CFigure*);
+	void EmptyUndoList();
 };
 
 #endif

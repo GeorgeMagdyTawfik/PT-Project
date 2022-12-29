@@ -38,6 +38,8 @@ void MoveAction::Execute(bool ReadParamsFirst)
 		pOut->PrintMessage("Moved figure to chosen point.");
 	}
 	pManager->addtoundolist(this);
+
+	pManager->AddToRecordingList(this);
 }
 
 void MoveAction::UndoExcute()

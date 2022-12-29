@@ -29,7 +29,7 @@ void LoadAction::Execute(bool ReadParamsFirst)
 
 	pOut->ClearDrawArea();
 	pManager->DeleteAll();
-	pManager->SetFigcount(0);
+	pManager->EmptyUndoList();
 
 	InFile.open(filename);
 

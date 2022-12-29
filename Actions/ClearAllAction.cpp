@@ -1,6 +1,6 @@
 #include "ClearAllAction.h"
 #include "..\ApplicationManager.h"
-
+#include "../Figures/CRectangle.h"
 
 #include "..\GUI\Output.h"
 ClearAllAction::ClearAllAction(ApplicationManager* pApp) :Action(pApp)
@@ -17,10 +17,13 @@ void ClearAllAction::Execute(bool ReadParamsFirst)
 		ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
 	pOut->ClearDrawArea();
+	pManager->RemovePastRecording();
 	pManager->DeleteAll();
-	pManager->SetFigcount(0);
-
-	RecordIfAllowed(this); /// Need to talk about this
+	pManager->EmptyUndoList();
+	UI.DrawColor = color(0, 87, 231);
+	UI.FillColor = color(0, 135, 68);
+	CFigure* c = new CRectangle();
+	c->SetNotFilledAsDefault();
 }
 void ClearAllAction::RedoExcute()
 {}

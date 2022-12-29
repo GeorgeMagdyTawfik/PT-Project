@@ -46,7 +46,7 @@ ApplicationManager::ApplicationManager()
 	redocount = 0;
 	deletecount = 0;
 
-
+	RecordingState = false;
 
 	LastAction = NULL;
 }
@@ -302,8 +302,6 @@ void ApplicationManager::DeleteAll()
 		delete FigList[i];
 		FigList[i] = NULL;
 	}
-	undocount = 0;
-	redocount = 0;
 	SetFigcount(0);/// This was desparately needed
 
 }
@@ -579,14 +577,13 @@ void ApplicationManager::DeleteByID(CFigure* c)
 
 	}
 }
-/*void ApplicationManager::DrawByID(CFigure* c)
+void ApplicationManager::EmptyUndoList()
 {
-	for (int i = 0; i < FigCount; i++)
+	for (int i = 0; i < undocount; i++)
 	{
-		if (FigList[FigCount]->GetID() == c->GetID())
-		
-			c->Draw(pOut);
-		FigCount++;
+		delete undolist[i];
+		undolist[i] = NULL;
 	}
+	undocount = 0;
+	redocount = 0;
 }
-*/
