@@ -79,10 +79,10 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
 			pFig->UpdateFigGfxFillClr(NewFill);
-			pFig->ChngDrawClr(prev);
+			
 		}
 	}
-	pManager->addtoundolist(this);
+
 }
 
 void ChangeFillClrAction::UndoExcute()

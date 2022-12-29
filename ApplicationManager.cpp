@@ -309,7 +309,8 @@ void ApplicationManager::DeleteAll()
 	}
 	undocount = 0;
 	redocount = 0;
-	SetFigcount(0); /// This was desparately needed
+	SetFigcount(0);/// This was desparately needed
+
 }
 
 int ApplicationManager::GetFigCount() const

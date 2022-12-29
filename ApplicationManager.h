@@ -13,7 +13,7 @@ class ApplicationManager
 {
 	enum { MaxFigCount = 200,MaxUndoCount=5 };	//Max no of figures
 
-	enum { MaxFigCount = 200 };	//Max no of figures
+	
 	enum { MaxRecord = 20 }; // Maximum number of recorded actions
 private:
 	int FigCount;		//Actual number of figures
@@ -90,8 +90,8 @@ public:
 	//////////////////////////
 //void setExcutedeundoAction(Action*);
 	//Action* getundoedaction();
-	void setExcutedeundoAction(Action*);
-	Action* getundoedaction();
+	//void setExcutedeundoAction(Action*);
+	//Action* getundoedaction();
 	void drawlast();
 	
 	int getredocount();
