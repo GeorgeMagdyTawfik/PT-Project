@@ -254,7 +254,7 @@ bool ApplicationManager::DeleteFigure()
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[i]->IsSelected())
+		if (FigList[i]->IsSelected())			//this has to be transferred to select
 		{
 			delete FigList[i];
 			if (i != FigCount - 1)
