@@ -67,6 +67,15 @@ CFigure* CRectangle::getfigure()
 	return this;
 }
 
+void CRectangle::PrintInfo(Output* pOut)
+{
+	string msg = "Rectangle : ID = " + to_string(ID);
+	msg += ", Start(" + to_string(UL.x) + ", " + to_string(UL.y) + ") " +
+	" End (" + to_string(BR.x) + ", " + to_string(BR.y) + ")";
+	msg += ", length = " + to_string(BR.x - UL.x)
+	+ ", width = " + to_string(BR.y - UL.y);
+	pOut->PrintMessage(msg);
+}
 
 void CRectangle::Move(Point destination)
 {
