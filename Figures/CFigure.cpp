@@ -120,6 +120,11 @@ int CFigure::GetNumberOfFigures()
 
 
 
+void CFigure::UseFigGfxInfo()
+{
+	FigGfxInfo = PrevFigGfxInfo;
+}
+
 void CFigure::UpdateFigGfxDrawClr(color c)
 {
 	PrevFigGfxInfo.DrawClr = c;

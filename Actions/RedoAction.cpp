@@ -33,8 +33,8 @@ void RedoAction::UndoExcute()
 {}
 void RedoAction::RedoExcute()
 {
-	Action* re = pManager->getundoedaction();
-	re->RedoExcute();
+	/*Action* re = pManager->getundoedaction();
+	re->RedoExcute();*/
 
 
 }

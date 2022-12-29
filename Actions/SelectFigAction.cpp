@@ -89,7 +89,7 @@ void SelectFigAction::UnselectPrevious(CFigure* previous)
 			// Change its color to normal
 			//ClickedFig->ChngDrawClr(UI.DrawColor);
 			ClickedFig->UseFigGfxInfo();
-		}
+		
 		//pOut->ClearStatusBar(); //if I clear the status bar here the message will be quickly removed (won't be seen)
 	}
 }

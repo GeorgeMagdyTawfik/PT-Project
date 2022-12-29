@@ -232,7 +232,7 @@ void ApplicationManager::SetSelectedFigure(CFigure* pFig)
 	SelectedFig = pFig;
 }
 
-CFigure* ApplicationManager::GetSelectedFigure() const
+CFigure* ApplicationManager::GetSelectedFigure() //const
 {
 	if (SelectedFig != NULL)
 	{
@@ -241,7 +241,6 @@ CFigure* ApplicationManager::GetSelectedFigure() const
 		SelectedFig->UseFigGfxInfo();
 		SetSelectedFigure(NULL);
 	}
-}
 	return SelectedFig;
 }
 
