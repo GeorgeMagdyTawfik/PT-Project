@@ -12,7 +12,7 @@ void MoveAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	CFigure* pFig = pManager->GetSelectedFig();
-	saved = pManager->GetSelectedFig()->getfigure();
+
 	if (pFig)
 	{
 		
@@ -26,6 +26,7 @@ void MoveAction::ReadActionParameters()
 
 void MoveAction::Execute(bool ReadParamsFirst)
 {
+	saved = pManager->GetSelectedFig()->getfigure();
 	if (ReadParamsFirst)
 		ReadActionParameters();
 

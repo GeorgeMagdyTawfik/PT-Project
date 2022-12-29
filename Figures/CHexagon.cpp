@@ -113,9 +113,7 @@ void CHexagon::Load(ifstream& InFile)
 }
 CFigure* CHexagon::getfigure()
 {
-	CHexagon* h = new CHexagon(center,  FigGfxInfo);
-	h->ID = ID;
-	return h;
+	return this;
 }
 Point CHexagon::GetCenter()
 {

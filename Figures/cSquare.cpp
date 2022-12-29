@@ -71,9 +71,7 @@ void CSquare::Load(ifstream& InFile)
 }
 CFigure* CSquare::getfigure()
 {
-	CSquare* h = new CSquare(center, FigGfxInfo);
-	h->ID = ID;
-	return h;
+	return this;
 }
 
 void CSquare::Move(Point destination)
