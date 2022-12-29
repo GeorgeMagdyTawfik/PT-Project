@@ -40,6 +40,8 @@ void UndoAction::Execute(bool ReadParamsFirst)
 		pManager->SetUndoExcuted();
 		
 	}
+
+	RecordIfAllowed(this);
 }
 void UndoAction::UndoExcute()
 {

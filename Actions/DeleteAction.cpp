@@ -21,6 +21,7 @@ void DeleteAction::Execute(bool ReadParamsFirst)
 	else
 		pOut->PrintMessage("Deleted selected figure.");
 	
+	RecordIfAllowed(this);
 }
 
 DeleteAction::~DeleteAction()

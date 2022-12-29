@@ -77,6 +77,8 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 			pFig->ChngDrawClr(prev);
 		}
 	}
+
+	RecordIfAllowed(this); /// Is it the correct line to add this
 }
 
 void ChangeFillClrAction::UndoExcute()

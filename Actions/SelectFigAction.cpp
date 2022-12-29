@@ -76,6 +76,8 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 	}
 	//pOut->ClearStatusBar(); //if I clear the status bar here the message will be quickly removed (won't be seen)
 	// If the kid clicks on an empty space it will be ignored
+
+	RecordIfAllowed(this);
 }
 
 void SelectFigAction::UnselectPrevious(CFigure* previous)

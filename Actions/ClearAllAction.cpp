@@ -19,6 +19,8 @@ void ClearAllAction::Execute(bool ReadParamsFirst)
 	pOut->ClearDrawArea();
 	pManager->DeleteAll();
 	pManager->SetFigcount(0);
+
+	RecordIfAllowed(this); /// Need to talk about this
 }
 void ClearAllAction::RedoExcute()
 {}

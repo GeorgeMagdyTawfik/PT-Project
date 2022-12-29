@@ -75,6 +75,8 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 			pFig->UpdateFigGfxDrawClr(NewDraw);
 		}
 	}
+
+	RecordIfAllowed(this); /// Is it the correct line to add this ?
 }
 
 void ChangeDrawClrAction::UndoExcute()

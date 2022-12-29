@@ -44,6 +44,8 @@ void AddTriangleAction::Execute(bool ReadParamsFirst)
 
 	
 	pManager->AddFigure(R);
+
+	RecordIfAllowed(this);
 }
 void AddTriangleAction::UndoExcute()
 {

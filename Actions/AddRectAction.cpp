@@ -46,6 +46,8 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
+
+	RecordIfAllowed(this);
 }
 void AddRectAction::UndoExcute()
 {

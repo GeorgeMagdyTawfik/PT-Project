@@ -32,7 +32,7 @@ private:
 	int redocount;
 	//int redoexcuted;
 	Action* LastAction;
-	void ToRecord_orNot(Action* last);
+	//void ToRecord_orNot(Action* last);
 public:
 	ApplicationManager();
 	~ApplicationManager();
