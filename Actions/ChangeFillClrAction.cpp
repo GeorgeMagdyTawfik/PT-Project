@@ -107,6 +107,7 @@ void ChangeFillClrAction::UndoExcute()
 
 void ChangeFillClrAction::RedoExcute()
 {
+	saved->SetFilledAsDefault();
 	saved->ChngFillClr(NewFill);
 	UI.FillColor = NewFill;
 

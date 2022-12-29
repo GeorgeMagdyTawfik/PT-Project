@@ -63,20 +63,20 @@ void ChangeDrawClrAction::Execute()
 
 	if (chosen)
 	{
-		
+		saved = pManager->GetSelectedFig()->getfigure();
 		CFigure* pFig = pManager->GetSelectedFig();
 
 		if (!pFig)
 			return;
 		else
 		{
-			saved = pManager->GetSelectedFig()->getfigure();
+		
 			prevUIDraw = UI.DrawColor; //ziad use this
 			prevFigDraw = pFig->GetDrawClr();
 			UI.DrawColor = NewDraw;
 			pFig->ChngDrawClr(NewDraw);
 			pFig->UpdateFigGfxDrawClr(NewDraw);
-			//savedredo = pManager->GetSelectedFig()->getfigure();
+			
 		}
 	}
 	pManager->addtoundolist(this);
@@ -88,10 +88,12 @@ void ChangeDrawClrAction::UndoExcute()
 {
 	UI.FillColor = prevUIDraw;
 	saved->ChngDrawClr(prevFigDraw);
+	saved->UpdateFigGfxDrawClr(prevFigDraw);
 }
 
 void ChangeDrawClrAction::RedoExcute()
 {
+
 }
 
 ChangeDrawClrAction::~ChangeDrawClrAction()

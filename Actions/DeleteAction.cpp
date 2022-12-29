@@ -28,6 +28,10 @@ void DeleteAction::Execute()
 
 DeleteAction::~DeleteAction()
 {
+
+
+
+
 }
 void DeleteAction::UndoExcute()
 {
