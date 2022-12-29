@@ -191,7 +191,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		//pAct = NULL; 
 		LastAction = pAct;
 
-		ToRecord_orNot(LastAction); // Auto check
 
 		pAct = NULL;
 	}
@@ -540,19 +539,12 @@ bool ApplicationManager::GetRecordingState() const
 	return RecordingState;
 }
 
-void ApplicationManager::ToRecord_orNot(Action* last)
+void ApplicationManager::AddToRecordingList(Action* ptr)
 {
-	if (last->CheckRecordability() && RecordingState && RecordedActionsCount < 20)
-	{
-		RecordingList[RecordedActionsCount++] = last; // Store the last action in the list
-
-		if (RecordedActionsCount == 20) // when reaching maxRecord Warn the user then stop
-		{
-			pOut->PrintMessage("Recording Stopped automatically (20 actions were recorded)");
-			SetRecordingState(false);
-		}
-	}
+	if (RecordedActionsCount < 20)
+		RecordingList[RecordedActionsCount++] = ptr;
 }
+
 
 void ApplicationManager::PreviewRecordedActs()
 {

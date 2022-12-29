@@ -81,6 +81,9 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 			
 		}
 	}
+
+
+	RecordIfAllowed(this); /// Is it the correct line to add this ?
 	pManager->addtoundolist(this);
 }
 

@@ -39,6 +39,8 @@ void UndoAction::Execute(bool ReadParamsFirst)
 		
 		 pManager->Undo();
 	}
+
+	RecordIfAllowed(this);
 }
 void UndoAction::UndoExcute()
 {}

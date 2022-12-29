@@ -38,6 +38,8 @@ void AddHexagonAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
+
+	RecordIfAllowed(this);
 }
 void AddHexagonAction::UndoExcute()
 {

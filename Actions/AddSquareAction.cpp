@@ -43,6 +43,8 @@ void AddSquareAction::Execute(bool ReadParamsFirst)
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
+
+	RecordIfAllowed(this);
 }
 
 void AddSquareAction::UndoExcute()
