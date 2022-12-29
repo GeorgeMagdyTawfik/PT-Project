@@ -46,6 +46,8 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
+
+	RecordIfAllowed(this);
 }
 void AddCircleAction::UndoExcute()
 {

@@ -28,6 +28,7 @@ void RedoAction::Execute(bool ReadParamsFirst)
 	pManager->Redo();
 	
 
+	RecordIfAllowed(this);
 }
 void RedoAction::UndoExcute()
 {}

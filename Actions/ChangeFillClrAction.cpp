@@ -85,7 +85,11 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 			pFig->ChngDrawClr(prevFigFill);
 		}
 	}
+
+	RecordIfAllowed(this); /// Is it the correct line to add this
+
 	pManager->addtoundolist(this);
+
 }
 
 void ChangeFillClrAction::UndoExcute()

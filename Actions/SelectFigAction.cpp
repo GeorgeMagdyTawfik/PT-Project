@@ -11,7 +11,7 @@ void SelectFigAction::ReadActionParameters()
 	// Get two pointers to access input and output 
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
-	was_selected = pManager->GetSelectedFigure();
+	was_selected = pManager->GetSelectedFig();
 
 	if (pManager->GetFigCount() != 0)
 	{
@@ -76,6 +76,8 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 	}
 	//pOut->ClearStatusBar(); //if I clear the status bar here the message will be quickly removed (won't be seen)
 	// If the kid clicks on an empty space it will be ignored
+
+	RecordIfAllowed(this);
 }
 
 void SelectFigAction::UnselectPrevious(CFigure* previous)
