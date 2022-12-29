@@ -32,12 +32,8 @@ void RedoAction::Execute(bool ReadParamsFirst)
 void RedoAction::UndoExcute()
 {}
 void RedoAction::RedoExcute()
-{
-	Action* re = pManager->getundoedaction();
-	re->RedoExcute();
+{}
 
-
-}
 
 bool RedoAction::CheckRecordability() const
 {
