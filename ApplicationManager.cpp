@@ -386,7 +386,6 @@ bool ApplicationManager::MoveFigure(Point destination)
 		if (FigList[i]->IsSelected())
 		{
 			FigList[i]->Move(destination);
-			FigList[i]->SetSelected(false);
 			FigList[i]->ChngDrawClr(UI.DrawColor);
 			return true;
 		}
