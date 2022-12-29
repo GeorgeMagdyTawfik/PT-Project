@@ -70,7 +70,9 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 		pOut->PrintMessage("Unselected the figure");
 			
 		// Change its color to normal
-		ClickedFig->ChngDrawClr(UI.DrawColor);
+		ClickedFig->UseFigGfxInfo();
+		//ClickedFig->ChngDrawClr(UI.DrawColor);
+		
 	}
 	//pOut->ClearStatusBar(); //if I clear the status bar here the message will be quickly removed (won't be seen)
 	// If the kid clicks on an empty space it will be ignored
@@ -81,7 +83,8 @@ void SelectFigAction::UnselectPrevious(CFigure* previous)
 	if (previous != NULL)
 	{
 		previous->SetSelected(false);
-		previous->ChngDrawClr(UI.DrawColor);
+		//previous->ChngDrawClr(UI.DrawColor);
+		previous->UseFigGfxInfo();
 		pManager->SetSelectedFigure(NULL);
 	}
 }

@@ -72,7 +72,7 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 		{
 			UI.DrawColor = NewDraw;
 			pFig->ChngDrawClr(NewDraw);
-			pFig->SetSelected(false);
+			pFig->UpdateFigGfxDrawClr(NewDraw);
 		}
 	}
 }

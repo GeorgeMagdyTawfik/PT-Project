@@ -20,6 +20,7 @@ protected:
 	GfxInfo FigGfxInfo;	//Figure graphis info
 
 	/// Add more parameters if needed.
+	GfxInfo PrevFigGfxInfo;
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
@@ -58,6 +59,12 @@ public:
 
 	//static memberfunction
 	static int GetNumberOfFigures();
+
+	void UseFigGfxInfo();
+	void UpdateFigGfxDrawClr(color c);
+	void UpdateFigGfxFillClr(color c);
+	
+
 };
 
 #endif

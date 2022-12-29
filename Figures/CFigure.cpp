@@ -11,6 +11,8 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
   
 	if (FilledAsDefault)
 		FigGfxInfo.isFilled = true;
+
+	PrevFigGfxInfo = FigGfxInfo;
 }
 
 CFigure::CFigure()
@@ -94,4 +96,20 @@ void CFigure::PrintInfo(Output* pOut)
 int CFigure::GetNumberOfFigures()
 {
 	return NumberOfFigures;
+}
+
+void CFigure::UseFigGfxInfo()
+{
+	FigGfxInfo = PrevFigGfxInfo;
+}
+
+void CFigure::UpdateFigGfxDrawClr(color c)
+{
+	PrevFigGfxInfo.DrawClr = c;
+}
+
+void CFigure::UpdateFigGfxFillClr(color c)
+{
+	PrevFigGfxInfo.isFilled = true;
+	PrevFigGfxInfo.FillClr = c;
 }
