@@ -28,9 +28,10 @@ void AddHexagonAction::ReadActionParameters()
 }
 
 
-void AddHexagonAction::Execute()
+void AddHexagonAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 
 
 	CHexagon* R = new CHexagon(P1, hexaGfxInfo);
@@ -46,4 +47,9 @@ void AddHexagonAction::UndoExcute()
 void AddHexagonAction::RedoExcute()
 {
 	pManager->drawlast();
+}
+
+bool AddHexagonAction::CheckRecordability() const
+{
+	return true;
 }

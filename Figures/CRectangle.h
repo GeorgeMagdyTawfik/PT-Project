@@ -9,6 +9,10 @@ private:
 	Point Corner1;
 	Point Corner2;
 
+	// upper-left and bottom-right corners
+	Point UL;
+	Point BR;
+
 public:
 	CRectangle(Point, Point, GfxInfo FigureGfxInfo);
 	CRectangle();
@@ -19,6 +23,7 @@ public:
 	virtual CFigure* getfigure();
 	virtual void Move(Point destination) override;
 	virtual Point GetCenter();
+	virtual void PrintInfo(Output* pOut);
 };
 
 #endif

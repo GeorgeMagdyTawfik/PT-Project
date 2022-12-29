@@ -57,9 +57,10 @@ void ChangeFillClrAction::ReadActionParameters()
 	}
 }
 
-void ChangeFillClrAction::Execute()
+void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 
 	if (chosen)
 	{
@@ -78,7 +79,7 @@ void ChangeFillClrAction::Execute()
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
 			pFig->UpdateFigGfxFillClr(NewFill);
-
+			pFig->ChngDrawClr(prev);
 		}
 	}
 	pManager->addtoundolist(this);
@@ -116,4 +117,9 @@ void ChangeFillClrAction::RedoExcute()
 
 ChangeFillClrAction::~ChangeFillClrAction()
 {
+}
+
+bool ChangeFillClrAction::CheckRecordability() const
+{
+	return true;
 }

@@ -1,9 +1,14 @@
 #include "CFigure.h"
 
+int CFigure::NumberOfFigures = 0;
+
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 {
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
+
+	NumberOfFigures++;
+  
 	if (FilledAsDefault)
 		FigGfxInfo.isFilled = true;
 	PrevFigGfxInfo = FigGfxInfo;
@@ -14,7 +19,7 @@ CFigure::CFigure()
 	Selected = false;
 }
 
-int CFigure::FigCount = 0;
+//int CFigure::FigCount = 0;
 bool CFigure::FilledAsDefault = false;
 
 void CFigure::SetSelected(bool s)
@@ -97,10 +102,30 @@ string CFigure::EncodeColor(color c) const      //takes color and returns corres
 		return "GREEN";
 }
 
-int CFigure::GetFigCount()
+/*int CFigure::GetFigCount()
 {
 	FigCount++;
 	return FigCount;
+}*/
+
+void CFigure::PrintInfo(Output* pOut)
+{
+	pOut->PrintMessage("Figure of ID : " + to_string(ID));
+}
+
+int CFigure::GetNumberOfFigures()
+{
+	return NumberOfFigures;
+}
+
+void CFigure::UseFigGfxInfo()
+{
+	FigGfxInfo = PrevFigGfxInfo;
+}
+
+void CFigure::UpdateFigGfxDrawClr(color c)
+{
+	PrevFigGfxInfo.DrawClr = c;
 }
 
 void CFigure::UseFigGfxInfo()

@@ -14,8 +14,10 @@ class SaveAction :
 public:
     SaveAction(ApplicationManager* pApp);
     virtual void ReadActionParameters() override;
-    virtual void Execute() override;
+    virtual void Execute(bool ReadParamsFirst = true) override;
     virtual void UndoExcute();
     virtual void RedoExcute();
     ~SaveAction();
+
+    virtual bool CheckRecordability() const;
 };

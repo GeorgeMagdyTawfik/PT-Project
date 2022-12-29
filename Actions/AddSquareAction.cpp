@@ -32,10 +32,11 @@ void AddSquareAction::ReadActionParameters()
 }
 
 //Execute the action
-void AddSquareAction::Execute()
+void AddSquareAction::Execute(bool ReadParamsFirst)
 {
 	//This action needs to read some parameters first
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 
 	//Create a rectangle with the parameters read from the user
 	CSquare* R = new CSquare(P1, SquareGfxInfo);
@@ -53,4 +54,9 @@ void AddSquareAction::RedoExcute()
 {
 	pManager->drawlast();
 
+}
+
+bool AddSquareAction::CheckRecordability() const
+{
+	return true;
 }

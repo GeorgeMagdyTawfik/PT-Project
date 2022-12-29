@@ -34,9 +34,10 @@ void AddTriangleAction::ReadActionParameters()
 }
 
 
-void AddTriangleAction::Execute()
+void AddTriangleAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 
 	
 	CTriangle* R = new CTriangle(P1, P2,P3, triangleGfxInfo);
@@ -51,4 +52,9 @@ void AddTriangleAction::UndoExcute()
 void AddTriangleAction::RedoExcute()
 {
 	pManager->drawlast();
+}
+
+bool AddTriangleAction::CheckRecordability() const
+{
+	return true;
 }

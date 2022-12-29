@@ -14,9 +14,14 @@ void SaveAction::ReadActionParameters()
 	filename += ".txt";
 }
 
-void SaveAction::Execute()
+void SaveAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	// this action will not be recorded but when switching from draw to play mode we need to 
+	// save the current sketch in a file without asking the kid to do it explicitly
+	if (ReadParamsFirst)
+		ReadActionParameters();
+	else
+		filename = "temp.txt";
 
 	OutFile.open(filename);
 
@@ -29,7 +34,8 @@ void SaveAction::Execute()
 
 		pManager->SaveGraph(OutFile);
 
-		pOut->PrintMessage("File saved successfully");
+		if (ReadParamsFirst)
+			pOut->PrintMessage("File saved successfully");
 		OutFile.close();
 	}
 	else
@@ -47,3 +53,8 @@ SaveAction::~SaveAction()
 
 void SaveAction::RedoExcute()
 {}
+
+bool SaveAction::CheckRecordability() const
+{
+	return false;
+}

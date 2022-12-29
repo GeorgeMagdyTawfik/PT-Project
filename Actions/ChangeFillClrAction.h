@@ -14,9 +14,11 @@ class ChangeFillClrAction : public Action
 public:
 	ChangeFillClrAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters() override;
-	virtual void Execute() override;
+	virtual void Execute(bool ReadParamsFirst = true) override;
 	virtual void UndoExcute() override;
 	virtual void RedoExcute() override;
 	~ChangeFillClrAction();
+
+	virtual bool CheckRecordability() const;
 };
 

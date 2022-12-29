@@ -12,19 +12,24 @@ LoadAction::LoadAction(ApplicationManager* pApp) : Action(pApp)
 }
 
 void LoadAction::ReadActionParameters()
-{
-	pOut->ClearDrawArea();
-	pManager->DeleteAll();	
-	pManager->SetFigcount(0);									//Any more needed cleanups??
-	
+{								
 	pOut->PrintMessage("Load Graph: please enter file name: ");
 	filename = pIn->GetSrting(pOut);
 	filename += ".txt";
 }
 
-void LoadAction::Execute()
+void LoadAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	// This action will not be recorded but, when switching from play mode back to draw mode we will need to 
+	// reload the saved drawing without asking the kid for the name of the file
+	if (ReadParamsFirst)
+		ReadActionParameters();
+	else
+		filename = "temp.txt";
+
+	pOut->ClearDrawArea();
+	pManager->DeleteAll();
+	pManager->SetFigcount(0);
 
 	InFile.open(filename);
 
@@ -73,7 +78,8 @@ void LoadAction::Execute()
 			}
 		}
 		//pManager->SetFigcount(FigCount);
-		pOut->PrintMessage("File loaded successfully!");
+		if (ReadParamsFirst)
+			pOut->PrintMessage("File loaded successfully!");
 		InFile.close();
 	}
 	else
@@ -91,3 +97,8 @@ LoadAction::~LoadAction()
 }
 void LoadAction::RedoExcute()
 {}
+
+bool LoadAction::CheckRecordability() const
+{
+	return false;
+}

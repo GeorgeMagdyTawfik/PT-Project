@@ -6,8 +6,8 @@
 #include"Actions\AddHexagonAction.h"
 #include "Actions\SaveAction.h"
 #include "Actions\LoadAction.h"
-
 #include "Actions/SelectFigAction.h"
+#include "Actions/SwitchToPlayMode.h"
 #include "Actions/DeleteAction.h"
 #include"Actions/Action.h"
 #include"Actions/UndoAction.h"
@@ -16,6 +16,11 @@
 #include "Actions/ChangeDrawClrAction.h"
 #include "Actions/ChangeFillClrAction.h"
 #include "Actions/MoveAction.h"
+#include "Actions/StartRecordingAction.h"
+#include "Actions/StopRecordingAction.h"
+#include "Actions/PlayRecordingAction.h"
+#include "Actions\SwitchToDrawMode.h"
+
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -24,6 +29,10 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 
 	FigCount = 0;
+	RecordedActionsCount = 0;
+	//create an array of action pointers and set them to NULL
+	for (int i = 0; i < MaxRecord; i++)
+		RecordingList[i] = NULL;
 
 	//Create an array of figure pointers and set them to NULL		
 	for (int i = 0; i < MaxFigCount; i++)
@@ -38,6 +47,8 @@ ApplicationManager::ApplicationManager()
 	deletecount = 0;
 
 
+
+	LastAction = NULL;
 }
 
 //==================================================================================//
@@ -93,6 +104,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SELECT:
 		pAct = new SelectFigAction(this);
 		break;
+	case TO_PLAY:
+		pAct = new SwitchToPlayMode(this);
+		break;
+	case TO_DRAW:
+		pAct = new SwitchToDrawMode(this);
+		break;
 	case UNDO:
 		pAct = new UndoAction(this);
 		break;
@@ -119,9 +136,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case CLEAR_ALL:
 		pAct = new ClearAllAction(this);
+		break; // don't forget this
+	case START_REC:
+		pAct = new StartRecordingAction(this);
+		break;
+	case STOP_REC:
+		pAct = new StopRecordingAction(this);
+		break;
+	case PLAY_REC:
+		pAct = new PlayRecordingAction(this);
+		break;
 	case EXIT:
 		///create ExitAction here
-
+		for (int i = 0; i < RecordedActionsCount; i++)
+		{
+			delete RecordingList[i];
+		}
+		delete[]RecordingList;
 		break;
 
 	case STATUS:	//a click on the status bar ==> no action
@@ -157,7 +188,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		}*/
 		//delete pAct;	//You may need to change this line depending to your implementation
-		//pAct = NULL;
+		//pAct = NULL; 
+		LastAction = pAct;
+
+		ToRecord_orNot(LastAction); // Auto check
+
+		pAct = NULL;
 	}
 }
 //==================================================================================//
@@ -196,16 +232,13 @@ void ApplicationManager::SetSelectedFigure(CFigure* pFig)
 	SelectedFig = pFig;
 }
 
-void ApplicationManager::UnselectPrevious()
+CFigure* ApplicationManager::GetSelectedFigure() const
 {
-	if (SelectedFig != NULL)
-	{
-		SelectedFig->SetSelected(false);
-		SelectedFig->ChngDrawClr(UI.DrawColor);
-		SetSelectedFigure(NULL);
-	}
+	return SelectedFig;
 }
 
+
+// this function is repeated,I left it to resolve a conflict
 CFigure* ApplicationManager::GetSelectedFig() const
 {
 	return SelectedFig;
@@ -218,6 +251,7 @@ CFigure* ApplicationManager::GetSelectedFig() const
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {
+	pOut->ClearDrawArea(); /// this is important
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Draw(pOut);	//Call Draw function (virtual member fn)
 
@@ -275,6 +309,7 @@ void ApplicationManager::DeleteAll()
 	}
 	undocount = 0;
 	redocount = 0;
+	SetFigcount(0); /// This was desparately needed
 }
 
 int ApplicationManager::GetFigCount() const
@@ -478,4 +513,64 @@ void ApplicationManager::Redo()
 {
 	undolist[undocount++]->RedoExcute();
 	redocount--;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::SetRecordingState(bool b)
+{
+	RecordingState = b;
+}
+
+int ApplicationManager::GetRecordedActionsCount() const
+{
+	return RecordedActionsCount;
+}
+
+bool ApplicationManager::GetRecordingState() const
+{
+	return RecordingState;
+}
+
+void ApplicationManager::ToRecord_orNot(Action* last)
+{
+	if (last->CheckRecordability() && RecordingState && RecordedActionsCount < 20)
+	{
+		RecordingList[RecordedActionsCount++] = last; // Store the last action in the list
+
+		if (RecordedActionsCount == 20) // when reaching maxRecord Warn the user then stop
+		{
+			pOut->PrintMessage("Recording Stopped automatically (20 actions were recorded)");
+			SetRecordingState(false);
+		}
+	}
+}
+
+void ApplicationManager::PreviewRecordedActs()
+{
+	DeleteAll();
+	pOut->ClearDrawArea();
+	pOut->PrintMessage("Started Playing");
+	for (int i = 0; i < RecordedActionsCount; i++)
+	{
+		_sleep(1000);
+		RecordingList[i]->Execute(0);
+		UpdateInterface();
+	}
+	pOut->PrintMessage("Finished the recorded actions");
+}
+
+void ApplicationManager::RemovePastRecording()
+{
+	for (int i = 0; i < RecordedActionsCount; i++)
+	{
+		delete RecordingList[i];
+		RecordingList[i] = NULL;
+	}
+	SetRecordedActionsCount(0);
+}
+
+void ApplicationManager::SetRecordedActionsCount(int a)
+{
+	RecordedActionsCount = a;
 }

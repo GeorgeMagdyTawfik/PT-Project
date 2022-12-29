@@ -19,5 +19,6 @@ public:
 	virtual CFigure* getfigure();
 	virtual void Move(Point destination) override;
 	virtual Point GetCenter();
+	virtual void PrintInfo(Output* pOut);
 };
 

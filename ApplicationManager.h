@@ -13,11 +13,16 @@ class ApplicationManager
 {
 	enum { MaxFigCount = 200,MaxUndoCount=5 };	//Max no of figures
 
+	enum { MaxFigCount = 200 };	//Max no of figures
+	enum { MaxRecord = 20 }; // Maximum number of recorded actions
 private:
 	int FigCount;		//Actual number of figures
+	int RecordedActionsCount;
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
+	Action** RecordingList = new Action*[MaxRecord]; /// all the currently recorded actions
 	//CFigure* Been_undo_list[MaxFigCount];
 	CFigure* SelectedFig; //Pointer to the selected figure
+	bool RecordingState;
 
 	//Pointers to Input and Output classes
 	Input* pIn;
@@ -31,6 +36,8 @@ private:
 	CFigure* deletedlist[5];
 	int deletecount;
 	
+	Action* LastAction;
+	void ToRecord_orNot(Action* last);
 public:
 	ApplicationManager();
 	~ApplicationManager();
@@ -44,12 +51,10 @@ public:
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 
-	//This function is EXTRA but needed
-	void SetSelectedFigure(CFigure* pFig);
 
-	// this function is EXTRA but needed
-	void UnselectPrevious();
-	
+	//These 2 functions are EXTRA but needed
+	void SetSelectedFigure(CFigure*);
+	CFigure* GetSelectedFigure() const;
 	// 
 	CFigure* GetSelectedFig() const;
 
@@ -65,6 +70,13 @@ public:
 	// -- Setters and Getters
 	int GetFigCount() const;
 	void SetFigcount(int x); //this is needed for loading
+	void SetRecordingState(bool b);
+	bool GetRecordingState() const;
+	int GetRecordedActionsCount() const;
+	// Action** GetRecordingList() const; NOT ALLOWED
+	void PreviewRecordedActs();
+	void RemovePastRecording(); /// Important ; will call this when starting a new recording
+	void SetRecordedActionsCount(int); /// Important
 
 	// -- Functions which Loop on FigList
 	bool DeleteFigure();

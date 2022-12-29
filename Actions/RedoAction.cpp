@@ -11,9 +11,10 @@ void RedoAction::ReadActionParameters()
 	pOut->PrintMessage("redo action");
 	
 }
-void RedoAction::Execute()
+void RedoAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
 	int redocount = pManager->getredocount();
 	if ( redocount== 0)
@@ -31,4 +32,14 @@ void RedoAction::Execute()
 void RedoAction::UndoExcute()
 {}
 void RedoAction::RedoExcute()
-{}
+{
+	Action* re = pManager->getundoedaction();
+	re->RedoExcute();
+
+
+}
+
+bool RedoAction::CheckRecordability() const
+{
+	return true;
+}

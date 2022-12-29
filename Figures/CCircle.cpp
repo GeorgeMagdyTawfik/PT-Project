@@ -5,8 +5,12 @@ CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxIn
 {
 	center = P1;
 	distance = P2;
-
-	ID = GetFigCount();
+	Radius = sqrt(
+		pow(P1.x - P2.x, 2)
+		+
+		pow(P1.y - P2.y, 2)
+	);
+	ID = GetNumberOfFigures();
 }
 
 CCircle::CCircle()
@@ -21,22 +25,21 @@ void CCircle::Draw(Output* pOut) const
 
 bool CCircle::CheckInside(int X, int Y) const
 {
-	Point C = center;
-	Point A = distance; // DISTANCE : a point on the circle's circumference
-	int radius = sqrt(
-		pow(C.x - A.x, 2)
-		+
-		pow(C.y - A.y, 2)
-	);
-
 	// distance from clicked point to the center
 	int d = sqrt(
-		pow(C.x - X, 2)
+		pow(center.x - X, 2)
 		+
-		pow(C.y - Y, 2)
+		pow(center.y - Y, 2)
 	);
-		
-	return (d <= radius);
+	return (d <= Radius);
+}
+
+void CCircle::PrintInfo(Output* pOut)
+{
+	string msg = "Circle : ID = " + to_string(ID);
+	msg += ", Center(" + to_string(center.x) + ", " + to_string(center.y) + ") , Radius = " +
+		to_string(Radius);
+	pOut->PrintMessage(msg);
 }
 
 void CCircle::Save(ofstream& OutFile)

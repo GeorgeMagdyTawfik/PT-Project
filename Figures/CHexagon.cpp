@@ -2,13 +2,11 @@
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	center = P1;
-
-	ID = GetFigCount();
+  ID = GetNumberOfFigures();
 }
 
 CHexagon::CHexagon()
-{
-}
+{}
 
 
 void CHexagon::Draw(Output* pOut) const
@@ -78,6 +76,14 @@ void CHexagon::Move(Point destination)
 	center = destination;
 }
 
+void CHexagon::PrintInfo(Output* pOut)
+{
+	string msg = "Hexagon : ID = " + to_string(ID);
+	msg += ", Center (" + to_string(center.x) + ", " + to_string(center.y) + ") , side length = 50 , area = "
+		+ to_string((int)GetHexagonArea());
+	pOut->PrintMessage(msg);
+}
+
 void CHexagon::Save(ofstream& OutFile)
 {
 	OutFile << setw(10) << left << "HEXAGON" << setw(5) << ID << setw(5) << center.x
@@ -112,4 +118,5 @@ CFigure* CHexagon::getfigure()
 Point CHexagon::GetCenter()
 {
 	return center;
+}
 }

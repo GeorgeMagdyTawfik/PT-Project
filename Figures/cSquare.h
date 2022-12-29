@@ -18,4 +18,5 @@ public:
 
 	virtual Point GetCenter();
 	virtual void Move(Point destination) override;
+	virtual void PrintInfo(Output* pOut);
 };

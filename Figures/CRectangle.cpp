@@ -4,13 +4,16 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(Figur
 {
 	Corner1 = P1;
 	Corner2 = P2;
+	UL.x = (Corner1.x < Corner2.x) ? Corner1.x : Corner2.x;
+	UL.y = (Corner1.y < Corner2.y) ? Corner1.y : Corner2.y;
 
-	ID = GetFigCount();
+	BR.x = (Corner2.x > Corner1.x) ? Corner2.x : Corner1.x;
+	BR.y = (Corner2.y > Corner1.y) ? Corner2.y : Corner1.y;
+	ID = GetNumberOfFigures();
 }
 
 CRectangle::CRectangle()
-{
-}
+{}
 
 void CRectangle::Draw(Output* pOut) const
 {
@@ -50,15 +53,7 @@ void CRectangle::Load(ifstream& InFile)
 
 bool CRectangle::CheckInside(int x, int y) const
 {
-	// UPPERLEFT, BOTTOMRIGHT
-	Point UL, BR;
-
-	UL.x = (Corner1.x < Corner2.x) ? Corner1.x : Corner2.x;
-	UL.y = (Corner1.y < Corner2.y) ? Corner1.y : Corner2.y;
-
-	BR.x = (Corner2.x > Corner1.x) ? Corner2.x : Corner1.x;
-	BR.y = (Corner2.y > Corner1.y) ? Corner2.y : Corner1.y;
-
+	// check using upperleft and bottomright corners
 	return
 		(
 			x >= UL.x

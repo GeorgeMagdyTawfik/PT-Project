@@ -57,9 +57,10 @@ void ChangeDrawClrAction::ReadActionParameters()
 	}
 }
 
-void ChangeDrawClrAction::Execute()
+void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 {
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
 
 	if (chosen)
 	{
@@ -98,4 +99,9 @@ void ChangeDrawClrAction::RedoExcute()
 
 ChangeDrawClrAction::~ChangeDrawClrAction()
 {
+}
+
+bool ChangeDrawClrAction::CheckRecordability() const
+{
+	return true;
 }
