@@ -404,8 +404,34 @@ ApplicationManager::~ApplicationManager()
 //////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::deletelastfigure()
 {
-	FigCount--;
+	CFigure* max;
+	if (FigCount == 1)
+	{
+		delete FigList[0];
+	FigList[0] = FigList[FigCount ];
+		FigList[FigCount - 1] = NULL;
+		SelectedFig = NULL;
+		FigCount--;
 	
+	}
+	else
+	{
+		int i;
+		for ( i = 0; i < FigCount-1 ; i++)
+		{
+
+			if (FigList[i + 1]->GetID() >= FigList[i]->GetID())
+			{
+				max = FigList[i + 1];
+			}
+		}
+		delete max;
+			max = FigList[FigCount - 1];
+		FigList[FigCount - 1] = NULL;
+		SelectedFig = NULL;
+		FigCount--;
+
+	}
 	//FigList[FigCount - 1] = NULL;
 }
 /*Action* ApplicationManager::GetExcutedAction()
@@ -579,18 +605,26 @@ void ApplicationManager::DeleteByID(CFigure* c)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		if (FigList[FigCount]->GetID() == c->GetID())
-			delete FigList[FigCount];
+		if (FigList[i]->GetID() == c->GetID())
+		{
+			delete FigList[i];
+			if (i != FigCount - 1)
+				FigList[i] = FigList[FigCount - 1];
+			FigList[FigCount - 1] = NULL;
+			SelectedFig = NULL;
+			FigCount--;
+		}
 
 	}
 }
-void ApplicationManager::DrawByID(CFigure* c)
+/*void ApplicationManager::DrawByID(CFigure* c)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[FigCount]->GetID() == c->GetID())
-			FigCount++;
+		
 			c->Draw(pOut);
-
+		FigCount++;
 	}
 }
+*/

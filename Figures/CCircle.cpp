@@ -73,7 +73,9 @@ void CCircle::Load(ifstream& InFile)
 }
 CFigure* CCircle::getfigure()
 {
-	return this;
+	CCircle* h = new CCircle(center, distance, FigGfxInfo);
+	h->ID = ID;
+	return h;
 }
 
 void CCircle::Move(Point destination)

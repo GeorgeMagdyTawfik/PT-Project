@@ -64,7 +64,9 @@ bool CRectangle::CheckInside(int x, int y) const
 }
 CFigure* CRectangle::getfigure()
 {
-	return this;
+	CRectangle* h = new CRectangle(Corner1,Corner2, FigGfxInfo);
+	h->ID = ID;
+	return h;
 }
 
 

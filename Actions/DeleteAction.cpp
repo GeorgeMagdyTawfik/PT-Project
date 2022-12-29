@@ -29,18 +29,16 @@ DeleteAction::~DeleteAction()
 {}
 void DeleteAction::UndoExcute()
 {
-	
-	//saved = pManager->GetSelectedFig()->getfigure();
-	//savedredo = pManager->GetSelectedFig()->getfigure();
-
 	pManager->AddFigure(saved);
+	saved = saved->getfigure();
+	
 }
 void DeleteAction::RedoExcute()
 {
-	//saved = pManager->GetSelectedFig()->getfigure();
-	//savedredo = pManager->GetSelectedFig()->getfigure();
+
 	pManager->DeleteByID(savedredo);
-	
+
+	savedredo = savedredo-> getfigure();
 }
 
 

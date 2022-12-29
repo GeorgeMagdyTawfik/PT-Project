@@ -105,7 +105,9 @@ void CTriangle::Load(ifstream& InFile)
 }
 CFigure* CTriangle::getfigure()
 {
-	return this;
+	CTriangle* h = new CTriangle(p1,p2,p3, FigGfxInfo);
+	h->ID = ID;
+	return h;
 }
 Point CTriangle::GetCenter()
 {
