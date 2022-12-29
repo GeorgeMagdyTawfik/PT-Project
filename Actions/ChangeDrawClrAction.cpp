@@ -87,8 +87,6 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 	pManager->addtoundolist(this);
 }
 
-
-
 void ChangeDrawClrAction::UndoExcute()
 {
 	UI.DrawColor = prevUIDraw;
