@@ -404,28 +404,9 @@ ApplicationManager::~ApplicationManager()
 //////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::deletelastfigure()
 {
-		FigCount--;
+	FigCount--;
+
 	
-	}
-	else
-	{
-		int i;
-		for ( i = 0; i < FigCount-1 ; i++)
-		{
-
-			if (FigList[i + 1]->GetID() >= FigList[i]->GetID())
-			{
-				max = FigList[i + 1];
-			}
-		}
-		delete max;
-			max = FigList[FigCount - 1];
-		FigList[FigCount - 1] = NULL;
-		SelectedFig = NULL;
-		FigCount--;
-
-	}
-	//FigList[FigCount - 1] = NULL;
 }
 /*Action* ApplicationManager::GetExcutedAction()
 {
