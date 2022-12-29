@@ -54,7 +54,6 @@ public:
 
 	//These 2 functions are EXTRA but needed
 	void SetSelectedFigure(CFigure*);
-	CFigure* GetSelectedFigure(); //const;
 	// 
 	CFigure* GetSelectedFig() const;
 

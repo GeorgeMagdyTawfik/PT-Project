@@ -11,7 +11,7 @@ void SelectFigAction::ReadActionParameters()
 	// Get two pointers to access input and output 
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
-	was_selected = pManager->GetSelectedFigure();
+	was_selected = pManager->GetSelectedFig();
 
 	if (pManager->GetFigCount() != 0)
 	{
