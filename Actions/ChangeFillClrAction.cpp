@@ -77,7 +77,8 @@ void ChangeFillClrAction::Execute()
 			UI.FillColor = NewFill;
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
-			pFig->SetSelected(false);
+			pFig->UpdateFigGfxFillClr(NewFill);
+
 		}
 	}
 	pManager->addtoundolist(this);

@@ -387,6 +387,7 @@ bool ApplicationManager::MoveFigure(Point destination)
 		{
 			FigList[i]->Move(destination);
 			FigList[i]->ChngDrawClr(UI.DrawColor);
+			FigList[i]->UseFigGfxInfo();
 			return true;
 		}
 	}

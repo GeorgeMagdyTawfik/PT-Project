@@ -20,7 +20,7 @@ protected:
 	GfxInfo FigGfxInfo;	//Figure graphis info
 
 	/// Add more parameters if needed.
-
+	GfxInfo PrevFigGfxInfo;
 public:
 	CFigure(GfxInfo FigureGfxInfo);
 	CFigure();
@@ -64,6 +64,11 @@ public:
 	virtual bool CheckInside(int x, int y) const = 0; /// pure virtual function (overridden in each class) 
 	virtual CFigure* getfigure()=0;
 	virtual Point GetCenter() = 0;
+
+	void UseFigGfxInfo();
+	void UpdateFigGfxDrawClr(color c);
+	void UpdateFigGfxFillClr(color c);
+
 };
 
 #endif

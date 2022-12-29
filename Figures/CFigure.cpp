@@ -6,6 +6,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 	Selected = false;
 	if (FilledAsDefault)
 		FigGfxInfo.isFilled = true;
+	PrevFigGfxInfo = FigGfxInfo;
 }
 
 CFigure::CFigure()
@@ -102,4 +103,19 @@ int CFigure::GetFigCount()
 	return FigCount;
 }
 
+void CFigure::UseFigGfxInfo()
+{
+	FigGfxInfo = PrevFigGfxInfo;
+}
+
+void CFigure::UpdateFigGfxDrawClr(color c)
+{
+	PrevFigGfxInfo.DrawClr = c;
+}
+
+void CFigure::UpdateFigGfxFillClr(color c)
+{
+	PrevFigGfxInfo.isFilled = true;
+	PrevFigGfxInfo.FillClr = c;
+}
 

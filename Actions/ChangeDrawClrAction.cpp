@@ -75,8 +75,8 @@ void ChangeDrawClrAction::Execute()
 			prevFigDraw = pFig->GetDrawClr();
 			UI.DrawColor = NewDraw;
 			pFig->ChngDrawClr(NewDraw);
-			savedredo = pManager->GetSelectedFig()->getfigure();
-			pFig->SetSelected(false);
+			pFig->UpdateFigGfxDrawClr(NewDraw);
+			//savedredo = pManager->GetSelectedFig()->getfigure();
 		}
 	}
 	pManager->addtoundolist(this);
