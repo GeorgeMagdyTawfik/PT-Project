@@ -90,8 +90,8 @@ public:
 	//////////////////////////
 //void setExcutedeundoAction(Action*);
 	//Action* getundoedaction();
-	void setExcutedeundoAction(Action*);
-	Action* getundoedaction();
+	//void setExcutedeundoAction(Action*);
+	//Action* getundoedaction();
 	void drawlast();
 	
 	int getredocount();

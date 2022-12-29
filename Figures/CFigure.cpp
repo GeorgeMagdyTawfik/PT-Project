@@ -118,10 +118,7 @@ int CFigure::GetNumberOfFigures()
 	return NumberOfFigures;
 }
 
-void CFigure::UseFigGfxInfo()
-{
-	FigGfxInfo = PrevFigGfxInfo;
-}
+
 
 void CFigure::UpdateFigGfxDrawClr(color c)
 {
