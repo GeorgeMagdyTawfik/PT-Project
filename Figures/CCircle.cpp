@@ -83,3 +83,7 @@ void CCircle::Move(Point destination)
 	center = destination;
 	distance = RadialPoint;
 }
+Point CCircle::GetCenter()
+{
+	return center;
+}

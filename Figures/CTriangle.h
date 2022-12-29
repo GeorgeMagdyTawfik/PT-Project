@@ -18,5 +18,6 @@ public:
 	float GetMyArea() const;
 	virtual CFigure* getfigure();
 	virtual void Move(Point destination) override;
+	virtual Point GetCenter();
 };
 

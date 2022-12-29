@@ -378,7 +378,7 @@ void ApplicationManager::deletelastfigure()
 
 }
 */
-/*void ApplicationManager::setExcutedeundoAction(Action* undoed)
+
 bool ApplicationManager::MoveFigure(Point destination)
 {
 	for (int i = 0; i < FigCount; i++)
@@ -393,6 +393,7 @@ bool ApplicationManager::MoveFigure(Point destination)
 	}
 	return false;
 }
+/*void ApplicationManager::setExcutedeundoAction(Action* undoed)
 void ApplicationManager::setExcutedeundoAction(Action* undoed)
 {
 

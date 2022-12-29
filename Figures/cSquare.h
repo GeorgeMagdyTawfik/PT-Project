@@ -16,5 +16,6 @@ public:
 	virtual bool CheckInside(int X, int Y) const;
 	virtual CFigure* getfigure();
 
+	virtual Point GetCenter();
 	virtual void Move(Point destination) override;
 };

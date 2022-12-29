@@ -71,3 +71,7 @@ void CSquare::Move(Point destination)
 {
 	center = destination;
 }
+Point CSquare::GetCenter()
+{
+	return center;
+}

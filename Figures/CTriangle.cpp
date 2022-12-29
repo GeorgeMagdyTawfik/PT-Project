@@ -99,3 +99,10 @@ CFigure* CTriangle::getfigure()
 {
 	return this;
 }
+Point CTriangle::GetCenter()
+{
+	Point c;
+	c.x = (p1.x + p2.x + p3.x) / 3;
+	c.y = (p1.y + p2.y + p3.y) / 3;
+	return c;
+}

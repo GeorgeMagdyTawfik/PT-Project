@@ -86,3 +86,10 @@ void CRectangle::Move(Point destination)
 	Corner1.y = destination.y - height/2;
 	Corner2.y = destination.y + height/2;
 }
+Point CRectangle::GetCenter()
+{
+	Point c;
+	c.x = (Corner1.x + Corner2.x) / 2;
+	c.y= (Corner1.y + Corner2.y) / 2;
+	return c;
+}

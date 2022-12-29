@@ -3,6 +3,9 @@
 class MoveAction : public Action
 {
 	Point destination;
+	CFigure* saved;
+	Point prevlocation;
+
 public:
 	MoveAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters() override;

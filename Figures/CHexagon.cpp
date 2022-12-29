@@ -109,3 +109,7 @@ CFigure* CHexagon::getfigure()
 {
 	return this;
 }
+Point CHexagon::GetCenter()
+{
+	return center;
+}

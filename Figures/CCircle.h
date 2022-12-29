@@ -14,6 +14,7 @@ class CCircle:public CFigure
 		virtual void Load(ifstream& InFile) override;
 		virtual void Move(Point destination) override;
 		CFigure* getfigure();
+		virtual Point GetCenter();
 	
 };
 
