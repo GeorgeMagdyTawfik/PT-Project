@@ -1,24 +1,18 @@
 #pragma once
 #include "Action.h"
-class ChangeFillClrAction : public Action
+class MoveAction : public Action
 {
-	color NewFill;
-	bool chosen;
+	Point destination;
 	CFigure* saved;
-	color prevFigFill;
-	color prevUIFill;
-	bool figwasfilled;
-	bool defaultwasfilled;
-
+	Point prevlocation;
 
 public:
-	ChangeFillClrAction(ApplicationManager* pApp);
+	MoveAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters() override;
 	virtual void Execute(bool ReadParamsFirst = true) override;
 	virtual void UndoExcute() override;
 	virtual void RedoExcute() override;
-	~ChangeFillClrAction();
-
+	~MoveAction();
 	virtual bool CheckRecordability() const;
 };
 

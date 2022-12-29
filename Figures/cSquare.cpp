@@ -69,3 +69,18 @@ void CSquare::Load(ifstream& InFile)
 		FigGfxInfo.FillClr = DecodeColor(color2);
 	}
 }
+CFigure* CSquare::getfigure()
+{
+	CSquare* h = new CSquare(center, FigGfxInfo);
+	h->ID = ID;
+	return h;
+}
+
+void CSquare::Move(Point destination)
+{
+	center = destination;
+}
+Point CSquare::GetCenter()
+{
+	return center;
+}

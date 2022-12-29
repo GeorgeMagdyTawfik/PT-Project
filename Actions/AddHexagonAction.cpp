@@ -24,7 +24,7 @@ void AddHexagonAction::ReadActionParameters()
 	hexaGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-
+	pManager->addtoundolist(this);
 }
 
 
@@ -43,7 +43,7 @@ void AddHexagonAction::Execute(bool ReadParamsFirst)
 }
 void AddHexagonAction::UndoExcute()
 {
-	pManager->deletefigure();
+	pManager->deletelastfigure();
 
 }
 void AddHexagonAction::RedoExcute()

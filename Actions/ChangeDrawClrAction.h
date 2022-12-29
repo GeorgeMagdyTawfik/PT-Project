@@ -4,6 +4,10 @@ class ChangeDrawClrAction : public Action
 {
 	color NewDraw;
 	bool chosen;
+	color prevUIDraw;
+	color prevFigDraw;
+	CFigure* saved;
+
 public:
 	ChangeDrawClrAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters() override;

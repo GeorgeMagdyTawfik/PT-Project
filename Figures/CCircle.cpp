@@ -71,3 +71,24 @@ void CCircle::Load(ifstream& InFile)
 		FigGfxInfo.FillClr = DecodeColor(color2);
 	}
 }
+CFigure* CCircle::getfigure()
+{
+	CCircle* h = new CCircle(center, distance, FigGfxInfo);
+	h->ID = ID;
+	return h;
+}
+
+void CCircle::Move(Point destination)
+{
+	Point RadialPoint;
+	
+	RadialPoint.x = destination.x + abs(center.x - distance.x);
+	RadialPoint.y = destination.y + abs(center.y - distance.y);
+
+	center = destination;
+	distance = RadialPoint;
+}
+Point CCircle::GetCenter()
+{
+	return center;
+}

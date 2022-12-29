@@ -15,41 +15,35 @@ void UndoAction::ReadActionParameters()
 }
 void UndoAction::Execute(bool ReadParamsFirst)
 {
-	if (ReadParamsFirst)
-		ReadActionParameters();
-	int figcount = pManager->GetFigCount();
-	int undoExcuted = pManager->GetUndoExcuted();
+	ReadActionParameters();
+	
+	int undocount = pManager->getundocount();
+	//int figcount = pManager->GetFigCount();
 	Output* pOut = pManager->GetOutput();
-	pOut->ClearDrawArea();
-	if (figcount == 0)
+	
+	if (undocount == 0)
 	{
 		
 		pOut->PrintMessage("no action to undo");
 
 
 	}
-	else if (undoExcuted > 4)
-	{
+	//else if (undoExcuted > 4)
+	//{
 		
-		pOut->PrintMessage("you have exceeded the maximum number of undo action");
+		//pOut->PrintMessage("you have exceeded the maximum number of undo action");
 
-	}
+	//}
 	else
 	{
-		UndoExcute();
-		pManager->SetUndoExcuted();
 		
+		 pManager->Undo();
 	}
 
 	RecordIfAllowed(this);
 }
 void UndoAction::UndoExcute()
-{
-	Action* ac = pManager->GetExcutedAction();
-	ac->UndoExcute();
-	pManager->setExcutedeundoAction(ac);
-
-}
+{}
 void UndoAction::RedoExcute()
 {};
 

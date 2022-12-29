@@ -12,6 +12,8 @@ class Action;
 class ApplicationManager
 {
 	enum { MaxFigCount = 200 };	//Max no of figures
+
+	enum { MaxUndoCount = 5 };	//Max no of figures
 	enum { MaxRecord = 20 }; // Maximum number of recorded actions
 private:
 	int FigCount;		//Actual number of figures
@@ -25,12 +27,15 @@ private:
 	//Pointers to Input and Output classes
 	Input* pIn;
 	Output* pOut;
-	Action* undolist[5];
+	Action* undolist[MaxUndoCount];
 	int undocount;
-	int undoexcuted; //number of undo action that achueved
-	Action* redolist[5];
+	//int undoexcuted; //number of undo action that achueved
+	//Action* redolist[5];
 	int redocount;
 	//int redoexcuted;
+	CFigure* deletedlist[5];
+	int deletecount;
+	
 	Action* LastAction;
 	//void ToRecord_orNot(Action* last);
 public:
@@ -49,7 +54,7 @@ public:
 
 	//These 2 functions are EXTRA but needed
 	void SetSelectedFigure(CFigure*);
-	CFigure* GetSelectedFigure() const;
+	CFigure* GetSelectedFigure(); //const;
 	// 
 	CFigure* GetSelectedFig() const;
 
@@ -77,19 +82,30 @@ public:
 	// -- Functions which Loop on FigList
 	bool DeleteFigure();
 	//
-	int GetUndoExcuted();
-	void SetUndoExcuted();
-	void deletefigure();
-	Action* GetExcutedAction();
+	//int GetUndoExcuted();
+	//void SetUndoExcuted();
+	void deletelastfigure();
+	//Action* GetExcutedAction();
 	
+	bool MoveFigure(Point);
 	//////////////////////////
-void setExcutedeundoAction(Action*);
-	Action* getundoedaction();
+//void setExcutedeundoAction(Action*);
+	//Action* getundoedaction();
+	//void setExcutedeundoAction(Action*);
+	//Action* getundoedaction();
 	void drawlast();
+	
 	int getredocount();
 	//int getredoExcuted();
 	///////////////////////////////////
-	
+	int getundocount();
+	//void setredoExcute();
+	////////////////////////////////
+	void addtoundolist(Action*);
+	void Undo();
+	void Redo();
+	void DeleteByID(CFigure*);
+	void DrawByID(CFigure*);
 };
 
 #endif

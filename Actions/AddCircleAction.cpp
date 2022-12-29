@@ -31,6 +31,7 @@ void AddCircleAction::ReadActionParameters()
 	CircleGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
+	pManager->addtoundolist(this);
 
 }
 
@@ -50,7 +51,7 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 }
 void AddCircleAction::UndoExcute()
 {
-	pManager->deletefigure();
+	pManager->deletelastfigure();
 }
 void AddCircleAction::RedoExcute()
 {

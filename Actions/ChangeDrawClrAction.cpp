@@ -14,7 +14,7 @@ void ChangeDrawClrAction::ReadActionParameters()
 	CFigure* pFig = pManager->GetSelectedFig();
 
 	if (!pFig) 
-		pOut->PrintMessage("Please select a figure first!");
+		pOut->PrintMessage("No selected figure. Please select a figure first!");
 
 	else
 	{
@@ -64,27 +64,43 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 
 	if (chosen)
 	{
+		saved = pManager->GetSelectedFig()->getfigure();
 		CFigure* pFig = pManager->GetSelectedFig();
 
 		if (!pFig)
 			return;
 		else
 		{
+			saved = pManager->GetSelectedFig()->getfigure();
+			prevUIDraw = UI.DrawColor;
+			prevFigDraw = pFig->GetPrevDrawClr();
+
 			UI.DrawColor = NewDraw;
 			pFig->ChngDrawClr(NewDraw);
 			pFig->UpdateFigGfxDrawClr(NewDraw);
+			
 		}
 	}
 
+
 	RecordIfAllowed(this); /// Is it the correct line to add this ?
+	pManager->addtoundolist(this);
 }
+
+
 
 void ChangeDrawClrAction::UndoExcute()
 {
+	UI.DrawColor = prevUIDraw;
+	saved->ChngDrawClr(prevFigDraw);
+	saved->UpdateFigGfxDrawClr(prevFigDraw);
 }
 
 void ChangeDrawClrAction::RedoExcute()
 {
+	UI.DrawColor = NewDraw;
+	saved->ChngDrawClr(NewDraw);
+	saved->UpdateFigGfxDrawClr(NewDraw);
 }
 
 ChangeDrawClrAction::~ChangeDrawClrAction()

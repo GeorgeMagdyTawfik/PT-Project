@@ -9,7 +9,7 @@ void ClearAllAction::ReadActionParameters()
 {
 
 	Output* pOut = pManager->GetOutput();
-	pOut->PrintMessage("clearall action");
+	pOut->PrintMessage("Cleared all!");
 }
 void ClearAllAction::Execute(bool ReadParamsFirst)
 {
