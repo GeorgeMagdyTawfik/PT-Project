@@ -13,6 +13,7 @@ void ClearAllAction::ReadActionParameters()
 }
 void ClearAllAction::Execute(bool ReadParamsFirst)
 {
+	/// Let' make it initially not to clear the recList
 	if (ReadParamsFirst)
 		ReadActionParameters();
 	Output* pOut = pManager->GetOutput();

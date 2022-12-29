@@ -461,7 +461,21 @@ void ApplicationManager::AddToRecordingList(Action* ptr)
 
 void ApplicationManager::PreviewRecordedActs()
 {
-	DeleteAll();
+	//DeleteAll();
+	// The next loop is for testing
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->SetSelected(false);
+		FigList[i]->ChngDrawClr(UI.DrawColor);
+		/*
+		Figlist[i]->RemoveColoring();
+		Figlist[i]->RestoreOriginalPosition();
+		*/
+		FigList[i] = NULL;
+		delete FigList[i];
+	}
+	SetFigcount(0);
+	UpdateInterface();
 	pOut->ClearDrawArea();
 	pOut->PrintMessage("Started Playing");
 	for (int i = 0; i < RecordedActionsCount; i++)
