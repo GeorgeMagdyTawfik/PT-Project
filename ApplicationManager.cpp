@@ -453,6 +453,12 @@ bool ApplicationManager::GetRecordingState() const
 	return RecordingState;
 }
 
+void ApplicationManager::AddToRecordingList(Action* ptr)
+{
+	if (RecordedActionsCount < 20)
+		RecordingList[RecordedActionsCount++] = ptr;
+}
+
 void ApplicationManager::ToRecord_orNot(Action* last)
 {
 	if (last->CheckRecordability() && RecordingState && RecordedActionsCount < 20)
