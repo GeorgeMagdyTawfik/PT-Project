@@ -404,13 +404,6 @@ ApplicationManager::~ApplicationManager()
 //////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::deletelastfigure()
 {
-	CFigure* max;
-	if (FigCount == 1)
-	{
-		delete FigList[0];
-	FigList[0] = FigList[FigCount ];
-		FigList[FigCount - 1] = NULL;
-		SelectedFig = NULL;
 		FigCount--;
 	
 	}
