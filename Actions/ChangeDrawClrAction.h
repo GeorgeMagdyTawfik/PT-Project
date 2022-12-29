@@ -7,7 +7,6 @@ class ChangeDrawClrAction : public Action
 	color prevUIDraw;
 	color prevFigDraw;
 	CFigure* saved;
-	CFigure* savedredo;
 
 public:
 	ChangeDrawClrAction(ApplicationManager* pApp);

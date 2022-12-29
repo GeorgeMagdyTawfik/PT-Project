@@ -88,14 +88,16 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 
 void ChangeDrawClrAction::UndoExcute()
 {
-	UI.FillColor = prevUIDraw;
+	UI.DrawColor = prevUIDraw;
 	saved->ChngDrawClr(prevFigDraw);
 	saved->UpdateFigGfxDrawClr(prevFigDraw);
 }
 
 void ChangeDrawClrAction::RedoExcute()
 {
-
+	UI.DrawColor = NewDraw;
+	saved->ChngDrawClr(NewDraw);
+	saved->UpdateFigGfxDrawClr(NewDraw);
 }
 
 ChangeDrawClrAction::~ChangeDrawClrAction()

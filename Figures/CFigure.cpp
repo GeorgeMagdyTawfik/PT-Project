@@ -102,12 +102,6 @@ string CFigure::EncodeColor(color c) const      //takes color and returns corres
 		return "GREEN";
 }
 
-/*int CFigure::GetFigCount()
-{
-	FigCount++;
-	return FigCount;
-}*/
-
 void CFigure::PrintInfo(Output* pOut)
 {
 	pOut->PrintMessage("Figure of ID : " + to_string(ID));
@@ -117,8 +111,6 @@ int CFigure::GetNumberOfFigures()
 {
 	return NumberOfFigures;
 }
-
-
 
 void CFigure::UseFigGfxInfo()
 {

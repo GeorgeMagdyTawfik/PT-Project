@@ -51,8 +51,6 @@ public:
 
 	///Decide the parameters that you should pass to each function	
 
-	//static int GetFigCount();
-
 	static int GetNumberOfFigures();
 
 	virtual void Save(ofstream& OutFile) = 0;	//Save the figure parameters to the file
