@@ -1,6 +1,8 @@
 #include "MoveAction.h"
 #include "..\ApplicationManager.h"
 
+class Action;
+
 MoveAction::MoveAction(ApplicationManager* pApp) : Action(pApp)
 {
 }
@@ -22,10 +24,11 @@ void MoveAction::ReadActionParameters()
 		pOut->PrintMessage("No selected figure. Please select a figure first!");
 }
 
-void MoveAction::Execute()
+void MoveAction::Execute(bool ReadParamsFirst)
 {
-	
-	ReadActionParameters();
+	if (ReadParamsFirst)
+		ReadActionParameters();
+
 	prevlocation = saved->GetCenter();
 	bool done = pManager->MoveFigure(destination);
 	Output* pOut = pManager->GetOutput();
@@ -50,4 +53,9 @@ void MoveAction::RedoExcute()
 
 MoveAction::~MoveAction()
 {
+}
+
+bool MoveAction::CheckRecordability() const
+{
+	return true;
 }

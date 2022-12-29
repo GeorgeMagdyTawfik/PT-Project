@@ -53,12 +53,14 @@ public:
 
 	//static int GetFigCount();
 
+	static int GetNumberOfFigures();
+
 	virtual void Save(ofstream& OutFile) = 0;	//Save the figure parameters to the file
 	virtual void Load(ifstream& InFile) = 0;	//Load the figure parameters to the file
 
 	virtual void Move(Point dest) = 0;
 
-	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
+	virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 	
 	// To check whether a point belongs to the shape's area or not 
 	virtual bool CheckInside(int x, int y) const = 0; /// pure virtual function (overridden in each class) 

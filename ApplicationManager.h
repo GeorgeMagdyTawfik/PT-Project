@@ -11,9 +11,9 @@ class Action;
 //Main class that manages everything in the application.
 class ApplicationManager
 {
-	enum { MaxFigCount = 200,MaxUndoCount=5 };	//Max no of figures
-
 	enum { MaxFigCount = 200 };	//Max no of figures
+
+	enum { MaxUndoCount = 5 };	//Max no of figures
 	enum { MaxRecord = 20 }; // Maximum number of recorded actions
 private:
 	int FigCount;		//Actual number of figures

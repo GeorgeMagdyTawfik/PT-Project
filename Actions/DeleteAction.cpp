@@ -42,7 +42,6 @@ void DeleteAction::RedoExcute()
 	
 	
 }
-{}
 
 bool DeleteAction::CheckRecordability() const
 {

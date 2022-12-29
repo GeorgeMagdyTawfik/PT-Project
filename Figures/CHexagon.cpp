@@ -119,4 +119,3 @@ Point CHexagon::GetCenter()
 {
 	return center;
 }
-}
