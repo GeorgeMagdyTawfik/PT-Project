@@ -90,6 +90,6 @@ Point CRectangle::GetCenter()
 {
 	Point c;
 	c.x = (Corner1.x + Corner2.x) / 2;
-	c.y= (Corner1.y + Corner2.y) / 2;
+	c.y = (Corner1.y + Corner2.y) / 2;
 	return c;
 }
