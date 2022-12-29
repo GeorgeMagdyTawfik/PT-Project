@@ -234,6 +234,14 @@ void ApplicationManager::SetSelectedFigure(CFigure* pFig)
 
 CFigure* ApplicationManager::GetSelectedFigure() const
 {
+	if (SelectedFig != NULL)
+	{
+		SelectedFig->SetSelected(false);
+		//SelectedFig->ChngDrawClr(UI.DrawColor);
+		SelectedFig->UseFigGfxInfo();
+		SetSelectedFigure(NULL);
+	}
+}
 	return SelectedFig;
 }
 

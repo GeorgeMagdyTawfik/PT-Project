@@ -124,3 +124,15 @@ void CFigure::UpdateFigGfxDrawClr(color c)
 {
 	PrevFigGfxInfo.DrawClr = c;
 }
+
+void CFigure::UpdateFigGfxFillClr(color c)
+{
+	PrevFigGfxInfo.isFilled = true;
+	PrevFigGfxInfo.FillClr = c;
+}
+
+color CFigure::GetPrevDrawClr()
+{
+	return PrevFigGfxInfo.DrawClr;
+}
+

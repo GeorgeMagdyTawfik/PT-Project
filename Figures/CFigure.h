@@ -71,6 +71,8 @@ public:
 	void UpdateFigGfxDrawClr(color c);
 	void UpdateFigGfxFillClr(color c);
 
+	color GetPrevDrawClr();
+
 };
 
 #endif

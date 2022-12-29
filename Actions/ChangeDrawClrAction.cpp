@@ -71,9 +71,10 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 			return;
 		else
 		{
-		
-			prevUIDraw = UI.DrawColor; //ziad use this
-			prevFigDraw = pFig->GetDrawClr();
+			saved = pManager->GetSelectedFig()->getfigure();
+			prevUIDraw = UI.DrawColor;
+			prevFigDraw = pFig->GetPrevDrawClr();
+
 			UI.DrawColor = NewDraw;
 			pFig->ChngDrawClr(NewDraw);
 			pFig->UpdateFigGfxDrawClr(NewDraw);
