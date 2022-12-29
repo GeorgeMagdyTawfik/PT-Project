@@ -476,7 +476,7 @@ void ApplicationManager::PreviewRecordedActs()
 	{
 		_sleep(1000);
 		RecordingList[i]->Execute(0);
-		UpdateInterface();
+		//UpdateInterface();
 	}
 	pOut->PrintMessage("Finished the recorded actions");
 }

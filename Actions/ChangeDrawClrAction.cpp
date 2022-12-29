@@ -61,6 +61,8 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
+	else
+		chosen = true;
 
 	if (chosen)
 	{
