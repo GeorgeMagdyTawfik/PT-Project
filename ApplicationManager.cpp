@@ -20,6 +20,7 @@
 #include "Actions/StopRecordingAction.h"
 #include "Actions/PlayRecordingAction.h"
 #include "Actions\SwitchToDrawMode.h"
+#include"Actions/SoundAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -49,6 +50,7 @@ ApplicationManager::ApplicationManager()
 	RecordingState = false;
 
 	LastAction = NULL;
+	playsound = false;
 }
 
 //==================================================================================//
@@ -145,7 +147,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case PLAY_REC:
 		pAct = new PlayRecordingAction(this);
+	case SOUND:
+		pAct = new SoundAction(this);
 		break;
+		
 	case EXIT:
 		///create ExitAction here
 		/*for (int i = 0; i < RecordedActionsCount; i++)
@@ -590,4 +595,17 @@ void ApplicationManager::EmptyUndoList()
 	}
 	undocount = 0;
 	redocount = 0;
+}
+
+void ApplicationManager::changethestateofsound()
+{
+	if (playsound == true)
+		playsound = false;
+	else
+		playsound = true;
+}
+
+bool ApplicationManager::getcaseofsound()
+{
+	return playsound;
 }

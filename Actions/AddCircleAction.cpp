@@ -6,6 +6,8 @@
 #include "../GUI/input.h"
 #include "../GUI/Output.h"
 #include"../Actions/SelectFigAction.h"
+#include<Windows.h>
+#include<iostream>
 
 AddCircleAction::AddCircleAction(ApplicationManager* pApp) :Action(pApp)
 {}
@@ -51,6 +53,12 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 	//savedredo = R->getfigure();
 
 	RecordIfAllowed(this);
+	if (pManager->getcaseofsound() == true)
+	{
+		bool played = PlaySound("draw the circle.WAV", NULL, SND_SYNC);
+		cout << played;
+	}
+
 }
 void AddCircleAction::UndoExcute()
 {

@@ -8,7 +8,7 @@ enum ActionType //The actions supported (you can add more if needed)
 {
 	DRAW_RECT,		//Draw Rectangle
 	DRAW_SQUARE,
-	
+
 	DRAW_TRIANGLE,
 	DRAW_HEXAGON,
 	DRAW_CIRCLE,
@@ -42,6 +42,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	GREENCLR,
 	BLUECLR,
 	CLEAR_ALL,
+	SOUND,
 
 	//Play mode actions
 	SWITCH_BACK,

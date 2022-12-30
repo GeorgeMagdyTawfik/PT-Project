@@ -76,7 +76,7 @@ ActionType Input::GetUserAction() const
 			case ITM_GREEN: return GREENCLR;
 			case ITM_BLUE: return BLUECLR;
 			case ITM_CLEARALL: return CLEAR_ALL;
-
+			case ITM_sound: return SOUND;
 			case ITM_RECT: return DRAW_RECT;
 			
 			case ITM_SQUARE: return DRAW_SQUARE;

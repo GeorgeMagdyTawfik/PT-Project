@@ -3,7 +3,8 @@
 #include "../ApplicationManager.h"
 #include "../GUI\input.h"
 #include "../GUI/Output.h"
-
+#include<Windows.h>
+#include<iostream>
 AddTriangleAction::AddTriangleAction(ApplicationManager* pApp) :Action(pApp)
 {}
 
@@ -31,6 +32,11 @@ void AddTriangleAction::ReadActionParameters()
 
 	pOut->ClearStatusBar();
 	pManager->addtoundolist(this);
+	if (pManager->getcaseofsound() == true)
+	{
+		bool played = PlaySound("draw the triangle.WAV", NULL, SND_SYNC);
+		cout << played;
+	}
 }
 
 
