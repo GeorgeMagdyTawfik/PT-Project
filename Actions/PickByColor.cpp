@@ -81,6 +81,7 @@ void PickByColor::Execute(bool ReadParamsFirst)
 		break;
 	}
 	pManager->ResetFillColors();
+	pManager->ResetCounts();
 }
 
 void PickByColor::UndoExcute()

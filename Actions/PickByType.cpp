@@ -209,6 +209,7 @@ void PickByType::Execute(bool ReadParamsFirst)
 		break;
 	}
 	pManager->ResetCounts();
+	pManager->ResetFillColors();
 }
 
 void PickByType::UndoExcute()
