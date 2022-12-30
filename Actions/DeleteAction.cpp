@@ -12,20 +12,21 @@ void DeleteAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
-	//CFigure* pFig = pManager->GetSelectedFig();
+	pFig = pManager->GetSelectedFig();
 	Output* pOut = pManager->GetOutput();
-	saved = pManager->GetSelectedFig()->getfigure();
-	savedredo = pManager->GetSelectedFig()->getfigure();
-	pOut->ClearDrawArea();
-	bool done = pManager->DeleteFigure();
-	if (!done)
-		pOut->PrintMessage("No selected figure. Please select a figure first!");
-	else
-		pOut->PrintMessage("Deleted selected figure.");
-	
-	RecordIfAllowed(this);
+	if (pFig)
+	{
+		saved = pManager->GetSelectedFig()->getfigure();
+		savedredo = pManager->GetSelectedFig()->getfigure();
+		pOut->ClearDrawArea();
 
-	pManager->addtoundolist(this);
+		pManager->DeleteFigure(pFig);
+		pOut->PrintMessage("Deleted selected figure.");
+		RecordIfAllowed(this);
+		pManager->addtoundolist(this);
+	}
+	else
+	pOut->PrintMessage("No selected figure. Please select a figure first!");
 }
 
 DeleteAction::~DeleteAction()

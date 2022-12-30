@@ -10,7 +10,7 @@ void ChangeFillClrAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	ActionType ActType;
 
-	CFigure* pFig = pManager->GetSelectedFig();
+	pFig = pManager->GetSelectedFig();
 
 	if (!pFig)
 		pOut->PrintMessage("No selected figure. Please select a figure first!");
@@ -64,13 +64,12 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 
 	if (chosen)
 	{
-		CFigure* pFig = pManager->GetSelectedFig();
-		
 		if (!pFig)
 			return;
 		else
 		{
-			saved = pManager->GetSelectedFig()->getfigure();
+			//saved = pManager->GetSelectedFig()->getfigure();
+			saved = pFig;
 
 			figwasfilled = pFig->IsFilled();		//now we know whether the figure was filled or not
 			defaultwasfilled = pFig->IsFilledAsDefault();
@@ -82,7 +81,7 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
 			pFig->UpdateFigGfxFillClr(NewFill);
-			pFig->ChngDrawClr(prevFigFill);
+			//pFig->ChngDrawClr(prevFigFill);
 		}
 	}
 

@@ -30,10 +30,11 @@ void PlayRecordingAction::Execute(bool ReadParamsFirst)
 	if (pManager->GetRecordingState() == false)	
 	{
 		// i think this is redundant
-		CFigure* p = new CRectangle;
-		p->SetNotFilledAsDefault();
+		//CFigure::FilledAsDefault = false;
+		CFigure* c = new CRectangle();
+		c->SetNotFilledAsDefault();
+		delete c;
 		pManager->PreviewRecordedActs();
-		delete p;
 	}
 		
 }

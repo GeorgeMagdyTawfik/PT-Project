@@ -79,7 +79,7 @@ public:
 	void AddToRecordingList(Action*);
 
 	// -- Functions which Loop on FigList
-	bool DeleteFigure();
+	void DeleteFigure(CFigure* pFig);
 	//
 	//int GetUndoExcuted();
 	//void SetUndoExcuted();

@@ -253,9 +253,9 @@ void ApplicationManager::UpdateInterface() const
 
 
 }
-bool ApplicationManager::DeleteFigure()
+void ApplicationManager::DeleteFigure(CFigure* pFig)
 {
-	for (int i = 0; i < FigCount; i++)
+	/*for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i]->IsSelected())
 		{
@@ -268,7 +268,19 @@ bool ApplicationManager::DeleteFigure()
 			return true;
 		}
 	}
-	return false;
+	return false;*/
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i] == pFig)
+		{
+			delete FigList[i];
+			if (i != FigCount - 1)
+				FigList[i] = FigList[FigCount - 1];
+			FigList[FigCount - 1] = NULL;
+			SelectedFig = NULL;
+			FigCount--;
+		}
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input

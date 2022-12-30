@@ -11,8 +11,8 @@ using namespace std;
 //Base class for all figures
 class CFigure
 {
-	static int NumberOfFigures;
-	static bool FilledAsDefault;
+	//static int NumberOfFigures;
+	//static bool FilledAsDefault;
 
 protected:
 	int ID;		//Each figure has an ID
@@ -24,6 +24,9 @@ protected:
 public:
 	CFigure(GfxInfo FigureGfxInfo);
 	CFigure();
+
+	static int NumberOfFigures;
+	static bool FilledAsDefault;
 
 	void SetSelected(bool s);	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected

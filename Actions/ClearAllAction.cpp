@@ -1,6 +1,6 @@
 #include "ClearAllAction.h"
 #include "..\ApplicationManager.h"
-#include "../Figures/CRectangle.h"
+#include "..\Figures\CRectangle.h"
 
 #include "..\GUI\Output.h"
 ClearAllAction::ClearAllAction(ApplicationManager* pApp) :Action(pApp)
@@ -25,6 +25,7 @@ void ClearAllAction::Execute(bool ReadParamsFirst)
 	CFigure* c = new CRectangle();
 	c->SetNotFilledAsDefault();
 	delete c;
+	//CFigure::FilledAsDefault = false;
 }
 void ClearAllAction::RedoExcute()
 {}
