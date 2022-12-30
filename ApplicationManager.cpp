@@ -20,6 +20,7 @@
 #include "Actions/StopRecordingAction.h"
 #include "Actions/PlayRecordingAction.h"
 #include "Actions\SwitchToDrawMode.h"
+#include "Actions/PickByType.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -151,6 +152,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case PLAY_REC:
 		pAct = new PlayRecordingAction(this);
+		break;
+	case PICK_BY_TYPE:
+		pAct = new PickByType(this);
 		break;
 	case EXIT:
 		///create ExitAction here
