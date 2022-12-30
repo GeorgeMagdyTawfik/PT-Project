@@ -122,3 +122,8 @@ CFigure* CTriangle::getpointerfig()
 {
 	return this;
 }
+
+char CTriangle::GetMyType()
+{
+	return 't';
+}

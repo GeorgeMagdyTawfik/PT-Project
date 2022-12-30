@@ -21,5 +21,6 @@ public:
 	virtual Point GetCenter();
 	virtual void PrintInfo(Output* pOut);
 	virtual CFigure* getpointerfig();
+	virtual char GetMyType();
 };
 

@@ -38,6 +38,13 @@ private:
 	
 	Action* LastAction;
 	//void ToRecord_orNot(Action* last);
+
+	int SquareCount;
+	int CircleCount;
+	int HexaCount;
+	int TriangleCount;
+	int RectCount;
+
 public:
 	ApplicationManager();
 	~ApplicationManager();
@@ -104,6 +111,7 @@ public:
 	void Redo();
 	void DeleteByID(CFigure*);
 	void EmptyUndoList();
+	void CountTypes();
 };
 
 #endif

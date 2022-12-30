@@ -1,4 +1,5 @@
 #include "CCircle.h"
+#include "..\ApplicationManager.h"
 
 
 CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
@@ -11,6 +12,8 @@ CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxIn
 		pow(P1.y - P2.y, 2)
 	);
 	ID = GetNumberOfFigures();
+
+	
 }
 
 CCircle::CCircle()
@@ -99,4 +102,9 @@ Point CCircle::GetCenter()
 CFigure* CCircle::getpointerfig()
 {
 	return this;
+}
+
+char CCircle::GetMyType()
+{
+	return 'c';
 }

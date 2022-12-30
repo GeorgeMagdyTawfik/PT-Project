@@ -89,6 +89,11 @@ CFigure* CHexagon::getpointerfig()
 	return this;
 }
 
+char CHexagon::GetMyType()
+{
+	return 'h';
+}
+
 void CHexagon::Save(ofstream& OutFile)
 {
 	OutFile << setw(10) << left << "HEXAGON" << setw(5) << ID << setw(5) << center.x

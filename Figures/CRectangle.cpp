@@ -106,3 +106,8 @@ CFigure* CRectangle::getpointerfig()
 {
 	return this;
 }
+
+char CRectangle::GetMyType()
+{
+	return 'r';
+}

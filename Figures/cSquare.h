@@ -20,4 +20,5 @@ public:
 	virtual void Move(Point destination) override;
 	virtual void PrintInfo(Output* pOut);
 	virtual CFigure* getpointerfig();
+	virtual char GetMyType();
 };

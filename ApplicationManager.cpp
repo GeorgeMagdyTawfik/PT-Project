@@ -49,6 +49,12 @@ ApplicationManager::ApplicationManager()
 	RecordingState = false;
 
 	LastAction = NULL;
+
+	SquareCount = 0;
+	CircleCount = 0;
+	HexaCount = 0;
+	TriangleCount = 0;
+	RectCount = 0;
 }
 
 //==================================================================================//
@@ -590,4 +596,23 @@ void ApplicationManager::EmptyUndoList()
 	}
 	undocount = 0;
 	redocount = 0;
+}
+
+void ApplicationManager::CountTypes()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		char type = FigList[i]->GetMyType();
+
+		if (type == 'c')
+			CircleCount++;
+		if (type == 'r')
+			RectCount++;
+		if (type == 'h')
+			HexaCount++;
+		if (type == 't')
+			TriangleCount++;
+		if (type == 's')
+			SquareCount++;
+	}
 }

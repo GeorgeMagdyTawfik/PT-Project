@@ -76,6 +76,8 @@ public:
 	color GetPrevDrawClr();
 	virtual CFigure* getpointerfig()=0;
 
+	virtual char GetMyType() = 0;
+
 };
 
 #endif

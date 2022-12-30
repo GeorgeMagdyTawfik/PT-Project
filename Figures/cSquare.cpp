@@ -91,3 +91,8 @@ CFigure* CSquare::getpointerfig()
 {
 	return this;
 }
+
+char CSquare::GetMyType()
+{
+	return 's';
+}
