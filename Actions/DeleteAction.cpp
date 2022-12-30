@@ -24,6 +24,7 @@ void DeleteAction::Execute(bool ReadParamsFirst)
 		pOut->PrintMessage("Deleted selected figure.");
 		RecordIfAllowed(this);
 		pManager->addtoundolist(this);
+		
 	}
 	else
 	pOut->PrintMessage("No selected figure. Please select a figure first!");

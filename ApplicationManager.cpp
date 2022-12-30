@@ -277,7 +277,8 @@ void ApplicationManager::DeleteFigure(CFigure* pFig)
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
 			FigList[FigCount - 1] = NULL;
-			SelectedFig = NULL;
+			//SelectedFig = NULL;
+			
 			FigCount--;
 		}
 	}
@@ -571,6 +572,7 @@ void ApplicationManager::DeleteByID(CFigure* c)
 				FigList[i] = FigList[FigCount - 1];
 			//FigList[FigCount - 1] = NULL;
 			//SelectedFig = NULL;
+			
 			FigCount--;
 			
 
