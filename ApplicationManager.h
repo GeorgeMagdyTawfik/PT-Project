@@ -86,7 +86,6 @@ public:
 	void deletelastfigure();
 	//Action* GetExcutedAction();
 	
-	bool MoveFigure(Point);
 	//////////////////////////
 //void setExcutedeundoAction(Action*);
 	//Action* getundoedaction();

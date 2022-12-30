@@ -1,6 +1,7 @@
 #include "PlayRecordingAction.h"
 #include "../ApplicationManager.h"
 #include "../GUI/Output.h"
+#include "..\Figures\CRectangle.h"
 
 PlayRecordingAction::PlayRecordingAction(ApplicationManager* pApp) : Action(pApp)
 {}
@@ -26,8 +27,15 @@ void PlayRecordingAction::Execute(bool ReadParamsFirst)
 	//TODO:  can't play while in a recording
 	// call the previewrecording function of appmanager
 	// if there are no actions recorded, don't play
-	if (pManager->GetRecordingState() == false) // i think this is redundant
+	if (pManager->GetRecordingState() == false)	
+	{
+		// i think this is redundant
+		CFigure* p = new CRectangle;
+		p->SetNotFilledAsDefault();
 		pManager->PreviewRecordedActs();
+		delete p;
+	}
+		
 }
 bool PlayRecordingAction::CheckRecordability() const
 {

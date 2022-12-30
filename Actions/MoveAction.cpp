@@ -11,7 +11,7 @@ void MoveAction::ReadActionParameters()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	CFigure* pFig = pManager->GetSelectedFig();
+	pFig = pManager->GetSelectedFig();
 
 	if (pFig)
 	{
@@ -22,26 +22,25 @@ void MoveAction::ReadActionParameters()
 	}
 	else
 		pOut->PrintMessage("No selected figure. Please select a figure first!");
-	
-	
 }
 
 void MoveAction::Execute(bool ReadParamsFirst)
 {
-	saved = pManager->GetSelectedFig()->getfigure();
 	if (ReadParamsFirst)
 		ReadActionParameters();
 
-	prevlocation = saved->GetCenter();
-	bool done = pManager->MoveFigure(destination);
-	Output* pOut = pManager->GetOutput();
-	if (done)
+	if (pFig)
 	{
+		saved = pManager->GetSelectedFig()->getfigure();
+		prevlocation = saved->GetCenter();
+		pFig->Move(destination);
+		pFig->UseFigGfxInfo();
+		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("Moved figure to chosen point.");
+		pManager->addtoundolist(this);
 	}
-	pManager->addtoundolist(this);
-
-	pManager->AddToRecordingList(this);
+	//pManager->AddToRecordingList(this);
+	RecordIfAllowed(this);
 }
 
 void MoveAction::UndoExcute()
@@ -51,8 +50,8 @@ void MoveAction::UndoExcute()
 
 void MoveAction::RedoExcute()
 {
-	Output* pOut = pManager->GetOutput();
-	pOut->ClearDrawArea();
+	//Output* pOut = pManager->GetOutput();
+	//pOut->ClearDrawArea();
 	saved->Move(destination);
 }
 

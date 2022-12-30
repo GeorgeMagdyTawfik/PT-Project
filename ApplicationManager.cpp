@@ -410,21 +410,6 @@ void ApplicationManager::deletelastfigure()
 
 }
 */
-
-bool ApplicationManager::MoveFigure(Point destination)
-{
-	for (int i = 0; i < FigCount; i++)
-	{
-		if (FigList[i]->IsSelected())
-		{
-			FigList[i]->Move(destination);
-			FigList[i]->ChngDrawClr(UI.DrawColor);
-			FigList[i]->UseFigGfxInfo();
-			return true;
-		}
-	}
-	return false;
-}
 /*void ApplicationManager::setExcutedeundoAction(Action* undoed)
 void ApplicationManager::setExcutedeundoAction(Action* undoed)
 {
