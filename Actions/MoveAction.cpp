@@ -22,6 +22,8 @@ void MoveAction::ReadActionParameters()
 	}
 	else
 		pOut->PrintMessage("No selected figure. Please select a figure first!");
+	
+	
 }
 
 void MoveAction::Execute(bool ReadParamsFirst)
@@ -38,6 +40,8 @@ void MoveAction::Execute(bool ReadParamsFirst)
 		pOut->PrintMessage("Moved figure to chosen point.");
 	}
 	pManager->addtoundolist(this);
+
+	pManager->AddToRecordingList(this);
 }
 
 void MoveAction::UndoExcute()

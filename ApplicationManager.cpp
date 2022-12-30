@@ -46,7 +46,7 @@ ApplicationManager::ApplicationManager()
 	redocount = 0;
 	deletecount = 0;
 
-
+	RecordingState = false;
 
 	LastAction = NULL;
 }
@@ -148,11 +148,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case EXIT:
 		///create ExitAction here
-		for (int i = 0; i < RecordedActionsCount; i++)
+		/*for (int i = 0; i < RecordedActionsCount; i++)
 		{
 			delete RecordingList[i];
 		}
-		delete[]RecordingList;
+		delete[]RecordingList;*/
+		pAct = new ClearAllAction(this);
+		pAct->Execute();
+		pAct = NULL;
 		break;
 
 	case STATUS:	//a click on the status bar ==> no action
@@ -302,8 +305,6 @@ void ApplicationManager::DeleteAll()
 		delete FigList[i];
 		FigList[i] = NULL;
 	}
-	undocount = 0;
-	redocount = 0;
 	SetFigcount(0);/// This was desparately needed
 
 }
@@ -482,6 +483,8 @@ void ApplicationManager::addtoundolist(Action*ac)
 	redocount = 0;
 		if (undocount > 4)
 		{
+			/*if (RecordingState == false)
+				delete undolist[0]; // senario :: if it is recored ??? */
 			undolist[0] = NULL;
 			for (int i = 0; i <= 3; i++)
 			{
@@ -579,14 +582,13 @@ void ApplicationManager::DeleteByID(CFigure* c)
 
 	}
 }
-/*void ApplicationManager::DrawByID(CFigure* c)
+void ApplicationManager::EmptyUndoList()
 {
-	for (int i = 0; i < FigCount; i++)
+	for (int i = 0; i < undocount; i++)
 	{
-		if (FigList[FigCount]->GetID() == c->GetID())
-		
-			c->Draw(pOut);
-		FigCount++;
+		delete undolist[i];
+		undolist[i] = NULL;
 	}
+	undocount = 0;
+	redocount = 0;
 }
-*/
