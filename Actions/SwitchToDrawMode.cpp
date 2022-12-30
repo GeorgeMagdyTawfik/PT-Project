@@ -16,7 +16,7 @@ void SwitchToDrawMode::Execute(bool ReadParamsFirst)
 	Output* pOut = pManager->GetOutput();
 	pAct->Execute(0);
 	pOut->CreateDrawToolBar();
-	pOut->ClearStatusBar();
+	pOut->PrintMessage("Switched to draw mode, original graph has been loaded.");
 	
 }
 

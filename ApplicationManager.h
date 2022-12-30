@@ -112,6 +112,13 @@ public:
 	void DeleteByID(CFigure*);
 	void EmptyUndoList();
 	void CountTypes();
+	char GetRandomType(int index);
+
+	int GetCircleCount() const;
+	int GetRectCount() const;
+	int GetHexaCount() const;
+	int GetSquareCount() const;
+	int GetTriangleCount() const;
 };
 
 #endif

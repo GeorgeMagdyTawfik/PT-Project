@@ -64,14 +64,25 @@ void CCircle::Load(ifstream& InFile)
 	InFile >> ID >> center.x >> center.y >> distance.x >> distance.y
 		>> color1 >> color2;
 
+	Radius = sqrt(
+		pow(center.x - distance.x, 2)
+		+
+		pow(center.y - distance.y, 2)
+	);
+
 	FigGfxInfo.DrawClr = DecodeColor(color1);
+	UpdateFigGfxDrawClr(FigGfxInfo.DrawClr);
 
 	if (color2 == "NO_FILL")
+	{
 		FigGfxInfo.isFilled = false;
+		UnfillFigGfxInfo();
+	}
 	else
 	{
 		FigGfxInfo.isFilled = true;
 		FigGfxInfo.FillClr = DecodeColor(color2);
+		UpdateFigGfxFillClr(FigGfxInfo.FillClr);
 	}
 }
 CFigure* CCircle::getfigure()

@@ -11,13 +11,17 @@ void SwitchToPlayMode::ReadActionParameters()
 
 void SwitchToPlayMode::Execute(bool ReadParamsFirst)
 {
+	Output* pOut = pManager->GetOutput();
+	if (pManager->GetFigCount() == 0)
+	{
+		pOut->PrintMessage("Can't switch to play mode with no shapes!");
+		return;
+	}
 
 	Action* pAct = new SaveAction(pManager);
-	Output* pOut = pManager->GetOutput();
 	pAct->Execute(0);
 	pOut->CreatePlayToolBar();
-	pOut->ClearStatusBar();
-	
+	pOut->PrintMessage("Switched to play mode, choose a game to play!");
 
 }
 

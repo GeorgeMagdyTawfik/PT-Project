@@ -112,13 +112,18 @@ void CHexagon::Load(ifstream& InFile)
 	InFile >> ID >> center.x >> center.y >> color1 >> color2;
 
 	FigGfxInfo.DrawClr = DecodeColor(color1);
+	UpdateFigGfxDrawClr(FigGfxInfo.DrawClr);
 
 	if (color2 == "NO_FILL")
+	{
 		FigGfxInfo.isFilled = false;
+		UnfillFigGfxInfo();
+	}
 	else
 	{
 		FigGfxInfo.isFilled = true;
 		FigGfxInfo.FillClr = DecodeColor(color2);
+		UpdateFigGfxFillClr(FigGfxInfo.FillClr);
 	}
 }
 CFigure* CHexagon::getfigure()

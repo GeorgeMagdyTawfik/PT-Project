@@ -16,6 +16,9 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 
 CFigure::CFigure()
 {
+	if (FilledAsDefault)
+		FigGfxInfo.isFilled = true;
+	PrevFigGfxInfo = FigGfxInfo;
 	Selected = false;
 }
 

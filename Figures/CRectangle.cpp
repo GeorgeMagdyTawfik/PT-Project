@@ -13,7 +13,9 @@ CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(Figur
 }
 
 CRectangle::CRectangle()
-{}
+{
+	
+}
 
 void CRectangle::Draw(Output* pOut) const
 {
@@ -40,14 +42,25 @@ void CRectangle::Load(ifstream& InFile)
 	InFile >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y
 		>> color1 >> color2;
 
+	UL.x = (Corner1.x < Corner2.x) ? Corner1.x : Corner2.x;
+	UL.y = (Corner1.y < Corner2.y) ? Corner1.y : Corner2.y;
+
+	BR.x = (Corner2.x > Corner1.x) ? Corner2.x : Corner1.x;
+	BR.y = (Corner2.y > Corner1.y) ? Corner2.y : Corner1.y;
+
 	FigGfxInfo.DrawClr = DecodeColor(color1);
+	UpdateFigGfxDrawClr(DecodeColor(color1));
 
 	if (color2 == "NO_FILL")
+	{
 		FigGfxInfo.isFilled = false;
+		UnfillFigGfxInfo();
+	}
 	else
 	{
 		FigGfxInfo.isFilled = true;
 		FigGfxInfo.FillClr = DecodeColor(color2);
+		UpdateFigGfxFillClr(FigGfxInfo.FillClr);
 	}
 }
 

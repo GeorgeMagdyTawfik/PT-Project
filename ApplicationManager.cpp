@@ -580,7 +580,7 @@ void ApplicationManager::DeleteByID(CFigure* c)
 			//delete FigList[i];
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
-			//FigList[FigCount - 1] = NULL;
+			FigList[FigCount - 1] = NULL;
 			//SelectedFig = NULL;
 			
 			FigCount--;
@@ -619,4 +619,34 @@ void ApplicationManager::CountTypes()
 		if (type == 's')
 			SquareCount++;
 	}
+}
+
+char ApplicationManager::GetRandomType(int index)
+{
+	return FigList[index]->GetMyType();
+}
+
+int ApplicationManager::GetCircleCount() const
+{
+	return CircleCount;
+}
+
+int ApplicationManager::GetRectCount() const
+{
+	return RectCount;
+}
+
+int ApplicationManager::GetHexaCount() const
+{
+	return HexaCount;
+}
+
+int ApplicationManager::GetSquareCount() const
+{
+	return SquareCount;
+}
+
+int ApplicationManager::GetTriangleCount() const
+{
+	return TriangleCount;
 }

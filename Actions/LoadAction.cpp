@@ -77,7 +77,7 @@ void LoadAction::Execute(bool ReadParamsFirst)
 				pManager->AddFigure(R);
 			}
 		}
-		//pManager->SetFigcount(FigCount);
+		pManager->SetFigcount(FigCount);
 		if (ReadParamsFirst)
 			pOut->PrintMessage("File loaded successfully!");
 		InFile.close();

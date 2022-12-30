@@ -35,7 +35,7 @@ void MoveAction::Execute(bool ReadParamsFirst)
 		saved = pFig->getpointerfig();
 		prevlocation = saved->GetCenter();
 		pFig->Move(destination);
-		pFig->UseFigGfxInfo();
+		//pFig->UseFigGfxInfo();
 		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("Moved figure to chosen point.");
 		pManager->addtoundolist(this);
