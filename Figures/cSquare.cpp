@@ -74,6 +74,7 @@ CFigure* CSquare::getfigure()
 	CSquare* c = new CSquare;
 
 	*c = *this;
+	c->FigGfxInfo = FigGfxInfo;
 
 	return c;
 }

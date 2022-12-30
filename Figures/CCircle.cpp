@@ -75,6 +75,8 @@ CFigure* CCircle::getfigure()
 {
 	CCircle* c=new CCircle;
 	
+	
+
 	*c = *this;
 
 	return c;

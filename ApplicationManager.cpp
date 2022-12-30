@@ -273,7 +273,7 @@ void ApplicationManager::DeleteFigure(CFigure* pFig)
 	{
 		if (FigList[i] == pFig)
 		{
-			delete FigList[i];
+			//delete FigList[i];
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
 			FigList[FigCount - 1] = NULL;
@@ -566,7 +566,7 @@ void ApplicationManager::DeleteByID(CFigure* c)
 	{
 		if (FigList[i]->GetID() == c->GetID())
 		{
-			delete FigList[i];
+			//delete FigList[i];
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
 			//FigList[FigCount - 1] = NULL;

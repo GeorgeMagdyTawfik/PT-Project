@@ -46,8 +46,8 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
-	saved = R->getfigure();
-	savedredo = R->getfigure();
+	saved = R->getpointerfig();
+	//savedredo = R->getfigure();
 
 	RecordIfAllowed(this);
 }
@@ -55,14 +55,16 @@ void AddCircleAction::UndoExcute()
 {
 	
 	pManager->DeleteByID(saved);
-	saved = saved;
+	saved = saved->getfigure();
 }
 void AddCircleAction::RedoExcute()
 {
-	pManager->AddFigure(savedredo);
-	savedredo = savedredo;
-
+	pManager->AddFigure(saved);
+	
+	saved = saved->getfigure();
+	// savedredo = savedredo;
 }
+
 
 bool AddCircleAction::CheckRecordability() const
 {

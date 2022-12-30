@@ -46,8 +46,8 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
-	saved = R->getfigure();
-	savedredo = R->getfigure();
+	saved = R->getpointerfig();
+	
 	RecordIfAllowed(this);
 }
 void AddRectAction::UndoExcute()
@@ -58,8 +58,9 @@ void AddRectAction::UndoExcute()
 }
 void AddRectAction::RedoExcute()
 {
-	pManager->AddFigure(savedredo);
-	savedredo = savedredo;
+	pManager->AddFigure(saved);
+
+	saved = saved;
 
 }
 

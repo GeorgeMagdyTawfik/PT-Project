@@ -38,8 +38,8 @@ void AddHexagonAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
-	saved = R->getfigure();
-	savedredo = R->getfigure();
+	saved = R->getpointerfig();
+	
 	RecordIfAllowed(this);
 }
 void AddHexagonAction::UndoExcute()
@@ -50,8 +50,8 @@ void AddHexagonAction::UndoExcute()
 }
 void AddHexagonAction::RedoExcute()
 {
-	pManager->AddFigure(savedredo);
-	savedredo = savedredo;
+	pManager->AddFigure(saved);
+	saved = saved;
 
 }
 

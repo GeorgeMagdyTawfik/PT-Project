@@ -44,8 +44,8 @@ void AddTriangleAction::Execute(bool ReadParamsFirst)
 
 	
 	pManager->AddFigure(R);
-	saved = R->getfigure();
-	savedredo = R->getfigure();
+	saved = R->getpointerfig();
+	
 
 	RecordIfAllowed(this);
 }
@@ -57,8 +57,9 @@ void AddTriangleAction::UndoExcute()
 }
 void AddTriangleAction::RedoExcute()
 {
-	pManager->AddFigure(savedredo);
-	savedredo = savedredo;
+	pManager->AddFigure(saved);
+
+	saved = saved;
 
 }
 

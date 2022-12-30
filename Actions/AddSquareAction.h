@@ -8,7 +8,7 @@ private:
 	Point P1; 
 	GfxInfo SquareGfxInfo;
 	CFigure* saved;
-	CFigure* savedredo;
+	
 public:
 	AddSquareAction(ApplicationManager* pApp);
 
