@@ -13,9 +13,9 @@ void UndoAction::ReadActionParameters()
 	
 
 }
-bool UndoAction::Execute(bool ReadParamsFirst)
+void UndoAction::Execute(bool ReadParamsFirst)
 {
-	bool flag;
+	
 
 	ReadActionParameters();
 	
@@ -43,8 +43,7 @@ bool UndoAction::Execute(bool ReadParamsFirst)
 	}
 
 	RecordIfAllowed(this);
-	flag = true;
-	return flag;
+	
 }
 void UndoAction::UndoExcute()
 {}

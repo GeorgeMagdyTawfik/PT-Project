@@ -105,7 +105,11 @@ void CTriangle::Load(ifstream& InFile)
 }
 CFigure* CTriangle::getfigure()
 {
-	return this;
+	CTriangle* c = new CTriangle;
+
+	*c = *this;
+
+	return c;
 }
 Point CTriangle::GetCenter()
 {

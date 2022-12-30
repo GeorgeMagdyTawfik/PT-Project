@@ -46,16 +46,22 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
+	saved = R->getfigure();
+	savedredo = R->getfigure();
 
 	RecordIfAllowed(this);
 }
 void AddCircleAction::UndoExcute()
 {
-	pManager->deletelastfigure();
+	
+	pManager->DeleteByID(saved);
+	saved = saved;
 }
 void AddCircleAction::RedoExcute()
 {
-	pManager->drawlast();
+	pManager->AddFigure(savedredo);
+	savedredo = savedredo;
+
 }
 
 bool AddCircleAction::CheckRecordability() const

@@ -64,7 +64,11 @@ bool CRectangle::CheckInside(int x, int y) const
 }
 CFigure* CRectangle::getfigure()
 {
-	return this;
+	CRectangle* c = new CRectangle;
+
+	*c = *this;
+
+	return c;
 }
 
 void CRectangle::PrintInfo(Output* pOut)

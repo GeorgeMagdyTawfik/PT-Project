@@ -46,17 +46,21 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
-
+	saved = R->getfigure();
+	savedredo = R->getfigure();
 	RecordIfAllowed(this);
 }
 void AddRectAction::UndoExcute()
 {
-	pManager->deletelastfigure();
 
+	pManager->DeleteByID(saved);
+	saved = saved;
 }
 void AddRectAction::RedoExcute()
 {
-	pManager->drawlast();
+	pManager->AddFigure(savedredo);
+	savedredo = savedredo;
+
 }
 
 bool AddRectAction::CheckRecordability() const

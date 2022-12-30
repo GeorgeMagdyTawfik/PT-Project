@@ -5,6 +5,8 @@ class AddCircleAction : public Action
 private:
 	Point P1, P2; //Rectangle Corners
 	GfxInfo CircleGfxInfo;
+	CFigure* saved;
+	CFigure* savedredo;
 public:
 	AddCircleAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();

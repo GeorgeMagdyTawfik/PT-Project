@@ -42,7 +42,7 @@ ApplicationManager::ApplicationManager()
 	for (int i = 0; i < 5; i++)
 		undolist[i] = NULL;
 	undocount = 0;
-	
+
 	redocount = 0;
 	deletecount = 0;
 
@@ -166,7 +166,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct != NULL)
 	{
 		pAct->Execute();//Execute
-		
+
 		/*UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
 		RedoAction* ra = dynamic_cast<RedoAction*>(pAct);
 		SelectFigAction* SFA = dynamic_cast<SelectFigAction*>(pAct);
@@ -207,7 +207,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
-	
+
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -402,7 +402,7 @@ void ApplicationManager::deletelastfigure()
 {
 	FigCount--;
 
-	
+
 }
 /*Action* ApplicationManager::GetExcutedAction()
 {
@@ -478,30 +478,30 @@ int ApplicationManager::getundocount()
 	redoexcuted++;
 }
 */
-void ApplicationManager::addtoundolist(Action*ac)
+void ApplicationManager::addtoundolist(Action* ac)
 {
 	redocount = 0;
-		if (undocount > 4)
+	if (undocount > 4)
+	{
+		/*if (RecordingState == false)
+			delete undolist[0]; // senario :: if it is recored ??? */
+		undolist[0] = NULL;
+		for (int i = 0; i <= 3; i++)
 		{
-			/*if (RecordingState == false)
-				delete undolist[0]; // senario :: if it is recored ??? */
-			undolist[0] = NULL;
-			for (int i = 0; i <= 3; i++)
-			{
-				undolist[i] = undolist[i + 1];
-
-			}
-			undolist[4] = ac;
-			undocount = 4;
-			undocount++;
-		}
-		else
-		{
-			undolist[undocount++] = ac;
+			undolist[i] = undolist[i + 1];
 
 		}
+		undolist[4] = ac;
+		undocount = 4;
+		undocount++;
+	}
+	else
+	{
+		undolist[undocount++] = ac;
 
-	
+	}
+
+
 }
 void ApplicationManager::Undo()
 {
@@ -575,9 +575,12 @@ void ApplicationManager::DeleteByID(CFigure* c)
 			delete FigList[i];
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
-			FigList[FigCount - 1] = NULL;
-			SelectedFig = NULL;
+			//FigList[FigCount - 1] = NULL;
+			//SelectedFig = NULL;
 			FigCount--;
+			
+
+
 		}
 
 	}

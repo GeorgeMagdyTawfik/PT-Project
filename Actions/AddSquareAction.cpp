@@ -43,18 +43,21 @@ void AddSquareAction::Execute(bool ReadParamsFirst)
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
-
+	saved = R->getfigure();
+	savedredo = R->getfigure();
 	RecordIfAllowed(this);
 }
 
 void AddSquareAction::UndoExcute()
 {
-	pManager->deletelastfigure();
 
+	pManager->DeleteByID(saved);
+	saved = saved;
 }
 void AddSquareAction::RedoExcute()
 {
-	pManager->drawlast();
+	pManager->AddFigure(savedredo);
+	savedredo = savedredo;
 
 }
 

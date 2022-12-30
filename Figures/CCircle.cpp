@@ -73,7 +73,11 @@ void CCircle::Load(ifstream& InFile)
 }
 CFigure* CCircle::getfigure()
 {
-	return this;
+	CCircle* c=new CCircle;
+	
+	*c = *this;
+
+	return c;
 }
 
 void CCircle::Move(Point destination)

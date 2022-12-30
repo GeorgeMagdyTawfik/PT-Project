@@ -71,7 +71,11 @@ void CSquare::Load(ifstream& InFile)
 }
 CFigure* CSquare::getfigure()
 {
-	return this;
+	CSquare* c = new CSquare;
+
+	*c = *this;
+
+	return c;
 }
 
 void CSquare::Move(Point destination)

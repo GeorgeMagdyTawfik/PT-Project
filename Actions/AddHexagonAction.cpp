@@ -38,18 +38,23 @@ void AddHexagonAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
-
+	saved = R->getfigure();
+	savedredo = R->getfigure();
 	RecordIfAllowed(this);
 }
 void AddHexagonAction::UndoExcute()
 {
-	pManager->deletelastfigure();
 
+	pManager->DeleteByID(saved);
+	saved = saved;
 }
 void AddHexagonAction::RedoExcute()
 {
-	pManager->drawlast();
+	pManager->AddFigure(savedredo);
+	savedredo = savedredo;
+
 }
+
 
 bool AddHexagonAction::CheckRecordability() const
 {

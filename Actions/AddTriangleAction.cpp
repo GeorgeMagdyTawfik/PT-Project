@@ -44,16 +44,22 @@ void AddTriangleAction::Execute(bool ReadParamsFirst)
 
 	
 	pManager->AddFigure(R);
+	saved = R->getfigure();
+	savedredo = R->getfigure();
 
 	RecordIfAllowed(this);
 }
 void AddTriangleAction::UndoExcute()
 {
-	pManager->deletelastfigure();
+
+	pManager->DeleteByID(saved);
+	saved = saved;
 }
 void AddTriangleAction::RedoExcute()
 {
-	pManager->drawlast();
+	pManager->AddFigure(savedredo);
+	savedredo = savedredo;
+
 }
 
 bool AddTriangleAction::CheckRecordability() const

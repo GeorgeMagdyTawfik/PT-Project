@@ -113,7 +113,13 @@ void CHexagon::Load(ifstream& InFile)
 }
 CFigure* CHexagon::getfigure()
 {
-	return this;
+	
+
+	CHexagon* c = new CHexagon;
+
+	*c = *this;
+
+	return c;
 }
 Point CHexagon::GetCenter()
 {

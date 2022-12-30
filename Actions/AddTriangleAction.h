@@ -5,6 +5,8 @@ class AddTriangleAction :public Action
 private:
 	Point P1, P2,P3; 
 	GfxInfo triangleGfxInfo;
+	CFigure* saved;
+	CFigure* savedredo;
 public:
 	AddTriangleAction(ApplicationManager* pApp);
 
