@@ -25,6 +25,7 @@ void ClearAllAction::Execute(bool ReadParamsFirst)
 	CFigure* c = new CRectangle();
 	c->SetNotFilledAsDefault();
 	delete c;
+	pManager->SetSelectedFigure(NULL);
 	//CFigure::FilledAsDefault = false;
 }
 void ClearAllAction::RedoExcute()
