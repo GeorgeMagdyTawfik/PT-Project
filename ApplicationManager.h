@@ -119,6 +119,8 @@ public:
 	int GetHexaCount() const;
 	int GetSquareCount() const;
 	int GetTriangleCount() const;
+
+	void ResetCounts();
 };
 
 #endif

@@ -650,3 +650,12 @@ int ApplicationManager::GetTriangleCount() const
 {
 	return TriangleCount;
 }
+
+void ApplicationManager::ResetCounts()
+{
+	SquareCount = 0;
+	CircleCount = 0;
+	HexaCount = 0;
+	TriangleCount = 0;
+	RectCount = 0;
+}

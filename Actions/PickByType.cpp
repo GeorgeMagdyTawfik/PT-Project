@@ -21,6 +21,11 @@ void PickByType::Execute(bool ReadParamsFirst)
 	Input* pIn = pManager->GetInput();
 	//the random function will land on a number, and the message will be printed accordingly
 	srand(time(0));
+	if (pManager->GetFigCount() == 0)
+	{
+		pOut->PrintMessage("There are no more figures!");
+		return;
+	}
 	int r = rand() % pManager->GetFigCount();
 	char type = pManager->GetRandomType(r);
 	pManager->CountTypes();
@@ -108,11 +113,11 @@ void PickByType::Execute(bool ReadParamsFirst)
 
 			if (pFig == NULL)
 			{
-				pOut->PrintMessage("You clicked on an empty area. Try clicking on a rectangle!");
+				pOut->PrintMessage("You clicked on an empty area. Try clicking on a triangle!");
 				continue;
 			}
-			CTriangle* pRect = dynamic_cast<CTriangle*>(pFig);
-			if (pRect != NULL)
+			CTriangle* pTriangle = dynamic_cast<CTriangle*>(pFig);
+			if (pTriangle != NULL)
 			{
 				pManager->DeleteFigure(pFig);
 				CorrectCount++;
@@ -133,17 +138,77 @@ void PickByType::Execute(bool ReadParamsFirst)
 			+ to_string(WrongCount));
 		break;
 	case 'h':
-		pOut->PrintMessage("Pick by type: pick all hexagons!");
+		//pOut->PrintMessage("Pick by type: pick all triangles!");
 		TotalCount = pManager->GetHexaCount();
+		pOut->PrintMessage("Pick by type: pick all hexagons!" + to_string(TotalCount));
+		while (TotalCount > 0)
+		{
+			pIn->GetPointClicked(clicked.x, clicked.y);
+			pFig = pManager->GetFigure(clicked.x, clicked.y);
+
+			if (pFig == NULL)
+			{
+				pOut->PrintMessage("You clicked on an empty area. Try clicking on a hexagon!");
+				continue;
+			}
+			CHexagon* pHexagon = dynamic_cast<CHexagon*>(pFig);
+			if (pHexagon != NULL)
+			{
+				pManager->DeleteFigure(pFig);
+				CorrectCount++;
+				pOut->PrintMessage("Bravo!          Correct clicks: " + to_string(CorrectCount) + "   " + " Wrong clicks: "
+					+ to_string(WrongCount));
+				TotalCount--;
+			}
+			else
+			{
+				pManager->DeleteFigure(pFig);
+				WrongCount++;
+				pOut->PrintMessage("Try again!     Correct clicks: " + to_string(CorrectCount) + "   " + " Wrong clicks: "
+					+ to_string(WrongCount));
+			}
+			pManager->UpdateInterface();
+		}
+		pOut->PrintMessage("End of game:   Correct clicks: " + to_string(CorrectCount) + "    Wrong clicks: "
+			+ to_string(WrongCount));
 		break;
 	case 's':
-		pOut->PrintMessage("Pick by type: pick all squares!");
+		//pOut->PrintMessage("Pick by type: pick all triangles!");
 		TotalCount = pManager->GetSquareCount();
+		pOut->PrintMessage("Pick by type: pick all squares!" + to_string(TotalCount));
+		while (TotalCount > 0)
+		{
+			pIn->GetPointClicked(clicked.x, clicked.y);
+			pFig = pManager->GetFigure(clicked.x, clicked.y);
+
+			if (pFig == NULL)
+			{
+				pOut->PrintMessage("You clicked on an empty area. Try clicking on a square!");
+				continue;
+			}
+			CSquare* pSquare = dynamic_cast<CSquare*>(pFig);
+			if (pSquare != NULL)
+			{
+				pManager->DeleteFigure(pFig);
+				CorrectCount++;
+				pOut->PrintMessage("Bravo!          Correct clicks: " + to_string(CorrectCount) + "   " + " Wrong clicks: "
+					+ to_string(WrongCount));
+				TotalCount--;
+			}
+			else
+			{
+				pManager->DeleteFigure(pFig);
+				WrongCount++;
+				pOut->PrintMessage("Try again!     Correct clicks: " + to_string(CorrectCount) + "   " + " Wrong clicks: "
+					+ to_string(WrongCount));
+			}
+			pManager->UpdateInterface();
+		}
+		pOut->PrintMessage("End of game:   Correct clicks: " + to_string(CorrectCount) + "    Wrong clicks: "
+			+ to_string(WrongCount));
 		break;
 	}
-
-	
-
+	pManager->ResetCounts();
 }
 
 void PickByType::UndoExcute()
