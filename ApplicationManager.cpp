@@ -148,11 +148,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case EXIT:
 		///create ExitAction here
-		for (int i = 0; i < RecordedActionsCount; i++)
+		/*for (int i = 0; i < RecordedActionsCount; i++)
 		{
 			delete RecordingList[i];
 		}
-		delete[]RecordingList;
+		delete[]RecordingList;*/
+		pAct = new ClearAllAction(this);
+		pAct->Execute();
+		pAct = NULL;
 		break;
 
 	case STATUS:	//a click on the status bar ==> no action
@@ -480,6 +483,8 @@ void ApplicationManager::addtoundolist(Action*ac)
 	redocount = 0;
 		if (undocount > 4)
 		{
+			/*if (RecordingState == false)
+				delete undolist[0]; // senario :: if it is recored ??? */
 			undolist[0] = NULL;
 			for (int i = 0; i <= 3; i++)
 			{

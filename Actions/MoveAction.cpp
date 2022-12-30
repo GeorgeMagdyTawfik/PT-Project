@@ -22,6 +22,8 @@ void MoveAction::ReadActionParameters()
 	}
 	else
 		pOut->PrintMessage("No selected figure. Please select a figure first!");
+	
+	
 }
 
 void MoveAction::Execute(bool ReadParamsFirst)
