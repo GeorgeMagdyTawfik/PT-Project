@@ -234,9 +234,6 @@ void ApplicationManager::SetSelectedFigure(CFigure* pFig)
 	SelectedFig = pFig;
 }
 
-
-
-// this function is repeated,I left it to resolve a conflict
 CFigure* ApplicationManager::GetSelectedFig() const
 {
 	return SelectedFig;

@@ -103,7 +103,7 @@ void ChangeFillClrAction::UndoExcute()
 	else
 	{
 		saved->MakeNotFilled();
-
+		saved->UnfillFigGfxInfo();
 	}
 	if (defaultwasfilled)
 	{

@@ -69,7 +69,7 @@ public:
 	void UpdateFigGfxDrawClr(color c);
 	void UpdateFigGfxFillClr(color c);
 	int GetID();
-
+	void UnfillFigGfxInfo();
 	color GetPrevDrawClr();
 
 };

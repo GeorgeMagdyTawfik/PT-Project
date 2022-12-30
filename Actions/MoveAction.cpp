@@ -31,7 +31,8 @@ void MoveAction::Execute(bool ReadParamsFirst)
 
 	if (pFig)
 	{
-		saved = pManager->GetSelectedFig()->getfigure();
+		//saved = pManager->GetSelectedFig()->getfigure();
+		saved = pFig;
 		prevlocation = saved->GetCenter();
 		pFig->Move(destination);
 		pFig->UseFigGfxInfo();

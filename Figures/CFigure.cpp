@@ -134,6 +134,11 @@ int CFigure::GetID()
 	return ID;
 }
 
+void CFigure::UnfillFigGfxInfo()
+{
+	PrevFigGfxInfo.isFilled = false;
+}
+
 
 
 
