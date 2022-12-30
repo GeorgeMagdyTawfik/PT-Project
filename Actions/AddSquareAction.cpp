@@ -57,8 +57,3 @@ void AddSquareAction::RedoExcute()
 	pManager->drawlast();
 
 }
-
-bool AddSquareAction::CheckRecordability() const
-{
-	return true;
-}

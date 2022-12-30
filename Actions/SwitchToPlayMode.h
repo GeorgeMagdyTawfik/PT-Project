@@ -13,6 +13,5 @@ public:
 	void UndoExcute();
 	void RedoExcute();
 
-	virtual bool CheckRecordability() const;
 };
 

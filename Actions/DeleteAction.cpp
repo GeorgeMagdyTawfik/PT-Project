@@ -44,8 +44,3 @@ void DeleteAction::RedoExcute()
 	savedredo = savedredo-> getfigure();
 }
 
-
-bool DeleteAction::CheckRecordability() const
-{
-	return true;
-}

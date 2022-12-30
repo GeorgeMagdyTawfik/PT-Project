@@ -31,11 +31,6 @@ void StartRecordingAction::Execute(bool ReadParamsFirst)
 	pOut->PrintMessage("Recording Started! you have a maximum of 20 actions to record");
 }
 
-bool StartRecordingAction::CheckRecordability() const
-{
-	return false;
-}
-
 void StartRecordingAction::UndoExcute()
 {}
 void StartRecordingAction::RedoExcute()

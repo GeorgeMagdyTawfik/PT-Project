@@ -58,8 +58,3 @@ void AddRectAction::RedoExcute()
 {
 	pManager->drawlast();
 }
-
-bool AddRectAction::CheckRecordability() const
-{
-	return true;
-}

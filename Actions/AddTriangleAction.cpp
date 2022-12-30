@@ -55,8 +55,3 @@ void AddTriangleAction::RedoExcute()
 {
 	pManager->drawlast();
 }
-
-bool AddTriangleAction::CheckRecordability() const
-{
-	return true;
-}

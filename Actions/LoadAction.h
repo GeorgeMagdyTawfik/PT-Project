@@ -19,6 +19,5 @@ public:
 	virtual void RedoExcute();
 	~LoadAction();
 
-	virtual bool CheckRecordability() const;
 };
 

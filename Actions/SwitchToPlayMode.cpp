@@ -22,8 +22,3 @@ void SwitchToPlayMode::UndoExcute()
 {}
 void SwitchToPlayMode::RedoExcute()
 {}
-
-bool SwitchToPlayMode::CheckRecordability() const
-{
-	return false;
-}

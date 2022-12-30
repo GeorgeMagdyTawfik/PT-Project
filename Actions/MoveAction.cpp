@@ -54,8 +54,3 @@ void MoveAction::RedoExcute()
 MoveAction::~MoveAction()
 {
 }
-
-bool MoveAction::CheckRecordability() const
-{
-	return true;
-}

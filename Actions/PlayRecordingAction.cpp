@@ -29,10 +29,6 @@ void PlayRecordingAction::Execute(bool ReadParamsFirst)
 	if (pManager->GetRecordingState() == false) // i think this is redundant
 		pManager->PreviewRecordedActs();
 }
-bool PlayRecordingAction::CheckRecordability() const
-{
-	return false;
-}
 
 void PlayRecordingAction::UndoExcute()
 {}

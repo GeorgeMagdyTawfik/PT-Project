@@ -27,8 +27,3 @@ void ClearAllAction::RedoExcute()
 {}
 void ClearAllAction::UndoExcute()
 {}
-
-bool ClearAllAction::CheckRecordability() const
-{
-	return true;
-}

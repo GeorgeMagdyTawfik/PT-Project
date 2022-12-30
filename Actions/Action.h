@@ -28,7 +28,6 @@ public:
 	virtual void UndoExcute() = 0;
 	virtual void RedoExcute() = 0;
 
-	virtual bool CheckRecordability() const = 0; // We don't need this anymore
 
 	//virtual void Preview() {} now we don't need this 
 

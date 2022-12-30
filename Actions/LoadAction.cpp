@@ -97,8 +97,3 @@ LoadAction::~LoadAction()
 }
 void LoadAction::RedoExcute()
 {}
-
-bool LoadAction::CheckRecordability() const
-{
-	return false;
-}
