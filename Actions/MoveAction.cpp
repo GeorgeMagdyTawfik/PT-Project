@@ -40,7 +40,7 @@ void MoveAction::Execute(bool ReadParamsFirst)
 		pManager->addtoundolist(this);
 	}
 	//pManager->AddToRecordingList(this);
-	RecordIfAllowed(this);
+	//RecordIfAllowed(this);				I think these have to be inside the scope	
 }
 
 void MoveAction::UndoExcute()
