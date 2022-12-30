@@ -1,5 +1,17 @@
-BLUE      GREEN     
-1
+BLUE      BLACK     
+7
 
-SQUARE    1    564  280  BLUE    NO_FILL 
+SQUARE    1    480  307  BLUE    BLACK   
+
+RECT      2    619  168  886  247  BLUE    RED     
+
+SQUARE    3    747  392  BLUE    BLACK   
+
+TRIANG    4    1070 299  989  363  890  316  BLUE    BLACK   
+
+HEXAGON   5    1073 235  BLUE    NO_FILL 
+
+CIRCLE    6    939  127  1013 133  BLUE    RED     
+
+HEXAGON   7    337  204  BLUE    BLACK   
 

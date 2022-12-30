@@ -41,6 +41,8 @@ public:
 	color GetDrawClr();             //returns the figure's drawing color
 	color GetFillClr();
 
+	FillColors GetFillClrENUM();
+
 	void SetFilledAsDefault();		//sets filled as the default for figures
 	void SetNotFilledAsDefault();	//sets not filled as the default for figures
 	bool IsFilledAsDefault();		//returns whether the default for figures is filled or not

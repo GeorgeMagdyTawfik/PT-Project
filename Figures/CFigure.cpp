@@ -57,6 +57,29 @@ color CFigure::GetFillClr()
 {
 	return FigGfxInfo.FillClr;
 }
+FillColors CFigure::GetFillClrENUM()
+{
+	bool b = FigGfxInfo.isFilled;
+	
+	if (!b)
+		return UNFILLED;
+
+	color c = FigGfxInfo.FillClr;
+
+	if (c == BLACK)
+		return black;
+	if (c == RED)
+		return red;
+	if (c == ORANGE)
+		return orange;
+	if (c == color(255, 215, 0))
+		return yellow;
+	if (c == color(0, 87, 231))
+		return blue;
+	if (c == color(0, 135, 68))
+		return green;
+
+}
 void CFigure::SetFilledAsDefault()
 {
 	FilledAsDefault = true;

@@ -21,6 +21,7 @@
 #include "Actions/PlayRecordingAction.h"
 #include "Actions\SwitchToDrawMode.h"
 #include "Actions/PickByType.h"
+#include "Actions/PickByColor.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -51,11 +52,9 @@ ApplicationManager::ApplicationManager()
 
 	LastAction = NULL;
 
-	SquareCount = 0;
-	CircleCount = 0;
-	HexaCount = 0;
-	TriangleCount = 0;
-	RectCount = 0;
+	ResetCounts();
+
+	ResetFillColors();
 }
 
 //==================================================================================//
@@ -155,6 +154,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case PICK_BY_TYPE:
 		pAct = new PickByType(this);
+		break;
+	case PICK_BY_CLR:
+		pAct = new PickByColor(this);
 		break;
 	case EXIT:
 		///create ExitAction here
@@ -621,6 +623,37 @@ void ApplicationManager::CountTypes()
 	}
 }
 
+void ApplicationManager::CountFillColors()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (!FigList[i]->IsFilled())
+			NoFillFigs++;
+		else
+		{
+			color c = FigList[i]->GetFillClr();
+
+			if (c == BLACK)
+				BlackFigs++;
+			if (c == RED)
+				RedFigs++;
+			if (c == ORANGE)
+				OrangeFigs++;
+			if (c == color(255, 215, 0))
+				YellowFigs++;
+			if (c == color(0, 87, 231))
+				BlueFigs++;
+			if (c == color(0, 135, 68))
+				Greenfigs++;
+		}
+	}
+}
+
+FillColors ApplicationManager::GetRandomFillColor(int index)
+{
+	return FigList[index]->GetFillClrENUM();
+}
+
 char ApplicationManager::GetRandomType(int index)
 {
 	return FigList[index]->GetMyType();
@@ -651,6 +684,41 @@ int ApplicationManager::GetTriangleCount() const
 	return TriangleCount;
 }
 
+int ApplicationManager::GetBlackFigs()
+{
+	return BlackFigs;
+}
+
+int ApplicationManager::GetRedFigs()
+{
+	return RedFigs;
+}
+
+int ApplicationManager::GetOrangeFigs()
+{
+	return OrangeFigs;
+}
+
+int ApplicationManager::GetYellowFigs()
+{
+	return YellowFigs;
+}
+
+int ApplicationManager::GetGreenFigs()
+{
+	return Greenfigs;
+}
+
+int ApplicationManager::GetBlueFigs()
+{
+	return BlueFigs;
+}
+
+int ApplicationManager::GetNoFillFigs()
+{
+	return NoFillFigs;
+}
+
 void ApplicationManager::ResetCounts()
 {
 	SquareCount = 0;
@@ -658,4 +726,15 @@ void ApplicationManager::ResetCounts()
 	HexaCount = 0;
 	TriangleCount = 0;
 	RectCount = 0;
+}
+
+void ApplicationManager::ResetFillColors()
+{
+	NoFillFigs = 0;
+	RedFigs = 0;
+	BlackFigs = 0;
+	BlueFigs = 0;
+	Greenfigs = 0;
+	YellowFigs = 0;
+	OrangeFigs = 0;
 }

@@ -45,6 +45,14 @@ private:
 	int TriangleCount;
 	int RectCount;
 
+	int NoFillFigs;
+	int RedFigs;
+	int BlackFigs;
+	int BlueFigs;
+	int Greenfigs;
+	int YellowFigs;
+	int OrangeFigs;
+
 public:
 	ApplicationManager();
 	~ApplicationManager();
@@ -112,6 +120,8 @@ public:
 	void DeleteByID(CFigure*);
 	void EmptyUndoList();
 	void CountTypes();
+	void CountFillColors();
+	FillColors GetRandomFillColor(int index);
 	char GetRandomType(int index);
 
 	int GetCircleCount() const;
@@ -120,7 +130,16 @@ public:
 	int GetSquareCount() const;
 	int GetTriangleCount() const;
 
+	int GetBlackFigs();
+	int GetRedFigs();
+	int GetOrangeFigs();
+	int GetYellowFigs();
+	int GetGreenFigs();
+	int GetBlueFigs();
+	int GetNoFillFigs();
+
 	void ResetCounts();
+	void ResetFillColors();
 };
 
 #endif

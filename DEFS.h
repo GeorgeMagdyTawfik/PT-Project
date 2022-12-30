@@ -51,6 +51,17 @@ enum ActionType //The actions supported (you can add more if needed)
 	
 };
 
+enum FillColors
+{
+	black,
+	red,
+	orange,
+	yellow,
+	green,
+	blue,
+	UNFILLED
+};
+
 struct Point	//To be used for figures points
 { int x,y; };
 
