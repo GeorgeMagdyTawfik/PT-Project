@@ -28,7 +28,7 @@ void AddSquareAction::ReadActionParameters()
 	SquareGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-
+	pManager->addtoundolist(this);
 }
 
 //Execute the action
@@ -49,7 +49,7 @@ void AddSquareAction::Execute(bool ReadParamsFirst)
 
 void AddSquareAction::UndoExcute()
 {
-	pManager->deletefigure();
+	pManager->deletelastfigure();
 
 }
 void AddSquareAction::RedoExcute()

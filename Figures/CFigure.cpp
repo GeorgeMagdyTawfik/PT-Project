@@ -11,7 +11,6 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
   
 	if (FilledAsDefault)
 		FigGfxInfo.isFilled = true;
-
 	PrevFigGfxInfo = FigGfxInfo;
 }
 
@@ -43,15 +42,36 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr;
 }
+void CFigure::MakeNotFilled()
+{
+	FigGfxInfo.isFilled = false;
+}
 color CFigure::GetDrawClr()
 {
 	return FigGfxInfo.DrawClr;
+}
+color CFigure::GetFillClr()
+{
+	return FigGfxInfo.FillClr;
 }
 void CFigure::SetFilledAsDefault()
 {
 	FilledAsDefault = true;
 }
-color CFigure::DecodeColor(string s) const
+void CFigure::SetNotFilledAsDefault()
+{
+	FilledAsDefault = false;
+}
+bool CFigure::IsFilledAsDefault()
+{
+	return FilledAsDefault;
+}
+bool CFigure::IsFilled()
+{
+	return FigGfxInfo.isFilled;
+}
+
+color CFigure::DecodeColor(string s) const		//takes string and returns corresponding color
 {
 	if (s == "BLACK")
 		return BLACK;
@@ -82,12 +102,6 @@ string CFigure::EncodeColor(color c) const      //takes color and returns corres
 		return "GREEN";
 }
 
-/*int CFigure::GetFigCount()
-{
-	FigCount++;
-	return FigCount;
-}*/
-
 void CFigure::PrintInfo(Output* pOut)
 {
 	pOut->PrintMessage("Figure of ID : " + to_string(ID));
@@ -108,8 +122,23 @@ void CFigure::UpdateFigGfxDrawClr(color c)
 	PrevFigGfxInfo.DrawClr = c;
 }
 
+
+
 void CFigure::UpdateFigGfxFillClr(color c)
 {
 	PrevFigGfxInfo.isFilled = true;
 	PrevFigGfxInfo.FillClr = c;
 }
+int CFigure::GetID()
+{
+	return ID;
+}
+
+
+
+
+color CFigure::GetPrevDrawClr()
+{
+	return PrevFigGfxInfo.DrawClr;
+}
+

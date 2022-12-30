@@ -15,6 +15,7 @@
 #include"Actions/ClearAllAction.h"
 #include "Actions/ChangeDrawClrAction.h"
 #include "Actions/ChangeFillClrAction.h"
+#include "Actions/MoveAction.h"
 #include "Actions/StartRecordingAction.h"
 #include "Actions/StopRecordingAction.h"
 #include "Actions/PlayRecordingAction.h"
@@ -41,8 +42,11 @@ ApplicationManager::ApplicationManager()
 	for (int i = 0; i < 5; i++)
 		undolist[i] = NULL;
 	undocount = 0;
-	undoexcuted = 0;
+	
 	redocount = 0;
+	deletecount = 0;
+
+
 
 	LastAction = NULL;
 }
@@ -78,6 +82,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case CHANGE_FILL_CLR:
 		pAct = new ChangeFillClrAction(this);
+		break;
+	case MOVE:
+		pAct = new MoveAction(this);
 		break;
 	case DRAW_RECT:
 		pAct = new AddRectAction(this);
@@ -125,7 +132,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pOut->PrintMessage("Please select an operation first!");
 		break;
 	case REDO:
-	pAct=new RedoAction(this);
+		pAct = new RedoAction(this);
 		break;
 	case CLEAR_ALL:
 		pAct = new ClearAllAction(this);
@@ -156,9 +163,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct != NULL)
 	{
 		pAct->Execute();//Execute
-		UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
+		
+		/*UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
 		RedoAction* ra = dynamic_cast<RedoAction*>(pAct);
-		if (ua == NULL && ra == NULL)
+		SelectFigAction* SFA = dynamic_cast<SelectFigAction*>(pAct);
+		if (ua == NULL && ra == NULL&&SFA==NULL)
 		{
 			if (undocount > 4)
 			{
@@ -174,10 +183,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			else
 			{
 				undolist[undocount++] = pAct;
-				
+
 			}
 
-		}
+		}*/
 		//delete pAct;	//You may need to change this line depending to your implementation
 		//pAct = NULL; 
 		LastAction = pAct;
@@ -196,7 +205,6 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
 	
-	undoexcuted =0;
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -223,8 +231,15 @@ void ApplicationManager::SetSelectedFigure(CFigure* pFig)
 	SelectedFig = pFig;
 }
 
-CFigure* ApplicationManager::GetSelectedFigure() const
+CFigure* ApplicationManager::GetSelectedFigure() //const
 {
+	if (SelectedFig != NULL)
+	{
+		SelectedFig->SetSelected(false);
+		//SelectedFig->ChngDrawClr(UI.DrawColor);
+		SelectedFig->UseFigGfxInfo();
+		SetSelectedFigure(NULL);
+	}
 	return SelectedFig;
 }
 
@@ -295,10 +310,13 @@ void ApplicationManager::DeleteAll()
 {
 	for (int i = 0; i < FigCount; i++)
 	{
-		delete FigList[i]; 
-		FigList[i] = NULL; 
+		delete FigList[i];
+		FigList[i] = NULL;
 	}
-	SetFigcount(0); /// This was desparately needed
+	undocount = 0;
+	redocount = 0;
+	SetFigcount(0);/// This was desparately needed
+
 }
 
 int ApplicationManager::GetFigCount() const
@@ -376,28 +394,48 @@ ApplicationManager::~ApplicationManager()
 
 }*/
 
-int  ApplicationManager::GetUndoExcuted()
+/*int  ApplicationManager::GetUndoExcuted()
 {
 	return undoexcuted;
 
 }
+*/
 
-void  ApplicationManager::SetUndoExcuted()
+/*void  ApplicationManager::SetUndoExcuted()
 {
 	undoexcuted++;
 
 }
+*/
 //////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::deletefigure()
+void ApplicationManager::deletelastfigure()
 {
 	FigCount--;
-	//FigList[FigCount - 1] = NULL;
+
+	
 }
-Action* ApplicationManager::GetExcutedAction()
+/*Action* ApplicationManager::GetExcutedAction()
 {
 	return undolist[undocount - 1];
 
 }
+*/
+
+bool ApplicationManager::MoveFigure(Point destination)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->IsSelected())
+		{
+			FigList[i]->Move(destination);
+			FigList[i]->ChngDrawClr(UI.DrawColor);
+			FigList[i]->UseFigGfxInfo();
+			return true;
+		}
+	}
+	return false;
+}
+/*void ApplicationManager::setExcutedeundoAction(Action* undoed)
 void ApplicationManager::setExcutedeundoAction(Action* undoed)
 {
 
@@ -417,22 +455,71 @@ void ApplicationManager::setExcutedeundoAction(Action* undoed)
 		redolist[redocount++] = undoed;
 
 	}
-	
+
 }
-Action* ApplicationManager::getundoedaction()
+*/
+/*Action* ApplicationManager::getundoedaction()
 {
 
 	return redolist[redocount - 1];
 }
+*/
 void ApplicationManager::drawlast()
 {
 	FigList[FigCount++]->Draw(pOut);
-	redocount--;
-	undoexcuted-- ;
+	//redocount--;
+	//undoexcuted--;
 }
 int ApplicationManager::getredocount()
 {
 	return redocount;
+}
+/*int ApplicationManager::getredoExcuted()
+{
+	return redoexcuted;
+}
+*/
+int ApplicationManager::getundocount()
+{
+	return undocount;
+}
+/*void ApplicationManager::setredoExcute()
+{
+	redoexcuted++;
+}
+*/
+void ApplicationManager::addtoundolist(Action*ac)
+{
+	redocount = 0;
+		if (undocount > 4)
+		{
+			undolist[0] = NULL;
+			for (int i = 0; i <= 3; i++)
+			{
+				undolist[i] = undolist[i + 1];
+
+			}
+			undolist[4] = ac;
+			undocount = 4;
+			undocount++;
+		}
+		else
+		{
+			undolist[undocount++] = ac;
+
+		}
+
+	
+}
+void ApplicationManager::Undo()
+{
+	undolist[undocount-- - 1]->UndoExcute();
+	redocount++;
+}
+void ApplicationManager::Redo()
+{
+	undolist[undocount++]->RedoExcute();
+	redocount--;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -501,3 +588,30 @@ void ApplicationManager::SetRecordedActionsCount(int a)
 {
 	RecordedActionsCount = a;
 }
+void ApplicationManager::DeleteByID(CFigure* c)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->GetID() == c->GetID())
+		{
+			delete FigList[i];
+			if (i != FigCount - 1)
+				FigList[i] = FigList[FigCount - 1];
+			FigList[FigCount - 1] = NULL;
+			SelectedFig = NULL;
+			FigCount--;
+		}
+
+	}
+}
+/*void ApplicationManager::DrawByID(CFigure* c)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[FigCount]->GetID() == c->GetID())
+		
+			c->Draw(pOut);
+		FigCount++;
+	}
+}
+*/

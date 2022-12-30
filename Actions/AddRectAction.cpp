@@ -31,7 +31,7 @@ void AddRectAction::ReadActionParameters()
 	RectGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-
+	pManager->addtoundolist(this);
 }
 
 //Execute the action
@@ -51,7 +51,7 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 }
 void AddRectAction::UndoExcute()
 {
-	pManager->deletefigure();
+	pManager->deletelastfigure();
 
 }
 void AddRectAction::RedoExcute()

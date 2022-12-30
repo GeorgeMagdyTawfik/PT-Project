@@ -62,13 +62,40 @@ bool CRectangle::CheckInside(int x, int y) const
 		&&	y <= BR.y
 		);
 }
+CFigure* CRectangle::getfigure()
+{
+	CRectangle* h = new CRectangle(Corner1,Corner2, FigGfxInfo);
+	h->ID = ID;
+	return h;
+}
 
 void CRectangle::PrintInfo(Output* pOut)
 {
 	string msg = "Rectangle : ID = " + to_string(ID);
 	msg += ", Start(" + to_string(UL.x) + ", " + to_string(UL.y) + ") " +
-		" End (" + to_string(BR.x) + ", " + to_string(BR.y) + ")";
+	" End (" + to_string(BR.x) + ", " + to_string(BR.y) + ")";
 	msg += ", length = " + to_string(BR.x - UL.x)
-		+ ", width = " + to_string(BR.y - UL.y);
+	+ ", width = " + to_string(BR.y - UL.y);
 	pOut->PrintMessage(msg);
+}
+
+void CRectangle::Move(Point destination)
+{
+	int height, width;
+
+	height = abs(Corner1.y - Corner2.y);
+	width = abs(Corner1.x - Corner2.x);
+
+	Corner1.x = destination.x - width/2;
+	Corner2.x = destination.x + width/2;
+
+	Corner1.y = destination.y - height/2;
+	Corner2.y = destination.y + height/2;
+}
+Point CRectangle::GetCenter()
+{
+	Point c;
+	c.x = (Corner1.x + Corner2.x) / 2;
+	c.y = (Corner1.y + Corner2.y) / 2;
+	return c;
 }

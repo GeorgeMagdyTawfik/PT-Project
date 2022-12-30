@@ -13,10 +13,11 @@ void ChangeFillClrAction::ReadActionParameters()
 	CFigure* pFig = pManager->GetSelectedFig();
 
 	if (!pFig)
-		pOut->PrintMessage("Please select a figure first!");
+		pOut->PrintMessage("No selected figure. Please select a figure first!");
 
 	else
 	{
+		
 		pOut->PrintMessage("Change fill color: please choose a color: ");
 
 		ActType = pManager->GetUserAction();
@@ -64,29 +65,63 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 	if (chosen)
 	{
 		CFigure* pFig = pManager->GetSelectedFig();
-
+		
 		if (!pFig)
 			return;
 		else
 		{
-			color prev = pFig->GetDrawClr();
+			saved = pManager->GetSelectedFig()->getfigure();
+
+			figwasfilled = pFig->IsFilled();		//now we know whether the figure was filled or not
+			defaultwasfilled = pFig->IsFilledAsDefault();
+
+			prevUIFill = UI.FillColor;
+			prevFigFill = pFig->GetFillClr();
+
 			UI.FillColor = NewFill;
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
 			pFig->UpdateFigGfxFillClr(NewFill);
-			pFig->ChngDrawClr(prev);
+			pFig->ChngDrawClr(prevFigFill);
 		}
 	}
 
 	RecordIfAllowed(this); /// Is it the correct line to add this
+
+	pManager->addtoundolist(this);
+
 }
 
 void ChangeFillClrAction::UndoExcute()
 {
+	if (figwasfilled)
+	{
+		saved->ChngFillClr(prevFigFill);
+		saved->UpdateFigGfxFillClr(prevFigFill);
+		
+	}
+	else
+	{
+		saved->MakeNotFilled();
+
+	}
+	if (defaultwasfilled)
+	{
+		UI.FillColor = prevUIFill;
+	}
+	else
+	{
+		saved->SetNotFilledAsDefault();
+	}
 }
 
 void ChangeFillClrAction::RedoExcute()
 {
+	saved->SetFilledAsDefault();
+	saved->ChngFillClr(NewFill);
+	saved->UpdateFigGfxFillClr(NewFill);
+	UI.FillColor = NewFill;
+
 }
 
 ChangeFillClrAction::~ChangeFillClrAction()

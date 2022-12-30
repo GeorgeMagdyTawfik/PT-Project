@@ -71,6 +71,11 @@ bool CHexagon::CheckInside(int X, int Y) const
 	return abs(GetHexagonArea() - sumAreas) < 30;
 }
 
+void CHexagon::Move(Point destination)
+{
+	center = destination;
+}
+
 void CHexagon::PrintInfo(Output* pOut)
 {
 	string msg = "Hexagon : ID = " + to_string(ID);
@@ -105,4 +110,14 @@ void CHexagon::Load(ifstream& InFile)
 		FigGfxInfo.isFilled = true;
 		FigGfxInfo.FillClr = DecodeColor(color2);
 	}
+}
+CFigure* CHexagon::getfigure()
+{
+	CHexagon* h = new CHexagon(center,  FigGfxInfo);
+	h->ID = ID;
+	return h;
+}
+Point CHexagon::GetCenter()
+{
+	return center;
 }

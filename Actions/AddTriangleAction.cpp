@@ -30,7 +30,7 @@ void AddTriangleAction::ReadActionParameters()
 	triangleGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-
+	pManager->addtoundolist(this);
 }
 
 
@@ -49,7 +49,7 @@ void AddTriangleAction::Execute(bool ReadParamsFirst)
 }
 void AddTriangleAction::UndoExcute()
 {
-	pManager->deletefigure();
+	pManager->deletelastfigure();
 }
 void AddTriangleAction::RedoExcute()
 {

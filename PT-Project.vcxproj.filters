@@ -200,6 +200,7 @@
     <ClCompile Include="Actions\ClearAllAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\MoveAction.cpp" />
     <ClCompile Include="Actions\StartRecordingAction.cpp" />
     <ClCompile Include="Actions\StopRecordingAction.cpp" />
     <ClCompile Include="Actions\PlayRecordingAction.cpp" />
@@ -342,6 +343,7 @@
     <ClInclude Include="Actions\ClearAllAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\MoveAction.h" />
     <ClInclude Include="Actions\StartRecordingAction.h" />
     <ClInclude Include="Actions\StopRecordingAction.h" />
     <ClInclude Include="Actions\PlayRecordingAction.h" />
