@@ -59,7 +59,8 @@ void AddSquareAction::RedoExcute()
 	pManager->AddFigure(savedredo);
 	savedredo = savedredo;
 
-}
+}]'
+\-+*/'
 
 bool AddSquareAction::CheckRecordability() const
 {
