@@ -22,6 +22,7 @@
 #include "Actions\SwitchToDrawMode.h"
 #include "Actions/PickByType.h"
 #include "Actions/PickByColor.h"
+#include "Actions/PickByTypeAndColor.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -157,6 +158,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case PICK_BY_CLR:
 		pAct = new PickByColor(this);
+		break;
+	case PICK_BY_TYPE_AND_CLR:
+		pAct = new PickByTypeAndColor(this);
 		break;
 	case EXIT:
 		///create ExitAction here
