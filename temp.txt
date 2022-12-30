@@ -1,5 +1,5 @@
-BLUE      BLUE      
-6
+BLUE      YELLOW    
+10
 
 RECT      8    551  420  356  307  BLUE    RED     
 
@@ -12,4 +12,12 @@ HEXAGON   11   1139 326  BLUE    GREEN
 CIRCLE    12   210  403  131  374  BLUE    GREEN   
 
 HEXAGON   13   573  555  BLUE    BLUE    
+
+TRIANG    1    719  149  493  140  622  247  BLUE    YELLOW  
+
+TRIANG    2    875  226  1012 169  1026 278  BLUE    NO_FILL 
+
+HEXAGON   3    781  181  BLUE    NO_FILL 
+
+RECT      4    449  245  340  185  BLUE    BLACK   
 
