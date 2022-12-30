@@ -13,8 +13,10 @@ void UndoAction::ReadActionParameters()
 	
 
 }
-void UndoAction::Execute(bool ReadParamsFirst)
+bool UndoAction::Execute(bool ReadParamsFirst)
 {
+	bool flag;
+
 	ReadActionParameters();
 	
 	int undocount = pManager->getundocount();
@@ -41,6 +43,8 @@ void UndoAction::Execute(bool ReadParamsFirst)
 	}
 
 	RecordIfAllowed(this);
+	flag = true;
+	return flag;
 }
 void UndoAction::UndoExcute()
 {}

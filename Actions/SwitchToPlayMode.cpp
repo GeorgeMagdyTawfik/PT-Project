@@ -9,13 +9,17 @@ SwitchToPlayMode::SwitchToPlayMode(ApplicationManager* pApp) : Action(pApp)
 void SwitchToPlayMode::ReadActionParameters()
 {}
 
-void SwitchToPlayMode::Execute(bool ReadParamsFirst)
+bool SwitchToPlayMode::Execute(bool ReadParamsFirst)
 {
+	bool flag;
 	Action* pAct = new SaveAction(pManager);
 	Output* pOut = pManager->GetOutput();
 	pAct->Execute(0);
 	pOut->CreatePlayToolBar();
 	pOut->ClearStatusBar();
+	flag = false;
+	return flag;
+
 }
 
 void SwitchToPlayMode::UndoExcute()

@@ -5,7 +5,7 @@ class SwitchToDrawMode : public Action
 public:
 	SwitchToDrawMode(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
-	virtual void Execute(bool ReadParamsFirst = true);
+	virtual bool Execute(bool ReadParamsFirst = true);
 	virtual void UndoExcute();
 	virtual void RedoExcute();
 	virtual bool CheckRecordability() const;
