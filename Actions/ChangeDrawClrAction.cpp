@@ -68,7 +68,7 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 
 	if (chosen)
 	{
-		saved = pManager->GetSelectedFig()->getfigure();
+		saved = pManager->GetSelectedFig()->getpointerfig();
 		CFigure* pFig = pManager->GetSelectedFig();
 
 		if (!pFig)

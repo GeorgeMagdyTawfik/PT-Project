@@ -118,3 +118,7 @@ Point CTriangle::GetCenter()
 	c.y = (p1.y + p2.y + p3.y) / 3;
 	return c;
 }
+CFigure* CTriangle::getpointerfig()
+{
+	return this;
+}

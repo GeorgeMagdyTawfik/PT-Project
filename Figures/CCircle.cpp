@@ -94,3 +94,7 @@ Point CCircle::GetCenter()
 {
 	return center;
 }
+CFigure* CCircle::getpointerfig()
+{
+	return this;
+}

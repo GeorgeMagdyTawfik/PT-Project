@@ -74,6 +74,7 @@ public:
 	int GetID();
 	void UnfillFigGfxInfo();
 	color GetPrevDrawClr();
+	virtual CFigure* getpointerfig()=0;
 
 };
 

@@ -84,6 +84,11 @@ void CHexagon::PrintInfo(Output* pOut)
 	pOut->PrintMessage(msg);
 }
 
+CFigure* CHexagon::getpointerfig()
+{
+	return this;
+}
+
 void CHexagon::Save(ofstream& OutFile)
 {
 	OutFile << setw(10) << left << "HEXAGON" << setw(5) << ID << setw(5) << center.x

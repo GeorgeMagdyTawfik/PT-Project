@@ -31,8 +31,8 @@ void MoveAction::Execute(bool ReadParamsFirst)
 
 	if (pFig)
 	{
-		saved = pManager->GetSelectedFig()->getfigure();
-		//saved = pFig;
+		//saved = pManager->GetSelectedFig()->getfigure();
+		saved = pFig->getpointerfig();
 		prevlocation = saved->GetCenter();
 		pFig->Move(destination);
 		pFig->UseFigGfxInfo();
@@ -46,13 +46,14 @@ void MoveAction::Execute(bool ReadParamsFirst)
 
 void MoveAction::UndoExcute()
 {
+	
 	saved->Move(prevlocation);
 }
 
 void MoveAction::RedoExcute()
 {
-	//Output* pOut = pManager->GetOutput();
-	//pOut->ClearDrawArea();
+	Output* pOut = pManager->GetOutput();
+	pOut->ClearDrawArea();
 	saved->Move(destination);
 }
 

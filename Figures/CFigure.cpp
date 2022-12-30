@@ -147,3 +147,4 @@ color CFigure::GetPrevDrawClr()
 	return PrevFigGfxInfo.DrawClr;
 }
 
+

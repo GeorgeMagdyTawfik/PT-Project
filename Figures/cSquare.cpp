@@ -86,3 +86,7 @@ Point CSquare::GetCenter()
 {
 	return center;
 }
+CFigure* CSquare::getpointerfig()
+{
+	return this;
+}

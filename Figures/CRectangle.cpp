@@ -101,3 +101,8 @@ Point CRectangle::GetCenter()
 	c.y = (Corner1.y + Corner2.y) / 2;
 	return c;
 }
+
+CFigure* CRectangle::getpointerfig()
+{
+	return this;
+}

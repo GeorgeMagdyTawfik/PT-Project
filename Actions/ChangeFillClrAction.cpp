@@ -68,8 +68,8 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 			return;
 		else
 		{
-			//saved = pManager->GetSelectedFig()->getfigure();
-			saved = pFig;
+			saved = pManager->GetSelectedFig()->getpointerfig();
+			
 
 			figwasfilled = pFig->IsFilled();		//now we know whether the figure was filled or not
 			defaultwasfilled = pFig->IsFilledAsDefault();
