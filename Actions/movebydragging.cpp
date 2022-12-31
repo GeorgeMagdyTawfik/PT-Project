@@ -24,7 +24,7 @@ void movebydragging::Execute(bool ReadParamsFirst)
 	if (pFig)
 	{
 
-		pOut->PrintMessage("move the figure");
+		pOut->PrintMessage("Move By Dragging: drag the figure you want to move.");
 		moved = pManager->GetSelectedFig();
 		while (pIn->GetButton(newlocation.x, newlocation.y) == BUTTON_UP)
 		{
@@ -34,7 +34,7 @@ void movebydragging::Execute(bool ReadParamsFirst)
 			
 			moved->Move(newlocation);
 			Sleep(2);
-			pOut->PrintMessage("the selected figure is moving");
+			pOut->PrintMessage("The figure is moving!");
 			
 			pManager->UpdateInterface();
 		}
@@ -42,6 +42,9 @@ void movebydragging::Execute(bool ReadParamsFirst)
 	}
 	else
 		pOut->PrintMessage("No selected figure. Please select a figure first!");
+	
+	//pOut->CreateDrawToolBar();
+	pOut->PrintMessage("The figure has been moved");
 }
 
 void movebydragging::UndoExcute()
