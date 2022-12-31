@@ -6,8 +6,7 @@ class ChangeDrawClrAction : public Action
 	bool chosen;
 	color prevUIDraw;
 	color prevFigDraw;
-	CFigure* saved;
-	CFigure* savedredo;
+	CFigure* pFig;
 
 public:
 	ChangeDrawClrAction(ApplicationManager* pApp);

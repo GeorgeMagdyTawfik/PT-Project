@@ -70,9 +70,6 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 			return;
 		else
 		{
-			saved = pManager->GetSelectedFig()->getpointerfig();
-		
-
 			figwasfilled = pFig->IsFilled();		//now we know whether the figure was filled or not
 			defaultwasfilled = pFig->IsFilledAsDefault();
 
@@ -82,11 +79,10 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
 			pFig->UpdateFigGfxFillClr(NewFill);
-			//pFig->ChngDrawClr(prevFigFill);
 		}
 	}
 
-	RecordIfAllowed(this); /// Is it the correct line to add this
+	RecordIfAllowed(this);							// Is it the correct line to add this
 
 	pManager->addtoundolist(this);
 
@@ -97,14 +93,15 @@ void ChangeFillClrAction::UndoExcute()
 	
 	if (figwasfilled)
 	{
-		saved->ChngFillClr(prevFigFill);
-		saved->UpdateFigGfxFillClr(prevFigFill);
+		pFig->ChngFillClr(prevFigFill);
+		pFig->UpdateFigGfxFillClr(prevFigFill);
+
 		
 	}
 	else
 	{
-		saved->MakeNotFilled();
-		saved->UnfillFigGfxInfo();
+		pFig->MakeNotFilled();
+		pFig->UnfillFigGfxInfo();
 	}
 	if (defaultwasfilled)
 	{
@@ -112,17 +109,15 @@ void ChangeFillClrAction::UndoExcute()
 	}
 	else
 	{
-		saved->SetNotFilledAsDefault();
+		pFig->SetNotFilledAsDefault();
 	}
-	//
 }
 
 void ChangeFillClrAction::RedoExcute()
 {
-	
-	saved->SetFilledAsDefault();
-	saved->ChngFillClr(NewFill);
-	saved->UpdateFigGfxFillClr(NewFill);
+	pFig->SetFilledAsDefault();
+	pFig->ChngFillClr(NewFill);
+	pFig->UpdateFigGfxFillClr(NewFill);
 	UI.FillColor = NewFill;
 	
 }
