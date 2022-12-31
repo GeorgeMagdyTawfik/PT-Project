@@ -14,7 +14,7 @@ public:
 	virtual void ReadActionParameters();
 	virtual void Execute(bool ReadParamsFirst = true);
 
-	void UnselectPrevious(CFigure* previous, bool go);
+	void UnselectPrevious(CFigure* previous, bool go = 1);
   
 	virtual void UndoExcute();
 	virtual void RedoExcute();

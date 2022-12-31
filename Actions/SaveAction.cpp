@@ -29,7 +29,7 @@ void SaveAction::Execute(bool ReadParamsFirst)
 	if (pFig)								//If there is a selected figure, we need to unselect it
 	{
 		SelectFigAction* pAct = new SelectFigAction(pManager);
-		pAct->UnselectPrevious(pFig, false);
+		pAct->UnselectPrevious(pFig);
 		delete pAct;
 	}
 

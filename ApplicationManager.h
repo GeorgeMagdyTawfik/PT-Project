@@ -141,6 +141,8 @@ public:
 
 	void ResetCounts();
 	void ResetFillColors();
+
+	int GetCountForTypeAndColor(char type, FillColors clr);
 };
 
 #endif

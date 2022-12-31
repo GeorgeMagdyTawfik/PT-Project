@@ -20,12 +20,14 @@ void PickByType::Execute(bool ReadParamsFirst)
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 	//the random function will land on a number, and the message will be printed accordingly
-	srand(time(0));
+	
 	if (pManager->GetFigCount() == 0)
 	{
 		pOut->PrintMessage("There are no more figures!");
 		return;
 	}
+
+	srand(time(0));
 	int r = rand() % pManager->GetFigCount();
 	char type = pManager->GetRandomType(r);
 	pManager->CountTypes();

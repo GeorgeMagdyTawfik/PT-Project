@@ -39,9 +39,8 @@ void PickByColor::Execute(bool ReadParamsFirst)
 		clr = pManager->GetRandomFillColor(r);
 
 	} while (clr == UNFILLED);
-	
-	
 
+	
 	switch (clr)
 	{
 	case black:

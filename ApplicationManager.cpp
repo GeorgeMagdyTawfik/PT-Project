@@ -728,3 +728,15 @@ void ApplicationManager::ResetFillColors()
 	YellowFigs = 0;
 	OrangeFigs = 0;
 }
+
+int ApplicationManager::GetCountForTypeAndColor(char type, FillColors clr)
+{
+	int TotalCount = 0;
+
+	for (int i = 0; i < FigCount; i++)
+	{
+		if ((FigList[i]->GetMyType() == type) && (FigList[i]->GetFillClrENUM() == clr))
+			TotalCount++;
+	}
+	return TotalCount;
+}

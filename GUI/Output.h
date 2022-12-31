@@ -38,6 +38,9 @@ public:
 	string EncodeColor(color c) const; //takes color and returns corresponding string
 	color DecodeColor(string s) const; //takes string and returns corresponding color
 
+	string TypeToString(char c);
+	string FillColorToString(FillColors clr);
+
 	~Output();
 };
 

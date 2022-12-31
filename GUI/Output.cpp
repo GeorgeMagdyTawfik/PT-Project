@@ -209,6 +209,40 @@ color Output::DecodeColor(string s) const
 	if (s == "GREEN")
 		return color(0, 135, 68);
 }
+string Output::TypeToString(char c)
+{
+	switch (c)
+	{
+	case 'r':
+		return "rectangles";
+	case 'h':
+		return "hexagons";
+	case 't':
+		return "triangles";
+	case 's':
+		return "squares";
+	case 'c':
+		return "circles";
+	}
+}
+string Output::FillColorToString(FillColors clr)
+{
+	switch (clr)
+	{
+	case black:
+		return "black";
+	case red:
+		return "red";
+	case orange:
+		return "orange";
+	case yellow:
+		return "yellow";
+	case green:
+		return "green";
+	case blue:
+		return "blue";
+	}
+}
 string Output::EncodeColor(color c) const      //takes color and returns corresponding string
 {
 	if (c == BLACK)
