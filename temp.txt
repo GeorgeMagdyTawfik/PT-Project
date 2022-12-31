@@ -1,21 +1,9 @@
-BLUE      BLUE      
-9
+BLUE      GREEN     
+3
 
-CIRCLE    1    684  193  543  231  BLUE    NO_FILL 
+SQUARE    2    576  174  BLUE    NO_FILL 
 
-HEXAGON   2    294  413  BLUE    NO_FILL 
+RECT      3    715  166  887  288  BLUE    NO_FILL 
 
-SQUARE    3    478  546  BLUE    BLACK   
-
-HEXAGON   4    1081 488  BLUE    BLACK   
-
-HEXAGON   5    849  494  BLUE    RED     
-
-SQUARE    6    447  176  BLUE    RED     
-
-RECT      7    1018 337  892  256  BLUE    RED     
-
-HEXAGON   8    180  313  BLUE    ORANGE  
-
-CIRCLE    9    1158 264  1217 258  BLUE    BLUE    
+HEXAGON   4    394  356  BLUE    NO_FILL 
 

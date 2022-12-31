@@ -19,7 +19,7 @@ public:
 	virtual void Draw(Output* pOut) const;
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& InFile);
-	virtual bool CheckInside(int x, int y) const;
+	virtual bool CheckInside(int x, int y);
 	virtual CFigure* getfigure();
 	virtual void Move(Point destination) override;
 	virtual Point GetCenter();

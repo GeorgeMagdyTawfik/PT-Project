@@ -13,7 +13,7 @@ public:
 	virtual void Draw(Output* pOut) const override;
 	virtual void Save(ofstream& OutFile) override;
 	virtual void Load(ifstream& InFile) override;
-	virtual bool CheckInside(int X, int Y) const override;
+	virtual bool CheckInside(int X, int Y) override;
 	float CalcArea(Point A, Point B, Point C) const;
 	float GetMyArea() const;
 	virtual CFigure* getfigure();

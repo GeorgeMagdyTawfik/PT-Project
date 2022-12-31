@@ -119,6 +119,7 @@ public:
 	void Redo();
 	void DeleteByID(CFigure*);
 	void EmptyUndoList();
+
 	void CountTypes();
 	void CountFillColors();
 	FillColors GetRandomFillColor(int index);

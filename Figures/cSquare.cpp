@@ -16,7 +16,7 @@ void CSquare::Draw(Output* pOut) const
 	pOut->DrawSquare(center, FigGfxInfo, Selected);
 }
 
-bool CSquare::CheckInside(int X, int Y) const
+bool CSquare::CheckInside(int X, int Y)
 {
 	//I have Point center
 	Point corner1, corner2;

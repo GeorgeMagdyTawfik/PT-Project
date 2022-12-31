@@ -26,7 +26,7 @@ float CHexagon::CalcAreaOfTriangle(Point A, Point B, Point C) const
 	return (1.0 / 2) * abs(A.x * (B.y - C.y) + B.x * (C.y - A.y) + C.x * (A.y - B.y));
 }
 
-bool CHexagon::CheckInside(int X, int Y) const
+bool CHexagon::CheckInside(int X, int Y)
 {
 	int l = 50; /// We agreed on this as the side length of the hexagon
 	Point c = center;

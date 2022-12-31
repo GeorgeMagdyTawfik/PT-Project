@@ -50,7 +50,7 @@ void CTriangle::Move(Point destination)
 
 }
 
-bool CTriangle::CheckInside(int X, int Y) const
+bool CTriangle::CheckInside(int X, int Y)
 {
 	// the point clicked
 	Point p;

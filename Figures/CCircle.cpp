@@ -26,7 +26,7 @@ void CCircle::Draw(Output* pOut) const
 	pOut->Drawcircle(center, distance, FigGfxInfo, Selected);
 }
 
-bool CCircle::CheckInside(int X, int Y) const
+bool CCircle::CheckInside(int X, int Y)
 {
 	// distance from clicked point to the center
 	int d = sqrt(
@@ -34,6 +34,13 @@ bool CCircle::CheckInside(int X, int Y) const
 		+
 		pow(center.y - Y, 2)
 	);
+
+	Radius = sqrt(
+		pow(center.x - distance.x, 2)
+		+
+		pow(center.y - distance.y, 2)
+	);
+
 	return (d <= Radius);
 }
 
