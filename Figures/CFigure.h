@@ -65,15 +65,18 @@ public:
 	
 	// To check whether a point belongs to the shape's area or not 
 	virtual bool CheckInside(int x, int y) const = 0; /// pure virtual function (overridden in each class) 
+
 	virtual CFigure* getfigure()=0;
 	virtual Point GetCenter() = 0;
 
 	void UseFigGfxInfo();
 	void UpdateFigGfxDrawClr(color c);
 	void UpdateFigGfxFillClr(color c);
-	int GetID();
 	void UnfillFigGfxInfo();
 	color GetPrevDrawClr();
+
+	int GetID();
+	
 	virtual CFigure* getpointerfig()=0;
 
 };
