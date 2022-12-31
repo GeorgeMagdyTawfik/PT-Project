@@ -46,12 +46,8 @@ void PickByTypeAndColor::Execute(bool ReadParamsFirst)
 
 	type = pManager->GetRandomType(r);
 
-	/*r = rand() % pManager->GetFigCount();
-	type = pManager->GetRandomType(r);*/
-
-	pOut->PrintMessage("Pick by type and color: pick all " + pOut->FillColorToString(clr) + " " + pOut->TypeToString(type) + "!");	//continue this
-	//we need 2 funcs 
-	//convert types to strings and convert fillclr enum to string
+	pOut->PrintMessage("Pick by type and color: pick all " + pOut->FillColorToString(clr) +
+		" " + pOut->TypeToString(type) + "!");
 	
 	TotalCount = pManager->GetCountForTypeAndColor(type, clr);
 
