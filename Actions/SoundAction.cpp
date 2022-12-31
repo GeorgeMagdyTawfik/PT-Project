@@ -20,12 +20,12 @@ void SoundAction::Execute(bool ReadParamsFirst)
 	if (pManager->getcaseofsound())
 	{
 		pManager->changethestateofsound();
-		pOut->PrintMessage("close the sound");
+		pOut->PrintMessage("Sound is off.");
 	}
 	else
 	{
 		pManager->changethestateofsound();
-		pOut->PrintMessage("open the sound");
+		pOut->PrintMessage("Sound is on.");
 	}
 	
 
