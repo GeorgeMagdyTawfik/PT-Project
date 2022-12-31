@@ -21,6 +21,7 @@
 #include "Actions/PlayRecordingAction.h"
 #include "Actions\SwitchToDrawMode.h"
 #include"Actions/SoundAction.h"
+#include"Actions/movebydragging.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -149,6 +150,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new PlayRecordingAction(this);
 	case SOUND:
 		pAct = new SoundAction(this);
+		break;
+	case MOVE_BY_DRAGGING:
+		pAct = new movebydragging(this);
 		break;
 		
 	case EXIT:

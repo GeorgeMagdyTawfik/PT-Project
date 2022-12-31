@@ -14,7 +14,7 @@ Output::Output()
 	
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
-	UI.MenuItemWidth = 50;
+	UI.MenuItemWidth = 48;
 	
 	UI.DrawColor = color(0, 87, 231); ///google's blue
 	UI.FillColor = color(0, 135, 68);	//google's green : why is this not working ?
@@ -107,6 +107,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_CLEARALL] = "images\\MenuItems\\Clear_all.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\U_exit.jpg";
 	MenuItemImages[ITM_sound] = "images\\MenuItems\\voice.jpeg";
+	MenuItemImages[ITM_move_by_dragging] = "images\\MenuItems\\movebydragging.jpeg";
 	
 
 	//TODO: Prepare images for each menu item and add it to the list

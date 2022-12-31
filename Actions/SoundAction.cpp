@@ -4,7 +4,7 @@
 #include "../GUI/Output.h"
 #include"../Actions/SelectFigAction.h"
 #include<Windows.h>
-#include<iostream>
+
 
 SoundAction::SoundAction(ApplicationManager* pApp) :Action(pApp)
 {}
