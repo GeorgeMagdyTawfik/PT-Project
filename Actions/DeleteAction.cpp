@@ -41,7 +41,7 @@ void DeleteAction::UndoExcute()
 void DeleteAction::RedoExcute()
 {
 
-	pManager->DeleteByID(savedredo);
+	pManager->DeleteFigure(savedredo);
 
 	savedredo = savedredo-> getpointerfig();
 }
