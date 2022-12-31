@@ -3,8 +3,8 @@
 class DeleteAction : public Action
 {
 private:
-	CFigure* saved;
-	CFigure* savedredo;
+	//CFigure* saved;
+	//CFigure* savedredo;
 	CFigure* pFig;
 public:
 	DeleteAction(ApplicationManager* pApp);

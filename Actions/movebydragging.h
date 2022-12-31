@@ -1,21 +1,21 @@
 #pragma once
 #include "Action.h"
-class ChangeDrawClrAction : public Action
+class movebydragging : public Action
 {
-	color NewDraw;
-	bool chosen;
+	Point destination;
 	CFigure* pFig;
-	color prevUIDraw;
-	color prevFigDraw;
-	CFigure* pFig;
+	//CFigure* saved;
+	Point prevlocation;
+	//CFigure* moved;
+	Point newlocation;
 
 public:
-	ChangeDrawClrAction(ApplicationManager* pApp);
+	movebydragging(ApplicationManager* pApp);
 	virtual void ReadActionParameters() override;
 	virtual void Execute(bool ReadParamsFirst = true) override;
 	virtual void UndoExcute() override;
 	virtual void RedoExcute() override;
-	~ChangeDrawClrAction();
-
+	~movebydragging();
+	virtual bool CheckRecordability() const;
 };
 

@@ -6,7 +6,7 @@
 #include "../GUI/Input.h"
 #include "../GUI/Output.h"
 #include<Windows.h>
-#include<iostream>
+#include<mmsystem.h>
 
 AddSquareAction::AddSquareAction(ApplicationManager* pApp) :Action(pApp)
 {}
@@ -45,11 +45,11 @@ void AddSquareAction::Execute(bool ReadParamsFirst)
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
-	saved = R->getpointerfig();
+	saved = R;// ->getpointerfig();
 	if (pManager->getcaseofsound() == true)
 	{
-		bool played = PlaySound("draw the square.WAV", NULL, SND_SYNC);
-		cout << played;
+ PlaySound(TEXT("square.WAV"), NULL, SND_SYNC);
+		
 	}
 	
 	RecordIfAllowed(this);
@@ -58,13 +58,13 @@ void AddSquareAction::Execute(bool ReadParamsFirst)
 void AddSquareAction::UndoExcute()
 {
 
-	pManager->DeleteByID(saved);
-	saved = saved;
+	pManager->DeleteFigure(saved);
+	//saved = saved;
 }
 void AddSquareAction::RedoExcute()
 {
 	pManager->AddFigure(saved);
 
-	saved = saved;
+	//saved = saved;
 
 }

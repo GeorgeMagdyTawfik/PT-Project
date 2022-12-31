@@ -96,7 +96,6 @@ void ChangeFillClrAction::UndoExcute()
 		pFig->ChngFillClr(prevFigFill);
 		pFig->UpdateFigGfxFillClr(prevFigFill);
 
-		
 	}
 	else
 	{

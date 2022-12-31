@@ -7,9 +7,10 @@ Input::Input(window* pW)
 	pWind = pW; //point to the passed window
 }
 
-void Input::GetPointClicked(int &x, int &y) const
+
+clicktype Input::GetPointClicked(int &x, int &y) const
 {
-	pWind->WaitMouseClick(x, y);	//Wait for mouse click
+	return(pWind->WaitMouseClick(x, y));	//Wait for mouse click
 }
 
 string Input::GetSrting(Output *pO) const 
@@ -32,6 +33,11 @@ string Input::GetSrting(Output *pO) const
 		if (pO)     //I guess this is to show the user what is being typed in RT 
 			pO->PrintMessage(Label);
 	}
+}
+
+buttonstate Input::GetButton(int& x, int& y)
+{
+	return pWind->GetButtonState(LEFT_BUTTON, x, y);
 }
 
 //This function reads the position where the user clicks to determine the desired action
@@ -85,7 +91,7 @@ ActionType Input::GetUserAction() const
 			case ITM_HEXAGON: return DRAW_HEXAGON;
 			case ITM_CIRCLE: return DRAW_CIRCLE;
 			case ITM_EXIT: return EXIT;	
-			
+			case ITM_move_by_dragging: return MOVE_BY_DRAGGING;
 			case ITM_SWITCH: return TO_PLAY;
 			default: return EMPTY_DRAW;	//A click on empty place in desgin toolbar
 			}

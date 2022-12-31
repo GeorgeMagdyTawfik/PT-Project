@@ -7,7 +7,11 @@
 #include "../GUI/Output.h"
 #include"../Actions/SelectFigAction.h"
 #include<Windows.h>
+#include<mmsystem.h>
 #include<iostream>
+
+
+
 
 AddCircleAction::AddCircleAction(ApplicationManager* pApp) :Action(pApp)
 {}
@@ -41,6 +45,7 @@ void AddCircleAction::ReadActionParameters()
 //Execute the action
 void AddCircleAction::Execute(bool ReadParamsFirst)
 {
+	Output* pOut = pManager->GetOutput();
 	if (ReadParamsFirst)
 		ReadActionParameters();
 
@@ -49,28 +54,29 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
-	saved = R->getpointerfig();
+	saved = R;// ->getpointerfig();
 	//savedredo = R->getfigure();
 
 	RecordIfAllowed(this);
 	if (pManager->getcaseofsound() == true)
 	{
-		bool played = PlaySound("draw the circle.WAV", NULL, SND_SYNC);
-		cout << played;
+		 PlaySound(TEXT("circle.WAV"), NULL, SND_SYNC);
+
+		
 	}
 
 }
 void AddCircleAction::UndoExcute()
 {
 	
-	pManager->DeleteByID(saved);
-	saved = saved->getfigure();
+	pManager->DeleteFigure(saved);
+	//saved = saved->getfigure();
 }
 void AddCircleAction::RedoExcute()
 {
 	pManager->AddFigure(saved);
 	
-	saved = saved->getfigure();
+	//saved = saved->getfigure();
 	// savedredo = savedredo;
 }
 

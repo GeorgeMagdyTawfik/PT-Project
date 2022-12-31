@@ -4,7 +4,7 @@
 #include "../GUI/Output.h"
 #include"../Actions/SelectFigAction.h"
 #include<Windows.h>
-#include<iostream>
+
 
 SoundAction::SoundAction(ApplicationManager* pApp) :Action(pApp)
 {}
@@ -20,12 +20,12 @@ void SoundAction::Execute(bool ReadParamsFirst)
 	if (pManager->getcaseofsound())
 	{
 		pManager->changethestateofsound();
-		pOut->PrintMessage("close the sound");
+		pOut->PrintMessage("Sound is off.");
 	}
 	else
 	{
 		pManager->changethestateofsound();
-		pOut->PrintMessage("open the sound");
+		pOut->PrintMessage("Sound is on.");
 	}
 	
 

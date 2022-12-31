@@ -4,7 +4,7 @@
 #include "../GUI/input.h"
 #include "../GUI/Output.h"
 #include<Windows.h>
-#include<iostream>
+#include<mmsystem.h>
 
 AddHexagonAction::AddHexagonAction(ApplicationManager* pApp) :Action(pApp)
 {}
@@ -40,24 +40,24 @@ void AddHexagonAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
-	saved = R->getpointerfig();
+	saved = R;// ->getpointerfig();
 	if (pManager->getcaseofsound() == true)
 	{
-		bool played = PlaySound("draw the hexagon.WAV", NULL, SND_SYNC);
-		cout << played;
+	 PlaySound(TEXT("hexagon.WAV"), NULL, SND_SYNC);
+	
 	}
 	RecordIfAllowed(this);
 }
 void AddHexagonAction::UndoExcute()
 {
 
-	pManager->DeleteByID(saved);
-	saved = saved;
+	pManager->DeleteFigure(saved);
+	//saved = saved;
 }
 void AddHexagonAction::RedoExcute()
 {
 	pManager->AddFigure(saved);
-	saved = saved;
+	//saved = saved;
 
 }
 

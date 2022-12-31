@@ -16,8 +16,8 @@ void DeleteAction::Execute(bool ReadParamsFirst)
 	Output* pOut = pManager->GetOutput();
 	if (pFig)
 	{
-		saved = pManager->GetSelectedFig()->getpointerfig();
-		savedredo = pManager->GetSelectedFig()->getpointerfig();
+		// = pManager->GetSelectedFig()->getpointerfig();
+		//savedredo = pManager->GetSelectedFig()->getpointerfig();
 		pOut->ClearDrawArea();
 
 		pManager->DeleteFigure(pFig);
@@ -34,15 +34,15 @@ DeleteAction::~DeleteAction()
 {}
 void DeleteAction::UndoExcute()
 {
-	pManager->AddFigure(saved);
-	saved = saved->getpointerfig();
+	pManager->AddFigure(pFig);
+	//saved = saved->getpointerfig();
 	
 }
 void DeleteAction::RedoExcute()
 {
 
-	pManager->DeleteByID(savedredo);
+	pManager->DeleteFigure(pFig);
 
-	savedredo = savedredo-> getpointerfig();
+	//savedredo = savedredo-> getpointerfig();
 }
 

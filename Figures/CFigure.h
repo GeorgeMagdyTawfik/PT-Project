@@ -73,9 +73,11 @@ public:
 	void UseFigGfxInfo();
 	void UpdateFigGfxDrawClr(color c);
 	void UpdateFigGfxFillClr(color c);
-	int GetID();
 	void UnfillFigGfxInfo();
 	color GetPrevDrawClr();
+
+	int GetID();
+	
 	virtual CFigure* getpointerfig()=0;
 
 	virtual char GetMyType() = 0;

@@ -24,6 +24,7 @@
 #include "Actions/PickByColor.h"
 #include "Actions/PickByTypeAndColor.h
 #include"Actions/SoundAction.h"
+#include"Actions/movebydragging.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -166,6 +167,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case PICK_BY_TYPE_AND_CLR:
 		pAct = new PickByTypeAndColor(this);
 		break;
+	case MOVE_BY_DRAGGING:
+		pAct = new movebydragging(this);
+		break;
+		
 	case EXIT:
 		///create ExitAction here
 		/*for (int i = 0; i < RecordedActionsCount; i++)
@@ -226,8 +231,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
+	{
 		FigList[FigCount++] = pFig;
-
+		pFig->SetSelected(false);  //add this line enyone check
+		pFig->UseFigGfxInfo();
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -269,7 +277,7 @@ void ApplicationManager::UpdateInterface() const
 	pOut->ClearDrawArea(); /// this is important
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Draw(pOut);	//Call Draw function (virtual member fn)
-
+	
 
 
 }
@@ -282,8 +290,10 @@ void ApplicationManager::DeleteFigure(CFigure* pFig)
 			//delete FigList[i];
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
+			FigList[i]->SetSelected(false);
+			FigList[i]->UseFigGfxInfo();
 			FigList[FigCount - 1] = NULL;
-			SelectedFig = NULL;						//does this cause a problem?
+			SelectedFig = NULL;
 			
 			FigCount--;
 		}
@@ -506,6 +516,7 @@ void ApplicationManager::addtoundolist(Action* ac)
 }
 void ApplicationManager::Undo()
 {
+	
 	undolist[undocount-- - 1]->UndoExcute();
 	redocount++;
 }
@@ -567,7 +578,7 @@ void ApplicationManager::SetRecordedActionsCount(int a)
 {
 	RecordedActionsCount = a;
 }
-void ApplicationManager::DeleteByID(CFigure* c)
+/*void ApplicationManager::DeleteByID(CFigure* c)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
@@ -576,8 +587,10 @@ void ApplicationManager::DeleteByID(CFigure* c)
 			//delete FigList[i];
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
+			FigList[i]->SetSelected(false);
+			FigList[i]->UseFigGfxInfo();
 			FigList[FigCount - 1] = NULL;
-			//SelectedFig = NULL;
+			SelectedFig = NULL;
 			
 			FigCount--;
 			
@@ -586,7 +599,7 @@ void ApplicationManager::DeleteByID(CFigure* c)
 		}
 
 	}
-}
+}*/
 void ApplicationManager::EmptyUndoList()
 {
 	for (int i = 0; i < undocount; i++)
