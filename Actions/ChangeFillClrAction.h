@@ -10,7 +10,6 @@ class ChangeFillClrAction : public Action
 	color prevUIFill;
 	bool figwasfilled;
 	bool defaultwasfilled;
-	color newcolor;
 
 public:
 	ChangeFillClrAction(ApplicationManager* pApp);

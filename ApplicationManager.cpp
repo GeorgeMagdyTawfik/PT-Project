@@ -587,7 +587,7 @@ void ApplicationManager::EmptyUndoList()
 {
 	for (int i = 0; i < undocount; i++)
 	{
-		delete undolist[i];
+		//delete undolist[i]; /// THE ACTIONS HERE ARE ALREADY DELETED IN EmptyRecordingList
 		undolist[i] = NULL;
 	}
 	undocount = 0;

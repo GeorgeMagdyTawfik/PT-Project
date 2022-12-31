@@ -78,7 +78,6 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 
 			prevUIFill = UI.FillColor;
 			prevFigFill = pFig->GetFillClr();
-			newcolor = NewFill;
 			UI.FillColor = NewFill;
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
@@ -122,9 +121,9 @@ void ChangeFillClrAction::RedoExcute()
 {
 	
 	saved->SetFilledAsDefault();
-	saved->ChngFillClr(newcolor);
-	saved->UpdateFigGfxFillClr(newcolor);
-	UI.FillColor = newcolor;
+	saved->ChngFillClr(NewFill);
+	saved->UpdateFigGfxFillClr(NewFill);
+	UI.FillColor = NewFill;
 	
 }
 

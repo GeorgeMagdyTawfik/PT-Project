@@ -19,7 +19,7 @@ void ClearAllAction::Execute(bool ReadParamsFirst)
 	pOut->ClearDrawArea();
 	pManager->RemovePastRecording();
 	pManager->DeleteAll();
-	pManager->EmptyUndoList(); /// WHEN THIS IS EXECUTED THE PROGRAM ABORTS
+	pManager->EmptyUndoList(); // issue resolved
 	UI.DrawColor = color(0, 87, 231);
 	UI.FillColor = color(0, 135, 68);
 	CFigure* c = new CRectangle();

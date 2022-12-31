@@ -39,9 +39,9 @@ void MoveAction::Execute(bool ReadParamsFirst)
 		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("Moved figure to chosen point.");
 		pManager->addtoundolist(this);
+		RecordIfAllowed(this);				//I think these have to be inside the scope	
 	}
-	//pManager->AddToRecordingList(this);
-	//RecordIfAllowed(this);				I think these have to be inside the scope	
+	
 }
 
 void MoveAction::UndoExcute()
