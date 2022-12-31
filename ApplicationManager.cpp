@@ -215,8 +215,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
+	{
 		FigList[FigCount++] = pFig;
-
+		pFig->SetSelected(false);  //add this line enyone check
+		pFig->UseFigGfxInfo();
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
@@ -258,7 +261,7 @@ void ApplicationManager::UpdateInterface() const
 	pOut->ClearDrawArea(); /// this is important
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Draw(pOut);	//Call Draw function (virtual member fn)
-
+	
 
 
 }

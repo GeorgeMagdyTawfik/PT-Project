@@ -25,18 +25,19 @@ void movebydragging::Execute(bool ReadParamsFirst)
 	{
 
 		pOut->PrintMessage("Move By Dragging: drag the figure you want to move.");
-		moved = pManager->GetSelectedFig();
+		pFig = pManager->GetSelectedFig();
 		while (pIn->GetButton(newlocation.x, newlocation.y) == BUTTON_UP)
 		{
 		}
 		while (pIn->GetButton(newlocation.x, newlocation.y) == BUTTON_DOWN)
 		{
 			
-			moved->Move(newlocation);
-			Sleep(2);
+			pFig->Move(newlocation);
+			Sleep(1);
 			pOut->PrintMessage("The figure is moving!");
 			
 			pManager->UpdateInterface();
+
 		}
 
 	}

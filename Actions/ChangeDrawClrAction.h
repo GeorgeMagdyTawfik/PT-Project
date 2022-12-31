@@ -4,10 +4,11 @@ class ChangeDrawClrAction : public Action
 {
 	color NewDraw;
 	bool chosen;
+	CFigure* pFig;
 	color prevUIDraw;
 	color prevFigDraw;
-	CFigure* saved;
-	CFigure* savedredo;
+	//CFigure* saved;
+	//CFigure* savedredo;
 
 public:
 	ChangeDrawClrAction(ApplicationManager* pApp);

@@ -68,7 +68,7 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 			return;
 		else
 		{
-			saved = pManager->GetSelectedFig()->getpointerfig();
+			//saved = pManager->GetSelectedFig()->getpointerfig();
 		
 
 			figwasfilled = pFig->IsFilled();		//now we know whether the figure was filled or not
@@ -76,7 +76,7 @@ void ChangeFillClrAction::Execute(bool ReadParamsFirst)
 
 			prevUIFill = UI.FillColor;
 			prevFigFill = pFig->GetFillClr();
-			newcolor = NewFill;
+			//newcolor = NewFill;
 			UI.FillColor = NewFill;
 			pFig->SetFilledAsDefault();
 			pFig->ChngFillClr(NewFill);
@@ -96,14 +96,14 @@ void ChangeFillClrAction::UndoExcute()
 	
 	if (figwasfilled)
 	{
-		saved->ChngFillClr(prevFigFill);
-		saved->UpdateFigGfxFillClr(prevFigFill);
+		pFig->ChngFillClr(prevFigFill);
+		pFig->UpdateFigGfxFillClr(prevFigFill);
 		
 	}
 	else
 	{
-		saved->MakeNotFilled();
-		saved->UnfillFigGfxInfo();
+		pFig->MakeNotFilled();
+		pFig->UnfillFigGfxInfo();
 	}
 	if (defaultwasfilled)
 	{
@@ -111,7 +111,7 @@ void ChangeFillClrAction::UndoExcute()
 	}
 	else
 	{
-		saved->SetNotFilledAsDefault();
+		pFig->SetNotFilledAsDefault();
 	}
 	//
 }
@@ -119,10 +119,10 @@ void ChangeFillClrAction::UndoExcute()
 void ChangeFillClrAction::RedoExcute()
 {
 	
-	saved->SetFilledAsDefault();
-	saved->ChngFillClr(newcolor);
-	saved->UpdateFigGfxFillClr(newcolor);
-	UI.FillColor = newcolor;
+	pFig->SetFilledAsDefault();
+	pFig->ChngFillClr(NewFill);
+	pFig->UpdateFigGfxFillClr(NewFill);
+	UI.FillColor = NewFill;
 	
 }
 

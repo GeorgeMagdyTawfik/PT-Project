@@ -54,13 +54,13 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
-	saved = R->getpointerfig();
+	saved = R;// ->getpointerfig();
 	//savedredo = R->getfigure();
 
 	RecordIfAllowed(this);
 	if (pManager->getcaseofsound() == true)
 	{
-		 PlaySound(TEXT("draw the circle.WAV"), NULL, SND_SYNC);
+		 PlaySound(TEXT("circle.WAV"), NULL, SND_SYNC);
 
 		
 	}
@@ -70,13 +70,13 @@ void AddCircleAction::UndoExcute()
 {
 	
 	pManager->DeleteFigure(saved);
-	saved = saved->getfigure();
+	//saved = saved->getfigure();
 }
 void AddCircleAction::RedoExcute()
 {
 	pManager->AddFigure(saved);
 	
-	saved = saved->getfigure();
+	//saved = saved->getfigure();
 	// savedredo = savedredo;
 }
 

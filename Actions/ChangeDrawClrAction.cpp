@@ -11,7 +11,7 @@ void ChangeDrawClrAction::ReadActionParameters()
 	Output* pOut = pManager->GetOutput();
 	ActionType ActType;
 
-	CFigure* pFig = pManager->GetSelectedFig();
+	 pFig = pManager->GetSelectedFig();
 
 	if (!pFig)
 	{
@@ -68,14 +68,14 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 
 	if (chosen)
 	{
-		saved = pManager->GetSelectedFig()->getpointerfig();
-		CFigure* pFig = pManager->GetSelectedFig();
+		//saved = pManager->GetSelectedFig()->getpointerfig();
+		 pFig = pManager->GetSelectedFig();
 
 		if (!pFig)
 			return;
 		else
 		{
-			saved = pManager->GetSelectedFig()->getfigure();
+			//saved = pManager->GetSelectedFig()->getfigure();
 			prevUIDraw = UI.DrawColor;
 			prevFigDraw = pFig->GetPrevDrawClr();
 
@@ -94,15 +94,15 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 void ChangeDrawClrAction::UndoExcute()
 {
 	UI.DrawColor = prevUIDraw;
-	saved->ChngDrawClr(prevFigDraw);
-	saved->UpdateFigGfxDrawClr(prevFigDraw);
+	pFig->ChngDrawClr(prevFigDraw);
+	pFig->UpdateFigGfxDrawClr(prevFigDraw);
 }
 
 void ChangeDrawClrAction::RedoExcute()
 {
 	UI.DrawColor = NewDraw;
-	saved->ChngDrawClr(NewDraw);
-	saved->UpdateFigGfxDrawClr(NewDraw);
+	pFig->ChngDrawClr(NewDraw);
+	pFig->UpdateFigGfxDrawClr(NewDraw);
 }
 
 ChangeDrawClrAction::~ChangeDrawClrAction()

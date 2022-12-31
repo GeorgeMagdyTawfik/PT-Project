@@ -34,7 +34,7 @@ void AddTriangleAction::ReadActionParameters()
 	pManager->addtoundolist(this);
 	if (pManager->getcaseofsound() == true)
 	{
-	 PlaySound(TEXT("draw the triangle.WAV"), NULL, SND_SYNC);
+	 PlaySound(TEXT("triangle.WAV"), NULL, SND_SYNC);
 		
 	}
 }
@@ -50,7 +50,7 @@ void AddTriangleAction::Execute(bool ReadParamsFirst)
 
 	
 	pManager->AddFigure(R);
-	saved = R->getpointerfig();
+	saved = R;// ->getpointerfig();
 	
 
 	RecordIfAllowed(this);
@@ -59,13 +59,13 @@ void AddTriangleAction::UndoExcute()
 {
 
 	pManager->DeleteFigure(saved);
-	saved = saved;
+	//saved = saved;
 }
 void AddTriangleAction::RedoExcute()
 {
 	pManager->AddFigure(saved);
 
-	saved = saved;
+	//saved = saved;
 
 }
 

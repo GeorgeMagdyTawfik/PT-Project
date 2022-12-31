@@ -5,12 +5,12 @@ class ChangeFillClrAction : public Action
 	color NewFill;
 	bool chosen;
 	CFigure* pFig;
-	CFigure* saved;
+	//CFigure* saved;
 	color prevFigFill;
 	color prevUIFill;
 	bool figwasfilled;
 	bool defaultwasfilled;
-	color newcolor;
+	//color newcolor;
 
 public:
 	ChangeFillClrAction(ApplicationManager* pApp);
