@@ -195,7 +195,7 @@
     <ClCompile Include="Actions\PlayRecordingAction.cpp" />
     <ClCompile Include="Actions\SwitchToDrawMode.cpp" />
     <ClCompile Include="Actions\SoundAction.cpp" />
-    <ClCompile Include="Actions\movebydragging.cpp" />
+    <ClCompile Include="Actions\MoveByDragging.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircleAction.h" />
@@ -251,7 +251,7 @@
     <ClInclude Include="Actions\PlayRecordingAction.h" />
     <ClInclude Include="Actions\SwitchToDrawMode.h" />
     <ClInclude Include="Actions\SoundAction.h" />
-    <ClInclude Include="Actions\movebydragging.h" />
+    <ClInclude Include="Actions\MoveByDragging.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
