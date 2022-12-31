@@ -596,6 +596,7 @@ void ApplicationManager::EmptyUndoList()
 
 void ApplicationManager::CountTypes()
 {
+	ResetCounts(); // solves a simple bug
 	for (int i = 0; i < FigCount; i++)
 	{
 		char type = FigList[i]->GetMyType();
@@ -615,6 +616,7 @@ void ApplicationManager::CountTypes()
 
 void ApplicationManager::CountFillColors()
 {
+	ResetFillColors(); // solves a simple bug
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (!FigList[i]->IsFilled())

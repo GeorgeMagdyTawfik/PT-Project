@@ -28,7 +28,7 @@ void PickByTypeAndColor::Execute(bool ReadParamsFirst)
 	int NoFillFigs = pManager->GetNoFillFigs();
 	if (NoFillFigs == pManager->GetFigCount())
 	{
-		pOut->PrintMessage("There are no colored figures!");
+		pOut->PrintMessage("There are no colored figures to pick here!");
 		return;
 	}
 
