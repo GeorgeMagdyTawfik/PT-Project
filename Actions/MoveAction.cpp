@@ -28,7 +28,7 @@ void MoveAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
-
+	pFig = pManager->GetSelectedFig();
 	if (pFig)
 	{
 		//saved = pManager->GetSelectedFig()->getfigure();

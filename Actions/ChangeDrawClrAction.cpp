@@ -65,7 +65,7 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 		ReadActionParameters();
 	else
 		chosen = true;
-
+	pFig = pManager->GetSelectedFig();
 	if (chosen)
 	{
 		if (!pFig)

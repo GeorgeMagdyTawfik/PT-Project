@@ -11,7 +11,7 @@ void SelectFigAction::ReadActionParameters()
 	// Get two pointers to access input and output 
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
-	was_selected = pManager->GetSelectedFig();
+
 
 	if (pManager->GetFigCount() != 0)
 	{
@@ -36,7 +36,7 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 		pOut->PrintMessage("There are no figures to select!");
 		return;
 	}
-
+	was_selected = pManager->GetSelectedFig();
 	ClickedFig = pManager->GetFigure(Clicked.x, Clicked.y);
 	if (ClickedFig == NULL) // a click not on a figure
 	{
