@@ -4,7 +4,7 @@
 #include "../GUI/input.h"
 #include "../GUI/Output.h"
 #include<Windows.h>
-#include<iostream>
+#include<mmsystem.h>
 
 AddHexagonAction::AddHexagonAction(ApplicationManager* pApp) :Action(pApp)
 {}
@@ -43,8 +43,8 @@ void AddHexagonAction::Execute(bool ReadParamsFirst)
 	saved = R->getpointerfig();
 	if (pManager->getcaseofsound() == true)
 	{
-		bool played = PlaySound("draw the hexagon.WAV", NULL, SND_SYNC);
-		cout << played;
+	 PlaySound(TEXT("draw the hexagon.WAV"), NULL, SND_SYNC);
+	
 	}
 	RecordIfAllowed(this);
 }

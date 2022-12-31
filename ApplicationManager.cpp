@@ -264,20 +264,7 @@ void ApplicationManager::UpdateInterface() const
 }
 void ApplicationManager::DeleteFigure(CFigure* pFig)
 {
-	/*for (int i = 0; i < FigCount; i++)
-	{
-		if (FigList[i]->IsSelected())
-		{
-			delete FigList[i];
-			if (i != FigCount - 1)
-				FigList[i] = FigList[FigCount - 1];
-			FigList[FigCount - 1] = NULL;
-			SelectedFig = NULL;
-			FigCount--;
-			return true;
-		}
-	}
-	return false;*/
+	
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i] == pFig)
@@ -285,6 +272,8 @@ void ApplicationManager::DeleteFigure(CFigure* pFig)
 			//delete FigList[i];
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
+			FigList[i]->SetSelected(false);
+			FigList[i]->UseFigGfxInfo();
 			FigList[FigCount - 1] = NULL;
 			SelectedFig = NULL;
 			
@@ -580,6 +569,8 @@ void ApplicationManager::DeleteByID(CFigure* c)
 			//delete FigList[i];
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
+			FigList[i]->SetSelected(false);
+			FigList[i]->UseFigGfxInfo();
 			FigList[FigCount - 1] = NULL;
 			SelectedFig = NULL;
 			

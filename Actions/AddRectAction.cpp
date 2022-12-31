@@ -6,7 +6,7 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 #include<Windows.h>
-#include<iostream>
+#include<mmsystem.h>
 
 AddRectAction::AddRectAction(ApplicationManager * pApp):Action(pApp)
 {}
@@ -51,8 +51,8 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 	saved = R->getpointerfig();
 	if (pManager->getcaseofsound() == true)
 	{
-		bool played = PlaySound("draw the rectangle.WAV", NULL, SND_SYNC);
-		cout << played;
+	 PlaySound(TEXT("draw the rectangle.WAV"), NULL, SND_SYNC);
+	
 	}
 	RecordIfAllowed(this);
 }

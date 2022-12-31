@@ -33,6 +33,7 @@ void movebydragging::Execute(bool ReadParamsFirst)
 		{
 			
 			moved->Move(newlocation);
+			Sleep(2);
 			pOut->PrintMessage("the selected figure is moving");
 			
 			pManager->UpdateInterface();

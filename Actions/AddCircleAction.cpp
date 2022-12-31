@@ -7,6 +7,7 @@
 #include "../GUI/Output.h"
 #include"../Actions/SelectFigAction.h"
 #include<Windows.h>
+#include<mmsystem.h>
 #include<iostream>
 
 
@@ -59,8 +60,8 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 	RecordIfAllowed(this);
 	if (pManager->getcaseofsound() == true)
 	{
-		bool played = PlaySound("draw the circle.WAV", NULL, SND_SYNC);
-		cout <<played ;
+		 PlaySound(TEXT("draw the circle.WAV"), NULL, SND_SYNC);
+
 		
 	}
 
