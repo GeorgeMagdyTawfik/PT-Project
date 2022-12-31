@@ -1,5 +1,9 @@
 BLUE      GREEN     
-1
+3
 
-CIRCLE    1    684  193  543  231  BLUE    NO_FILL 
+SQUARE    2    576  174  BLUE    NO_FILL 
+
+RECT      3    715  166  887  288  BLUE    NO_FILL 
+
+HEXAGON   4    394  356  BLUE    NO_FILL 
 

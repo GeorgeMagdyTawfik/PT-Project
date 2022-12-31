@@ -64,9 +64,16 @@ void CRectangle::Load(ifstream& InFile)
 	}
 }
 
-bool CRectangle::CheckInside(int x, int y) const
+bool CRectangle::CheckInside(int x, int y)
 {
 	// check using upperleft and bottomright corners
+
+	UL.x = (Corner1.x < Corner2.x) ? Corner1.x : Corner2.x;		//they may need new values if, for example, 
+	UL.y = (Corner1.y < Corner2.y) ? Corner1.y : Corner2.y;		//the figure was moved
+
+	BR.x = (Corner2.x > Corner1.x) ? Corner2.x : Corner1.x;
+	BR.y = (Corner2.y > Corner1.y) ? Corner2.y : Corner1.y;
+
 	return
 		(
 			x >= UL.x

@@ -271,20 +271,6 @@ void ApplicationManager::UpdateInterface() const
 }
 void ApplicationManager::DeleteFigure(CFigure* pFig)
 {
-	/*for (int i = 0; i < FigCount; i++)
-	{
-		if (FigList[i]->IsSelected())			//this has to be transferred to select
-		{
-			delete FigList[i];
-			if (i != FigCount - 1)
-				FigList[i] = FigList[FigCount - 1];
-			FigList[FigCount - 1] = NULL;
-			SelectedFig = NULL;
-			FigCount--;
-			return true;
-		}
-	}
-	return false;*/
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (FigList[i] == pFig)
@@ -293,7 +279,7 @@ void ApplicationManager::DeleteFigure(CFigure* pFig)
 			if (i != FigCount - 1)
 				FigList[i] = FigList[FigCount - 1];
 			FigList[FigCount - 1] = NULL;
-			//SelectedFig = NULL;
+			SelectedFig = NULL;						//does this cause a problem?
 			
 			FigCount--;
 		}

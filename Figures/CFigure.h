@@ -66,7 +66,7 @@ public:
 	virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 	
 	// To check whether a point belongs to the shape's area or not 
-	virtual bool CheckInside(int x, int y) const = 0; /// pure virtual function (overridden in each class) 
+	virtual bool CheckInside(int x, int y) = 0; /// pure virtual function (overridden in each class) 
 	virtual CFigure* getfigure()=0;
 	virtual Point GetCenter() = 0;
 

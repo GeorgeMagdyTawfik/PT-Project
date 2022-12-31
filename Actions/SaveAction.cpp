@@ -1,4 +1,5 @@
 #include "SaveAction.h"
+#include "SelectFigAction.h"
 
 SaveAction::SaveAction(ApplicationManager* pApp) : Action(pApp)
 {
@@ -22,6 +23,15 @@ void SaveAction::Execute(bool ReadParamsFirst)
 		ReadActionParameters();
 	else
 		filename = "temp.txt";
+
+	CFigure* pFig = pManager->GetSelectedFig();
+
+	if (pFig)								//If there is a selected figure, we need to unselect it
+	{
+		pFig->SetSelected(false);
+		pManager->SetSelectedFigure(NULL);
+		pFig->UseFigGfxInfo();
+	}
 
 	OutFile.open(filename);
 

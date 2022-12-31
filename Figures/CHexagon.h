@@ -13,7 +13,7 @@ public:
 	virtual void Load(ifstream& InFile) override;
 	float GetHexagonArea() const;
 	float CalcAreaOfTriangle(Point A, Point B, Point C) const;
-	virtual bool CheckInside(int X, int Y) const;
+	virtual bool CheckInside(int X, int Y);
 	virtual CFigure* getfigure();
 	virtual void Move(Point destination) override;
 	virtual Point GetCenter();
