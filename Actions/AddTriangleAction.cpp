@@ -58,7 +58,7 @@ void AddTriangleAction::Execute(bool ReadParamsFirst)
 void AddTriangleAction::UndoExcute()
 {
 
-	pManager->DeleteByID(saved);
+	pManager->DeleteFigure(saved);
 	saved = saved;
 }
 void AddTriangleAction::RedoExcute()

@@ -69,7 +69,7 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 void AddCircleAction::UndoExcute()
 {
 	
-	pManager->DeleteByID(saved);
+	pManager->DeleteFigure(saved);
 	saved = saved->getfigure();
 }
 void AddCircleAction::RedoExcute()

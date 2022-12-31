@@ -102,7 +102,7 @@ public:
 	void addtoundolist(Action*);
 	void Undo();
 	void Redo();
-	void DeleteByID(CFigure*);
+	//void DeleteByID(CFigure*);
 	void EmptyUndoList();
 	void changethestateofsound();
 	bool getcaseofsound();

@@ -59,7 +59,7 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 void AddRectAction::UndoExcute()
 {
 
-	pManager->DeleteByID(saved);
+	pManager->DeleteFigure(saved);
 	saved = saved;
 }
 void AddRectAction::RedoExcute()

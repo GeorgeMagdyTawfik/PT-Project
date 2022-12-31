@@ -58,7 +58,7 @@ void AddSquareAction::Execute(bool ReadParamsFirst)
 void AddSquareAction::UndoExcute()
 {
 
-	pManager->DeleteByID(saved);
+	pManager->DeleteFigure(saved);
 	saved = saved;
 }
 void AddSquareAction::RedoExcute()

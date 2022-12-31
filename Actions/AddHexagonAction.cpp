@@ -51,7 +51,7 @@ void AddHexagonAction::Execute(bool ReadParamsFirst)
 void AddHexagonAction::UndoExcute()
 {
 
-	pManager->DeleteByID(saved);
+	pManager->DeleteFigure(saved);
 	saved = saved;
 }
 void AddHexagonAction::RedoExcute()

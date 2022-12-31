@@ -560,7 +560,7 @@ void ApplicationManager::SetRecordedActionsCount(int a)
 {
 	RecordedActionsCount = a;
 }
-void ApplicationManager::DeleteByID(CFigure* c)
+/*void ApplicationManager::DeleteByID(CFigure* c)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
@@ -581,7 +581,7 @@ void ApplicationManager::DeleteByID(CFigure* c)
 		}
 
 	}
-}
+}*/
 void ApplicationManager::EmptyUndoList()
 {
 	for (int i = 0; i < undocount; i++)
