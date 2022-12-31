@@ -22,7 +22,8 @@
 #include "Actions\SwitchToDrawMode.h"
 #include "Actions/PickByType.h"
 #include "Actions/PickByColor.h"
-#include "Actions/PickByTypeAndColor.h"
+#include "Actions/PickByTypeAndColor.h
+#include"Actions/SoundAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -56,6 +57,7 @@ ApplicationManager::ApplicationManager()
 	ResetCounts();
 
 	ResetFillColors();
+	playsound = false;
 }
 
 //==================================================================================//
@@ -152,6 +154,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case PLAY_REC:
 		pAct = new PlayRecordingAction(this);
+	case SOUND:
+		pAct = new SoundAction(this);
 		break;
 	case PICK_BY_TYPE:
 		pAct = new PickByType(this);
@@ -741,4 +745,17 @@ int ApplicationManager::GetCountForTypeAndColor(char type, FillColors clr)
 			TotalCount++;
 	}
 	return TotalCount;
+}
+
+void ApplicationManager::changethestateofsound()
+{
+	if (playsound == true)
+		playsound = false;
+	else
+		playsound = true;
+}
+
+bool ApplicationManager::getcaseofsound()
+{
+	return playsound;
 }

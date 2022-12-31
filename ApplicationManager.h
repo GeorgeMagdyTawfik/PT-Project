@@ -23,7 +23,7 @@ private:
 	//CFigure* Been_undo_list[MaxFigCount];
 	CFigure* SelectedFig; //Pointer to the selected figure
 	bool RecordingState;
-
+	bool playsound;
 	//Pointers to Input and Output classes
 	Input* pIn;
 	Output* pOut;
@@ -143,6 +143,8 @@ public:
 	void ResetFillColors();
 
 	int GetCountForTypeAndColor(char type, FillColors clr);
+	void changethestateofsound();
+	bool getcaseofsound();
 };
 
 #endif

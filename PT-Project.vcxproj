@@ -197,6 +197,7 @@
     <ClCompile Include="Actions\PickByType.cpp" />
     <ClCompile Include="Actions\PickByColor.cpp" />
     <ClCompile Include="Actions\PickByTypeAndColor.cpp" />
+    <ClCompile Include="Actions\SoundAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircleAction.h" />
@@ -254,6 +255,7 @@
     <ClInclude Include="Actions\PickByType.h" />
     <ClInclude Include="Actions\PickByColor.h" />
     <ClInclude Include="Actions\PickByTypeAndColor.h" />
+    <ClInclude Include="Actions\SoundAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

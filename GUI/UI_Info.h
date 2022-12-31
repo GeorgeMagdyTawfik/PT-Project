@@ -41,7 +41,9 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_YELLOW,
 	ITM_GREEN,
 	ITM_BLUE,
+	ITM_sound,
 	ITM_CLEARALL,
+	
 	//TODO: Add more items names here: DONE all the required THE SHAPES, recording icons left.
 
 	ITM_EXIT,		//Exit item
