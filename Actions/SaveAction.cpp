@@ -28,9 +28,9 @@ void SaveAction::Execute(bool ReadParamsFirst)
 
 	if (pFig)								//If there is a selected figure, we need to unselect it
 	{
-		pFig->SetSelected(false);
-		pManager->SetSelectedFigure(NULL);
-		pFig->UseFigGfxInfo();
+		SelectFigAction* pAct = new SelectFigAction(pManager);
+		pAct->UnselectPrevious(pFig, false);
+		delete pAct;
 	}
 
 	OutFile.open(filename);

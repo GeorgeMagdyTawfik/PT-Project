@@ -211,8 +211,6 @@ color Output::DecodeColor(string s) const
 }
 string Output::EncodeColor(color c) const      //takes color and returns corresponding string
 {
-	if (c == MAGENTA)
-		return "BLUE";
 	if (c == BLACK)
 		return "BLACK";
 	if (c == RED)

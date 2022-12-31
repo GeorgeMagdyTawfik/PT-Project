@@ -53,7 +53,7 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 	if (ClickedFig->IsSelected() == false) // if it was not selected
 	{
 		//unselect the previously selcted figure
-		UnselectPrevious(was_selected);
+		UnselectPrevious(was_selected, true);
 
 		ClickedFig->SetSelected(true); // select this fig
 		pManager->SetSelectedFigure(ClickedFig);
@@ -80,19 +80,17 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 	RecordIfAllowed(this);
 }
 
-void SelectFigAction::UnselectPrevious(CFigure* previous)
+void SelectFigAction::UnselectPrevious(CFigure* previous, bool go)
 {
 	if (previous != NULL)
 	{
 		previous->SetSelected(false);
-		//previous->ChngDrawClr(UI.DrawColor);
 		previous->UseFigGfxInfo();
 		pManager->SetSelectedFigure(NULL);
-			// Change its color to normal
-			//ClickedFig->ChngDrawClr(UI.DrawColor);
-		ClickedFig->UseFigGfxInfo();
+		// Change its color to normal
+		//if (go)						//this boolean expands the functionality and allows for reusability
+		//	ClickedFig->UseFigGfxInfo();
 		
-		//pOut->ClearStatusBar(); //if I clear the status bar here the message will be quickly removed (won't be seen)
 	}
 }
 
