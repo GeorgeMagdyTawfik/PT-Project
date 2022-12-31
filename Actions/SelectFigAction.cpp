@@ -19,12 +19,6 @@ void SelectFigAction::ReadActionParameters()
 		// Store the selected point in the Private data member Point
 		pIn->GetPointClicked(Clicked.x, Clicked.y);
 	}
-	else
-	{
-		pOut->PrintMessage("There are no figures to select!");
-	}
-
-	ClickedFig = pManager->GetFigure(Clicked.x, Clicked.y);
 }
 
 /// The functions here need Redesign
@@ -34,19 +28,19 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 	if (ReadParamsFirst)
 		ReadActionParameters();
 
-	if (pManager->GetFigCount() == 0)
-	{
-		return;
-	}
-	
-	// Now I know where the kid clicked
-	// Get two pointers to access input and output 
 	Input* pIn = pManager->GetInput();
 	Output* pOut = pManager->GetOutput();
 
+	if (pManager->GetFigCount() == 0)
+	{
+		pOut->PrintMessage("There are no figures to select!");
+		return;
+	}
+
+	ClickedFig = pManager->GetFigure(Clicked.x, Clicked.y);
 	if (ClickedFig == NULL) // a click not on a figure
 	{
-		pOut->ClearStatusBar();
+		pOut->PrintMessage("This is not a figure, ignored the click.");
 		return;
 	}
 
@@ -68,16 +62,11 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 		pManager->SetSelectedFigure(NULL);
 		// print a message
 		pOut->PrintMessage("Unselected the figure");
-			
 		// Change its color to normal
 		ClickedFig->UseFigGfxInfo();
-		//ClickedFig->ChngDrawClr(UI.DrawColor);
-		
 	}
-	//pOut->ClearStatusBar(); //if I clear the status bar here the message will be quickly removed (won't be seen)
 	// If the kid clicks on an empty space it will be ignored
-
-	RecordIfAllowed(this);
+	RecordIfAllowed(this); // I hope this will work
 }
 
 void SelectFigAction::UnselectPrevious(CFigure* previous, bool go)
