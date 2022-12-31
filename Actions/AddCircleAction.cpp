@@ -9,6 +9,9 @@
 #include<Windows.h>
 #include<iostream>
 
+
+
+
 AddCircleAction::AddCircleAction(ApplicationManager* pApp) :Action(pApp)
 {}
 
@@ -41,6 +44,7 @@ void AddCircleAction::ReadActionParameters()
 //Execute the action
 void AddCircleAction::Execute(bool ReadParamsFirst)
 {
+	Output* pOut = pManager->GetOutput();
 	if (ReadParamsFirst)
 		ReadActionParameters();
 
@@ -56,7 +60,8 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 	if (pManager->getcaseofsound() == true)
 	{
 		bool played = PlaySound("draw the circle.WAV", NULL, SND_SYNC);
-		cout << played;
+		cout <<played ;
+		
 	}
 
 }
