@@ -61,8 +61,3 @@ void AddSquareAction::RedoExcute()
 	saved = saved;
 
 }
-
-bool AddSquareAction::CheckRecordability() const
-{
-	return true;
-}

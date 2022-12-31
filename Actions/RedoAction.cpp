@@ -35,8 +35,3 @@ void RedoAction::UndoExcute()
 void RedoAction::RedoExcute()
 {}
 
-
-bool RedoAction::CheckRecordability() const
-{
-	return true;
-}

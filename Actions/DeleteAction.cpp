@@ -46,8 +46,3 @@ void DeleteAction::RedoExcute()
 	savedredo = savedredo-> getpointerfig();
 }
 
-
-bool DeleteAction::CheckRecordability() const
-{
-	return true;
-}

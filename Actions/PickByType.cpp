@@ -220,10 +220,6 @@ void PickByType::RedoExcute()
 {
 }
 
-bool PickByType::CheckRecordability() const
-{
-	return false;
-}
 
 PickByType::~PickByType()
 {

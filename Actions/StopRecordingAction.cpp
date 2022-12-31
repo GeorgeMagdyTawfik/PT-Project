@@ -22,10 +22,6 @@ void StopRecordingAction::Execute(bool ReadParamsFirst)
 	pOut->PrintMessage("Recording Stopped");
 }
 
-bool StopRecordingAction::CheckRecordability() const
-{
-	return false;
-}
 
 void StopRecordingAction::UndoExcute()
 {}

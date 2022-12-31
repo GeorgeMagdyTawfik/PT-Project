@@ -62,8 +62,3 @@ void AddTriangleAction::RedoExcute()
 	saved = saved;
 
 }
-
-bool AddTriangleAction::CheckRecordability() const
-{
-	return true;
-}

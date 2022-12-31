@@ -29,10 +29,6 @@ void SwitchToDrawMode::RedoExcute()
 {
 }
 
-bool SwitchToDrawMode::CheckRecordability() const
-{
-	return false;
-}
 
 SwitchToDrawMode::~SwitchToDrawMode()
 {

@@ -63,8 +63,3 @@ void AddRectAction::RedoExcute()
 	saved = saved;
 
 }
-
-bool AddRectAction::CheckRecordability() const
-{
-	return true;
-}

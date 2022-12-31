@@ -38,10 +38,6 @@ void PlayRecordingAction::Execute(bool ReadParamsFirst)
 	}
 		
 }
-bool PlayRecordingAction::CheckRecordability() const
-{
-	return false;
-}
 
 void PlayRecordingAction::UndoExcute()
 {}

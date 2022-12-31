@@ -19,5 +19,4 @@ public:
     virtual void RedoExcute();
     ~SaveAction();
 
-    virtual bool CheckRecordability() const;
 };

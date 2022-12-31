@@ -28,9 +28,7 @@ public:
 	virtual void UndoExcute() = 0;
 	virtual void RedoExcute() = 0;
 
-	virtual bool CheckRecordability() const = 0; // We don't need this anymore
 
-	//virtual void Preview() {} now we don't need this 
 
 	void RecordIfAllowed(Action* Aptr) // non virtual function in base class
 	{

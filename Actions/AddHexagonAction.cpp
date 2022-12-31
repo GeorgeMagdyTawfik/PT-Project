@@ -55,8 +55,3 @@ void AddHexagonAction::RedoExcute()
 
 }
 
-
-bool AddHexagonAction::CheckRecordability() const
-{
-	return true;
-}

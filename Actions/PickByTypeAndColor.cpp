@@ -22,11 +22,6 @@ void PickByTypeAndColor::RedoExcute()
 {
 }
 
-bool PickByTypeAndColor::CheckRecordability() const
-{
-	return false;
-}
-
 PickByTypeAndColor::~PickByTypeAndColor()
 {
 }

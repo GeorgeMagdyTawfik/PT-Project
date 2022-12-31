@@ -131,8 +131,3 @@ void ChangeFillClrAction::RedoExcute()
 ChangeFillClrAction::~ChangeFillClrAction()
 {
 }
-
-bool ChangeFillClrAction::CheckRecordability() const
-{
-	return true;
-}

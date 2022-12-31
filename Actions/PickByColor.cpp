@@ -92,10 +92,6 @@ void PickByColor::RedoExcute()
 {
 }
 
-bool PickByColor::CheckRecordability() const
-{
-	return false;
-}
 
 void PickByColor::ExecuteBodyOfLoop(FillColors fillclr, int TotalCount)
 {

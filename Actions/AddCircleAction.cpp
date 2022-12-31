@@ -66,8 +66,3 @@ void AddCircleAction::RedoExcute()
 	// savedredo = savedredo;
 }
 
-
-bool AddCircleAction::CheckRecordability() const
-{
-	return true;
-}

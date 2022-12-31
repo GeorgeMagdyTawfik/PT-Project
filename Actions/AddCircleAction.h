@@ -13,6 +13,5 @@ public:
 	virtual void Execute(bool ReadParamsFirst = true);
 	virtual void UndoExcute();
 	virtual void RedoExcute();
-	virtual bool CheckRecordability() const;
 };
 
