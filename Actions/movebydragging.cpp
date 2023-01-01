@@ -5,13 +5,10 @@
 class Action;
 
 movebydragging::movebydragging(ApplicationManager* pApp) : Action(pApp)
-{
-}
+{}
 
 void movebydragging::ReadActionParameters()
-{
-
-}
+{}
 
 void movebydragging::Execute(bool ReadParamsFirst)
 {
@@ -43,27 +40,16 @@ void movebydragging::Execute(bool ReadParamsFirst)
 	}
 	else
 		pOut->PrintMessage("No selected figure. Please select a figure first!");
-	
-	//pOut->CreateDrawToolBar();
+
+
 	pOut->PrintMessage("The figure has been moved");
 }
 
 void movebydragging::UndoExcute()
-{
-
-
-}
+{}
 
 void movebydragging::RedoExcute()
-{
-
-}
+{}
 
 movebydragging::~movebydragging()
-{
-}
-
-bool movebydragging::CheckRecordability() const
-{
-	return true;
-}
+{}

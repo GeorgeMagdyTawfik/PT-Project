@@ -36,8 +36,3 @@ void SoundAction::UndoExcute()
 
 void SoundAction::RedoExcute()
 {}
-
-bool SoundAction::CheckRecordability() const
-{
-	return false;
-}

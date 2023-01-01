@@ -6,7 +6,6 @@ private:
 	Point P1;
 	GfxInfo hexaGfxInfo;
 	CFigure* saved;
-	CFigure* savedredo;
 public:
 	AddHexagonAction(ApplicationManager* pApp);
 

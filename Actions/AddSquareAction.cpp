@@ -1,8 +1,6 @@
 #include "AddSquareAction.h"
 #include "../Figures/CSquare.h"
-
 #include "../ApplicationManager.h"
-
 #include "../GUI/Input.h"
 #include "../GUI/Output.h"
 #include<Windows.h>
@@ -45,11 +43,10 @@ void AddSquareAction::Execute(bool ReadParamsFirst)
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
-	saved = R;// ->getpointerfig();
+	saved = R;
 	if (pManager->getcaseofsound() == true)
 	{
- PlaySound(TEXT("square.WAV"), NULL, SND_SYNC);
-		
+		PlaySound(TEXT("square.WAV"), NULL, SND_SYNC);
 	}
 	
 	RecordIfAllowed(this);
@@ -59,12 +56,8 @@ void AddSquareAction::UndoExcute()
 {
 
 	pManager->DeleteFigure(saved);
-	//saved = saved;
 }
 void AddSquareAction::RedoExcute()
 {
 	pManager->AddFigure(saved);
-
-	//saved = saved;
-
 }

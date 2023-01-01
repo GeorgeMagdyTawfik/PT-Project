@@ -14,11 +14,9 @@ public:
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& InFile);
 	virtual bool CheckInside(int X, int Y);
-	virtual CFigure* getfigure();
 
 	virtual Point GetCenter();
 	virtual void Move(Point destination) override;
 	virtual void PrintInfo(Output* pOut);
-	virtual CFigure* getpointerfig();
 	virtual char GetMyType();
 };

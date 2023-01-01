@@ -11,9 +11,6 @@ using namespace std;
 //Base class for all figures
 class CFigure
 {
-	//static int NumberOfFigures;
-	//static bool FilledAsDefault;
-
 protected:
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
@@ -67,7 +64,6 @@ public:
 	
 	// To check whether a point belongs to the shape's area or not 
 	virtual bool CheckInside(int x, int y) = 0; /// pure virtual function (overridden in each class) 
-	virtual CFigure* getfigure()=0;
 	virtual Point GetCenter() = 0;
 
 	void UseFigGfxInfo();
@@ -75,10 +71,6 @@ public:
 	void UpdateFigGfxFillClr(color c);
 	void UnfillFigGfxInfo();
 	color GetPrevDrawClr();
-
-	int GetID();
-	
-	virtual CFigure* getpointerfig()=0;
 
 	virtual char GetMyType() = 0;
 

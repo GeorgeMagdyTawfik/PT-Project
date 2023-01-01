@@ -22,7 +22,6 @@ CFigure::CFigure()
 	Selected = false;
 }
 
-//int CFigure::FigCount = 0;
 bool CFigure::FilledAsDefault = false;
 
 void CFigure::SetSelected(bool s)
@@ -155,18 +154,11 @@ void CFigure::UpdateFigGfxFillClr(color c)
 	PrevFigGfxInfo.isFilled = true;
 	PrevFigGfxInfo.FillClr = c;
 }
-int CFigure::GetID()
-{
-	return ID;
-}
 
 void CFigure::UnfillFigGfxInfo()
 {
 	PrevFigGfxInfo.isFilled = false;
 }
-
-
-
 
 color CFigure::GetPrevDrawClr()
 {

@@ -5,7 +5,6 @@
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
 #include "GUI\output.h"
-//#include "Actions/Action.h"
 class Action;
 
 //Main class that manages everything in the application.
@@ -20,7 +19,6 @@ private:
 	int RecordedActionsCount;
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 	Action** RecordingList = new Action*[MaxRecord]; /// all the currently recorded actions
-	//CFigure* Been_undo_list[MaxFigCount];
 	CFigure* SelectedFig; //Pointer to the selected figure
 	bool RecordingState;
 	bool playsound;
@@ -29,15 +27,11 @@ private:
 	Output* pOut;
 	Action* undolist[MaxUndoCount];
 	int undocount;
-	//int undoexcuted; //number of undo action that achueved
-	//Action* redolist[5];
 	int redocount;
-	//int redoexcuted;
 	CFigure* deletedlist[5];
 	int deletecount;
 	
 	Action* LastAction;
-	//void ToRecord_orNot(Action* last);
 
 	int SquareCount;
 	int CircleCount;
@@ -67,9 +61,7 @@ public:
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 
 
-	//These 2 functions are EXTRA but needed
 	void SetSelectedFigure(CFigure*);
-	// 
 	CFigure* GetSelectedFig() const;
 
 	// -- Interface Management Functions
@@ -87,37 +79,17 @@ public:
 	void SetRecordingState(bool b);
 	bool GetRecordingState() const;
 	int GetRecordedActionsCount() const;
-	// Action** GetRecordingList() const; NOT ALLOWED
 	void PreviewRecordedActs();
-	void RemovePastRecording(); /// Important ; will call this when starting a new recording & in CLEARALL
-	void SetRecordedActionsCount(int); /// Important
+	void RemovePastRecording(); // Is called when Starting a new Recording or Clear ALL
 	void AddToRecordingList(Action*);
 
 	// -- Functions which Loop on FigList
 	void DeleteFigure(CFigure* pFig);
-	//
-	//int GetUndoExcuted();
-	//void SetUndoExcuted();
-	void deletelastfigure();
-	//Action* GetExcutedAction();
-	
-	//////////////////////////
-//void setExcutedeundoAction(Action*);
-	//Action* getundoedaction();
-	//void setExcutedeundoAction(Action*);
-	//Action* getundoedaction();
-	void drawlast();
-	
 	int getredocount();
-	//int getredoExcuted();
-	///////////////////////////////////
 	int getundocount();
-	//void setredoExcute();
-	////////////////////////////////
 	void addtoundolist(Action*);
 	void Undo();
 	void Redo();
-	//void DeleteByID(CFigure*);
 	void EmptyUndoList();
 
 	void CountTypes();

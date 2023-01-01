@@ -48,7 +48,7 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
-	saved = R;// ->getpointerfig();
+	saved = R;
 	if (pManager->getcaseofsound() == true)
 	{
 	 PlaySound(TEXT("rectangle.WAV"), NULL, SND_SYNC);
@@ -58,14 +58,9 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 }
 void AddRectAction::UndoExcute()
 {
-
 	pManager->DeleteFigure(saved);
-	//saved = saved;
 }
 void AddRectAction::RedoExcute()
 {
 	pManager->AddFigure(saved);
-
-	//saved = saved;
-
 }

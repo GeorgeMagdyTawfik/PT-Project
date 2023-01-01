@@ -16,6 +16,5 @@ public:
 	virtual void UndoExcute() override;
 	virtual void RedoExcute() override;
 	~movebydragging();
-	virtual bool CheckRecordability() const;
 };
 

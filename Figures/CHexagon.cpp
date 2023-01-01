@@ -84,10 +84,6 @@ void CHexagon::PrintInfo(Output* pOut)
 	pOut->PrintMessage(msg);
 }
 
-CFigure* CHexagon::getpointerfig()
-{
-	return this;
-}
 
 char CHexagon::GetMyType()
 {
@@ -126,16 +122,7 @@ void CHexagon::Load(ifstream& InFile)
 		UpdateFigGfxFillClr(FigGfxInfo.FillClr);
 	}
 }
-CFigure* CHexagon::getfigure()
-{
-	
 
-	CHexagon* c = new CHexagon;
-
-	*c = *this;
-
-	return c;
-}
 Point CHexagon::GetCenter()
 {
 	return center;

@@ -1,17 +1,11 @@
 #include "AddCircleAction.h"
-
 #include "../Figures/CCircle.h"
-
 #include "../ApplicationManager.h"
 #include "../GUI/input.h"
 #include "../GUI/Output.h"
 #include"../Actions/SelectFigAction.h"
 #include<Windows.h>
 #include<mmsystem.h>
-#include<iostream>
-
-
-
 
 AddCircleAction::AddCircleAction(ApplicationManager* pApp) :Action(pApp)
 {}
@@ -54,29 +48,20 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
-	saved = R;// ->getpointerfig();
-	//savedredo = R->getfigure();
+	saved = R;
 
 	RecordIfAllowed(this);
 	if (pManager->getcaseofsound() == true)
 	{
-		 PlaySound(TEXT("circle.WAV"), NULL, SND_SYNC);
-
-		
+		 PlaySound(TEXT("circle.WAV"), NULL, SND_SYNC);	
 	}
-
 }
 void AddCircleAction::UndoExcute()
 {
-	
 	pManager->DeleteFigure(saved);
-	//saved = saved->getfigure();
 }
 void AddCircleAction::RedoExcute()
 {
 	pManager->AddFigure(saved);
-	
-	//saved = saved->getfigure();
-	// savedredo = savedredo;
 }
 

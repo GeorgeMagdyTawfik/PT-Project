@@ -10,7 +10,6 @@ private:
 	 Point P1, P2; //Rectangle Corners
 	GfxInfo RectGfxInfo;
 	CFigure* saved;
-	CFigure* savedredo;
 public:
 	AddRectAction(ApplicationManager* pApp);
 

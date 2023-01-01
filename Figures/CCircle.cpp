@@ -92,16 +92,6 @@ void CCircle::Load(ifstream& InFile)
 		UpdateFigGfxFillClr(FigGfxInfo.FillClr);
 	}
 }
-CFigure* CCircle::getfigure()
-{
-	CCircle* c=new CCircle;
-	
-	
-
-	*c = *this;
-
-	return c;
-}
 
 void CCircle::Move(Point destination)
 {
@@ -117,10 +107,6 @@ void CCircle::Move(Point destination)
 Point CCircle::GetCenter()
 {
 	return center;
-}
-CFigure* CCircle::getpointerfig()
-{
-	return this;
 }
 
 char CCircle::GetMyType()

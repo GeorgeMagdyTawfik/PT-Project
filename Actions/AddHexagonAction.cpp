@@ -40,7 +40,7 @@ void AddHexagonAction::Execute(bool ReadParamsFirst)
 
 
 	pManager->AddFigure(R);
-	saved = R;// ->getpointerfig();
+	saved = R;
 	if (pManager->getcaseofsound() == true)
 	{
 	 PlaySound(TEXT("hexagon.WAV"), NULL, SND_SYNC);
@@ -52,12 +52,9 @@ void AddHexagonAction::UndoExcute()
 {
 
 	pManager->DeleteFigure(saved);
-	//saved = saved;
 }
 void AddHexagonAction::RedoExcute()
 {
 	pManager->AddFigure(saved);
-	//saved = saved;
-
 }
 

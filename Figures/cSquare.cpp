@@ -74,15 +74,6 @@ void CSquare::Load(ifstream& InFile)
 		UpdateFigGfxFillClr(FigGfxInfo.FillClr);
 	}
 }
-CFigure* CSquare::getfigure()
-{
-	CSquare* c = new CSquare;
-
-	*c = *this;
-	c->FigGfxInfo = FigGfxInfo;
-
-	return c;
-}
 
 void CSquare::Move(Point destination)
 {
@@ -91,10 +82,6 @@ void CSquare::Move(Point destination)
 Point CSquare::GetCenter()
 {
 	return center;
-}
-CFigure* CSquare::getpointerfig()
-{
-	return this;
 }
 
 char CSquare::GetMyType()

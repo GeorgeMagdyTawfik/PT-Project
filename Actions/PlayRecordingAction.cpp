@@ -18,23 +18,18 @@ void PlayRecordingAction::Execute(bool ReadParamsFirst)
 	}
 	if (pManager->GetRecordedActionsCount() == 0)
 	{
-		pOut->PrintMessage("No previous recording"); /// how to delete a previous recording ?
+		pOut->PrintMessage("No previous recording");
 		return;
-		// lazem 3lshan tebda2 recording ykon el fig count zero wel recording count zero
-		/// clear all has to delete the recording list, but when playing the recording i will call "delete all" which 
-		// does not delete the recording list 
 	}
-	//TODO:  can't play while in a recording
-	// call the previewrecording function of appmanager
 	// if there are no actions recorded, don't play
 	if (pManager->GetRecordingState() == false)	
 	{
-		// i think this is redundant
-		//CFigure::FilledAsDefault = false;
-		CFigure* c = new CRectangle();
-		c->SetNotFilledAsDefault();
-		delete c;
+		CFigure::FilledAsDefault = false;
+		pManager->DeleteAll();
+		pOut->ClearDrawArea();
+		pOut->PrintMessage("Started Playing");
 		pManager->PreviewRecordedActs();
+		pOut->PrintMessage("Finished the recorded actions");
 	}
 		
 }

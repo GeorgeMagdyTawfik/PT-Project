@@ -4,7 +4,6 @@ class ChangeDrawClrAction : public Action
 {
 	color NewDraw;
 	bool chosen;
-	CFigure* pFig;
 	color prevUIDraw;
 	color prevFigDraw;
 	CFigure* pFig;

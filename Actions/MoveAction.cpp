@@ -31,15 +31,12 @@ void MoveAction::Execute(bool ReadParamsFirst)
 	pFig = pManager->GetSelectedFig();
 	if (pFig)
 	{
-		//saved = pManager->GetSelectedFig()->getfigure();
-		//saved = pFig->getpointerfig();
 		prevlocation = pFig->GetCenter();
 		pFig->Move(destination);
-		//pFig->UseFigGfxInfo();
 		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("Moved figure to chosen point.");
 		pManager->addtoundolist(this);
-		RecordIfAllowed(this);				//I think these have to be inside the scope	
+		RecordIfAllowed(this);
 	}
 	
 }
@@ -52,8 +49,6 @@ void MoveAction::UndoExcute()
 
 void MoveAction::RedoExcute()
 {
-	Output* pOut = pManager->GetOutput();
-	pOut->ClearDrawArea();
 	pFig->Move(destination);
 }
 

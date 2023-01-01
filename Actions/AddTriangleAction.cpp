@@ -44,27 +44,19 @@ void AddTriangleAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
-
 	
 	CTriangle* R = new CTriangle(P1, P2,P3, triangleGfxInfo);
 
-	
 	pManager->AddFigure(R);
-	saved = R;// ->getpointerfig();
+	saved = R;
 	
-
 	RecordIfAllowed(this);
 }
 void AddTriangleAction::UndoExcute()
 {
-
 	pManager->DeleteFigure(saved);
-	//saved = saved;
 }
 void AddTriangleAction::RedoExcute()
 {
 	pManager->AddFigure(saved);
-
-	//saved = saved;
-
 }

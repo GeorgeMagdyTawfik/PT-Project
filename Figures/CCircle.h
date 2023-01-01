@@ -14,10 +14,7 @@ class CCircle:public CFigure
 		virtual void Save(ofstream& OutFile) override;
 		virtual void Load(ifstream& InFile) override;
 		virtual void Move(Point destination) override;
-		CFigure* getfigure();
 		virtual Point GetCenter();
 		virtual void PrintInfo(Output* pOut);
-		virtual CFigure* getpointerfig();
 		virtual char GetMyType();
-	
 };	

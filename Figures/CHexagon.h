@@ -14,11 +14,9 @@ public:
 	float GetHexagonArea() const;
 	float CalcAreaOfTriangle(Point A, Point B, Point C) const;
 	virtual bool CheckInside(int X, int Y);
-	virtual CFigure* getfigure();
 	virtual void Move(Point destination) override;
 	virtual Point GetCenter();
 	virtual void PrintInfo(Output* pOut);
-	virtual CFigure*getpointerfig();
 	virtual char GetMyType();
 	
 };

@@ -22,7 +22,7 @@
 #include "Actions\SwitchToDrawMode.h"
 #include "Actions/PickByType.h"
 #include "Actions/PickByColor.h"
-#include "Actions/PickByTypeAndColor.h
+#include "Actions/PickByTypeAndColor.h"
 #include"Actions/SoundAction.h"
 #include"Actions/movebydragging.h"
 
@@ -155,6 +155,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case PLAY_REC:
 		pAct = new PlayRecordingAction(this);
+		break;
 	case SOUND:
 		pAct = new SoundAction(this);
 		break;
@@ -173,11 +174,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		
 	case EXIT:
 		///create ExitAction here
-		/*for (int i = 0; i < RecordedActionsCount; i++)
-		{
-			delete RecordingList[i];
-		}
-		delete[]RecordingList;*/
 		pAct = new ClearAllAction(this);
 		pAct->Execute();
 		pAct = NULL;
@@ -191,30 +187,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct != NULL)
 	{
 		pAct->Execute();//Execute
-
-		/*UndoAction* ua = dynamic_cast<UndoAction*>(pAct);
-		RedoAction* ra = dynamic_cast<RedoAction*>(pAct);
-		SelectFigAction* SFA = dynamic_cast<SelectFigAction*>(pAct);
-		if (ua == NULL && ra == NULL&&SFA==NULL)
-		{
-			if (undocount > 4)
-			{
-				undolist[0] = NULL;
-				for (int i = 0; i < 3; i++)
-				{
-					undolist[i] = undolist[i + 1];
-
-				}
-				undolist[4] = pAct;
-				undocount = 4;
-			}
-			else
-			{
-				undolist[undocount++] = pAct;
-
-			}
-
-		}*/
 		//delete pAct;	//You may need to change this line depending to your implementation
 		//pAct = NULL; 
 		LastAction = pAct;
@@ -242,7 +214,6 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
-
 	for (int i = FigCount - 1; i >= 0; i--)
 	{
 		if (FigList[i]->CheckInside(x, y) == true)
@@ -250,10 +221,6 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 			return FigList[i];
 		}
 	}
-
-	//Add your code here to search for a figure given a point x,y	
-	//Remember that ApplicationManager only calls functions do NOT implement it.
-
 	return NULL;
 }
 
@@ -277,9 +244,6 @@ void ApplicationManager::UpdateInterface() const
 	pOut->ClearDrawArea(); /// this is important
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Draw(pOut);	//Call Draw function (virtual member fn)
-	
-
-
 }
 void ApplicationManager::DeleteFigure(CFigure* pFig)
 {
@@ -354,153 +318,25 @@ ApplicationManager::~ApplicationManager()
 	delete pOut;
 
 }
-////////////////////////////////////////////////////////////////////////////////////
-/*void ApplicationManager::Undo()
-{
-	AddRectAction* adr = dynamic_cast<AddRectAction*>(undolist[undocount - 1]);
-	if (adr != NULL)
-	{
-		FigList[FigCount - 1] = NULL;
-		FigCount--;
-		if(undocount>1)
-		undocount--;
-		undoexcuted++;
-	}
-	AddSquareAction* ads = dynamic_cast<AddSquareAction*>(undolist[undocount - 1]);
-	if (ads != NULL)
-	{
-		FigList[FigCount - 1] = NULL;
-		if (undocount > 1)
-		undocount--;
-		FigCount--;
-		undoexcuted++;
-	}
-	AddTriangleAction* adt = dynamic_cast<AddTriangleAction*>(undolist[undocount - 1]);
-	if (adt != NULL)
-	{
-		FigList[FigCount - 1] = NULL;
-		if (undocount >1)
-		undocount--;
-		FigCount--;
-		undoexcuted++;
-	}
-	AddCircleAction* adc = dynamic_cast<AddCircleAction*>(undolist[undocount - 1]);
-	if (adc != NULL)
-	{
-		FigList[FigCount - 1] = NULL;
-		if (undocount > 1)
-		undocount--;
-		FigCount--;
-		undoexcuted++;
-	}
-	AddHexagonAction* adh = dynamic_cast<AddHexagonAction*>(undolist[undocount - 1]);
-	if (adh != NULL)
-	{
-		FigList[FigCount - 1] = NULL;
-		if (undocount > 1)
-		undocount--;
-		FigCount--;
-		undoexcuted++;
-	}
-
-	//undolist[undocount - 1]->UndoExcute();
-	//if (undocount > 1)
-		//undocount--;
-	//undoexcuted++;
-
-}*/
-
-/*int  ApplicationManager::GetUndoExcuted()
-{
-	return undoexcuted;
-
-}
-*/
-
-/*void  ApplicationManager::SetUndoExcuted()
-{
-	undoexcuted++;
-
-}
-*/
 //////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::deletelastfigure()
-{
-	FigCount--;
-
-
-}
-/*Action* ApplicationManager::GetExcutedAction()
-{
-	return undolist[undocount - 1];
-
-}
-*/
-/*void ApplicationManager::setExcutedeundoAction(Action* undoed)
-void ApplicationManager::setExcutedeundoAction(Action* undoed)
-{
-
-	if (redocount > 4)
-	{
-		redolist[0] = NULL;
-		for (int i = 0; i < 3; i++)
-		{
-			redolist[i] = redolist[i + 1];
-
-		}
-		redolist[4] = undoed;
-		redocount = 4;
-	}
-	else
-	{
-		redolist[redocount++] = undoed;
-
-	}
-
-}
-*/
-/*Action* ApplicationManager::getundoedaction()
-{
-
-	return redolist[redocount - 1];
-}
-*/
-void ApplicationManager::drawlast()
-{
-	FigList[FigCount++]->Draw(pOut);
-	//redocount--;
-	//undoexcuted--;
-}
 int ApplicationManager::getredocount()
 {
 	return redocount;
 }
-/*int ApplicationManager::getredoExcuted()
-{
-	return redoexcuted;
-}
-*/
 int ApplicationManager::getundocount()
 {
 	return undocount;
 }
-/*void ApplicationManager::setredoExcute()
-{
-	redoexcuted++;
-}
-*/
 void ApplicationManager::addtoundolist(Action* ac)
 {
 	redocount = 0;
 	if (undocount > 4)
 	{
-		/*if (RecordingState == false)
-			delete undolist[0]; // senario :: if it is recored ??? */
-		undolist[0] = NULL;
+		if (RecordingState == false)
+			delete undolist[0]; // senario :: if it is recored ???
 		for (int i = 0; i <= 3; i++)
 		{
 			undolist[i] = undolist[i + 1];
-
 		}
 		undolist[4] = ac;
 		undocount = 4;
@@ -509,17 +345,16 @@ void ApplicationManager::addtoundolist(Action* ac)
 	else
 	{
 		undolist[undocount++] = ac;
-
 	}
-
-
 }
+
 void ApplicationManager::Undo()
 {
 	
-	undolist[undocount-- - 1]->UndoExcute();
+	undolist[--undocount]->UndoExcute();
 	redocount++;
 }
+
 void ApplicationManager::Redo()
 {
 	undolist[undocount++]->RedoExcute();
@@ -549,19 +384,14 @@ void ApplicationManager::AddToRecordingList(Action* ptr)
 		RecordingList[RecordedActionsCount++] = ptr;
 }
 
-
 void ApplicationManager::PreviewRecordedActs()
 {
-	DeleteAll();
-	pOut->ClearDrawArea();
-	pOut->PrintMessage("Started Playing");
 	for (int i = 0; i < RecordedActionsCount; i++)
 	{
 		_sleep(1000);
 		RecordingList[i]->Execute(0);
 		UpdateInterface();
 	}
-	pOut->PrintMessage("Finished the recorded actions");
 }
 
 void ApplicationManager::RemovePastRecording()
@@ -571,35 +401,9 @@ void ApplicationManager::RemovePastRecording()
 		delete RecordingList[i];
 		RecordingList[i] = NULL;
 	}
-	SetRecordedActionsCount(0);
+	RecordedActionsCount = 0;
 }
 
-void ApplicationManager::SetRecordedActionsCount(int a)
-{
-	RecordedActionsCount = a;
-}
-/*void ApplicationManager::DeleteByID(CFigure* c)
-{
-	for (int i = 0; i < FigCount; i++)
-	{
-		if (FigList[i]->GetID() == c->GetID())
-		{
-			//delete FigList[i];
-			if (i != FigCount - 1)
-				FigList[i] = FigList[FigCount - 1];
-			FigList[i]->SetSelected(false);
-			FigList[i]->UseFigGfxInfo();
-			FigList[FigCount - 1] = NULL;
-			SelectedFig = NULL;
-			
-			FigCount--;
-			
-
-
-		}
-
-	}
-}*/
 void ApplicationManager::EmptyUndoList()
 {
 	for (int i = 0; i < undocount; i++)

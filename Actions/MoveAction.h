@@ -4,7 +4,6 @@ class MoveAction : public Action
 {
 	Point destination;
 	CFigure* pFig;
-	//CFigure* saved;
 	Point prevlocation;
 
 public:

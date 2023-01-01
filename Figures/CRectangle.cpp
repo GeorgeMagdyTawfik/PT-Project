@@ -82,15 +82,6 @@ bool CRectangle::CheckInside(int x, int y)
 		&&	y <= BR.y
 		);
 }
-CFigure* CRectangle::getfigure()
-{
-	CRectangle* c = new CRectangle;
-
-	*c = *this;
-
-	return c;
-}
-
 void CRectangle::PrintInfo(Output* pOut)
 {
 	string msg = "Rectangle : ID = " + to_string(ID);
@@ -120,11 +111,6 @@ Point CRectangle::GetCenter()
 	c.x = (Corner1.x + Corner2.x) / 2;
 	c.y = (Corner1.y + Corner2.y) / 2;
 	return c;
-}
-
-CFigure* CRectangle::getpointerfig()
-{
-	return this;
 }
 
 char CRectangle::GetMyType()
