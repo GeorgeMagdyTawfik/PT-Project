@@ -22,7 +22,7 @@ Output::Output()
 	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
 	UI.StatusBarColor = color(0, 135, 68); /// google's green
-	UI.PenWidth = 3;	//width of the figures frames
+	UI.PenWidth = 2;	//width of the figures frames
 
 	
 	//Create the output window

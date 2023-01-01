@@ -63,13 +63,11 @@ void CRectangle::Load(ifstream& InFile)
 bool CRectangle::CheckInside(int x, int y)
 {
 	// check using upperleft and bottomright corners
-
-	UL.x = (Corner1.x < Corner2.x) ? Corner1.x : Corner2.x;	
+	UL.x = (Corner1.x < Corner2.x) ? Corner1.x : Corner2.x;
 	UL.y = (Corner1.y < Corner2.y) ? Corner1.y : Corner2.y;
 
 	BR.x = (Corner2.x > Corner1.x) ? Corner2.x : Corner1.x;
 	BR.y = (Corner2.y > Corner1.y) ? Corner2.y : Corner1.y;
-
 	return
 		(
 			x >= UL.x
@@ -116,5 +114,11 @@ char CRectangle::GetMyType()
 
 void CRectangle::ResizeByDragging(Point NewLocation)
 {
-	Corner2 = NewLocation;
+	int d1 = sqrt(pow(Corner1.x - NewLocation.x, 2) + pow(Corner1.y - NewLocation.y, 2));
+	int d2 = sqrt(pow(Corner2.x - NewLocation.x, 2) + pow(Corner2.y - NewLocation.y, 2));
+	
+	if (d1 < d2)
+		Corner1 = NewLocation;
+	else
+		Corner2 = NewLocation;
 }
