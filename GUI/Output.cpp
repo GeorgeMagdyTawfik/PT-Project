@@ -278,7 +278,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	else			
 		DrawingClr = RectGfxInfo.DrawClr;
 	
-	pWind->SetPen(DrawingClr,1);
+	pWind->SetPen(DrawingClr,UI.PenWidth);
 	drawstyle style;
 	if (RectGfxInfo.isFilled)	
 	{
@@ -301,7 +301,7 @@ void Output::DrawSquare(Point P1, GfxInfo squareGfxInfo, bool selected) const
 	else
 		DrawingClr = squareGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, 1);
+	pWind->SetPen(DrawingClr, UI.PenWidth);
 	drawstyle style;
 	if (squareGfxInfo.isFilled)
 	{
@@ -323,7 +323,7 @@ void Output::Drawcircle(Point P1, Point P2, GfxInfo circleGfxInfo, bool selected
 	else
 		DrawingClr = circleGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, 1);
+	pWind->SetPen(DrawingClr, UI.PenWidth);
 	drawstyle style;
 	if (circleGfxInfo.isFilled)
 	{
@@ -345,7 +345,7 @@ void Output::DrawTraingle(Point P1, Point P2, Point P3, GfxInfo traingleGfxInfo,
 	else
 		DrawingClr = traingleGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, 1);
+	pWind->SetPen(DrawingClr, UI.PenWidth);
 	drawstyle style;
 	if (traingleGfxInfo.isFilled)
 	{
@@ -388,7 +388,7 @@ void Output::DrawHexagon(Point P1, GfxInfo hexagonGfxInfo, bool selected) const
 	else
 		DrawingClr = hexagonGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, 1);
+	pWind->SetPen(DrawingClr, UI.PenWidth);
 	drawstyle style;
 	if (hexagonGfxInfo.isFilled)
 	{
