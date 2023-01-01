@@ -8,18 +8,18 @@ PlayRecordingAction::PlayRecordingAction(ApplicationManager* pApp) : Action(pApp
 
 void PlayRecordingAction::ReadActionParameters()
 {}
-void PlayRecordingAction::Execute(bool ReadParamsFirst)
+bool PlayRecordingAction::Execute(bool ReadParamsFirst)
 {
 	Output* pOut = pManager->GetOutput();
 	if (pManager->GetRecordingState() == true)
 	{
 		pOut->PrintMessage("Can't play while still recording!");
-		return;
+		return false;
 	}
 	if (pManager->GetRecordedActionsCount() == 0)
 	{
 		pOut->PrintMessage("No previous recording");
-		return;
+		return false;
 	}
 	// if there are no actions recorded, don't play
 	if (pManager->GetRecordingState() == false)	
@@ -38,7 +38,7 @@ void PlayRecordingAction::Execute(bool ReadParamsFirst)
 		pOut->PrintMessage("Finished the recorded actions");
 		pManager->SetPlayRecordingState(false);
 	}
-		
+	return false;
 }
 
 void PlayRecordingAction::UndoExcute()

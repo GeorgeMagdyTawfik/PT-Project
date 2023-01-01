@@ -14,20 +14,19 @@ class ApplicationManager; //forward class declaration
 class Action
 {
 protected:
-	ApplicationManager *pManager;	//Actions needs AppMngr to do their job
+	ApplicationManager *pManager;			//Actions needs AppMngr to do their job
 
 public:
 
-	Action(ApplicationManager *pApp) { pManager = pApp; }	//constructor
+	Action(ApplicationManager* pApp)	{ pManager = pApp; }	//constructor
 
 	//Reads parameters required for action to execute (code depends on action type)
 	virtual void ReadActionParameters() =0;
 	
 	//Execute action (code depends on action type)
-	virtual void Execute(bool ReadParamsFirst = true) =0;
+	virtual bool Execute(bool ReadParamsFirst = true) = 0;
 	virtual void UndoExcute() = 0;
 	virtual void RedoExcute() = 0;
-
 
 
 	void RecordIfAllowed(Action* Aptr) // non virtual function in base class
@@ -43,6 +42,8 @@ public:
 			pManager->AddToRecordingList(Aptr);
 		}
 	}
+
+	virtual ~Action() {}		//virtual destructor
 };
 
 #endif

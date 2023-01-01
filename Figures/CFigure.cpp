@@ -147,8 +147,6 @@ void CFigure::UpdateFigGfxDrawClr(color c)
 	PrevFigGfxInfo.DrawClr = c;
 }
 
-
-
 void CFigure::UpdateFigGfxFillClr(color c)
 {
 	PrevFigGfxInfo.isFilled = true;
@@ -163,6 +161,10 @@ void CFigure::UnfillFigGfxInfo()
 color CFigure::GetPrevDrawClr()
 {
 	return PrevFigGfxInfo.DrawClr;
+}
+
+CFigure::~CFigure()
+{
 }
 
 

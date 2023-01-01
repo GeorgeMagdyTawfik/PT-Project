@@ -13,11 +13,12 @@ void ChangeFillClrAction::ReadActionParameters()
 	pFig = pManager->GetSelectedFig();
 
 	if (!pFig)
+	{
 		pOut->PrintMessage("No selected figure. Please select a figure first!");
-
+		chosen = false;
+	}
 	else
 	{
-		
 		pOut->PrintMessage("Change fill color: please choose a color: ");
 
 		ActType = pManager->GetUserAction();
@@ -57,37 +58,31 @@ void ChangeFillClrAction::ReadActionParameters()
 	}
 }
 
-void ChangeFillClrAction::Execute(bool ReadParamsFirst)
+bool ChangeFillClrAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
-	else
-		chosen = true;
 
 	pFig = pManager->GetSelectedFig();
 
 	if (chosen)
 	{
-		if (!pFig)
-			return;
-		else
-		{
-			figwasfilled = pFig->IsFilled();		//now we know whether the figure was filled or not
-			defaultwasfilled = pFig->IsFilledAsDefault();
+		figwasfilled = pFig->IsFilled();		//now we know whether the figure was filled or not
+		defaultwasfilled = pFig->IsFilledAsDefault();
 
-			prevUIFill = UI.FillColor;
-			prevFigFill = pFig->GetFillClr();
-			UI.FillColor = NewFill;
-			pFig->SetFilledAsDefault();
-			pFig->ChngFillClr(NewFill);
-			pFig->UpdateFigGfxFillClr(NewFill);
-		}
+		prevUIFill = UI.FillColor;
+		prevFigFill = pFig->GetFillClr();
+		UI.FillColor = NewFill;
+		pFig->SetFilledAsDefault();
+		pFig->ChngFillClr(NewFill);
+		pFig->UpdateFigGfxFillClr(NewFill);
+
+		RecordIfAllowed(this);							// Is it the correct line to add this
+
+		pManager->addtoundolist(this);
 	}
 
-	RecordIfAllowed(this);							// Is it the correct line to add this
-
-	pManager->addtoundolist(this);
-
+	return true;
 }
 
 void ChangeFillClrAction::UndoExcute()

@@ -147,7 +147,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case CLEAR_ALL:
 		pAct = new ClearAllAction(this);
-		break; // don't forget this
+		break;
 	case START_REC:
 		pAct = new StartRecordingAction(this);
 		break;
@@ -172,12 +172,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case MOVE_BY_DRAGGING:
 		pAct = new movebydragging(this);
 		break;
-		
 	case EXIT:
 		///create ExitAction here
 		pAct = new ClearAllAction(this);
-		pAct->Execute();
-		pAct = NULL;
 		break;
 
 	case STATUS:	//a click on the status bar ==> no action
@@ -187,12 +184,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//Execute the created action
 	if (pAct != NULL)
 	{
-		pAct->Execute();//Execute
-		//delete pAct;	//You may need to change this line depending to your implementation
-		//pAct = NULL; 
+		bool flag = pAct->Execute();				//Execute
+		
 		LastAction = pAct;
 
-
+		if (!flag)
+		{
+			delete pAct;
+		}
 		pAct = NULL;
 	}
 }

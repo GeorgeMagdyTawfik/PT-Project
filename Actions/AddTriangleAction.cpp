@@ -39,7 +39,7 @@ void AddTriangleAction::ReadActionParameters()
 }
 
 
-void AddTriangleAction::Execute(bool ReadParamsFirst)
+bool AddTriangleAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
@@ -51,6 +51,8 @@ void AddTriangleAction::Execute(bool ReadParamsFirst)
 	
 	RecordIfAllowed(this);
 	pManager->addtoundolist(this);
+
+	return true;
 }
 void AddTriangleAction::UndoExcute()
 {

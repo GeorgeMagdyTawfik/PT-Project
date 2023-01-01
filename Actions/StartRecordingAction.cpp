@@ -8,27 +8,28 @@ StartRecordingAction::StartRecordingAction(ApplicationManager* pApp) : Action(pA
 void StartRecordingAction::ReadActionParameters()
 {}
 
-void StartRecordingAction::Execute(bool ReadParamsFirst)
+bool StartRecordingAction::Execute(bool ReadParamsFirst)
 {
 	Output* pOut = pManager->GetOutput();
-	int drawnfigs = pManager->GetFigCount();
 
 	if (pManager->GetRecordingState() == true)
 	{
-		pOut->PrintMessage("Not possible : You are already recording!");
-		return;
+		pOut->PrintMessage("Not possible: you are already recording!");
+		return false;
 	}
-	if (drawnfigs != 0)
+	if (pManager->GetFigCount() != 0 || pManager->getundocount() != 0)	
 	{
 		pOut->PrintMessage("Can't start recording here");
-		return;
+		return false;
 	}
 	if (pManager->GetRecordedActionsCount() != 0)
 	{
 		pManager->RemovePastRecording();
 	}
 	pManager->SetRecordingState(true);
-	pOut->PrintMessage("Recording Started! you have a maximum of 20 actions to record");
+	pOut->PrintMessage("Recording Started! You have a maximum of 20 actions to record");
+
+	return false;
 }
 
 

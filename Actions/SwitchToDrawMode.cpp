@@ -9,7 +9,7 @@ void SwitchToDrawMode::ReadActionParameters()
 {
 }
 
-void SwitchToDrawMode::Execute(bool ReadParamsFirst)
+bool SwitchToDrawMode::Execute(bool ReadParamsFirst)
 {
 	Action* pAct = new LoadAction(pManager);
 	pAct->Execute(0);
@@ -21,6 +21,7 @@ void SwitchToDrawMode::Execute(bool ReadParamsFirst)
 
 	pOut->PrintMessage("Switched to draw mode, the original graph has been loaded!");
 	
+	return false;
 }
 
 void SwitchToDrawMode::UndoExcute()

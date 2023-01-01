@@ -37,7 +37,7 @@ void AddCircleAction::ReadActionParameters()
 }
 
 //Execute the action
-void AddCircleAction::Execute(bool ReadParamsFirst)
+bool AddCircleAction::Execute(bool ReadParamsFirst)
 {
 	Output* pOut = pManager->GetOutput();
 	if (ReadParamsFirst)
@@ -56,6 +56,8 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 		 PlaySound(TEXT("circle0.WAV"), NULL, SND_SYNC);	
 	}
 	pManager->addtoundolist(this);
+	
+	return true;
 }
 void AddCircleAction::UndoExcute()
 {

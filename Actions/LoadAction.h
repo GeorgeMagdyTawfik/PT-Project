@@ -14,7 +14,7 @@ class LoadAction : public Action
 public:
 	LoadAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters() override;
-	virtual void Execute(bool ReadParamsFirst = true) override;
+	virtual bool Execute(bool ReadParamsFirst = true) override;
 	virtual void UndoExcute();
 	virtual void RedoExcute();
 	~LoadAction();

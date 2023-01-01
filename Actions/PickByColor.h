@@ -13,7 +13,7 @@ class PickByColor : public Action
 public:
 	PickByColor(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
-	virtual void Execute(bool ReadParamsFirst = true);
+	virtual bool Execute(bool ReadParamsFirst = true);
 	virtual void UndoExcute();
 	virtual void RedoExcute();
 	void ExecuteBodyOfLoop(FillColors fillclr, int TotalCount);

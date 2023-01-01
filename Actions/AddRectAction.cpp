@@ -37,7 +37,7 @@ void AddRectAction::ReadActionParameters()
 }
 
 //Execute the action
-void AddRectAction::Execute(bool ReadParamsFirst)
+bool AddRectAction::Execute(bool ReadParamsFirst)
 {
 	//This action needs to read some parameters first
 	if (ReadParamsFirst)
@@ -55,6 +55,8 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 	}
 	RecordIfAllowed(this);
 	pManager->addtoundolist(this);
+
+	return true;
 }
 void AddRectAction::UndoExcute()
 {

@@ -9,14 +9,14 @@ SwitchToPlayMode::SwitchToPlayMode(ApplicationManager* pApp) : Action(pApp)
 void SwitchToPlayMode::ReadActionParameters()
 {}
 
-void SwitchToPlayMode::Execute(bool ReadParamsFirst)
+bool SwitchToPlayMode::Execute(bool ReadParamsFirst)
 {
 	Output* pOut = pManager->GetOutput();
 
 	if (pManager->GetFigCount() == 0)
 	{
 		pOut->PrintMessage("Can't switch to play mode with no shapes!");
-		return;
+		return false;
 	}
 
 	Action* pAct = new SaveAction(pManager);
@@ -24,6 +24,7 @@ void SwitchToPlayMode::Execute(bool ReadParamsFirst)
 	pOut->CreatePlayToolBar();
 	pOut->PrintMessage("Switched to play mode, choose a game to play!");
 
+	return false;
 }
 
 void SwitchToPlayMode::UndoExcute()

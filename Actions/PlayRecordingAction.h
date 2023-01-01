@@ -8,7 +8,7 @@ class PlayRecordingAction : public Action
 public:
 	PlayRecordingAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
-	virtual void Execute(bool ReadParamsFirst = true);
+	virtual bool Execute(bool ReadParamsFirst = true);
 	virtual void UndoExcute();
 	virtual void RedoExcute();
 };

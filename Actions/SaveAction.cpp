@@ -15,7 +15,7 @@ void SaveAction::ReadActionParameters()
 	filename += ".txt";
 }
 
-void SaveAction::Execute(bool ReadParamsFirst)
+bool SaveAction::Execute(bool ReadParamsFirst)
 {
 	// this action will not be recorded but when switching from draw to play mode we need to 
 	// save the current sketch in a file without asking the kid to do it explicitly
@@ -52,6 +52,8 @@ void SaveAction::Execute(bool ReadParamsFirst)
 	{
 		pOut->PrintMessage("Error creating file!");
 	}
+
+	return false;
 }
 
 void SaveAction::UndoExcute()

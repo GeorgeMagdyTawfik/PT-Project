@@ -23,7 +23,7 @@ void SelectFigAction::ReadActionParameters()
 
 /// The functions here need Redesign
 
-void SelectFigAction::Execute(bool ReadParamsFirst)
+bool SelectFigAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
@@ -34,7 +34,7 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 	if (pManager->GetFigCount() == 0)
 	{
 		pOut->PrintMessage("There are no figures to select!");
-		return;
+		return false;
 	}
 
 	was_selected = pManager->GetSelectedFig();
@@ -44,13 +44,13 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 	if (ClickedFig == NULL) // a click not on a figure
 	{
 		pOut->PrintMessage("This is not a figure, ignored the click.");
-		return;
+		return false;
 	}
 
 	if (ClickedFig->IsSelected() == false) // if it was not selected
 	{
 		//unselect the previously selcted figure
-		UnselectPrevious(was_selected, true);
+		UnselectPrevious(was_selected);
 
 		ClickedFig->SetSelected(true); // select this fig
 		pManager->SetSelectedFigure(ClickedFig);
@@ -70,19 +70,17 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 	}
 	// If the kid clicks on an empty space it will be ignored
 	RecordIfAllowed(this);
+
+	return true;
 }
 
-void SelectFigAction::UnselectPrevious(CFigure* previous, bool go)
+void SelectFigAction::UnselectPrevious(CFigure* previous)
 {
 	if (previous != NULL)
 	{
 		previous->SetSelected(false);
 		previous->UseFigGfxInfo();
 		pManager->SetSelectedFigure(NULL);
-		// Change its color to normal
-		//if (go)						//this boolean expands the functionality and allows for reusability
-		//	ClickedFig->UseFigGfxInfo();
-		
 	}
 }
 

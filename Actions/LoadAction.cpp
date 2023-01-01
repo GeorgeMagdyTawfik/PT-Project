@@ -18,7 +18,7 @@ void LoadAction::ReadActionParameters()
 	filename += ".txt";
 }
 
-void LoadAction::Execute(bool ReadParamsFirst)
+bool LoadAction::Execute(bool ReadParamsFirst)
 {
 	// This action will not be recorded but, when switching from play mode back to draw mode we will need to 
 	// reload the saved drawing without asking the kid for the name of the file
@@ -86,6 +86,7 @@ void LoadAction::Execute(bool ReadParamsFirst)
 	{
 		pOut->PrintMessage("Error loading file! Are you sure there's a file with that name?");
 	}
+	return false;
 }
 
 void LoadAction::UndoExcute()

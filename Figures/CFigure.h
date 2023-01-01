@@ -74,6 +74,7 @@ public:
 
 	virtual char GetMyType() = 0;
 
+	virtual ~CFigure();					//virtual destructor
 };
 
 #endif

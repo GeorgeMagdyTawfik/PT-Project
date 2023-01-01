@@ -8,7 +8,7 @@ ClearAllAction::ClearAllAction(ApplicationManager* pApp) :Action(pApp)
 void ClearAllAction::ReadActionParameters()
 {
 }
-void ClearAllAction::Execute(bool ReadParamsFirst)
+bool ClearAllAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
@@ -32,6 +32,8 @@ void ClearAllAction::Execute(bool ReadParamsFirst)
 	pManager->SetRecordingState(false);		//ensures that any recording stops
 
 	pOut->PrintMessage("Cleared all!");
+
+	return false;
 }
 void ClearAllAction::RedoExcute()
 {}

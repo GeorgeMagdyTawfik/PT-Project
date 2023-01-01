@@ -32,7 +32,7 @@ void AddSquareAction::ReadActionParameters()
 }
 
 //Execute the action
-void AddSquareAction::Execute(bool ReadParamsFirst)
+bool AddSquareAction::Execute(bool ReadParamsFirst)
 {
 	//This action needs to read some parameters first
 	if (ReadParamsFirst)
@@ -51,6 +51,8 @@ void AddSquareAction::Execute(bool ReadParamsFirst)
 	
 	RecordIfAllowed(this);
 	pManager->addtoundolist(this);
+
+	return true;
 }
 
 void AddSquareAction::UndoExcute()

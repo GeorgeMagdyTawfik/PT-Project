@@ -8,10 +8,8 @@ UndoAction::UndoAction(ApplicationManager* pApp):Action(pApp)
 
 void UndoAction::ReadActionParameters()
 {}
-void UndoAction::Execute(bool ReadParamsFirst)
+bool UndoAction::Execute(bool ReadParamsFirst)
 {
-	
-
 	ReadActionParameters();
 	
 	int undocount = pManager->getundocount();
@@ -28,6 +26,8 @@ void UndoAction::Execute(bool ReadParamsFirst)
 	}
 
 	RecordIfAllowed(this);
+
+	return true;
 }
 void UndoAction::UndoExcute()
 {}

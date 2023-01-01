@@ -12,7 +12,7 @@ class movebydragging : public Action
 public:
 	movebydragging(ApplicationManager* pApp);
 	virtual void ReadActionParameters() override;
-	virtual void Execute(bool ReadParamsFirst = true) override;
+	virtual bool Execute(bool ReadParamsFirst = true) override;
 	virtual void UndoExcute() override;
 	virtual void RedoExcute() override;
 	~movebydragging();

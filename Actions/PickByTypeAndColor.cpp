@@ -11,7 +11,7 @@ void PickByTypeAndColor::ReadActionParameters()
 {
 }
 
-void PickByTypeAndColor::Execute(bool ReadParamsFirst)
+bool PickByTypeAndColor::Execute(bool ReadParamsFirst)
 {
 	pOut = pManager->GetOutput();
 	pIn = pManager->GetInput();
@@ -19,7 +19,7 @@ void PickByTypeAndColor::Execute(bool ReadParamsFirst)
 	if (pManager->GetFigCount() == 0)
 	{
 		pOut->PrintMessage("There are no more figures!");
-		return;
+		return false;
 	}
 
 	pManager->CountFillColors();
@@ -29,7 +29,7 @@ void PickByTypeAndColor::Execute(bool ReadParamsFirst)
 	if (NoFillFigs == pManager->GetFigCount())
 	{
 		pOut->PrintMessage("There are no colored figures!");
-		return;
+		return false;
 	}
 
 	int r;
@@ -83,6 +83,8 @@ void PickByTypeAndColor::Execute(bool ReadParamsFirst)
 
 	pManager->ResetCounts();
 	pManager->ResetFillColors();
+	
+	return false;
 }
 
 void PickByTypeAndColor::UndoExcute()

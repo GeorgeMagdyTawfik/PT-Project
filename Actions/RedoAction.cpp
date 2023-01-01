@@ -11,7 +11,7 @@ void RedoAction::ReadActionParameters()
 	pOut->PrintMessage("redo action");
 	
 }
-void RedoAction::Execute(bool ReadParamsFirst)
+bool RedoAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
@@ -27,8 +27,9 @@ void RedoAction::Execute(bool ReadParamsFirst)
 	else
 	pManager->Redo();
 	
-
 	RecordIfAllowed(this);
+
+	return true;
 }
 void RedoAction::UndoExcute()
 {}

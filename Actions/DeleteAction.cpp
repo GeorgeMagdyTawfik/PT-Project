@@ -8,7 +8,7 @@ DeleteAction::DeleteAction(ApplicationManager* pApp) : Action(pApp)
 void DeleteAction::ReadActionParameters()
 {}
 
-void DeleteAction::Execute(bool ReadParamsFirst)
+bool DeleteAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
@@ -26,6 +26,8 @@ void DeleteAction::Execute(bool ReadParamsFirst)
 	}
 	else
 	pOut->PrintMessage("No selected figure. Please select a figure first!");
+
+	return true;
 }
 
 DeleteAction::~DeleteAction()

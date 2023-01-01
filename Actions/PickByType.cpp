@@ -15,7 +15,7 @@ void PickByType::ReadActionParameters()
 {
 }
 
-void PickByType::Execute(bool ReadParamsFirst)
+bool PickByType::Execute(bool ReadParamsFirst)
 {
 	pOut = pManager->GetOutput();
 	pIn = pManager->GetInput();
@@ -24,7 +24,7 @@ void PickByType::Execute(bool ReadParamsFirst)
 	if (pManager->GetFigCount() == 0)
 	{
 		pOut->PrintMessage("There are no more figures!");
-		return;
+		return false;
 	}
 
 	srand(time(0));
@@ -67,6 +67,8 @@ void PickByType::Execute(bool ReadParamsFirst)
 	}
 	pManager->ResetCounts();
 	pManager->ResetFillColors();
+
+	return false;
 }
 
 void PickByType::UndoExcute()

@@ -24,11 +24,13 @@ void MoveAction::ReadActionParameters()
 		pOut->PrintMessage("No selected figure. Please select a figure first!");
 }
 
-void MoveAction::Execute(bool ReadParamsFirst)
+bool MoveAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
+
 	pFig = pManager->GetSelectedFig();
+
 	if (pFig)
 	{
 		prevlocation = pFig->GetCenter();
@@ -38,7 +40,7 @@ void MoveAction::Execute(bool ReadParamsFirst)
 		pManager->addtoundolist(this);
 		RecordIfAllowed(this);
 	}
-	
+	return true;
 }
 
 void MoveAction::UndoExcute()

@@ -13,7 +13,7 @@ void SoundAction::ReadActionParameters()
 {
 }
 
-void SoundAction::Execute(bool ReadParamsFirst)
+bool SoundAction::Execute(bool ReadParamsFirst)
 {
 	Output* pOut = pManager->GetOutput();
 	ReadActionParameters();
@@ -27,6 +27,8 @@ void SoundAction::Execute(bool ReadParamsFirst)
 		pManager->ChangeStateOfSound();
 		pOut->PrintMessage("Sound is on");
 	}
+
+	return false;
 }
 
 void SoundAction::UndoExcute()

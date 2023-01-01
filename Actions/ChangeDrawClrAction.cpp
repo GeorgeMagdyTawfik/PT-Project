@@ -59,32 +59,28 @@ void ChangeDrawClrAction::ReadActionParameters()
 	}
 }
 
-void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
+bool ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 {
 	if (ReadParamsFirst)
 		ReadActionParameters();
-	else
-		chosen = true;
 
 	pFig = pManager->GetSelectedFig();
 
 	if (chosen)
 	{
-		if (!pFig)
-			return;
-		else
-		{
-			prevUIDraw = UI.DrawColor;
-			prevFigDraw = pFig->GetPrevDrawClr();
+		prevUIDraw = UI.DrawColor;
+		prevFigDraw = pFig->GetPrevDrawClr();
 
-			UI.DrawColor = NewDraw;
-			pFig->ChngDrawClr(NewDraw);
-			pFig->UpdateFigGfxDrawClr(NewDraw);
+		UI.DrawColor = NewDraw;
+		pFig->ChngDrawClr(NewDraw);
+		pFig->UpdateFigGfxDrawClr(NewDraw);
 			
-		}
+		RecordIfAllowed(this);
+		pManager->addtoundolist(this);
 	}
-	RecordIfAllowed(this);				
-	pManager->addtoundolist(this);
+	
+
+	return true;
 }
 
 void ChangeDrawClrAction::UndoExcute()

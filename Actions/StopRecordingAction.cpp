@@ -8,18 +8,20 @@ StopRecordingAction::StopRecordingAction(ApplicationManager* pApp) : Action(pApp
 void StopRecordingAction::ReadActionParameters()
 {}
 
-void StopRecordingAction::Execute(bool ReadParamsFirst)
+bool StopRecordingAction::Execute(bool ReadParamsFirst)
 {
 	Output* pOut = pManager->GetOutput();
 
 	if (pManager->GetRecordingState() == false)
 	{
 		pOut->PrintMessage("Not possible : Start a recording first!");
-		return;
+		return false;
 	}
 
 	pManager->SetRecordingState(false);
 	pOut->PrintMessage("Recording Stopped");
+
+	return false;
 }
 
 
