@@ -28,7 +28,7 @@ void PickByTypeAndColor::Execute(bool ReadParamsFirst)
 	int NoFillFigs = pManager->GetNoFillFigs();
 	if (NoFillFigs == pManager->GetFigCount())
 	{
-		pOut->PrintMessage("There are no colored figures to pick here!");
+		pOut->PrintMessage("There are no colored figures!");
 		return;
 	}
 
@@ -46,8 +46,8 @@ void PickByTypeAndColor::Execute(bool ReadParamsFirst)
 
 	type = pManager->GetRandomType(r);
 
-	pOut->PrintMessage("Pick by type and color: pick all " + pOut->FillColorToString(clr) +
-		" " + pOut->TypeToString(type) + "!");
+	pOut->PrintMessage("Pick by type and Color: pick all " + pOut->FillColorToString(clr) +
+		" " + pOut->TypeToString(type) + "s!");
 	
 	TotalCount = pManager->GetCountForTypeAndColor(type, clr);
 
@@ -58,27 +58,28 @@ void PickByTypeAndColor::Execute(bool ReadParamsFirst)
 
 		if (!pFig)
 		{
-			pOut->PrintMessage("You clicked on an empty area. Try clicking on a figure!");
+			pOut->PrintMessage("You clicked on an empty area. Try clicking on a " +
+				pOut->FillColorToString(clr) + " " + pOut->TypeToString(type) + " !");
 			continue;
 		}
 		if (pFig->GetMyType() == type && pFig->IsFilled() && pFig->GetFillClrENUM() == clr)
 		{
 			pManager->DeleteFigure(pFig);
 			CorrectCount++;
-			pOut->PrintMessage("Bravo!          Correct clicks: " + to_string(CorrectCount) + "   " + " Wrong clicks: "
-				+ to_string(WrongCount));
+			pOut->PrintMessage("Bravo! You are only " + to_string(TotalCount - CorrectCount) +
+				" correct clicks away from winning the game!");
 		}
 		else
 		{
 			pManager->DeleteFigure(pFig);
 			WrongCount++;
-			pOut->PrintMessage("Try again!     Correct clicks: " + to_string(CorrectCount) + "   " + " Wrong clicks: "
-				+ to_string(WrongCount));
+			pOut->PrintMessage("Try again! Try clicking on a " +
+				pOut->FillColorToString(clr) + " " + pOut->TypeToString(type) + "!");
 		}
 		pManager->UpdateInterface();
 	}
-	pOut->PrintMessage("End of game:   Correct clicks: " + to_string(CorrectCount) + "    Wrong clicks: "
-		+ to_string(WrongCount));
+	pOut->PrintMessage("You won! Here's your score:     Correct clicks: " + to_string(CorrectCount)
+		+ "     Wrong clicks: " + to_string(WrongCount));
 
 	pManager->ResetCounts();
 	pManager->ResetFillColors();

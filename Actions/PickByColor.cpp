@@ -44,37 +44,37 @@ void PickByColor::Execute(bool ReadParamsFirst)
 	switch (clr)
 	{
 	case black:
-		pOut->PrintMessage("Pick all black figures!");
+		pOut->PrintMessage("Pick by color: pick all black figures!");
 		TotalCount = pManager->GetBlackFigs();
 		ExecuteBodyOfLoop(black, TotalCount);
 		break;
 
 	case red:
-		pOut->PrintMessage("Pick all red figures!");
+		pOut->PrintMessage("Pick by color: pick all red figures!");
 		TotalCount = pManager->GetRedFigs();
 		ExecuteBodyOfLoop(red, TotalCount);
 		break;
 
 	case orange:
-		pOut->PrintMessage("Pick all orange figures!");
+		pOut->PrintMessage("Pick by color: pick all orange figures!");
 		TotalCount = pManager->GetOrangeFigs();
 		ExecuteBodyOfLoop(orange, TotalCount);
 		break;
 
 	case yellow:
-		pOut->PrintMessage("Pick all yellow figures!");
+		pOut->PrintMessage("Pick by color: pick all yellow figures!");
 		TotalCount = pManager->GetYellowFigs();
 		ExecuteBodyOfLoop(yellow, TotalCount);
 		break;
 
 	case green:
-		pOut->PrintMessage("Pick all green figures!");
+		pOut->PrintMessage("Pick by color: pick all green figures!");
 		TotalCount = pManager->GetGreenFigs();
 		ExecuteBodyOfLoop(green, TotalCount);
 		break;
 
 	case blue:
-		pOut->PrintMessage("Pick all blue figures!");
+		pOut->PrintMessage("Pick by color: pick all blue figures!");
 		TotalCount = pManager->GetBlueFigs();
 		ExecuteBodyOfLoop(blue, TotalCount);
 		break;
@@ -101,7 +101,8 @@ void PickByColor::ExecuteBodyOfLoop(FillColors fillclr, int TotalCount)
 
 		if (pFig == NULL)
 		{
-			pOut->PrintMessage("You clicked on an empty area. Try clicking on a colored figure!");
+			pOut->PrintMessage("You clicked on an empty area. Try clicking on a "
+				+ pOut->FillColorToString(fillclr)+" figure!");
 			continue;
 		}
 
@@ -110,21 +111,20 @@ void PickByColor::ExecuteBodyOfLoop(FillColors fillclr, int TotalCount)
 			pManager->DeleteFigure(pFig);
 			CorrectCount++;
 			TotalCount--;
-			pOut->PrintMessage("Bravo!          Correct clicks: " + to_string(CorrectCount) + "   " + " Wrong clicks: "
-				+ to_string(WrongCount) + "  " + to_string(TotalCount));
+			pOut->PrintMessage("Bravo! You are only " + to_string(TotalCount) + 
+				" correct clicks away from winning the game!");
 		}
 
 		else
 		{
 			pManager->DeleteFigure(pFig);
 			WrongCount++;
-			pOut->PrintMessage("Try again!     Correct clicks: " + to_string(CorrectCount) + "   " + " Wrong clicks: "
-				+ to_string(WrongCount));
+			pOut->PrintMessage("Try again! Try clicking on a " + pOut->FillColorToString(fillclr) + " figure!");
 		}
 		pManager->UpdateInterface();
 	}
-	pOut->PrintMessage("End of game:   Correct clicks: " + to_string(CorrectCount) + "    Wrong clicks: "
-		+ to_string(WrongCount));
+	pOut->PrintMessage("You won! Here's your score:     Correct clicks: " + to_string(CorrectCount) 
+		+ "     Wrong clicks: " + to_string(WrongCount));
 }
 
 PickByColor::~PickByColor()

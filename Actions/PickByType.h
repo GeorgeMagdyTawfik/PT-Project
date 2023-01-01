@@ -7,6 +7,8 @@ class PickByType : public Action
 	int WrongCount;
 	Point clicked;
 	CFigure* pFig;
+	Output* pOut;
+	Input* pIn;
 
 public:
 	PickByType(ApplicationManager* pApp);
@@ -14,6 +16,7 @@ public:
 	virtual void Execute(bool ReadParamsFirst = true);
 	virtual void UndoExcute();
 	virtual void RedoExcute();
+	void ExecuteBodyOfLoop(char type, int TotalCount);
 	~PickByType();
 };
 

@@ -38,8 +38,8 @@ public:
 	string EncodeColor(color c) const; //takes color and returns corresponding string
 	color DecodeColor(string s) const; //takes string and returns corresponding color
 
-	string TypeToString(char c);
-	string FillColorToString(FillColors clr);
+	string TypeToString(char c);					//takes type (char) and returns corresponding string
+	string FillColorToString(FillColors clr);		//takes fill color (enum) and returns corresponding string
 
 	~Output();
 };
