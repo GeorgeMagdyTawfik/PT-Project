@@ -2,17 +2,19 @@
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	center = P1;
-  ID = GetNumberOfFigures();
+	ID = GetNumberOfFigures();
+	hexagonside = 50;
 }
 
 CHexagon::CHexagon()
-{}
+{
+	hexagonside = 50;
+}
 
 
 void CHexagon::Draw(Output* pOut) const
 {
-
-	pOut->DrawHexagon(center, FigGfxInfo, Selected);
+	pOut->DrawHexagon(center, FigGfxInfo, hexagonside, Selected);
 }
 
 float CHexagon::GetHexagonArea() const
@@ -88,6 +90,11 @@ void CHexagon::PrintInfo(Output* pOut)
 char CHexagon::GetMyType()
 {
 	return 'h';
+}
+
+void CHexagon::ResizeByDragging(Point NewLocation)
+{
+	hexagonside = sqrt(pow(center.x - NewLocation.x, 2) + pow(center.y - NewLocation.y, 2));
 }
 
 void CHexagon::Save(ofstream& OutFile)

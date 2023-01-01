@@ -107,3 +107,8 @@ char CCircle::GetMyType()
 {
 	return 'c';
 }
+
+void CCircle::ResizeByDragging(Point NewLocation)
+{
+	distance = NewLocation;
+}

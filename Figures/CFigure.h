@@ -72,6 +72,8 @@ public:
 	void UnfillFigGfxInfo();
 	color GetPrevDrawClr();
 
+	virtual void ResizeByDragging(Point) = 0;
+
 	virtual char GetMyType() = 0;
 
 	virtual ~CFigure();					//virtual destructor

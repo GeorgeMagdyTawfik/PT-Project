@@ -92,6 +92,7 @@ ActionType Input::GetUserAction() const
 			case ITM_CIRCLE: return DRAW_CIRCLE;
 			case ITM_EXIT: return EXIT;	
 			case ITM_move_by_dragging: return MOVE_BY_DRAGGING;
+			case ITM_RESIZE_BY_DRAGGING: return RESIZE_BY_DRAGGING;
 			case ITM_SWITCH: return TO_PLAY;
 			default: return EMPTY_DRAW;	//A click on empty place in desgin toolbar
 			}

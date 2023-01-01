@@ -199,6 +199,7 @@
     <ClCompile Include="Actions\PickByTypeAndColor.cpp" />
     <ClCompile Include="Actions\SoundAction.cpp" />
     <ClCompile Include="Actions\MoveByDragging.cpp" />
+    <ClCompile Include="Actions\ResizeByDragging.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircleAction.h" />
@@ -258,6 +259,7 @@
     <ClInclude Include="Actions\PickByTypeAndColor.h" />
     <ClInclude Include="Actions\SoundAction.h" />
     <ClInclude Include="Actions\MoveByDragging.h" />
+    <ClInclude Include="Actions\ResizeByDragging.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

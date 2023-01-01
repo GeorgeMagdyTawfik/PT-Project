@@ -44,6 +44,7 @@ enum ActionType //The actions supported (you can add more if needed)
 	CLEAR_ALL,
 	SOUND,
 	MOVE_BY_DRAGGING,
+	RESIZE_BY_DRAGGING,
 	//Play mode actions
 	SWITCH_BACK,
 	PICK_BY_TYPE,

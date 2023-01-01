@@ -4,6 +4,7 @@ class CHexagon :public CFigure
 {
 private:
 	Point center;
+	int hexagonside;
 
 public:
 	CHexagon(Point, GfxInfo FigureGfxInfo);
@@ -18,6 +19,7 @@ public:
 	virtual Point GetCenter();
 	virtual void PrintInfo(Output* pOut);
 	virtual char GetMyType();
+	virtual void ResizeByDragging(Point);
 	
 };
 

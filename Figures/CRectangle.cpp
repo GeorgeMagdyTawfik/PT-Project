@@ -113,3 +113,8 @@ char CRectangle::GetMyType()
 {
 	return 'r';
 }
+
+void CRectangle::ResizeByDragging(Point NewLocation)
+{
+	Corner2 = NewLocation;
+}

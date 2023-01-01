@@ -6,6 +6,7 @@ class CSquare : public CFigure
 {
 private:
 	Point center;
+	int squareside;
 
 public:
 	CSquare(Point, GfxInfo FigureGfxInfo);
@@ -19,4 +20,5 @@ public:
 	virtual void Move(Point destination) override;
 	virtual void PrintInfo(Output* pOut);
 	virtual char GetMyType();
+	virtual void ResizeByDragging(Point);
 };

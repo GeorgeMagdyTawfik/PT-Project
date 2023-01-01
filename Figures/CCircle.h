@@ -17,4 +17,5 @@ class CCircle:public CFigure
 		virtual Point GetCenter();
 		virtual void PrintInfo(Output* pOut);
 		virtual char GetMyType();
+		virtual void ResizeByDragging(Point);
 };	

@@ -6,7 +6,7 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 	
-	UI.width = 1400;
+	UI.width = 1420;
 	UI.height = 700;
 	UI.wx = 5;
 	UI.wy =5;
@@ -108,6 +108,7 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\U_exit.jpg";
 	MenuItemImages[ITM_sound] = "images\\MenuItems\\audio.jpg";
 	MenuItemImages[ITM_move_by_dragging] = "images\\MenuItems\\hand-drag.jpg";
+	MenuItemImages[ITM_RESIZE_BY_DRAGGING] = "images\\MenuItems\\resize.jpg";
 	
 
 	//TODO: Prepare images for each menu item and add it to the list
@@ -292,9 +293,8 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 	
 }
-void Output::DrawSquare(Point P1, GfxInfo squareGfxInfo, bool selected) const
+void Output::DrawSquare(Point P1, GfxInfo squareGfxInfo, int squareside, bool selected) const
 {
-	int squareside = 50;
 	color DrawingClr;
 	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
@@ -359,9 +359,8 @@ void Output::DrawTraingle(Point P1, Point P2, Point P3, GfxInfo traingleGfxInfo,
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 
 }
-void Output::DrawHexagon(Point P1, GfxInfo hexagonGfxInfo, bool selected) const
+void Output::DrawHexagon(Point P1, GfxInfo hexagonGfxInfo, int hexagonside, bool selected) const
 {
-	int hexagonside =50;
 	int arrx[6] =
 	{
 		P1.x + hexagonside /2.

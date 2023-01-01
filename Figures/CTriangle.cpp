@@ -122,3 +122,18 @@ char CTriangle::GetMyType()
 {
 	return 't';
 }
+
+void CTriangle::ResizeByDragging(Point NewLocation)
+{
+	int d1 = sqrt( pow(p1.x - NewLocation.x, 2) + pow(p1.y - NewLocation.y, 2) );
+	int d2 = sqrt( pow(p2.x - NewLocation.x, 2) + pow(p2.y - NewLocation.y, 2) );
+	int d3 = sqrt( pow(p3.x - NewLocation.x, 2) + pow(p3.y - NewLocation.y, 2) );
+
+	if (d1 < d2 && d1 < d3)
+		p1 = NewLocation;
+	else if (d2 < d1 && d2 < d3)
+		p2 = NewLocation;
+	else
+		p3 = NewLocation;
+
+}

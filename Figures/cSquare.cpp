@@ -4,16 +4,18 @@ CSquare::CSquare( Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	center = P;
 	ID = GetNumberOfFigures();
+	squareside = 50;
 }
 
 CSquare::CSquare()
 {
+	squareside = 50;
 }
 
 void CSquare::Draw(Output* pOut) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	
-	pOut->DrawSquare(center, FigGfxInfo, Selected);
+	pOut->DrawSquare(center, FigGfxInfo, squareside, Selected);
 }
 
 bool CSquare::CheckInside(int X, int Y)
@@ -87,4 +89,9 @@ Point CSquare::GetCenter()
 char CSquare::GetMyType()
 {
 	return 's';
+}
+
+void CSquare::ResizeByDragging(Point NewLocation)
+{
+	squareside = 0.707 * sqrt(pow(center.x - NewLocation.x, 2) + pow(center.y - NewLocation.y, 2));
 }

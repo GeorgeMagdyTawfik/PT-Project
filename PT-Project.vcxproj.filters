@@ -207,6 +207,10 @@
     <ClCompile Include="Actions\SwitchToDrawMode.cpp" />
     <ClCompile Include="Actions\SoundAction.cpp" />
     <ClCompile Include="Actions\movebydragging.cpp" />
+    <ClCompile Include="Actions\PickByType.cpp" />
+    <ClCompile Include="Actions\PickByColor.cpp" />
+    <ClCompile Include="Actions\PickByTypeAndColor.cpp" />
+    <ClCompile Include="Actions\ResizeByDragging.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -353,6 +357,10 @@
     <ClInclude Include="Actions\SwitchToDrawMode.h" />
     <ClInclude Include="Actions\SoundAction.h" />
     <ClInclude Include="Actions\movebydragging.h" />
+    <ClInclude Include="Actions\PickByType.h" />
+    <ClInclude Include="Actions\PickByColor.h" />
+    <ClInclude Include="Actions\PickByTypeAndColor.h" />
+    <ClInclude Include="Actions\ResizeByDragging.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

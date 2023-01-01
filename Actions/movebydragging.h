@@ -4,9 +4,6 @@ class movebydragging : public Action
 {
 	Point destination;
 	CFigure* pFig;
-	//CFigure* saved;
-	Point prevlocation;
-	//CFigure* moved;
 	Point newlocation;
 
 public:

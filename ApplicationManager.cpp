@@ -25,6 +25,7 @@
 #include "Actions/PickByTypeAndColor.h"
 #include"Actions/SoundAction.h"
 #include"Actions/movebydragging.h"
+#include "Actions/ResizeByDragging.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -171,6 +172,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case MOVE_BY_DRAGGING:
 		pAct = new movebydragging(this);
+		break;
+	case RESIZE_BY_DRAGGING:
+		pAct = new ResizeByDragging(this);
 		break;
 	case EXIT:
 		///create ExitAction here
