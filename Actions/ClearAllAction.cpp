@@ -17,7 +17,7 @@ void ClearAllAction::Execute(bool ReadParamsFirst)
 
 	pOut->ClearDrawArea();
 
-	pManager->DeleteAll();					//deleting allfigures
+	pManager->DeleteAll();					//deleting all figures
 	pManager->EmptyUndoList();				//and any history of undo
 	pManager->RemovePastRecording();		//and past recordings
 

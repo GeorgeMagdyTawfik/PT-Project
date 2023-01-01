@@ -12,6 +12,7 @@ void SwitchToPlayMode::ReadActionParameters()
 void SwitchToPlayMode::Execute(bool ReadParamsFirst)
 {
 	Output* pOut = pManager->GetOutput();
+
 	if (pManager->GetFigCount() == 0)
 	{
 		pOut->PrintMessage("Can't switch to play mode with no shapes!");

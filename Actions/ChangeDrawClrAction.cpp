@@ -65,7 +65,9 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 		ReadActionParameters();
 	else
 		chosen = true;
+
 	pFig = pManager->GetSelectedFig();
+
 	if (chosen)
 	{
 		if (!pFig)
@@ -81,7 +83,7 @@ void ChangeDrawClrAction::Execute(bool ReadParamsFirst)
 			
 		}
 	}
-	RecordIfAllowed(this);				// Is it the correct line to add this ?
+	RecordIfAllowed(this);				
 	pManager->addtoundolist(this);
 }
 

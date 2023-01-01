@@ -36,8 +36,11 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 		pOut->PrintMessage("There are no figures to select!");
 		return;
 	}
+
 	was_selected = pManager->GetSelectedFig();
+
 	ClickedFig = pManager->GetFigure(Clicked.x, Clicked.y);
+
 	if (ClickedFig == NULL) // a click not on a figure
 	{
 		pOut->PrintMessage("This is not a figure, ignored the click.");
@@ -66,7 +69,7 @@ void SelectFigAction::Execute(bool ReadParamsFirst)
 		ClickedFig->UseFigGfxInfo();
 	}
 	// If the kid clicks on an empty space it will be ignored
-	RecordIfAllowed(this); // I hope this will work
+	RecordIfAllowed(this);
 }
 
 void SelectFigAction::UnselectPrevious(CFigure* previous, bool go)
