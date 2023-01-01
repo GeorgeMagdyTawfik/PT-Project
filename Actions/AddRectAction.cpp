@@ -33,7 +33,7 @@ void AddRectAction::ReadActionParameters()
 	RectGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-	pManager->addtoundolist(this);
+	
 }
 
 //Execute the action
@@ -54,6 +54,7 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 		 PlaySound(TEXT("rectangle0.WAV"), NULL, SND_SYNC);
 	}
 	RecordIfAllowed(this);
+	pManager->addtoundolist(this);
 }
 void AddRectAction::UndoExcute()
 {

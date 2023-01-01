@@ -31,7 +31,7 @@ void AddTriangleAction::ReadActionParameters()
 	triangleGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-	pManager->addtoundolist(this);
+	
 	if (pManager->GetStateOfSound() == true)
 	{
 		 PlaySound(TEXT("triangle0.WAV"), NULL, SND_SYNC);
@@ -50,6 +50,7 @@ void AddTriangleAction::Execute(bool ReadParamsFirst)
 	saved = R;
 	
 	RecordIfAllowed(this);
+	pManager->addtoundolist(this);
 }
 void AddTriangleAction::UndoExcute()
 {

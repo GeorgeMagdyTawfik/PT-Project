@@ -32,7 +32,7 @@ void AddCircleAction::ReadActionParameters()
 	CircleGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-	pManager->addtoundolist(this);
+	
 
 }
 
@@ -55,6 +55,7 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 	{
 		 PlaySound(TEXT("circle0.WAV"), NULL, SND_SYNC);	
 	}
+	pManager->addtoundolist(this);
 }
 void AddCircleAction::UndoExcute()
 {

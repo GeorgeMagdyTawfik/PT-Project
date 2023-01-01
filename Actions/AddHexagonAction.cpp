@@ -26,7 +26,7 @@ void AddHexagonAction::ReadActionParameters()
 	hexaGfxInfo.FillClr = pOut->getCrntFillColor();
 
 	pOut->ClearStatusBar();
-	pManager->addtoundolist(this);
+	
 }
 
 
@@ -46,6 +46,7 @@ void AddHexagonAction::Execute(bool ReadParamsFirst)
 		PlaySound(TEXT("hexagon0.WAV"), NULL, SND_SYNC);
 	}
 	RecordIfAllowed(this);
+	pManager->addtoundolist(this);
 }
 void AddHexagonAction::UndoExcute()
 {
