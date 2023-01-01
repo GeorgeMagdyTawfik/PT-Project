@@ -23,6 +23,7 @@ private:
 	Action** RecordingList = new Action * [MaxRecord]; /// all the currently recorded actions
 	int RecordedActionsCount;
 	bool RecordingState;
+	bool PlayRecordingState;
 
 	bool playsound;
 
@@ -88,6 +89,9 @@ public:
 
 	void SetRecordingState(bool b);
 	bool GetRecordingState() const;
+
+	void SetPlayRecordingState(bool b);
+	bool GetPlayRecordingState();
 
 	int GetRecordedActionsCount() const;
 	void PreviewRecordedActs();

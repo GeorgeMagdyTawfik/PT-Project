@@ -52,6 +52,7 @@ ApplicationManager::ApplicationManager()
 	deletecount = 0;
 
 	RecordingState = false;
+	PlayRecordingState = false;
 
 	LastAction = NULL;
 
@@ -331,8 +332,8 @@ void ApplicationManager::addtoundolist(Action* ac)
 	redocount = 0;
 	if (undocount > 4)
 	{
-		if (RecordingState == false)
-			delete undolist[0]; // senario :: if it is recored ???
+		if (RecordingState == false && PlayRecordingState == false)
+			delete undolist[0];
 		for (int i = 0; i <= 3; i++)
 		{
 			undolist[i] = undolist[i + 1];
@@ -375,6 +376,16 @@ int ApplicationManager::GetRecordedActionsCount() const
 bool ApplicationManager::GetRecordingState() const
 {
 	return RecordingState;
+}
+
+void ApplicationManager::SetPlayRecordingState(bool b)
+{
+	PlayRecordingState = b;
+}
+
+bool ApplicationManager::GetPlayRecordingState()
+{
+	return PlayRecordingState;
 }
 
 void ApplicationManager::AddToRecordingList(Action* ptr)
