@@ -95,8 +95,6 @@ public:
 	void RemovePastRecording();				 // This is called when Starting a new Recording or Clear ALL
 	void AddToRecordingList(Action*);
 
-	bool SearchForActInRecording(Action*);			//This is used to make sure clear all works well
-
 	void DeleteFigure(CFigure* pFig);
 
 	void addtoundolist(Action*);

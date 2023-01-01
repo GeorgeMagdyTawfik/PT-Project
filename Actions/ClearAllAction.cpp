@@ -17,19 +17,19 @@ void ClearAllAction::Execute(bool ReadParamsFirst)
 
 	pOut->ClearDrawArea();
 
-	pManager->DeleteAll();
-	pManager->EmptyUndoList();
-	pManager->RemovePastRecording();
+	pManager->DeleteAll();					//deleting allfigures
+	pManager->EmptyUndoList();				//and any history of undo
+	pManager->RemovePastRecording();		//and past recordings
 
 	UI.DrawColor = color(0, 87, 231);		//resetting colors back to default
 	UI.FillColor = color(0, 135, 68);
 	CFigure::FilledAsDefault = false;
 
-	pManager->SetSelectedFigure(NULL);		//making sure there are no selected figs
-
 	CFigure::NumberOfFigures = 0;			//resetting figure IDs back to zero
 
+	pManager->SetSelectedFigure(NULL);		//making sure there are no selected figs
 	pManager->SetStateOfSound(false);		//resetting sound state to OFF
+	pManager->SetRecordingState(false);		//ensures that any recording stops
 
 	pOut->PrintMessage("Cleared all!");
 }

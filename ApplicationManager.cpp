@@ -383,18 +383,6 @@ void ApplicationManager::AddToRecordingList(Action* ptr)
 		RecordingList[RecordedActionsCount++] = ptr;
 }
 
-bool ApplicationManager::SearchForActInRecording(Action* pAct)
-{
-	bool found = false;
-
-	for (int i = 0; i < RecordedActionsCount; i++)
-	{
-		if (RecordingList[i] == pAct)
-			return true;
-	}
-	return false;
-}
-
 void ApplicationManager::PreviewRecordedActs()
 {
 	for (int i = 0; i < RecordedActionsCount; i++)
@@ -417,13 +405,18 @@ void ApplicationManager::RemovePastRecording()
 
 void ApplicationManager::EmptyUndoList()
 {
-	//the implementation of this function makes it search first for the ptrs 
-	//contained in the undolist in the recording list
+	//This function searches first for undolist ptrs in recording list, if found,
+	//it doesn't delete them, because remove past recording will do so later
 	bool found;
 
 	for (int i = 0; i < undocount; i++)
 	{
-		found = SearchForActInRecording(undolist[i]);
+		found = false;
+		for (int j = 0; j < RecordedActionsCount; j++)
+		{
+			if (undolist[i] == RecordingList[j])
+				found = true;
+		}
 		if (!found)
 			delete undolist[i];
 		undolist[i] = NULL;
@@ -434,7 +427,7 @@ void ApplicationManager::EmptyUndoList()
 
 void ApplicationManager::CountTypes()
 {
-	ResetCounts(); // solves a simple bug
+	ResetCounts();
 	for (int i = 0; i < FigCount; i++)
 	{
 		char type = FigList[i]->GetMyType();
@@ -454,7 +447,7 @@ void ApplicationManager::CountTypes()
 
 void ApplicationManager::CountFillColors()
 {
-	ResetFillColors(); // solves a simple bug
+	ResetFillColors();
 	for (int i = 0; i < FigCount; i++)
 	{
 		if (!FigList[i]->IsFilled())
