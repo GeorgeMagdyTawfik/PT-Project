@@ -17,8 +17,8 @@ Output::Output()
 	UI.MenuItemWidth = 48;
 	
 	UI.DrawColor = color(0, 87, 231); ///google's blue
-	UI.FillColor = color(0, 135, 68);	//google's green : why is this not working ?
-	UI.MsgColor = color(255, 167, 0);		///google's yellow 
+	UI.FillColor = color(0, 135, 68);	///google's green
+	UI.MsgColor = WHITE;	//color(255, 167, 0);		///google's yellow 
 	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
 	UI.StatusBarColor = color(0, 135, 68); /// google's green
@@ -169,8 +169,8 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 	ClearStatusBar();	//First clear the status bar
 	
 	pWind->SetPen(UI.MsgColor, 50);
-	pWind->SetFont(20, BOLD , BY_NAME, "Arial");   
-	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.5), msg);
+	pWind->SetFont(22, BOLD , BY_NAME, "Arial");
+	pWind->DrawString(30, UI.height - (int)(UI.StatusBarHeight/1.2), msg);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
