@@ -32,10 +32,9 @@ void AddTriangleAction::ReadActionParameters()
 
 	pOut->ClearStatusBar();
 	pManager->addtoundolist(this);
-	if (pManager->getcaseofsound() == true)
+	if (pManager->GetStateOfSound() == true)
 	{
-	 PlaySound(TEXT("triangle0.WAV"), NULL, SND_SYNC);
-		
+		 PlaySound(TEXT("triangle0.WAV"), NULL, SND_SYNC);
 	}
 }
 

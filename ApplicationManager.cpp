@@ -295,8 +295,7 @@ void ApplicationManager::DeleteAll()
 		delete FigList[i];
 		FigList[i] = NULL;
 	}
-	SetFigcount(0);/// This was desparately needed
-
+	FigCount = 0;
 }
 
 int ApplicationManager::GetFigCount() const
@@ -384,6 +383,18 @@ void ApplicationManager::AddToRecordingList(Action* ptr)
 		RecordingList[RecordedActionsCount++] = ptr;
 }
 
+bool ApplicationManager::SearchForActInRecording(Action* pAct)
+{
+	bool found = false;
+
+	for (int i = 0; i < RecordedActionsCount; i++)
+	{
+		if (RecordingList[i] == pAct)
+			return true;
+	}
+	return false;
+}
+
 void ApplicationManager::PreviewRecordedActs()
 {
 	for (int i = 0; i < RecordedActionsCount; i++)
@@ -406,9 +417,15 @@ void ApplicationManager::RemovePastRecording()
 
 void ApplicationManager::EmptyUndoList()
 {
+	//the implementation of this function makes it search first for the ptrs 
+	//contained in the undolist in the recording list
+	bool found;
+
 	for (int i = 0; i < undocount; i++)
 	{
-		//delete undolist[i]; /// THE ACTIONS HERE ARE ALREADY DELETED IN EmptyRecordingList
+		found = SearchForActInRecording(undolist[i]);
+		if (!found)
+			delete undolist[i];
 		undolist[i] = NULL;
 	}
 	undocount = 0;
@@ -564,7 +581,7 @@ int ApplicationManager::GetCountForTypeAndColor(char type, FillColors clr)
 	return TotalCount;
 }
 
-void ApplicationManager::changethestateofsound()
+void ApplicationManager::ChangeStateOfSound()
 {
 	if (playsound == true)
 		playsound = false;
@@ -572,7 +589,12 @@ void ApplicationManager::changethestateofsound()
 		playsound = true;
 }
 
-bool ApplicationManager::getcaseofsound()
+void ApplicationManager::SetStateOfSound(bool b)
+{
+	playsound = b;
+}
+
+bool ApplicationManager::GetStateOfSound()
 {
 	return playsound;
 }

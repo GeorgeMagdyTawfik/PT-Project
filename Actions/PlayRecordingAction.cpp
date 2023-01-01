@@ -25,10 +25,14 @@ void PlayRecordingAction::Execute(bool ReadParamsFirst)
 	if (pManager->GetRecordingState() == false)	
 	{
 		CFigure::FilledAsDefault = false;
+		CFigure::NumberOfFigures = 0;
 		pManager->DeleteAll();
 		pOut->ClearDrawArea();
+
 		pOut->PrintMessage("Started Playing");
+
 		pManager->PreviewRecordedActs();
+
 		pOut->PrintMessage("Finished the recorded actions");
 	}
 		

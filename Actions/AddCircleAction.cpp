@@ -51,7 +51,7 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 	saved = R;
 
 	RecordIfAllowed(this);
-	if (pManager->getcaseofsound() == true)
+	if (pManager->GetStateOfSound() == true)
 	{
 		 PlaySound(TEXT("circle0.WAV"), NULL, SND_SYNC);	
 	}

@@ -6,14 +6,8 @@ CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxIn
 {
 	center = P1;
 	distance = P2;
-	Radius = sqrt(
-		pow(P1.x - P2.x, 2)
-		+
-		pow(P1.y - P2.y, 2)
-	);
-	ID = GetNumberOfFigures();
-
 	
+	ID = GetNumberOfFigures();
 }
 
 CCircle::CCircle()

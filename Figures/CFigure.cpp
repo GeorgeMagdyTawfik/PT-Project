@@ -1,7 +1,5 @@
 #include "CFigure.h"
 
-int CFigure::NumberOfFigures = 0;
-
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 {
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
@@ -21,6 +19,8 @@ CFigure::CFigure()
 	PrevFigGfxInfo = FigGfxInfo;
 	Selected = false;
 }
+
+int CFigure::NumberOfFigures = 0;
 
 bool CFigure::FilledAsDefault = false;
 

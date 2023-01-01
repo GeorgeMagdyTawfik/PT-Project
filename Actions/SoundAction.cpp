@@ -17,18 +17,16 @@ void SoundAction::Execute(bool ReadParamsFirst)
 {
 	Output* pOut = pManager->GetOutput();
 	ReadActionParameters();
-	if (pManager->getcaseofsound())
+	if (pManager->GetStateOfSound())
 	{
-		pManager->changethestateofsound();
-		pOut->PrintMessage("Sound is off.");
+		pManager->ChangeStateOfSound();
+		pOut->PrintMessage("Sound is off");
 	}
 	else
 	{
-		pManager->changethestateofsound();
-		pOut->PrintMessage("Sound is on.");
+		pManager->ChangeStateOfSound();
+		pOut->PrintMessage("Sound is on");
 	}
-	
-
 }
 
 void SoundAction::UndoExcute()

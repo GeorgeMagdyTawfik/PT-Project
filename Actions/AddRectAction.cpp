@@ -49,10 +49,9 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
 	saved = R;
-	if (pManager->getcaseofsound() == true)
+	if (pManager->GetStateOfSound() == true)
 	{
-	 PlaySound(TEXT("rectangle0.WAV"), NULL, SND_SYNC);
-	
+		 PlaySound(TEXT("rectangle0.WAV"), NULL, SND_SYNC);
 	}
 	RecordIfAllowed(this);
 }

@@ -41,7 +41,7 @@ void AddHexagonAction::Execute(bool ReadParamsFirst)
 
 	pManager->AddFigure(R);
 	saved = R;
-	if (pManager->getcaseofsound() == true)
+	if (pManager->GetStateOfSound() == true)
 	{
 		PlaySound(TEXT("hexagon0.WAV"), NULL, SND_SYNC);
 	}

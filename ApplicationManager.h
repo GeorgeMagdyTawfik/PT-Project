@@ -16,15 +16,21 @@ class ApplicationManager
 	enum { MaxRecord = 20 }; // Maximum number of recorded actions
 private:
 	int FigCount;		//Actual number of figures
-	int RecordedActionsCount;
+
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
-	Action** RecordingList = new Action*[MaxRecord]; /// all the currently recorded actions
 	CFigure* SelectedFig; //Pointer to the selected figure
+
+	Action** RecordingList = new Action * [MaxRecord]; /// all the currently recorded actions
+	int RecordedActionsCount;
 	bool RecordingState;
+
 	bool playsound;
+
 	//Pointers to Input and Output classes
 	Input* pIn;
 	Output* pOut;
+
+
 	Action* undolist[MaxUndoCount];
 	int undocount;
 	int redocount;
@@ -75,18 +81,24 @@ public:
 
 	// -- Setters and Getters
 	int GetFigCount() const;
-	void SetFigcount(int x); //this is needed for loading
-	void SetRecordingState(bool b);
-	bool GetRecordingState() const;
-	int GetRecordedActionsCount() const;
-	void PreviewRecordedActs();
-	void RemovePastRecording(); // Is called when Starting a new Recording or Clear ALL
-	void AddToRecordingList(Action*);
+	void SetFigcount(int x);
 
-	// -- Functions which Loop on FigList
-	void DeleteFigure(CFigure* pFig);
 	int getredocount();
 	int getundocount();
+
+	void SetRecordingState(bool b);
+	bool GetRecordingState() const;
+
+	int GetRecordedActionsCount() const;
+	void PreviewRecordedActs();
+
+	void RemovePastRecording();				 // This is called when Starting a new Recording or Clear ALL
+	void AddToRecordingList(Action*);
+
+	bool SearchForActInRecording(Action*);			//This is used to make sure clear all works well
+
+	void DeleteFigure(CFigure* pFig);
+
 	void addtoundolist(Action*);
 	void Undo();
 	void Redo();
@@ -94,6 +106,7 @@ public:
 
 	void CountTypes();
 	void CountFillColors();
+
 	FillColors GetRandomFillColor(int index);
 	char GetRandomType(int index);
 
@@ -115,8 +128,10 @@ public:
 	void ResetFillColors();
 
 	int GetCountForTypeAndColor(char type, FillColors clr);
-	void changethestateofsound();
-	bool getcaseofsound();
+
+	void ChangeStateOfSound();
+	void SetStateOfSound(bool b);							//this is used when clearing all
+	bool GetStateOfSound();
 };
 
 #endif
