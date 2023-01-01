@@ -53,7 +53,7 @@ void AddCircleAction::Execute(bool ReadParamsFirst)
 	RecordIfAllowed(this);
 	if (pManager->getcaseofsound() == true)
 	{
-		 PlaySound(TEXT("circle.WAV"), NULL, SND_SYNC);	
+		 PlaySound(TEXT("circle0.WAV"), NULL, SND_SYNC);	
 	}
 }
 void AddCircleAction::UndoExcute()

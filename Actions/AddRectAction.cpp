@@ -51,7 +51,7 @@ void AddRectAction::Execute(bool ReadParamsFirst)
 	saved = R;
 	if (pManager->getcaseofsound() == true)
 	{
-	 PlaySound(TEXT("rectangle.WAV"), NULL, SND_SYNC);
+	 PlaySound(TEXT("rectangle0.WAV"), NULL, SND_SYNC);
 	
 	}
 	RecordIfAllowed(this);

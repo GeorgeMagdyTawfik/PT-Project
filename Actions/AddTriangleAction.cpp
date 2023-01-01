@@ -34,7 +34,7 @@ void AddTriangleAction::ReadActionParameters()
 	pManager->addtoundolist(this);
 	if (pManager->getcaseofsound() == true)
 	{
-	 PlaySound(TEXT("triangle.WAV"), NULL, SND_SYNC);
+	 PlaySound(TEXT("triangle0.WAV"), NULL, SND_SYNC);
 		
 	}
 }

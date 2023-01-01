@@ -46,7 +46,7 @@ void AddSquareAction::Execute(bool ReadParamsFirst)
 	saved = R;
 	if (pManager->getcaseofsound() == true)
 	{
-		PlaySound(TEXT("square.WAV"), NULL, SND_SYNC);
+		PlaySound(TEXT("square0.WAV"), NULL, SND_SYNC);
 	}
 	
 	RecordIfAllowed(this);
